@@ -1,0 +1,135 @@
+<!--
+  ============================================================
+  ZEIK DIGITAL — MODELO DE SITE (demonstração para o cliente)
+  ============================================================
+  Este arquivo é o EXEMPLO pronto que você abre na frente do dono do
+  negócio: mesmo visual, mesma estrutura e mesmas seções do site que
+  a Zeik entrega em 48h.
+
+  Como usar
+  1) No painel, tela "Gerador de Site": escolha o cliente, preencha os
+     dados e clique em "Gerar e baixar HTML". O site final do cliente é
+     gerado a partir deste mesmo layout.
+  2) Para personalizar à mão, troque apenas os textos entre os blocos
+     marcados (nome, telefone, endereço, horários, serviços).
+
+  Importante: página 100% estática (HTML+CSS inline), sem script, sem
+  dependência externa e sem rastreador. Carrega em qualquer 4G.
+  ============================================================
+-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Barbearia Navalha de Ouro — Barbearia em Capão Redondo, São Paulo</title>
+<meta name="description" content="Agende pelo WhatsApp e chegue na hora. Sem fila, sem espera, sem chatice. Estamos no Av. Comendador Sant&#39;Anna, 416 — Loja 3. Fale com a gente pelo WhatsApp.">
+<meta name="theme-color" content="#f5f5f7">
+<meta property="og:type" content="business.business">
+<meta property="og:title" content="Barbearia Navalha de Ouro — Barbearia">
+<meta property="og:description" content="Agende pelo WhatsApp e chegue na hora. Sem fila, sem espera, sem chatice. Estamos no Av. Comendador Sant&#39;Anna, 416 — Loja 3. Fale com a gente pelo WhatsApp.">
+<link rel="canonical" href="#">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Barbearia Navalha de Ouro","description":"Agende pelo WhatsApp e chegue na hora. Sem fila, sem espera, sem chatice.","telephone":"(11) 94937-9085","address":{"@type":"PostalAddress","streetAddress":"Av. Comendador Sant'Anna, 416 — Loja 3","addressLocality":"Capão Redondo, São Paulo","addressRegion":"SP","addressCountry":"BR"},"priceRange":"$$","@id":"#negocio"}</script>
+<style>
+:root{--bg:#f5f5f7;--txt:#1d1d1f;--txt2:#6e6e73;--blue:#0071e3;--blue2:#0077ed;--card:rgba(255,255,255,.72);--line:rgba(0,0,0,.08);--sh:0 4px 20px rgba(0,0,0,.06)}
+@media (prefers-color-scheme:dark){:root{--bg:#000;--txt:#f5f5f7;--txt2:#a1a1a6;--card:rgba(28,28,30,.72);--line:rgba(255,255,255,.1);--sh:0 4px 20px rgba(0,0,0,.4)}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',Arial,sans-serif;color:var(--txt);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.5}
+body::before{content:'';position:fixed;inset:-15% -10% auto;height:60vh;pointer-events:none;background:radial-gradient(60% 60% at 25% 0,rgba(0,113,227,.18),transparent 70%),radial-gradient(50% 50% at 75% 0,rgba(88,86,214,.16),transparent 70%);z-index:0}
+.wrap{width:100%;max-width:1080px;margin:0 auto;padding:0 22px;position:relative;z-index:1}
+.top{position:sticky;top:0;z-index:20;background:var(--card);-webkit-backdrop-filter:blur(30px) saturate(180%);backdrop-filter:blur(30px) saturate(180%);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:16px;height:60px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:600;letter-spacing:-.02em;color:var(--txt);text-decoration:none;font-size:17px}
+.mark{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:linear-gradient(135deg,var(--blue),#5856d6);font-size:15px}
+.links{margin-left:auto;display:flex;gap:22px}.links a{color:var(--txt2);font-size:14px;text-decoration:none;transition:.2s cubic-bezier(.4,0,.2,1)}.links a:hover{color:var(--txt)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--blue);color:#fff;border:0;border-radius:980px;padding:9px 18px;font-size:14.5px;font-weight:500;text-decoration:none;cursor:pointer;transition:.2s cubic-bezier(.4,0,.2,1);white-space:nowrap}
+.btn:hover{background:var(--blue2);transform:translateY(-1px)}.btn:active{transform:scale(.98)}.btn.big{padding:13px 26px;font-size:16px}.btn.ghost{background:transparent;color:var(--blue);border:1px solid var(--line)}.btn.block{width:100%}
+.hero{padding:78px 0 62px;text-align:center}
+.kicker{color:var(--blue);font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin:0 0 14px}
+.hero h1{font-size:clamp(34px,6.2vw,62px);line-height:1.05;letter-spacing:-.03em;margin:0 0 16px;font-weight:700}
+.lead{color:var(--txt2);font-size:clamp(16px,2.2vw,20px);margin:0 auto 26px;max-width:640px}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.trust{list-style:none;display:flex;gap:22px;justify-content:center;flex-wrap:wrap;padding:0;margin:30px 0 0;color:var(--txt2);font-size:13.5px}
+.section{padding:64px 0}.section.alt{background:rgba(0,0,0,.02)}@media(prefers-color-scheme:dark){.section.alt{background:rgba(255,255,255,.03)}}
+.section h2{font-size:clamp(24px,3.6vw,34px);letter-spacing:-.025em;margin:0 0 8px;font-weight:700}
+.sub{color:var(--txt2);margin:0 0 26px;font-size:16px}.note{color:var(--txt2);font-size:13px;margin-top:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}.grid.three{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card{background:var(--card);-webkit-backdrop-filter:blur(30px) saturate(180%);backdrop-filter:blur(30px) saturate(180%);border:1px solid var(--line);border-radius:18px;box-shadow:var(--sh);padding:22px;transition:.25s cubic-bezier(.4,0,.2,1)}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,0,0,.12)}
+.card .ico{width:34px;height:34px;border-radius:10px;background:rgba(0,113,227,.12);color:var(--blue);display:grid;place-items:center;font-size:14px;margin-bottom:12px}
+.card h3{margin:0 0 6px;font-size:18px;letter-spacing:-.02em}.card p{margin:0;color:var(--txt2);font-size:14.5px}
+.quote blockquote{margin:0 0 10px;font-size:16px;line-height:1.5}.quote figcaption{color:var(--txt2);font-size:13px}.quote figcaption span{color:var(--blue)}
+.split{display:grid;grid-template-columns:1.4fr 1fr;gap:34px;align-items:center}.checks{list-style:none;padding:0;margin:18px 0 0;color:var(--txt2)}.checks li{padding:7px 0;border-bottom:1px solid var(--line)}
+.panel h3{margin:0 0 12px;font-size:19px}.panel p{margin:0 0 12px;font-size:14.5px;color:var(--txt2)}.panel p b{display:block;color:var(--txt);font-size:12.5px;text-transform:uppercase;letter-spacing:.03em}
+.cta-final{background:linear-gradient(135deg,rgba(0,113,227,.10),rgba(88,86,214,.10));border-radius:26px;text-align:center;padding:52px 22px;margin-bottom:40px}.center{text-align:center}.center .lead{margin-bottom:22px}
+.foot{border-top:1px solid var(--line);padding:22px 0;color:var(--txt2);font-size:13px}.row{display:flex;gap:14px;justify-content:space-between;flex-wrap:wrap}.foot a{color:var(--txt2);text-decoration:none}.foot a:hover{color:var(--blue)}
+.wa-float{position:fixed;right:18px;bottom:18px;width:56px;height:56px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 8px 26px rgba(37,211,102,.45);z-index:60;transition:.2s cubic-bezier(.4,0,.2,1)}
+.wa-float:hover{transform:scale(1.06)}.wa-float:active{transform:scale(.96)}
+@media(max-width:720px){.links{display:none}.hero{padding:52px 0 40px}.split{grid-template-columns:1fr}.section{padding:46px 0}.btn.big{width:100%}.cta{flex-direction:column}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <a class="logo" href="#topo"><span class="mark">💈</span><b>Barbearia Navalha de Ouro</b></a>
+  <nav class="links"><a href="#servicos">Serviços</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a></nav>
+  <a class="btn" href="https://wa.me/5511949379085?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Barbearia%20Navalha%20de%20Ouro%20e%20quero%20agendar%2Fatender." target="_blank" rel="noopener">Agendar</a>
+</div></header>
+
+<main id="topo">
+<section class="hero"><div class="wrap">
+  <p class="kicker">💈 Barbearia · Capão Redondo, São Paulo</p>
+  <h1>Corte na régua, barba no detalhe</h1>
+  <p class="lead">Agende pelo WhatsApp e chegue na hora. Sem fila, sem espera, sem chatice.</p>
+  <div class="cta">
+    <a class="btn big" href="https://wa.me/5511949379085?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20falar%20com%20a%20Barbearia%20Navalha%20de%20Ouro." target="_blank" rel="noopener">Chamar no WhatsApp</a>
+    <a class="btn ghost big" href="tel:+5511949379085">Ligar (11) 94937-9085</a>
+  </div>
+  <ul class="trust"><li>✔ Atendimento no bairro</li><li>✔ Orçamento sem compromisso</li><li>✔ Cliente que volta</li></ul>
+</div></section>
+
+<section id="servicos" class="section"><div class="wrap">
+  <h2>Serviços e preços</h2><p class="sub">O que a Barbearia Navalha de Ouro faz — e você pode reservar agora mesmo.</p>
+  <div class="grid"><article class="card"><div class="ico">💈</div><h3>Corte masculino</h3><p>Máquina, tesoura ou degradê, no seu estilo.</p></article>
+<article class="card"><div class="ico">💈</div><h3>Barba completa</h3><p>Toalha quente, navalha e acabamento.</p></article>
+<article class="card"><div class="ico">💈</div><h3>Corte + barba</h3><p>O combo que resolve a semana.</p></article>
+<article class="card"><div class="ico">💈</div><h3>Pezinho / acabamento</h3><p>Retoque rápido pra manter o estilo.</p></article></div>
+  <p class="note">Preços e disponibilidade mudam na semana. Chame no WhatsApp e confirme o seu.</p>
+</div></section>
+
+<section id="sobre" class="section alt"><div class="wrap split">
+  <div>
+    <h2>Sobre a Barbearia Navalha de Ouro</h2>
+  <p class="lead">Há 9 anos na Av. Comendador Sant&#39;Anna. Cortes na régua, barba com toalha quente e um café pra quem chega. Atendimento com hora marcada pelo WhatsApp, sem fila.</p>
+  <ul class="checks"><li>Equipe própria, sem terceirizado</li><li>Ambiente limpo e acessível</li><li>Pagamento no PIX, cartão e dinheiro</li></ul>
+  </div>
+  <aside class="card panel">
+    <h3>Fale com a gente</h3>
+    <p><b>WhatsApp / Telefone</b><br>(11) 94937-9085</p>
+    <p><b>Endereço</b><br>Av. Comendador Sant&#39;Anna, 416 — Loja 3</p>
+    <p><b>Horário</b><br>Ter a Sáb — 9h às 20h</p>
+    <a class="btn block" href="https://wa.me/5511949379085?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Barbearia%20Navalha%20de%20Ouro." target="_blank" rel="noopener">Chamar no WhatsApp</a>
+  </aside>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <h2>O que dizem os clientes</h2><p class="sub">Avaliações reais de quem já foi atendido.</p>
+  <div class="grid three"><figure class="card quote"><blockquote>“Melhor degradê da região e ainda agenda pelo zap. Recomendo demais.”</blockquote><figcaption>Lucas M. · <span>Google</span></figcaption></figure>
+<figure class="card quote"><blockquote>“Cheguei na hora marcada, fui atendido na hora. Virei cliente fiel.”</blockquote><figcaption>Diego R. · <span>Google</span></figcaption></figure>
+<figure class="card quote"><blockquote>“Corte impecável e preço justo do bairro. Não troco por nada.”</blockquote><figcaption>Anderson P. · <span>Google</span></figcaption></figure></div>
+</div></section>
+
+<section id="contato" class="section cta-final"><div class="wrap center">
+  <h2>Pronto pra marcar seu horário?</h2>
+  <p class="lead">Chame no WhatsApp — respondemos rápido, e o horário é seu.</p>
+  <a class="btn big" href="https://wa.me/5511949379085?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Barbearia%20Navalha%20de%20Ouro%20e%20quero%20marcar%20seu%20hor%C3%A1rio." target="_blank" rel="noopener">Falar agora no WhatsApp</a>
+</div></section>
+</main>
+
+<footer class="foot"><div class="wrap row">
+  <span>© 2026 Barbearia Navalha de Ouro · Capão Redondo, São Paulo</span>
+  <a href="https://wa.me/5511990147836?text=Vi%20o%20site%20da%20Barbearia%20Navalha%20de%20Ouro%20e%20quero%20um%20assim%20para%20meu%20neg%C3%B3cio." target="_blank" rel="noopener">Site criado por Zeik Digital · (11) 99014-7836</a>
+</div></footer>
+
+<a class="wa-float" href="https://wa.me/5511949379085?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Barbearia%20Navalha%20de%20Ouro." target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true"><path fill="#fff" d="M16 3C8.8 3 3 8.8 3 16c0 2.3.6 4.4 1.7 6.3L3 29l6.9-1.8c1.8 1 3.9 1.6 6.1 1.6 7.2 0 13-5.8 13-13S23.2 3 16 3zm0 23.5c-2 0-3.9-.5-5.5-1.5l-.4-.2-4 1 1.1-3.9-.3-.4A10.4 10.4 0 1 1 16 26.5zm5.8-7.7c-.3-.2-1.9-.9-2.2-1s-.5-.1-.7.2-.8 1-1 1.2-.4.2-.7 0a8.5 8.5 0 0 1-2.5-1.6 9.4 9.4 0 0 1-1.7-2.2c-.2-.3 0-.5.1-.7l.5-.6.4-.6v-.6c0-.2-.7-1.7-.9-2.3s-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4A3.6 3.6 0 0 0 8.6 13c0 1.5 1.1 3 1.2 3.2s2.1 3.4 5.2 4.7c2.6 1.1 3.1.9 3.7.8s1.9-.8 2.1-1.5.3-1.4.2-1.5-.3-.3-.6-.4z"/></svg>
+</a>
+</body></html>
