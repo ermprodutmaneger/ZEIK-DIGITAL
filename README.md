@@ -127,5 +127,5 @@ Os prospects **não** contêm nada de LGPD sensível: são dados de estabelecime
 
 - Preço, prazo, manutenção, WhatsApp, e-mail, nome e bairros: **Configurações** (salvam sozinhos).
 - Roteiros por segmento e objeções: `assets/js/seed.js` (os campos `{{empresa}}`, `{{contato}}`, `{{bairro}}`, `{{preco}}`, `{{manut}}`, `{{telZeik}}` são substituídos na hora).
-- Visual do site entregue: `assets/js/site-template.js` → rode `node /tmp/gen-modelo.js`-equivalente se quiser regenerar `modelo-site.html`, ou simplesmente use o **Gerador** dentro do painel.
+- Visual do site entregue: tudo está em `assets/js/site-template.js` (função `ZeikSite.gerar`). Mude cores/textos lá e o **Gerador** do painel já entrega o site novo. O `modelo-site.html` é só a demonstração aberta no navegador — para atualizá-lo, gere pelo Gerador e salve o `.html` baixado por cima dele.
 - Cores/tipografia: `assets/css/style.css` — a paleta é a mesma do site da Apple (fundo `#f5f5f7`, cards de vidro `rgba(255,255,255,.72)` com `backdrop-filter: blur(40px) saturate(180%)`, azul `#0071e3`, cantos 18px, botões 980px, tema escuro automático). Vale para as duas frentes: o painel e o site que você entrega.
