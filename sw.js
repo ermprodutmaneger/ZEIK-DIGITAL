@@ -4,7 +4,7 @@
      (assim uma atualização sua aparece na hora, e sem rede o painel abre igual)
    - NUNCA guarda dados de cliente em cache HTTP: os dados vivem no localStorage
    ========================================================================== */
-var VERSION = "zeik-v3.1.0";
+var VERSION = "zeik-v3.2.0";
 var SHELL = [
   "./",
   "./index.html",
@@ -20,7 +20,8 @@ var SHELL = [
   "./public/icons/icon-192.png",
   "./public/icons/icon-512.png",
   "./public/icons/icon-maskable-512.png",
-  "./public/icons/icon.svg"
+  "./public/icons/icon.svg",
+  "./favicon.ico"
 ];
 
 self.addEventListener("install", function (e) {

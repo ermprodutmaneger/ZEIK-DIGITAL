@@ -45,6 +45,37 @@ armazenamento local** nesse modo — a mensagem aparece no rodapé da sidebar. P
 
 ---
 
+## 2b. Deu `404: NOT_FOUND` na URL da Vercel?
+
+Quase sempre é uma coisa só: **o painel está na branch `arena/01a05872-zeik-digital` e o `main` ainda tem apenas o README** — e a Vercel publica o `main` por padrão, então não encontra `index.html` e devolve `404 NOT_FOUND` (o `ID: gru1::…` que aparece é o bordo da Vercel dizendo “não tem arquivo aqui”).
+
+Escolha **uma** das duas:
+
+**A. Mergear o Pull Request #1 (recomendado, 1 clique)**
+1. Abra https://github.com/ermprodutmaneger/ZEIK-DIGITAL/pull/1
+2. **Merge pull request** → **Confirm merge**.
+3. Volte na Vercel → **Deployments**: o deploy novo aparece sozinho em ~30 s. Pronto.
+
+**B. Apontar o projeto para a branch do painel (sem mexer no `main`)**
+1. Na Vercel → **Settings → Environments** (em projetos novos: **Settings → Production Branch**).
+2. Troque para `arena/01a05872-zeik-digital` → **Save**.
+3. **Deployments → Promote/Redeploy** (ou importe de novo escolhendo essa branch na tela *Import → Git → Branch*).
+
+Se ainda der 404 depois disso, confira nesta ordem:
+
+| Checar | Onde | Tem de estar |
+|---|---|---|
+| Branch do último deploy | Vercel → Deployments → nome do deploy | `arena/01a05872-zeik-digital` ou `main` **depois** do merge |
+| Raiz do projeto | Settings → General → **Root Directory** | `./` (nada de subpasta) |
+| Build | Settings → Build & Development | Framework `Other`, Build/Output/Install **vazios** |
+| Estado | Deployments → log | **Ready** (não “Error” nem “Queued”) |
+| URL | barra do navegador | `https://SEU-PROJETO.vercel.app/` — sem `/main/`, sem hash de preview |
+| Cache do navegador | recarregue com Ctrl+Shift+R | o service worker antigo pode segurar a tela velha |
+
+> Depois do primeiro deploy, se você editar qualquer arquivo, é só `git push`: a Vercel publica sozinha.
+
+---
+
 ## 3. O que tem dentro
 
 | Tela | Para que serve |
