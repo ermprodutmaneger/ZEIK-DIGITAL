@@ -1,0 +1,33 @@
+{
+  "id": "zeik-digital-painel",
+  "name": "Zeik Digital — Painel de Prospecção",
+  "short_name": "Zeik",
+  "description": "Prospecção de pequenos negócios da Zona Sul de São Paulo: lista de empresas, pipeline de vendas, propostas, faturamento, MRR de manutenção e scripts de abordagem.",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#f5f5f7",
+  "theme_color": "#0071e3",
+  "categories": ["business", "productivity", "sales"],
+  "icons": [
+    { "src": "public/icons/favicon-32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "public/icons/favicon-48.png", "sizes": "48x48", "type": "image/png" },
+    { "src": "public/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "public/icons/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "public/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "public/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Prospecção", "short_name": "Prospectar", "url": "./index.html#/prospeccao", "icons": [{ "src": "public/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Pipeline", "short_name": "Pipeline", "url": "./index.html#/pipeline", "icons": [{ "src": "public/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Faturamento", "short_name": "Caixa", "url": "./index.html#/financeiro", "icons": [{ "src": "public/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Tarefas de hoje", "short_name": "Hoje", "url": "./index.html#/tarefas", "icons": [{ "src": "public/icons/icon-192.png", "sizes": "192x192" }] }
+  ],
+  "screenshots": [],
+  "protocol_handlers": [],
+  "prefer_related_applications": false
+}

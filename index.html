@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zeik Digital — Painel de Prospecção | Zona Sul de São Paulo</title>
+<meta name="description" content="Painel comercial da Zeik Digital: prospecção de pequenos negócios da Zona Sul de São Paulo, Kanban de vendas, propostas, faturamento e MRR de manutenção.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Zeik">
+<meta name="application-name" content="Zeik Digital">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'self'; frame-src 'self' blob:; child-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="public/icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="public/icons/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="app" id="app">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-logo">Z</div>
+      <div>
+        <div class="brand-name">Zeik Digital</div>
+        <div class="brand-sub">Painel de Prospecção</div>
+      </div>
+    </div>
+
+    <nav aria-label="Navegação principal">
+      <button class="nav-item" data-act="nav" data-view="dashboard"><span class="ico">◧</span> Dashboard</button>
+      <button class="nav-item" data-act="nav" data-view="prospeccao"><span class="ico">🧲</span> Prospecção <span class="count" data-count="prospeccao"></span></button>
+      <button class="nav-item" data-act="nav" data-view="pipeline"><span class="ico">📊</span> Pipeline <span class="count" data-count="pipeline"></span></button>
+      <button class="nav-item" data-act="nav" data-view="clientes"><span class="ico">🤝</span> Clientes <span class="count" data-count="clientes"></span></button>
+      <button class="nav-item" data-act="nav" data-view="financeiro"><span class="ico">💰</span> Faturamento <span class="count" data-count="financeiro"></span></button>
+      <button class="nav-item" data-act="nav" data-view="tarefas"><span class="ico">⏰</span> Tarefas <span class="count" data-count="tarefas"></span></button>
+      <button class="nav-item" data-act="nav" data-view="scripts"><span class="ico">🧠</span> Scripts</button>
+      <button class="nav-item" data-act="nav" data-view="gerador"><span class="ico">🌐</span> Gerador de Site</button>
+      <button class="nav-item" data-act="nav" data-view="config"><span class="ico">⚙️</span> Configurações</button>
+    </nav>
+
+    <div class="side-foot">
+      <div class="side-status" id="saveStatus"><span class="dot"></span> Salvo neste navegador</div>
+      <div class="tiny" id="sideFootExtra" style="margin-top:8px"></div>
+      <p class="tiny" style="margin-top:10px">v3.0 · sem servidor · seus dados ficam só no aparelho</p>
+    </div>
+  </aside>
+
+  <div class="scrim hidden" id="scrim" data-act="fechar-nav"></div>
+
+  <main class="main" id="main">
+    <div class="mobilebar">
+      <button class="burger" data-act="toggle-nav" aria-label="Abrir menu">☰</button>
+      <div class="brand-logo" style="width:26px;height:26px;font-size:14px;border-radius:8px">Z</div>
+      <b style="font-size:14px">Zeik Digital</b>
+    </div>
+    <div id="view"><!-- views renderizadas por assets/js/app.js --></div>
+  </main>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<script src="assets/js/seed.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/site-template.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/modals.js"></script>
+</body>
+</html>
