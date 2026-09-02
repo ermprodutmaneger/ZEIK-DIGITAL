@@ -762,6 +762,12 @@ input[type="range"]::-moz-range-thumb {
    banho & tosa) e diretórios de bairro (Apontador, Encontra Capão Redondo, Guia
    Grajaú). Coletado em setembro/2026 — diretório desatualiza, então confirme o
    número na primeira mensagem antes de queimar o lead.
+   O QUE MUDOU NA VERSÃO 7
+   - Lote de interior grande (Sorocaba 48, Itu 21) coletado no Solutudo em
+     02/set/2026, no fim deste arquivo, com dedupe por número e por nome+cidade.
+   - O Coletor ganhou o modo "página de diretório": colar a página inteira do
+     guia (20-50 empresas de uma vez) e importar. É assim que a base cresce de
+     391 pra 1000 sem depender de mim.
    Campos:
      temSite      true = já tem site | false = não achou site | null = não verificado
      temInstagram idem (quando conhecido, o @ vem em 'insta')
@@ -1310,6 +1316,153 @@ window.ZEIK_SEED = {
   ]
 };
 
+/* =========================================================================
+   Lote interior 2 — coleta em 02/set/2026 no Solutudo (guia público de
+   empresas), categorias "Barbearias" de Sorocaba/SP e Itu/SP.
+   Entrada compacta: [nome, cidade, endereço, telefone, obs?]. O resto é
+   derivado: bairro sai do endereço, celular/fixo sai do formato do número,
+   e quem já está na base (mesmo número ou mesmo nome na cidade) é pulado.
+   ========================================================================= */
+(function () {
+  var S = window.ZEIK_SEED;
+  if (!S) return;
+
+  var LOTE = [
+    /* ---- Sorocaba (DDD 15) ---- */
+    ["Barbearia Gordo", "Sorocaba", "R. João Gabriel Mendes, 907 - Jardim Maria do Carmo", "(15) 99825-5293"],
+    ["Barba Ruiva Barbearia", "Sorocaba", "R. Emygdia Campolim, 78 - Parque Campolim", "(15) 3011-2276", "Campolim é o bairro de ticket alto de Sorocaba: ali R$ 60+ em corte é normal."],
+    ["Diga Hair", "Sorocaba", "R. Acre, 98 - Vila Augusta", "(15) 99110-9452"],
+    ["Lima Cortes Barbearia", "Sorocaba", "R. Eduardo Donisete Unruh, 725 - Júlio de Mesquita Filho", "(15) 99711-0416"],
+    ["Barbearia Pardal", "Sorocaba", "R. Luiz Gama, 161 - Vila Carvalho", "(15) 99801-2233"],
+    ["Central Barbearia Sorocaba (Eduardo Proença)", "Sorocaba", "R. Santos Oliveira, 296 - Central Parque", "(15) 98121-2314", "Já usa 'premium' no nome e não tem página: contradição boa pra abrir conversa."],
+    ["Barbearia Lux's Barber", "Sorocaba", "R. Joaquim Nunes de Oliveira, 42 - Vila Independência", "(15) 99807-8676"],
+    ["Morango Art's", "Sorocaba", "R. Antônio Piantore, 301 - Jardim São Guilherme", "(15) 98131-7241"],
+    ["Bar Bearia", "Sorocaba", "R. Aparecida, 595 - Jardim Santa Rosália", "(15) 3329-0131"],
+    ["Studio e Barbearia Jonas e Ricardo", "Sorocaba", "Av. Edward Fru Fru Marciano da Silva, 1151 - Jardim São Guilherme II", "(15) 98820-0375"],
+    ["O João Barbudo (Barbearia e Escola de Barbeiros)", "Sorocaba", "R. João Ribeiro de Barros, 264 - Vila Odin", "(15) 99197-2929", "Tem escola de barbeiros: além de cliente, quer captar aluno — página com formulário de turma vale mais que site comum."],
+    ["JC Barbearia e Copão", "Sorocaba", "R. Joaquim Gregório de Oliveira, 1280 - Vila Helena", "(15) 98829-5596"],
+    ["BarberShop do Bruno", "Sorocaba", "R. Dr. Américo Figueiredo, 2399 - Parque Manchester", "(15) 98166-9436"],
+    ["Fonseca Barbearia", "Sorocaba", "R. Alexandre Caldini, 4201 - Wanel Ville", "(15) 99802-0083"],
+    ["Barbearia do Fabiano", "Sorocaba", "R. José Antônio Pereira, 190 - Vila Esperança", "(15) 99648-1810"],
+    ["F7 Barbearia", "Sorocaba", "R. Bartolomeu Bueno, 91 - Vila Angelica", "(15) 99833-2538"],
+    ["Studio 101 Wanel Ville", "Sorocaba", "R. Joaquim de Carvalho Gil, 1687 - Jardim Wanel Ville V", "(15) 98144-4827"],
+    ["Hawk's Barbearia", "Sorocaba", "Av. Caribe, 131 - Jardim América", "(15) 3326-2463"],
+    ["Barbearia C K", "Sorocaba", "R. Tuffy Abussamra, 471 - Jardim Maria Antônia Prado", "(15) 99816-7719"],
+    ["Jottape Barbearia", "Sorocaba", "R. Francisco Loureiro, 316 - Vila Fiori", "(15) 99764-8610"],
+    ["Barbearia Broidão", "Sorocaba", "R. Aparecida, 133 - Jardim Santa Rosália", "(15) 99201-4598"],
+    ["Calleda Barber Shop", "Sorocaba", "Av. Antônio Carlos Comitre, 933 - Jardim Portal da Colina", "(15) 98183-0152"],
+    ["Barbearia Santa Barba", "Sorocaba", "R. Ismael Dias Tolêdo Filho, 151 - Parque das Laranjeiras", "(15) 98104-4969"],
+    ["Barbershop Dumont", "Sorocaba", "Av. Santos Dumont, 553 - Jardim Ana Maria", "(15) 3357-5967"],
+    ["Salão Santos Barbearia e Cabeleireiro Unissex", "Sorocaba", "Av. Nove de Julho, 1210 - Vila Barão", "(15) 98142-1714", "Barbearia + salão no mesmo ponto: dois públicos na mesma página (corte e escova)."],
+    ["Caverna Barbearia", "Sorocaba", "R. Dionísio Reis dos Santos, 200 - Jardim do Sol", "(15) 99740-6083"],
+    ["Espaço Art's", "Sorocaba", "Av. Angelina Pellizare Costa, 695 - Mineiros", "(15) 99197-5860"],
+    ["Barbearia V.H", "Sorocaba", "R. Arthur Gonçalves, 87 - Vila Helena", "(15) 99165-1681"],
+    ["Barbearia do Gil", "Sorocaba", "R. General Mena Barreto, 84 - Vila São Caetano", "(15) 99127-4567"],
+    ["Barbearia Hair Style", "Sorocaba", "R. Zoraida de Barros Nardi, 245 - Jardim Guaíba", "(15) 99666-6730"],
+    /* ---- Campinas (DDD 19) ---- */
+    ["BarberShop W&F", "Campinas", "R. Guerino Bristotti, 671 - Jardim Myrian Moreira da Costa", "(19) 99534-5434"],
+    ["Barbearia Blessed", "Campinas", "R. Pompílio Morandi, 373 - Jardim Aurélia", "(19) 99281-6376"],
+    ["Barbearia Teles", "Campinas", "R. Três Irmãos, 24 - Vila Brandina", "(19) 99397-0266", "Vila Brandina é área de ticket alto: ali o cliente pesquisa antes de sair de casa."],
+    ["Barbearia Mota77", "Campinas", "Av. Eng. Cyro Lustosa, 177 - Vila Joaquim Inácio", "(19) 99368-3223"],
+    ["Barbearia Phillos", "Campinas", "Av. Maria Antonia da Conceição Ribeiro dos Santos, 1700 - Bosque das Palmeiras", "(19) 99204-7613"],
+    ["Barbearia Binão", "Campinas", "R. Odila de Camargo Moreira, 235 - Loteamento Vila Lafayette Alvaro", "(19) 98780-0427"],
+    ["Lucca Barbeiro Cambuí", "Campinas", "R. Padre Almeida, 238 - Cambuí", "(19) 99999-7598", "Cambuí é o bairro que mais procura 'barbeiro perto de mim' em Campinas — e o número já está no nome do anúncio, sinal de quem atende por WhatsApp."],
+    ["Barbearia Guanabara 623", "Campinas", "R. Carolina Florence, 623 - Jardim Guanabara", "(19) 99577-2485", "Tem unidade no nome: quem tem 2 pontos perde busca pro concorrente se não tiver página própria."],
+    ["Cabelo & Barba", "Campinas", "Av. José Fonseca de Arruda, 648 - Jardim dos Oliveiras", "(19) 3043-9254"],
+    ["Barbearia Two Brothers", "Campinas", "Av. Artur Segurado, 53 - Jardim Leonor", "(19) 98451-6161"],
+    ["Mr. Braga Barbearia", "Campinas", "R. Joaquim Ulisses Sarmento, 657 - Jardim Aurélia", "(19) 98864-2718"],
+    ["Barbearia Flamboyant (infantil e cover)", "Campinas", "Av. José Bonifácio, 594 - Jardim Flamboyant", "(19) 99135-0255", "Corte infantil + cover de barba: dois públicos na mesma busca — página com as duas fotos vende sozinha."],
+    ["Barbearia Drake", "Campinas", "Caminho Três, 122 - Jardim Nilópolis", "(19) 99580-7402"],
+    ["New York Barbershop", "Campinas", "Av. das Amoreiras, 1299 - São Bernardo", "(19) 98143-9263"],
+    ["Barbearia Pedro Rodriguez", "Campinas", "R. Roberto Fonseca de Barros, 13 - Parque Residencial Vila União", "(19) 99557-9972"],
+    ["Paulo Santos Barbearia", "Campinas", "R. José Fernandes de Lima, 518 - Parque Brasília", "(19) 98851-5103"],
+    ["A Barbearia Campinas - Taquaral", "Campinas", "Av. Doutor Armando Sáles de Oliveira, 625 - Taquaral", "(19) 98611-4949"],
+    ["Barber Club", "Campinas", "R. do Professor, 751 - Jardim Proença I", "(19) 99310-6095"],
+    ["Matheus Rodrigues Barbeiro", "Campinas", "Rua Barão de Jaguara, 625 - Centro", "(15) 99763-6837", "Anúncio com DDD de Sorocaba em Campinas: confirmar o número na primeira mensagem antes de ofertar."],
+    ["Rubens Barbearia", "Campinas", "R. dos Imarés, 436 - Vila Costa e Silva", "(19) 2121-8545"],
+    /* ---- Jundiaí (DDD 11) — salões de beleza ---- */
+    ["Ka Bello Studio de Beleza", "Jundiaí", "R. Irmã Francisca Joseph Goossens, 98 - Vila São João Batista", "(11) 97185-0511", "", "salao"],
+    ["Cecato's Cabeleireiro", "Jundiaí", "R. Doutor Antenor Soares Gandra, 162 - Ponte São João", "(11) 94850-8822", "Divulga fixo (11) 4607-4158 e celular: confirmar qual é o WhatsApp do balcão antes de ofertar.", "salao"],
+    ["Segredos do Cabelo (Marta Cabeleireira)", "Jundiaí", "R. Daniel da Silva, 671 - Fazenda Grande", "(11) 98516-1322", "Anuncia só fixo + celular solto: é o retrato de quem vive de indicação e some da busca do Google.", "salao"],
+    ["Spazio Bongiovanni Cabelo e Estética", "Jundiaí", "R. Comendador Vicente Rossi, 213 - Jardim Morumbi", "(11) 97399-7477", "Cabelo + estética no mesmo teto: a página serve as duas agendas e duplica o ticket por visita.", "salao"],
+    ["Barbara Carvalho Sobrancelha", "Jundiaí", "Jundiaí (centro)", "(11) 99771-1973", "Sem endereço no guia — provavelmente atende em casa ou em sala alugada: agenda online vale mais que site pra ela.", "salao"],
+    ["Val Mesquita Cabeleireira", "Jundiaí", "R. Bom Jesus de Pirapora, 2931 - Vila Rami", "(11) 97128-3188", "", "salao"],
+    ["Espaço Janaina Roveri", "Jundiaí", "R. Várzea Paulista, 510 - Vila Agrícola", "(11) 97482-7110", "", "salao"],
+    ["Victor Especialista em Mechas", "Jundiaí", "Jundiaí (centro)", "(11) 95552-8101", "Especialista se vende por portfólio: sem página, o antes/depois fica preso no Instagram.", "salao"],
+    ["Aline Curly (Afro Cachos)", "Jundiaí", "R. Várzea Paulista, 1005 - Vila M. Genoveva", "(11) 96470-4476", "Nicho de cacheamento: quem pesquisa 'cabelo crespo Jundiaí' acha qualquer um, menos ela.", "salao"],
+    ["Luciana Zignani (Loiras e Afro)", "Jundiaí", "R. Acre, 706 - Vila Didi", "(11) 7536-9771", "", "salao"],
+    ["Sil & Juh", "Jundiaí", "R. Professor Luiz de Campos, 339 - Vila Arens", "(11) 99791-4197", "", "salao"],
+    ["Kids Cabeleireiros", "Jundiaí", "R. Antônio de Oliveira, 91 - Jardim Tannus", "(11) 96430-9320", "Corte infantil: a mãe pesquisa no celular, na fila da escola. Página com horário é o que fecha.", "salao"],
+    ["Vanessa Mota Cabelos & Cia", "Jundiaí", "R. Fernão Dias Paes Leme, 2583 - Vila Aparecida", "(11) 3446-4960", "", "salao"],
+    ["Fernanda Mainardi", "Jundiaí", "R. Ucilla Lorencini Tafarello, 278 - Terra da Uva", "(11) 99762-8687", "", "salao"],
+    ["Elisabete Lima", "Jundiaí", "R. Professor Oscar Augusto Guelli Filho, 250 - Parque Cidade Jardim II", "(11) 2709-3021", "", "salao"],
+    ["Salão Renascer", "Jundiaí", "R. Marechal Deodoro da Fonseca, 128 - Centro", "(11) 4522-1000", "Salão de rua no Centro com só fixo: o celular precisa ser pego antes do disparo.", "salao"],
+    ["Marcio Cabeleireiro", "Jundiaí", "Av. Antônio Raymundo de Oliveira, 145 - Jardim Califórnia", "(11) 4584-5623", "", "salao"],
+    /* ---- Itu (DDD 11) ---- */
+    ["Barbearia dú Jairo", "Itu", "R. Ilídia Dias Furtado, 38 - Dona Tunica", "(11) 99902-2690"],
+    ["Nii do Corte", "Itu", "R. Osasco, 72 - Cidade Nova I", "(11) 95293-1856"],
+    ["Ari Cabeleireiro - Cortes Masculinos", "Itu", "R. Joaquim Bernardes Borges, 83 - Centro", "(11) 4023-5992", "Centro de Itu: só fixo no guia, ligar e pedir o WhatsApp na primeira frase."],
+    ["Barbearia Ribeiros", "Itu", "Av. Senador Teotônio Vilela, 1322 - Jardim Aeroporto I", "(11) 94215-1019"],
+    ["Barbearia Souza", "Itu", "R. Alfa, 33 - Novo Mundo", "(11) 95812-5810"],
+    ["Barbearia Itu", "Itu", "Centro - Itu", "(11) 97167-2314"],
+    ["Barbearia Escafandro", "Itu", "R. Mestre Ezequias Nardy, 119 - Vila Padre Bento", "(11) 98885-2093"],
+    ["Barbearia Vip", "Itu", "R. Gabriel Mafei, 23 - Jardim Alberto Gomes", "(11) 95050-3379"],
+    ["Barbearia do Vava (Plaza Shopping Itu)", "Itu", "Av. Dr. Ermelindo Maffei, 1199 - Jardim Paraíso", "(11) 2715-0411", "Dentro de shopping: quem pesquisa antes de descer até lá decide pela página — e hoje não tem."],
+    ["Barbearia Angelo Barber Shop", "Itu", "R. José Eduardo Teixeira Guimarães, 452 - São Luiz", "(11) 96753-4144"],
+    ["Barbearia Seu Luis e Seu Marcos", "Itu", "Centro - Itu", "(11) 99755-8847"],
+    ["Barbearia Oliveira", "Itu", "R. Manoel de Almeida, 45 - Parque América", "(11) 96189-8912"],
+    ["Marcos Barber Stily", "Itu", "R. Sete de Abril, 406 - Centro", "(11) 99725-8859"],
+    ["Brabu's Tattoo e Barbearia", "Itu", "R. Vinte e Quatro de Fevereiro, 32 - Vila Nova", "(11) 96493-5293", "Tattoo + barbearia: portfólio de trabalho na página é o que fecha orçamento de tatuagem."],
+    ["Barbearia 15 de Maio", "Itu", "R. Antônia Baldin Andreazza, 11 - São Camilo", "(11) 97105-9484"],
+    ["Duarte Barbearia", "Itu", "R. Itupeva, 02 - Cidade Nova I", "(11) 96494-8514"],
+    ["Cort Barber", "Itu", "R. Primavera, 1491 - Jardim das Rosas", "(11) 96750-1125"],
+    ["Barbearia WOB", "Itu", "R. Benedito Expedito de Souza, 12 - Jardim União", "(11) 93268-1920"],
+    ["Espaço Black", "Itu", "R. Tenente Agrário Ferreira Brasileiro, 265 - Jardim Aeroporto I", "(11) 97504-3548"],
+    ["Brasilio Barbearia", "Itu", "R. Nahor Leite Gomes, 95 - Jardim Convenção", "(11) 4023-4956"],
+    ["NG Arts Barbearia (desde 2005)", "Itu", "R. García Moreno, 114 - Centro", "(11) 94322-8460", "20 anos de bairro e nenhuma página: argumento de 'seu nome merece aparecer antes do concorrente de 2 anos'."]
+  ];
+
+  var ANGULO = "Barbearia de bairro sem site no guia: é a busca por 'barbearia + cidade' que ele perde hoje pro concorrente com página.";
+  var ANGULO_SALAO = "Salão sem site no guia: a cliente pesquisa 'salão + cidade' no celular e cai no concorrente que tem página com horário.";
+  var TICKET = { barbearia: 45, salao: 90, estetica: 120, food: 55 };
+  function dig(t) { return String(t || "").replace(/\D/g, ""); }
+  function norm(n) {
+    return String(n || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+  }
+  var jaTel = {}, jaNome = {};
+  (S.prospects || []).forEach(function (p) {
+    [p.telefone, p.whats, p.fixo].forEach(function (t) { var d = dig(t); if (d.length >= 10) jaTel[d.slice(-9)] = 1; });
+    jaNome[norm(p.nome) + "|" + norm(p.cidade)] = 1;
+  });
+
+  var novos = 0, repetidos = 0;
+  LOTE.forEach(function (a) {
+    var nome = a[0], cidade = a[1], end = a[2], tel = a[3], seg = a[5] || "barbearia";
+    var obs = a[4] || (seg === "salao" ? ANGULO_SALAO : ANGULO);
+    var d = dig(tel);
+    var celular = d.length === 11 && d.charAt(2) === "9";
+    if (jaTel[d.slice(-9)] || jaNome[norm(nome) + "|" + norm(cidade)]) { repetidos++; return; }
+    jaTel[d.slice(-9)] = 1; jaNome[norm(nome) + "|" + norm(cidade)] = 1;
+    var bairro = (end.split(/\s+-\s+/)[1] || "").trim();
+    var reg = {
+      nome: nome, segmento: seg, bairro: bairro || (cidade + " (centro)"), zona: "Interior",
+      cidade: cidade, uf: "SP", endereco: end, temSite: false, temInstagram: null,
+      prioridade: celular ? "alta" : "media",
+      origem: "Solutudo (coleta 02/set/2026)", obs: obs, ticket: TICKET[seg] || 45
+    };
+    if (celular) { reg.telefone = tel; reg.whats = tel; }
+    else { reg.fixo = tel; reg.busca = nome + " " + cidade + " SP"; reg.telefone = tel; }
+    S.prospects.push(reg); novos++;
+  });
+
+  var cidades = {};
+  S.prospects.forEach(function (p) { if (p.zona === "Interior" && p.cidade) cidades[p.cidade] = 1; });
+  S.bairrosPorZona = S.bairrosPorZona || {};
+  S.bairrosPorZona.Interior = Object.keys(cidades).sort();
+  S.versao = 9;
+  S.loteInterior = { em: "02/09/2026", fonte: "Solutudo — guia público de empresas", adicionados: novos, pulados: repetidos };
+})();
+
 </script>
 <script>
 /* ==========================================================================
@@ -1390,6 +1543,10 @@ window.ZEIK_SEED = {
         precoSiteMin: 500,
         precoSiteMax: 600,
         manutMes: 97,
+        /* preço não é falado em mensagem nenhuma, por decisão dele: todas as bandeiras
+           nascem desligadas. Se um dia ele escrever uma frase entre [[colchetes]] num
+           roteiro, é isto aqui que decide em qual mensagem a frase entra ou sai. */
+        rotaPreco: { m1: false, gatilho: false, reuniao: false, noShow: false, followup: false },
         precoInsta: 350,
         precoFeed: 250,
         precoGmn: 200,
@@ -1413,7 +1570,8 @@ window.ZEIK_SEED = {
           m1: "{{saud}} {{contato}}! Aqui é o {{nomeZeik}} — faço site pra comércio de bairro. Vi a {{empresa}} no Google e {{achado}}. Posso te mandar um modelo pronto de vocês? Você vê antes de combinar qualquer coisa.",
           gatilho: "{{contato}} caiu na mensagem automática 😄 então vou direto ao ponto: {{valorZeik}} O modelo da {{empresa}} já está montado — quer que eu mande o link pra você abrir agora?",
           reuniao: "Fechado. Te proponho {{doisHorarios}} — 20 minutos, no WhatsApp ou aí na {{empresa}}. Qual dos dois fica melhor? Já levo o site aberto no celular.",
-          noShow: "{{contato}} não deu certo hoje? Tranquilo. A prévia da {{empresa}} ficou aqui em cima. Quando quiser, passo na loja e te mostro no celular em 10 minutos."
+          noShow: "{{contato}} não deu certo hoje? Tranquilo. A prévia da {{empresa}} ficou aqui em cima. Quando quiser, passo na loja e te mostro no celular em 10 minutos.",
+          followup: "Oi {{contato}}, só passando aqui: {{empresa}} conseguiu abrir o modelo que te mandei? Se não fizer sentido agora, me avisa que eu te deixo em paz e te chamo só quando mudar algo no bairro 🙂"
         },
         voz: { auto: false, velocidade: 1.05, tom: 1, preferida: "" },
         pix: { chave: "zeikdigital@gmail.com", titular: "EZEQUIEL", cidade: "SAO PAULO", txid: "ZEIK" },
@@ -1496,10 +1654,42 @@ window.ZEIK_SEED = {
   ];
   /* Cidades onde o serviço da Zeik vale mais: mercado grande o bastante para ter
      concorrência, pequeno o bastante para quase ninguém ter site. */
-  var CIDADES_INTERIOR = ["Sorocaba", "Votorantim", "Botucatu", "Ubatuba", "Itararé", "São Manuel",
-    "Monte Alto", "Itatinga", "Bady Bassitt", "Limeira", "Araras", "Pirassununga", "Mogi Mirim",
-    "Espírito Santo do Pinhal", "São João da Boa Vista", "Poços de Caldas", "Passos", "Varginha",
-    "Além Paraíba", "Paracambi", "Seropédica", "Porto Real"];
+  var CIDADES_INTERIOR = [
+    /* Sudoeste paulista — onde a Zeik já tem tração */
+    { nome: "Sorocaba", ddd: "15" }, { nome: "Votorantim", ddd: "15" }, { nome: "Laranjal Paulista", ddd: "15" },
+    { nome: "Porto Feliz", ddd: "15" }, { nome: "Boituva", ddd: "15" }, { nome: "Tatuí", ddd: "15" },
+    { nome: "Itapetininga", ddd: "15" }, { nome: "Capão Bonito", ddd: "15" }, { nome: "São Manuel", ddd: "14" },
+    { nome: "Itatinga", ddd: "14" }, { nome: "Botucatu", ddd: "14" }, { nome: "Avaré", ddd: "14" },
+    { nome: "Itararé", ddd: "15" }, { nome: "Fartura", ddd: "14" }, { nome: "Cerro Azul", ddd: "15" },
+    { nome: "Campinas", ddd: "19" }, { nome: "Americana", ddd: "19" }, { nome: "Santa Bárbara d'Oeste", ddd: "19" },
+    { nome: "Novo Horizonte", ddd: "17" }, { nome: "Piracicaba", ddd: "19" }, { nome: "Rio Claro", ddd: "19" },
+    { nome: "Limeira", ddd: "19" }, { nome: "Araras", ddd: "19" }, { nome: "Sumaré", ddd: "19" },
+    { nome: "Hortolândia", ddd: "19" }, { nome: "Mogi Mirim", ddd: "19" }, { nome: "Espírito Santo do Pinhal", ddd: "19" },
+    { nome: "São João da Boa Vista", ddd: "19" }, { nome: "Jundiaí", ddd: "11" }, { nome: "Vinhedo", ddd: "11" },
+    { nome: "Itu", ddd: "11" }, { nome: "Salto", ddd: "11" }, { nome: "Indaiatuba", ddd: "19" },
+    { nome: "São José dos Campos", ddd: "12" }, { nome: "Jacareí", ddd: "12" }, { nome: "Taubaté", ddd: "12" },
+    { nome: "Guaratinguetá", ddd: "12" }, { nome: "Campos do Jordão", ddd: "12" }, { nome: "Ubatuba", ddd: "12" },
+    { nome: "Caraguatatuba", ddd: "12" }, { nome: "Santos", ddd: "13" }, { nome: "São Vicente", ddd: "13" },
+    { nome: "Praia Grande", ddd: "13" }, { nome: "Mongaguá", ddd: "13" }, { nome: "Peruíbe", ddd: "13" },
+    { nome: "Itanhaém", ddd: "13" }, { nome: "Registro", ddd: "13" },
+    /* Noroeste — RMC + vale do Rio Preto */
+    { nome: "Ribeirão Preto", ddd: "16" }, { nome: "Sertãozinho", ddd: "16" }, { nome: "Franca", ddd: "16" },
+    { nome: "Altinópolis", ddd: "16" }, { nome: "Araraquara", ddd: "16" }, { nome: "Matão", ddd: "16" },
+    { nome: "São Carlos", ddd: "16" }, { nome: "Leme", ddd: "19" },
+    { nome: "Bauru", ddd: "14" }, { nome: "Marília", ddd: "14" }, { nome: "Lins", ddd: "14" },
+    { nome: "Garça", ddd: "14" }, { nome: "Assis", ddd: "18" }, { nome: "Ourinhos", ddd: "14" },
+    { nome: "Presidente Prudente", ddd: "18" }, { nome: "Adamantina", ddd: "18" },
+    { nome: "Araçatuba", ddd: "18" }, { nome: "Birigui", ddd: "18" }, { nome: "Três Lagoas", ddd: "67" },
+    { nome: "São José do Rio Preto", ddd: "17" }, { nome: "Mirassol", ddd: "17" }, { nome: "Bady Bassitt", ddd: "17" },
+    { nome: "Monte Alto", ddd: "16" }, { nome: "Taquaritinga", ddd: "16" }, { nome: "Pirassununga", ddd: "19" },
+    /* fora de SP, mas já atendidas pela Zeik */
+    { nome: "Poços de Caldas", ddd: "35" }, { nome: "Passos", ddd: "35" }, { nome: "Varginha", ddd: "35" },
+    { nome: "Além Paraíba", ddd: "32" }, { nome: "Paracambi", ddd: "21" }, { nome: "Seropédica", ddd: "21" },
+    { nome: "Porto Real", ddd: "24" }
+  ];
+  var DDDBYCIDADE = {};
+  CIDADES_INTERIOR.forEach(function (c) { DDDBYCIDADE[c.nome.toLowerCase()] = c.ddd; });
+
   function ehCapital(c) {
     return ["São Paulo", "Rio de Janeiro", "Belo Horizonte", "Curitiba", "Porto Alegre", "Salvador",
       "Recife", "Fortaleza", "Goiânia", "Brasília", "Manaus", "Belém", "Campinas", "Guarulhos"
@@ -1597,6 +1787,7 @@ window.ZEIK_SEED = {
     foneInfo: foneInfo, numWhatsapp: numWhatsapp, canal: canal, ZONAS: ZONAS,
     SITE_ATUAL: SITE_ATUAL, zonaPorBairro: zonaPorBairro, foneParaUso: foneParaUso,
     linhaValor: linhaValor, politicaPreco: politicaPreco, ehInterior: ehInterior,
+    mostraPrecoNaRota: mostraPrecoNaRota, aplicarBlocosPreco: aplicarBlocosPreco,
     doisHorarios: doisHorarios, pixCopiaECola: pixCopiaECola, crc16: crc16,
     apiDisparar: apiDisparar, parseColeta: parseColeta, detectSeg: detectSeg,
     CIDADES_INTERIOR: CIDADES_INTERIOR,
@@ -1737,6 +1928,23 @@ window.ZEIK_SEED = {
       ["prospects", "deals", "clientes", "financeiro", "tarefas", "atividades"].forEach(function (k) {
         if (!Array.isArray(st[k])) st[k] = [];
       });
+      /* A rodada anterior tinha posto uma frase de preço nos roteiros. Ele mandou tirar:
+         a migração apaga o bloco que fala de valor e desliga todas as bandeiras —
+         inclusive em quem já atualizou. Bloco que ele escreveu por conta própria fica
+         quieto no texto (só para de aparecer; nada é destruído). */
+    var cf = st.config || (st.config = {});
+    if (Number(cf.manutMes) === 99.99) cf.manutMes = 97;      // MRR volta a ser conta interna, não fala
+    delete cf.precoManut;
+    if (!cf.rotaPreco || typeof cf.rotaPreco !== "object") cf.rotaPreco = {};
+    ["m1", "gatilho", "reuniao", "noShow", "followup"].forEach(function (k) { cf.rotaPreco[k] = false; });
+    if (cf.rota && typeof cf.rota === "object") {
+      Object.keys(cf.rota).forEach(function (k) {
+        var t = String(cf.rota[k] || ""); if (!t) return;
+        var limpo = t.replace(/\s*\[\[\s*(?:[^\[\]]*?(?:99[,\.]99|precoManut)[^\[\]]*?)\]\]\s*/gi, "")
+                      .replace(/[ \t]{2,}/g, " ").replace(/\s+([.,;?!])/g, "$1").replace(/\n{3,}/g, "\n\n").replace(/^\s+|\s+$/g, "");
+        if (limpo !== t) cf.rota[k] = limpo;
+      });
+    }
       st.prospects.forEach(function (p) {
         if (!p.id) p.id = uid("p");
         if (!p.segmento) p.segmento = "generico";
@@ -2274,6 +2482,26 @@ window.ZEIK_SEED = {
     if (cfg.mostrarValorNaAbordagem === true && (!cfg.politicaPreco || cfg.politicaPreco === "quando-perguntar")) return "sempre";
     return cfg.politicaPreco || "quando-perguntar";
   }
+  /* [[frase de preço]] — o bloco existe dentro do roteiro e só é montado na
+     mensagem em que ele ligou o preço. Desligado, a frase sai inteira (com o
+     espaço em volta), então não fica vírgula pendurada nem duplo espaço.      */
+  function mostraPrecoNaRota(cfg, rotaId) {
+    cfg = cfg || {};
+    if (politicaPreco(cfg) === "nunca") return false;
+    var t = cfg.rotaPreco;
+    if (t && Object.prototype.hasOwnProperty.call(t, rotaId)) return !!t[rotaId];
+    return politicaPreco(cfg) === "sempre";   // mensagem sem bandeira segue a política geral
+  }
+  function aplicarBlocosPreco(txt, cfg, rotaId) {
+    var on = mostraPrecoNaRota(cfg, rotaId);
+    var out = String(txt == null ? "" : txt).replace(/([ \t]*)(\[\[[\s\S]*?\]\])([ \t]*)/g, function (todo, pre, bloco, pos) {
+      var dentro = String(bloco).slice(2, -2).replace(/\s+/g, " ").replace(/^\s+|\s+$/g, "");
+      if (on) return (pre ? " " : "") + dentro + (pos ? " " : "");
+      if (!pre && !pos) return "";                     // a linha inteira era o bloco: a linha sai
+      return " ";                                      // bloco no meio da frase: sobra um espaço
+    });
+    return out.replace(/^[ \t]+$/gm, "").replace(/[ \t]{2,}/g, " ").replace(/\n{3,}/g, "\n\n").replace(/^\s+|\s+$/g, "");
+  }
   function linhaValor(o) {
     o = o || {};
     var cfg = (window.ZeikStore && window.ZeikStore.state && window.ZeikStore.state.config) || o.cfg || {};
@@ -2387,8 +2615,126 @@ window.ZEIK_SEED = {
      ferramenta externa ou de print transcrito: uma empresa por linha ou bloco,
      colunas em qualquer ordem. Celular vira WhatsApp, fixo vira `fixo`,
      nome + bairro + cidade + CEP são detectados sozinhos. */
+  /* ------------------------ modo "página de diretório" ------------------------
+     Ele copia a página inteira de um guia (Solutudo, GuiaMais, Apontador, Hotfrog)
+     e cola aqui. O formato é sempre em blocos:  nome / categoria / endereço / telefone.
+     A página pode vir suja de link e botão de HTML — isto limpa antes de ler.        */
+  var RE_DIR_FONE = /^\(?\d{2}\)?[\s.\-]?9?\d{4}[\s.\-]?\d{4}(\s*\+\s*\d)?$/;
+  var RE_DIR_LIXO = /^(ver detalhes|ver mais|detalhes|mapa|ligar( agora)?|ligar\b|abrir|fechar|aberto agora|ordenar|perto de mim|mais buscadas|mais procuradas|cadastrar|cadastre|anuncie|quero ser|clique no bot|compartilhar|aceito|rejeitar|pol[íi]tica|concordo|sugest|confira as melhores|encontramos|enviar|procurar|p[áa]gina|anterior|pr[óo]xima|avalia|nota de|endere[çc]o|telefone|whatsapp|instagram|hor[áa]rio|\d+ (avalia|resultad|empresa)|\d+ estrelas|abre \d|fecha \d)/i;
+  var RE_DIR_CAT = /^(barbearias?|barbearia|sal[õo]es?( de beleza)?|cabeleireiros?|manicures?|pedicures?|est[ée]tica(s|c[ãa])?|cl[íi]nicas?( de est[ée]tica)?|sobrancelhas?|pizzarias?|lanchonetes?|hamburguerias?|restaurantes?|padarias?|doces?|confeitarias?|academias?|crossfit|pilates|pet ?shops?|cl[íi]nicas?( veterr?i?rias?)?|veterin[áa]rias?|oficinas?( mec[âa]nicas?)?|autope[çc]as|mec[âa]nicas?|el[ée]tricas? (auto|moto)?|constru[cç][ãa]o|materiais? de constru[cç][ãa]o|tintas?|ferragens?|lojas?( de (roupas?|moda|cal[cç]ados?))?|boutiques?|[óo]ticas?|joalherias?|papelarias?|farm[áa]cias?|mercadinhos?|mercearias?|supermercados?|imobili[áa]rias?|advocacia|advogados?|contabilidade|contadores?|seguros?|gr[áa]ficas?|serralherias?|pintores?|reformas?|servi[cç]os?( gerais)?|escovadorias?|lavanderias?|taxi|lot[ée]ricas?|escolas?|cursinhos?|autoescolas?|idiomas|igrej[ae]s?|bar(es)?|pub|choperia|petshop|dog?|galeterias?|gastronomia|delivery|saude|beleza|bem estar|bem-estar)$/i;
+  var RE_DIR_END = /^(r\.?|rua |av\.?|avenida |al\.?|alameda |ap\.?|ampa |estrada |rodovia |rod\. |travessa |tv\.?|pra[çc]a |p[çc]\.?|largo |beco |viela | Passage)/i;
+
+  function limpaDiretorio(texto) {
+    var t = String(texto || "").replace(/\r/g, "");
+    t = t.replace(/\!\[[^\]]*\]\([^)]*\)/g, " ");                    // imagens markdown
+    t = t.replace(/\[![^\]]*\]\(([^)]*)\)/g, " ");
+    t = t.replace(/\]\(\s*https?:\/\/[^)]*\s*\)/g, " ");             // link: só o fim
+    t = t.replace(/\[\[?([^\[\]]*)\]\]\(\s*[^)]*\s*\)/g, "$1");   // [x](y) -> x
+    t = t.replace(/\[|\]|\(https?:\/\/[^)]*\)/g, " ");
+    t = t.replace(/\\n/g, "\n").replace(/\\/g, "");
+    t = t.replace(/^\s{0,3}#{1,6}\s*/gm, "");                          // títulos
+    t = t.replace(/\*/g, "");
+    t = t.replace(/^\s*[-•–*]\s+/gm, "");
+    t = t.replace(/[ \t]{2,}/g, " ");   // só espaços: \s aqui colapsaria a quebra de linha e o bloco inteiro viraria uma linha só
+    var out = [];
+    t.split("\n").forEach(function (l) {
+      l = l.replace(/^\s+|\s+$/g, "");
+      // "Ligar" e "Ver detalhes" viram prefixo da linha seguinte quando a página
+      // vem em markdown — tiramos o botão e ficamos com o nome que veio colado nele
+      l = l.replace(/^(ver detalhes|ver mais|detalhes|mapa|ligar( agora)?|compartilhar)\b[\s:.,-]*/gi, "").replace(/^\s+|\s+$/g, "");
+      if (!l) return;
+      if (/^(https?:\/\/|www\.)/i.test(l)) return;                      // linha que é só URL
+      if (/^\d{1,4}\s*$/.test(l) || /^[0-9,.]+$/.test(l)) return;        // paginação / nota
+      out.push(l);
+    });
+    return out;
+  }
+  function looksDiretorio(ls) {
+    var tels = 0, ends = 0, i;
+    for (i = 0; i < ls.length; i++) {
+      if (RE_DIR_FONE.test(ls[i].replace(/\s*\+\s*\d+$/, ""))) tels++;
+      else if (RE_DIR_END.test(ls[i]) && /\d/.test(ls[i])) ends++;
+    }
+    return ls.length >= 5 && tels >= 2 && ends >= 2;
+  }
+  function parseDiretorio(texto, o) {
+    o = o || {};
+    var saida = { validos: [], semTelefone: [], ignorados: [], dupInternas: [], cabecalho: false, modo: "diretório" };
+    var ls = limpaDiretorio(texto), vistos = {};
+    var pend = null, cidadeDoTexto = "";
+    function fecha(p) {
+      if (!p) return;
+      var r = { nome: p.nome || "", telefone: p.telefone || "", endereco: p.endereco || "", bairro: p.bairro || "",
+        cidade: p.cidade || cidadeDoTexto || "", uf: p.uf || "", site: "", insta: "",
+        obs: (p.categoria ? "categoria no guia: " + p.categoria : "") + (p.extra ? " · " + p.extra : "") };
+      if (!r.nome) return;
+      normalizaLote(r, o, saida, vistos, [r.nome, r.endereco, r.telefone].filter(Boolean).join(", "));
+    }
+    for (var i = 0; i < ls.length; i++) {
+      var l = ls[i];
+      var soFone = l.replace(/\s*\+\s*\d+$/, "");
+      if (RE_DIR_FONE.test(soFone)) { if (pend && !pend.telefone) pend.telefone = l.replace(/\+/g, "+").trim(); continue; }
+      if (RE_DIR_END.test(l) && /\d/.test(l)) {
+        if (!pend) { saida.ignorados.push(l.slice(0, 50)); continue; }
+        if (!pend.endereco) {
+          pend.endereco = l;
+          var mb = l.split(/\s+-\s+|,\s*(?=[A-ZÀ-Úa-zà-ú])/);
+          if (mb[1] && !/\d{3}/.test(mb[1]) && mb[1].length < 42) pend.bairro = mb[1].replace(/\s*\d*$/, "").trim();
+          var mc = l.match(/([A-Za-zÀ-ú' .-]{3,28})\s*-\s*([A-Z]{2})\b/);
+          if (mc) { pend.cidade = mc[1].trim(); pend.uf = mc[2]; }
+        } else if (!pend.cidade) {
+          var mc2 = l.match(/^([A-Za-zÀ-ú .-]{4,26})\s*-\s*([A-Z]{2})$/);
+          if (mc2) { pend.cidade = mc2[1]; pend.uf = mc2[2]; }
+        }
+        continue;
+      }
+      if (RE_DIR_CAT.test(l)) { if (pend && !pend.categoria) pend.categoria = l; continue; }
+      if (RE_DIR_LIXO.test(l)) continue;
+      if (!/[A-Za-zÀ-ú]{3}/.test(l)) continue;                       // só números/símbolos: resto de botão
+      if (/^(abre|fecha|segunda|ter[çc]a|quarta|quinta|sexta|s[áa]bado|domingo)/i.test(l)) continue;
+      if (l.length < 3) continue;
+      /* chegou uma linha que não é telefone, endereço, categoria nem botão:
+         é o nome do próximo bloco — o anterior está fechado do jeito que estiver */
+      if (pend) fecha(pend);
+      pend = { nome: l.slice(0, 70) };
+    }
+    if (pend) fecha(pend);
+    return saida;
+  }
+  function normalizaLote(r, o, saida, vistos, raw) {
+    var nome = clean(r.nome || "");
+    if (!nome || nome.length < 3 || !/[A-Za-zÀ-ú]{3}/.test(nome) || /^(nome|telefone|cidade|bairro|site|insta)\w*$/i.test(nome)) { saida.ignorados.push(String(raw || r.nome || "").slice(0, 60)); return; }
+    var inf = foneInfo(r.telefone || "");
+    var tem = {
+      nome: nome.replace(/\s*[,;|]\s*$/, "").slice(0, 70),
+      telefone: inf.tipo === "celular" ? inf.display : "",
+      whats: inf.tipo === "celular" ? inf.display : "",
+      fixo: inf.tipo === "fixo" ? inf.display : "",
+      endereco: clean(r.endereco), bairro: clean(r.bairro),
+      cidade: clean(r.cidade) || clean(o.cidade || ""),
+      uf: String(r.uf || o.uf || "").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 2),
+      site: clean(r.site), insta: clean(r.insta), obs: clean(r.obs),
+      segmento: o.segmento || detectSeg(nome + " " + clean(r.obs) + " " + clean(r.insta)),
+      prioridade: o.prioridade || "media",
+      origem: o.origem || "Coletor",
+      temSite: r.site ? true : null,
+      temInstagram: r.insta ? true : null
+    };
+    if (tem.site) tem.siteAtual = /goo\.gl|sites\.google|linktree|link\.bio|bio\.link|linktr|beacons|cybo|wa\.me|facilito|agendei|booksy|salaovip|topsalao|apontador|encontra/i.test(tem.site) ? "fraco" : "proprio";
+    var ehSP = /^(s[ãa]o paulo|sp)$/i;
+    if (tem.cidade && !ehSP.test(tem.cidade)) { tem.zona = "Interior"; if (!tem.bairro) tem.bairro = tem.cidade + " (centro)"; }
+    else { tem.zona = zonaPorBairro(tem.bairro) || (tem.cidade ? "Sul" : ""); if (tem.zona && !ehSP.test(tem.cidade || "São Paulo")) tem.cidade = "São Paulo"; }
+    if (tem.cidade && tem.cidade !== "São Paulo" && !tem.uf) tem.uf = "SP";
+    var k = tem.nome.toLowerCase();
+    if (vistos[k]) { saida.dupInternas.push(tem.nome); return; }
+    vistos[k] = 1;
+    (tem.whats || tem.fixo ? saida.validos : saida.semTelefone).push(tem);
+  }
+
   function parseColeta(texto, o) {
     o = o || {};
+    var lsDir = limpaDiretorio(texto);
+    if (looksDiretorio(lsDir)) return parseDiretorio(texto, o);
     var saida = { validos: [], semTelefone: [], ignorados: [], dupInternas: [], cabecalho: false };
     var brutas = String(texto || "").split(/\r?\n/).map(function (l) { return l.trim(); }).filter(Boolean);
     var mapa = null;                                  // índices quando a 1ª linha é cabeçalho
@@ -2453,33 +2799,7 @@ window.ZEIK_SEED = {
         var p1 = r.nome.split(/,\s*(?=(?:r\.|rua |av\.|avenida |estrada |alameda ))/i);
         r.nome = p1.shift(); r.endereco = p1.join(", ");
       }
-      var nome = clean(r.nome || "");
-      if (!nome || nome.length < 3 || !/[A-Za-zÀ-ú]{3}/.test(nome) || /^(nome|telefone|cidade|bairro|site|insta)\w*$/i.test(nome)) { saida.ignorados.push(raw.slice(0, 60)); return; }
-      var inf = foneInfo(r.telefone || "");
-      var tem = {
-        nome: nome.replace(/\s*[,;|]\s*$/, "").slice(0, 70),
-        telefone: inf.tipo === "celular" ? inf.display : "",
-        whats: inf.tipo === "celular" ? inf.display : "",
-        fixo: inf.tipo === "fixo" ? inf.display : "",
-        endereco: clean(r.endereco), bairro: clean(r.bairro),
-        cidade: clean(r.cidade) || clean(o.cidade || ""),
-        uf: String(r.uf || o.uf || "").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 2),
-        site: clean(r.site), insta: clean(r.insta), obs: clean(r.obs),
-        segmento: o.segmento || detectSeg(nome + " " + clean(r.obs) + " " + clean(r.insta)),
-        prioridade: o.prioridade || "media",
-        origem: o.origem || "Coletor",
-        temSite: r.site ? true : null,
-        temInstagram: r.insta ? true : null
-      };
-      if (tem.site) tem.siteAtual = /goo\.gl|sites\.google|linktree|link\.bio|bio\.link|linktr|beacons|cybo|wa\.me|facilito|agendei|booksy|salaovip|topsalao|apontador|encontra/i.test(tem.site) ? "fraco" : "proprio";
-      var ehSP = /^(s[ãa]o paulo|sp)$/i;
-      if (tem.cidade && !ehSP.test(tem.cidade)) { tem.zona = "Interior"; if (!tem.bairro) tem.bairro = tem.cidade + " (centro)"; }
-      else { tem.zona = zonaPorBairro(tem.bairro) || (tem.cidade ? "Sul" : ""); if (tem.zona && !ehSP.test(tem.cidade || "São Paulo")) tem.cidade = "São Paulo"; }
-      if (tem.cidade && tem.cidade !== "São Paulo" && !tem.uf) tem.uf = "SP";
-      var k = tem.nome.toLowerCase();
-      if (vistos[k]) { saida.dupInternas.push(tem.nome); return; }
-      vistos[k] = 1;
-      (tem.whats || tem.fixo ? saida.validos : saida.semTelefone).push(tem);
+      normalizaLote(r, o, saida, vistos);
     });
     return saida;
   }
@@ -2545,6 +2865,7 @@ window.ZEIK_SEED = {
 
   window.Z = {
     uid: uid, todayISO: todayISO, monthKey: monthKey,
+    mostraPrecoNaRota: mostraPrecoNaRota, aplicarBlocosPreco: aplicarBlocosPreco,
     fmtBRL: fmtBRL, fmtData: fmtData, fmtDataHora: fmtDataHora,
     diasAteData: diasAteData, diasDesde: diasDesde, addDays: addDays,
     toWa: toWa, fmtTel: fmtTel, onlyDigits: onlyDigits, esc: escapeHtml,
@@ -3241,6 +3562,8 @@ barbearia: {
 
   /* ------------------------- variáveis dos scripts --------------------- */
   function fillVars(tpl, ctx) {
+    /* 1º os blocos [[...]] de preço (dependem de QUAL mensagem é), depois as variáveis */
+    tpl = (S && S.aplicarBlocosPreco) ? S.aplicarBlocosPreco(tpl, (ctx && ctx.cfg) || S.state && S.state.config, (ctx || {}).rota) : String(tpl || "");
     return String(tpl || "").replace(/\{\{\s*(\w+)\s*\}\}/g, function (_, k) {
       var v = ctx[k];
       if (v === undefined || v === null || v === "") {
@@ -3258,6 +3581,7 @@ barbearia: {
     var cidade = String(cfg.cidade || "São Paulo").split(" — ")[0];
     var bairro = ex.bairro || alvo.bairro || cidade;
     return Object.assign({
+      rota: ex.rota || "",
       empresa: "sua empresa",
       contato: "chefe",
       bairro: bairro,
@@ -5607,8 +5931,8 @@ barbearia: {
     function texto() {
       var k = abas[cur.i][0];
       var rota = (st().config.rota || {})[k];
-      if (k === "m1" || k === "gatilho") return U.fillVars(rota || g.script, ctx);
-      return U.fillVars(g[k] || g.script, ctx);
+      if (k === "m1" || k === "gatilho") return U.fillVars(rota || g.script, Object.assign({}, ctx, { rota: k }));
+      return U.fillVars(g[k] || g.script, Object.assign({}, ctx, { rota: k }));
     }
     function render2() {
       var body = ov.querySelector("[data-corpo]");
@@ -6575,8 +6899,9 @@ barbearia: {
   };
   App.handlers["lead-abrir-wa"] = function (el) {
     var p = findProspect(el.getAttribute("data-id")); if (!p) return;
-    var ctx = U.scriptCtx({ p: p, empresa: p.nome, contato: p.contato || "chefe" });
-    var txt = U.fillVars((st().config.rota || {}).m1 || "Oi {{contato}}! Mandei um modelo de site da {{empresa}} — posso te mostrar?", ctx);
+    var cfgPV = espelharPrecoDoForm(f);
+    var ctx = U.scriptCtx({ p: p, empresa: p.nome, contato: p.contato || "chefe", cfg: cfgPV });
+    var txt = U.fillVars((st().config.rota || {}).m1 || "Oi {{contato}}! Mandei um modelo de site da {{empresa}} — posso te mostrar?", Object.assign({}, ctx, { rota: "m1" }));
     U.openWa(Z.numWhatsapp(p), txt);
   };
   App.handlers["lead-corrige"] = function (el) { App.modalPegarWhats && App.modalPegarWhats(findProspect(el.getAttribute("data-id"))); };
@@ -6678,9 +7003,12 @@ barbearia: {
     var exemplos = "" +
       "Exemplos de cola — pode ser de qualquer ordem:\n" +
       "• Barbearia do Zé, R. das Flores 120, Centro, Sorocaba - SP, (15) 99123-4567, @zedoze\n" +
-      "• nome,telefone,cidade,site\\nSalão da Ana,(19) 99111-2233,Limeira,\\n" +
+      "• nome,telefone,cidade,site\\nSalão da Ana,(19) 99111-2233,Limeira,\n" +
       "• Colar 2 linhas do Google Maps: o nome numa linha e endereço+telefone na de baixo.\n" +
-      "• Print transcrito, agenda de terceiro, exportação de ferramenta: desde que tenha nome + telefone.";
+      "• Print transcrito, agenda de terceiro, exportação de ferramenta: desde que tenha nome + telefone.\n" +
+      "• MODO DIRETÓRIO (rende 20–50 de uma vez): abra o guia da cidade, selecione a página " +
+      "inteira, copie e cole aqui — ex.: solutudo.com.br/empresas/sp/sorocaba/barbearias. " +
+      "O painel reconhece nome/endereço/telefone e joga o resto fora sozinho.";
     U.openModal(U.modalShell("🧰 Coletor de dados",
       "O painel é uma ferramenta de dados: cole o que você encontrou, ele limpa, separa celular de fixo, detecta cidade/zona/segmento e importa sem duplicar.",
       '<div class="pill-tabs" style="margin-bottom:10px">' +
@@ -6699,7 +7027,7 @@ barbearia: {
       '<label class="check"><input type="checkbox" data-f="completar" checked> completar telefone/endereço dos que já existem</label>' +
       '<label class="check"><input type="checkbox" data-f="regravar"> regravar por cima (cuidado)</label>' +
       "</div></label></div></div>" +
-      '<div data-aba-pane="buscar" hidden><div class="callout" style="margin-bottom:10px">🗺️ Aqui o painel não puxa dado de site nenhum (isso é trabalho de robô e derruba conta). Ele monta a busca, você abre, copia o que está na tela e cola no Coletor. Em cidade pequena isso leva 4 minutos por bairro.</div>' +
+      '<div data-aba-pane="buscar" hidden><div class="callout" style="margin-bottom:10px">🗺️ Aqui o painel não puxa dado de site nenhum (isso é trabalho de robô e derruba conta). Ele monta a busca, você abre, copia o que está na tela e cola no Coletor. O atalho que rende mais: <b>solutudo.com.br/empresas/sp/&lt;cidade&gt;/&lt;categoria&gt;</b> (ex.: <span class="mono">/itu/barbearias</span>, com <span class="mono">?pagina=2</span> pra virar a página) — copiar tudo, colar na aba 1, importar. Em cidade pequena isso leva 4 minutos por bairro.</div>' +
       '<div class="form-grid">' +
       fld("Cidade", sel("bcidade", CIDADES_UI.map(function (c) { return { id: c.nome, nome: c.nome + " · DDD " + c.ddd }; }), "Monte Alto")) +
       fld("O que você procura", inp("btermo", "barbearia", "text", "barbearia, salão, pet shop, ótica…")) +
@@ -6826,8 +7154,11 @@ barbearia: {
       return '<button class="btn xs quiet" data-act="modelar-var" data-v="' + v[0] + '" title="' + esc(v[1]) + '">' + esc(v[0]) + "</button>";
     }).join("");
     function caixa(nome, label, texto, dica) {
+      var comPreco = Z.mostraPrecoNaRota ? Z.mostraPrecoNaRota(cfg, nome) : true;
       return '<div class="field full"><span class="lbl">' + esc(label) + ' <span class="tiny">· ' + esc(dica) + "</span></span>" +
         '<textarea data-f="' + nome + '" data-rota="' + nome + '" rows="4" style="min-height:84px">' + esc(texto || "") + "</textarea>" +
+        '<label class="check" style="margin-top:6px"><input type="checkbox" data-f="preco_' + nome + '"' + (comPreco ? " checked" : "") + '>' +
+        ' 💬 <b>falar o preço nesta mensagem</b> <span class="tiny">(por padrão nenhuma mensagem fala — só entra a frase que você escreveu entre [[colchetes]])</span></label>' +
         '<div class="row wrap" style="margin-top:6px">' +
         '<button class="btn xs ghost" data-act="modelar-preview">👀 Prévia</button>' +
         '<button class="btn xs quiet" data-act="modelar-falar" data-rota-nome="' + nome + '">🔊 Ouvir</button>' +
@@ -6835,6 +7166,7 @@ barbearia: {
     }
     U.openModal(U.modalShell("✍️ Modelar roteiros",
       "Escreva com as suas palavras. Os campos aceitam variáveis: troque “comércio de bairro” pelo seu nicho, o tom, a promessa — o painel aplica em cada lead.",
+      '<div class="callout" style="margin-bottom:10px">🚫 <b>Preço não é falado</b> em nenhuma das 5 mensagens (como você pediu). Se um dia quiser, escreva a frase entre [[colchetes]] dentro do roteiro e ligue a caixinha daquela mensagem.</div>' +
       '<div class="callout" style="margin-bottom:10px">🔁 <b>Fluxo de 2 mensagens (como você pediu):</b> a <b>1ª</b> vai normal, humana, com o nome do negócio. Se ele responder com a <b>mensagem automática</b> do balcão, você manda a <b>2ª (gatilho)</b> — mais direta, com a linha de valor e o link da prévia. Depois disso: <b>reunião</b> com duas opções de horário. Nunca cobre antes de mostrar o modelo.</div>' +
       '<div class="row wrap" style="margin-bottom:10px;gap:5px">' + chips + "</div>" +
       '<div class="form-grid">' +
@@ -6869,6 +7201,10 @@ barbearia: {
       m1: f.m1, gatilho: f.gatilho, reuniao: f.reuniao, noShow: f.noShow, followup: f.followup
     });
     if (f.politicaPreco) cfg.politicaPreco = f.politicaPreco;
+    cfg.rotaPreco = Object.assign({}, cfg.rotaPreco);
+    ["m1", "gatilho", "reuniao", "noShow", "followup"].forEach(function (k) {
+      cfg.rotaPreco[k] = f["preco_" + k] === true || f["preco_" + k] === "on";
+    });
     if (f.precoSiteMin !== "" && f.precoSiteMin !== undefined) cfg.precoSiteMin = Number(f.precoSiteMin);
     if (f.precoSiteMax !== "" && f.precoSiteMax !== undefined) cfg.precoSiteMax = Number(f.precoSiteMax);
     var sobrou = ["m1", "gatilho", "reuniao", "noShow", "followup"].filter(function (k) { return /\{\{\s*\w/.test(cfg.rota[k] || "") && /\}\}/.test(cfg.rota[k] || "") && /\{\{[^}]{1,28}\}\}/.test(cfg.rota[k]); });
@@ -6881,6 +7217,16 @@ barbearia: {
     var padrao = (window.ZeikStore.padraoRota || {})[nome];
     if (ta && padrao) { ta.value = padrao; U.toast("Campo “" + nome + "” voltou ao padrão.", "ok"); }
   };
+  /* o formulário do modal modelar é a fonte da verdade na prévia e no áudio:
+     sem isso ele ligaria a caixinha, olharia a prévia e o preço não apareceria  */
+  function espelharPrecoDoForm(f) {
+    var base = Object.assign({}, st().config);
+    var rp = {};
+    ["m1", "gatilho", "reuniao", "noShow", "followup"].forEach(function (k) { rp[k] = f["preco_" + k] === true; });
+    base.rotaPreco = rp;
+    if (f.politicaPreco) base.politicaPreco = f.politicaPreco;
+    return base;
+  }
   App.handlers["modelar-preview"] = function (el) {
     var ov = el.closest(".overlay");
     var p = st().prospects.filter(function (x) { return x.ticket; })[0] || st().prospects[0];
@@ -6888,7 +7234,10 @@ barbearia: {
     var ctx = U.scriptCtx({ p: p, empresa: p.nome, contato: p.contato || "chefe" });
     ov.querySelector("#modelarPrev").innerHTML = '<div class="hr"></div><p class="tiny"><b>Prévia com "' + esc(p.nome) + '" (' + esc(p.cidade || p.bairro) + "):</b></p>" +
       Object.keys(f).filter(function (k) { return ["m1", "gatilho", "reuniao", "noShow", "followup"].indexOf(k) >= 0; }).map(function (k) {
-        return '<div class="field full" style="margin-bottom:8px"><span class="lbl">' + esc(k) + '</span><div class="script-box" style="max-height:none">' + esc(U.fillVars(f[k], ctx)) + "</div></div>";
+        var ctx2 = Object.assign({}, ctx, { rota: k });
+        return '<div class="field full" style="margin-bottom:8px"><span class="lbl">' + esc(k) +
+          (Z.mostraPrecoNaRota && Z.mostraPrecoNaRota(cfgPV, k) ? ' <span class="badge green">com preço</span>' : ' <span class="badge gray">sem preço</span>') +
+          '</span><div class="script-box" style="max-height:none">' + esc(U.fillVars(f[k], ctx2)) + "</div></div>";
       }).join("");
   };
   App.handlers["modelar-falar"] = function (el) {
@@ -6896,7 +7245,7 @@ barbearia: {
     var nome = el.getAttribute("data-rota-nome");
     var f = readForm(ov);
     var p = st().prospects[0] || {};
-    U.falar(U.fillVars(f[nome] || "", U.scriptCtx({ p: p, empresa: p.nome, contato: p.contato || "chefe" })), { botao: el });
+    U.falar(U.fillVars(f[nome] || "", U.scriptCtx({ p: p, empresa: p.nome, contato: p.contato || "chefe", cfg: espelharPrecoDoForm(f) })), { botao: el });
   };
   App.handlers["modelar-testar"] = function (el) {
     var ov = el.closest(".overlay"), f = readForm(ov);
