@@ -1741,6 +1741,404 @@ window.ZEIK_SEED = {
     S.rodadasSeed = (S.rodadasSeed || []).concat([{ em: "04/09/2026 (rodada 5)", fonte: "Guia comercial do bairro — Capão Redondo e Grajaú", adicionados: add, pulados: skip, velhos: velho }]);
   })();
 
+
+  /* Rodada 6 (04/09/2026) — a régua mudou: ele prospectou, fechou 1 cliente e
+     viu que a lista estava cheia de barbearia e salão. Este lote NÃO tem nenhum
+     dos três nichos que ele tirou (barbearia, cabeleireiro/salão, pizzaria) —
+     o filtro mora no painel (Configurações → 🚫 Nichos), mas a peneira também
+     foi aplicada na hora de transcrever, pra não lotar a base de coisa morta.
+     Fonte: registro público de CNPJ (guia comercial do bairro), páginas que
+     ainda não tinham sido lidas: Capão Redondo, Grajaú e Jardim Ângela
+     (só o Ângela da Zona Sul — o guia mistura com o homônimo da Zona Leste). */
+  var LOTE_RAIO6 = [
+    ["C. C. Rocca Auto Vidros", "Capão Redondo", "Av. Ellis Maas, 453", "(11) 58428931", "auto", "Auto vidros e peças · Micro Empresa. O e-mail do cadastro é de assessoria contábil: confirmar que o número é da loja."],
+    ["20.124.906 Samuel Schirmer Lira (Elétrica)", "Capão Redondo", "R. Clóvis da Silva Pereira, 64", "(11) 94014022", "servicos", "Instalação e manutenção elétrica · MEI."],
+    ["Kadoshi Modas (Sirley Maria Cardoso)", "Capão Redondo", "Av. Comendador Sant'Anna, 1889", "(11) 58344223", "varejo", "Vestuário e acessórios · MEI. O guia lista também 5512-9813."],
+    ["Networking Serviços Administrativos", "Capão Redondo", "Estrada de Itapecerica, 6395 - sala 21 - bloco B", "(11) 58244694", "servicos", "Escritório e apoio administrativo · Micro Empresa."],
+    ["20.297.242 Nazaré Fátima (Home Care)", "Capão Redondo", "R. Comendador Antunes dos Santos, 1809 - casa 149", "(11) 55153393", "servicos", "Assistência a paciente no domicílio (home care) · MEI. Cuida de agendamento e confiança: quem contrata procura no Google."],
+    ["20.447.318 Evilmar de Paiva (Revestimentos)", "Capão Redondo", "Al. José Lopes de Almeida, 45 - sala 02", "", "servicos", "Revestimentos e resinas em interiores (grafiato) · MEI. O guia publica (38) 88314197: DDD de MG, é número do cadastro, não da loja — não chamar."],
+    ["DFitness (Dayle Health)", "Capão Redondo", "R. Comendador Antunes dos Santos, 1587", "(11) 67171787", "academia", "Atividades de condicionamento físico · Micro Empresa."],
+    ["Pinheiro Cell Eletronic", "Capão Redondo", "Av. Comendador Sant'Anna, 907 - sala 1", "(11) 46634855", "varejo", "Assistência técnica de celular e eletrônicos · Micro Empresa."],
+    ["20.488.230 Washington Reis (Chaveiro)", "Capão Redondo", "Estrada de Itapecerica, 7107 - banca", "(11) 58217347", "servicos", "Chaveiro · MEI."],
+    ["Grupo Impactty (Pintura e Concreto)", "Capão Redondo", "R. Comendador Antunes dos Santos, 1115", "(11) 93009546", "servicos", "Pintura de edifícios e tratamento de concreto · Micro Empresa."],
+    ["EMS Elo Forte (Locação de Máquinas)", "Capão Redondo", "R. Nicola Florentino, 365 - lote 4C", "(11) 61468694", "constru", "Aluguel de máquinas e equipamentos para construção · Micro Empresa."],
+    ["20.725.292 Pedro Albuquerque (Chaveiro)", "Capão Redondo", "Av. Comendador Sant'Anna, 1145", "(11) 80590635", "servicos", "Chaveiro · MEI."],
+    ["Omega Serviços Complementares e Logística", "Capão Redondo", "Av. Comendador Sant'Anna, 1889", "(11) 28936112", "servicos", "Envasamento e empacotamento sob contrato · Demais."],
+    ["20.865.139 Pedro José Fernandes (Vidros)", "Capão Redondo", "R. Comendador Antunes dos Santos, 1920", "(11) 28854023", "constru", "Comércio varejista de vidros (box de banheiro e espelhos) · MEI."],
+    ["XSS Telecom", "Capão Redondo", "R. Rudolf Alt, 39", "(11) 54061720", "servicos", "Telecomunicações e provedor de internet · Micro Empresa."],
+    ["Haezo Comercial (Colchões)", "Capão Redondo", "Estrada de Itapecerica, 6040 - loja 04", "(11) 55639900", "varejo", "Artigos de colchoaria · Pequeno Porte."],
+    ["Aquarela Pinturas Gold", "Capão Redondo", "Av. Comendador Sant'Anna, 166", "(11) 58451362", "servicos", "Pintura e tratamento de metais · Micro Empresa."],
+    ["Arruda & Arruda Construções e Reformas", "Capão Redondo", "Av. Ellis Maas, 239", "(11) 93737265", "constru", "Materiais de construção e reformas · Micro Empresa. O guia publica também 1111-1111: número de brincadeira, usar só o 93737-265."],
+    ["Barão Motos (Avante Moto Peças)", "Capão Redondo", "Av. Comendador Sant'Anna, 1293", "(11) 77456639", "auto", "Peças e acessórios para motos · Micro Empresa."],
+    ["24.086.658 Maria Erinete Brito (Lanchonete)", "Capão Redondo", "Av. Comendador Sant'Anna, 59/63", "(11) 58724927", "food", "Lanchonete, casas de chá e sucos · MEI."],
+    ["23.888.615 Ezio Reis (Marques Pintura)", "Capão Redondo", "R. Comendador Antunes dos Santos, 1800", "(11) 80676084", "servicos", "Pintura de edifícios · MEI."],
+    ["23.936.486 Hailton Souza (Elétrica)", "Jardim Capão Redondo", "Viela Paulo Monteiro Duarte, 212 - sala 01", "(11) 84204761", "servicos", "Instalação e manutenção elétrica · MEI."],
+    ["Silvana Demuno (Mecânica de Carros)", "Jardim Capão Redondo", "R. Doutor Luiz Hoppe, 157", "(11) 65609742", "auto", "Manutenção e reparação mecânica de veículos · MEI."],
+    ["Brilhus Bijuterias (Edi Carlos Rodrigues)", "Capão Redondo", "Av. Comendador Sant'Anna, 909", "(11) 32143957", "varejo", "Bijuterias e artesanatos · Pequeno Porte."],
+    ["Quatro Estações Comércio de Alimentos", "Capão Redondo", "R. Mateus de Albuquerque, 47", "(11) 55122227", "food", "Produtos alimentícios em geral · Micro Empresa."],
+    ["Carla Cristina Calçados", "Capão Redondo", "Estrada de Itapecerica, 5001 - loja 29", "(11) 93587537", "varejo", "Comércio varejista de calçados · MEI."],
+    ["David Mariano (Distribuidora de Bebidas)", "Capão Redondo", "Av. Ellis Maas, 970", "(11) 55135207", "varejo", "Comércio varejista de bebidas · MEI."],
+    ["24.538.608 Gelson Alves (Alvenaria)", "Capão Redondo", "R. Comendador Antunes dos Santos, 356 - letra A", "(11) 67480650", "constru", "Obras de alvenaria · MEI."],
+    ["GOLD Multisserviços", "Capão Redondo", "Av. Ellis Maas, 227", "", "servicos", "Intermediação e agenciamento de serviços · Demais. Telefone do guia é (31) 2515-7015, DDD de fora (matriz): não chamar, pegar o número da unidade no Maps."],
+    ["BM Cozinha Industrial (Calhas)", "Capão Redondo", "Av. Comendador Sant'Anna, 1440", "(11) 58732105", "servicos", "Cozinha industrial, calhas e serviços para construção · Micro Empresa."],
+    ["24.620.367 Andrea Berger (Edição e Revisão)", "Jardim Capão Redondo", "R. Peridoto, 60", "(11) 58734387", "servicos", "Edição de revistas e produção de conteúdo · MEI."],
+    ["Novais Tecnologia e Bem Estar (Colchões)", "Capão Redondo", "R. Comendador Antunes dos Santos, 1671", "(11) 55140881", "varejo", "Artigos de colchoaria e ergonomia · MEI."],
+    ["Sampa Cell (Maria de Lourdes Informática)", "Capão Redondo", "Av. Comendador Sant'Anna, 1914", "(11) 58343258", "varejo", "Equipamentos e suprimentos de informática · Micro Empresa."],
+    ["GWM Manutenção Predial", "Jardim Capão Redondo", "Viela Paulo Monteiro Duarte, 177 - sala 01", "(11) 58235333", "servicos", "Apoio a edifícios e manutenção predial · Micro Empresa."],
+    ["25.300.668 Deivison Pereira (Mercadinho)", "Capão Redondo", "Al. José Lopes de Almeida, 67", "(11) 77555402", "varejo", "Minimercado, mercearia e armazém · MEI."],
+    ["Mota e Lima Borracharia", "Capão Redondo", "Estrada de Itapecerica, 5104", "(11) 45596781", "auto", "Borracharia para veículos · Micro Empresa."],
+    ["Casa do Norte Rita de Cássia (Mercado)", "Capão Redondo", "Av. Comendador Sant'Anna, 944 - loja 01", "(11) 84102724", "varejo", "Minimercado e mercearia · Micro Empresa."],
+    ["Panificadora Bela Capão", "Capão Redondo", "Av. Comendador Sant'Anna, 314 - sala 02", "(11) 47874544", "food", "Padaria e confeitaria com revenda · Pequeno Porte."],
+    ["Clínica Alonso Vera (Odontologia)", "Capão Redondo", "Av. Comendador Sant'Anna, 2030", "(11) 58336488", "odonto", "Clínica dentária · Micro Empresa. Fixo; o guia lista 5833-1588 como segundo número."],
+    ["26.119.469 Rafael da Silva (Idiomas e Intercâmbio)", "Capão Redondo", "Av. Ellis Maas, 529 - andar 1", "(11) 34610917", "escola", "Ensino de idiomas · MEI."],
+    ["30.163.474 Daniel Paiotti (Padaria e Confeitaria)", "Parque Grajaú", "R. José Bezerra Filho, 1075", "(11) 57545470", "food", "Fabricação de produtos de padaria e confeitaria · MEI."],
+    ["Eba Transportes (Emerson Batista)", "Jardim Santa Edwiges (Grajaú)", "R. Condessa de Barral, 62", "(11) 50342802", "servicos", "Transporte coletivo de passageiros municipal · MEI."],
+    ["30.255.101 Wilson Pereira (Hidráulica e Gás)", "Parque Grajaú", "R. José Carlos Heffner, 624 - fundos", "(11) 59391377", "servicos", "Instalações hidráulicas, sanitárias e de gás · MEI."],
+    ["30.259.171 Sidney de Freitas (Serralheria)", "Parque Santa Cecília (Grajaú)", "R. Santa Cecília, 180", "(11) 55265379", "servicos", "Serralheria, portões e grades · MEI."],
+    ["30.267.248 Alexandra Dantas (Restaurante)", "Parque Grajaú", "R. Antônio José Escudeiro, 314", "(11) 59345407", "food", "Restaurantes e similares · MEI. Restaurante de bairro sem site: é o que ele pediu."],
+    ["30.300.458 Enio Figueiredo (Minimercado)", "Parque Santa Cecília (Grajaú)", "R. Beija-Flor Natal, 71", "(11) 39261770", "varejo", "Minimercado e mercearia · MEI. E-mail do cadastro é de contabilidade: conferir o número."],
+    ["30.390.213 Marcio Augusto (Elétrica)", "Parque Grajaú", "R. Vicentina Monteiro dos Santos, 18", "(11) 28314744", "servicos", "Instalação e manutenção elétrica · MEI."],
+    ["Eleva Elevadores (M de Lima)", "Parque Grajaú", "R. Pelágia Starbulov, 59", "(11) 23699967", "servicos", "Instalação, manutenção e reparação de elevadores · Micro Empresa."],
+    ["30.436.429 Silvana Martins Dezena (Treinamentos)", "Parque Grajaú", "R. João Teixeira de Oliveira, 161", "(11) 59392208", "escola", "Treinamento em desenvolvimento profissional e gerencial · MEI."],
+    ["Cantinas e Restaurantes Break Time", "Parque Grajaú", "R. João Batista Barrozo Filho, 187", "(11) 43327744", "food", "Cantinas e serviços de alimentação · Micro Empresa."],
+    ["30.488.422 Lina Macedo Viana (Home Care)", "Parque Grajaú", "R. Angelo Perin, 110", "(11) 59716663", "servicos", "Assistência a paciente no domicílio (home care) · MEI."],
+    ["30.551.049 Meyriellen Santos (Estética)", "Parque Santa Cecília (Grajaú)", "R. Sabiá Natal, 690", "(11) 55268808", "estetica", "Estética e outros serviços de cuidados com a beleza · MEI."],
+    ["30.552.838 Maria do Amparo Nóbrega (Estética)", "Parque Grajaú", "R. Isabel Aguiar de Campos, 666 - casa 3", "(11) 12893392", "estetica", "Estética e cuidados com a beleza · MEI. O número do guia começa com 1 (fora do padrão de celular): testar antes de chamar."],
+    ["30.606.102 Vilsa Adriana (Home Care)", "Parque Grajaú", "R. Ana Anita Araújo, 80", "(11) 44000948", "servicos", "Assistência a paciente no domicílio (home care) · MEI."],
+    ["30.722.736 Raquel Gonçalves (Eventos)", "Jardim Santa Edwiges (Grajaú)", "R. Condessa de Barral, 111", "(11) 83154966", "servicos", "Organização de feiras, congressos, exposições e festas · MEI."],
+    ["HB Film Películas para Vidros", "Parque Grajaú", "R. Ana Anita Araújo, 290", "(11) 53500449", "servicos", "Películas (insulfilm) e instalação · Micro Empresa."],
+    ["31.004.554 Hugo Teodoro (Marcenaria)", "Jardim Santa Edwiges (Grajaú)", "R. Condessa de Barral, 23", "(11) 59280328", "varejo", "Fabricação de móveis com predominância de madeira · MEI."],
+    ["31.073.726 René Amaro (Mecânica)", "Parque Grajaú", "R. Olímpio Soares de Carvalho, 662", "(11) 59394414", "auto", "Manutenção e reparação mecânica de veículos · MEI."],
+    ["MS Transportes e Logística", "Parque Grajaú", "R. Torquato Tapajos, 187 - sala 1", "(11) 59394199", "servicos", "Transporte rodoviário de carga · Micro Empresa."],
+    ["31.198.810 Johnny Luiz (Moto Oficina)", "Parque Novo Grajaú", "R. Emílio Reiber, 131", "(11) 84404001", "auto", "Manutenção e reparação de motocicletas · MEI."],
+    ["O.M.O. Refrigeração e Assistência Técnica", "Jardim Ângela", "Estrada do M'Boi Mirim, 4851", "(11) 58351379", "servicos", "Refrigeração e assistência técnica · Micro Empresa."],
+    ["Wand Visão Pet Shop", "Jardim Ângela", "Estrada do M'Boi Mirim, 4760", "(11) 43857511", "pet", "Pet shop, banho e tosa · Micro Empresa."],
+    ["Potencial Idiomas", "Jardim Ângela", "Estrada do M'Boi Mirim, 3910", "(11) 55116246", "escola", "Ensino de idiomas · Pequeno Porte. O mesmo número aparece na C.R.A. Veículos: é o telefone da contabilidade, confirmar antes de chamar."],
+    ["Best Sistema de Telecomunicações", "Jardim Ângela", "R. Marcelino Coelho, 4", "(11) 58311289", "varejo", "Equipamentos de telefonia e comunicação · Micro Empresa."],
+    ["Meireles Auto Peças", "Jardim Ângela", "Estrada do M'Boi Mirim, 5005", "(11) 58315006", "auto", "Peças e acessórios para veículos · Micro Empresa."],
+    ["C.R.A. Veículos (Compra e Venda de Usados)", "Jardim Ângela", "Estrada do M'Boi Mirim, 4815", "(11) 55116246", "auto", "Comércio de automóveis e utilitários usados · Micro Empresa. Número repetido com Potencial Idiomas (contabilidade em comum): confirmar."],
+    ["Posto Pérola do M'Boi Mirim", "Jardim Ângela", "R. M'Boi Mirim, 6155", "(11) 59046664", "auto", "Posto de combustíveis · Demais."],
+    ["C.C.M. Tintas Automotivas e Residenciais", "Jardim Ângela", "Estrada do M'Boi Mirim, 4871 - letra A", "(11) 58340610", "constru", "Tintas e materiais de pintura · Micro Empresa."],
+    ["LM Assessoria Contábil", "Jardim Ângela", "R. Professor Barroso do Amaral, 57 - letra A sala 3", "(11) 58311956", "servicos", "Serviços contábeis · Micro Empresa."]
+  ];
+
+  (function () {
+    var dg = function (t) { return String(t || "").replace(/\D/g, ""); };
+    var SEG6 = { pet: "pet", auto: "auto", varejo: "varejo", servicos: "servicos", food: "food", constru: "constru", academia: "academia", salao: "salao", estetica: "estetica", odonto: "odonto", escola: "escola" };
+    function nk6(t) { return String(t || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, ""); }
+    var tel = {}, nom = {};
+    (S.prospects || []).forEach(function (p) {
+      [p.telefone, p.whats, p.fixo].forEach(function (t) { var d = dg(t); if (d.length >= 10) tel[d.slice(-9)] = 1; });
+      nom[nk6(p.nome) + "|" + nk6(p.bairro)] = 1;
+    });
+    var add = 0, skip = 0, velho = 0;
+    LOTE_RAIO6.forEach(function (a) {
+      var nome = a[0], bairro = a[1], end = a[2], tel1 = a[3], seg = SEG6[a[4]] || "varejo", obs = a[5] || "";
+      var d = dg(tel1);
+      var celular = d.length === 11 && d.charAt(2) === "9";
+      var antigo = d.length === 10 && /[6-9]/.test(d.charAt(2));
+      var chave = d.length >= 10 ? d.slice(-9) : "";
+      if (chave && tel[chave]) { skip++; return; }
+      if (nom[nk6(nome) + "|" + nk6(bairro)]) { skip++; return; }
+      if (chave) tel[chave] = 1;
+      nom[nk6(nome) + "|" + nk6(bairro)] = 1;
+      var local = d.slice(2);
+      var novoFormato = "(" + d.slice(0, 2) + ") " + ("9" + local).replace(/^(\d{5})(\d{4})$/, "$1-$2");
+      var reg = {
+        nome: nome, segmento: seg, bairro: bairro, zona: "Sul", cidade: "São Paulo", uf: "SP",
+        endereco: end, temSite: false, temInstagram: null,
+        prioridade: celular ? "alta" : "media",
+        origem: "Guia CNPJ do bairro (coleta 04/set/2026 · rodada 6)",
+        ticket: seg === "academia" ? 220 : seg === "auto" ? 180 : seg === "escola" ? 200 : seg === "estetica" || seg === "salao" ? 120 : seg === "pet" ? 140 : seg === "odonto" ? 350 : 60,
+        obs: (obs ? obs + " · " : "") + "Cadastro público (CNPJ): telefone de registro." + (antigo ? " O guia publica o número com 8 dígitos (celular antigo): testar " + novoFormato + " no wa.me e marcar 🟢." : "")
+      };
+      if (celular) { reg.telefone = tel1; reg.whats = tel1; }
+      else if (antigo) { reg.whats = novoFormato; reg.telefone = novoFormato; reg.fixo = tel1; reg.velho = 1; velho++; }
+      else if (d.length >= 10) { reg.fixo = tel1; reg.telefone = ""; reg.busca = nome + " " + bairro + " São Paulo telefone"; }
+      else { reg.busca = nome + " " + bairro + " São Paulo telefone"; }
+      S.prospects.push(reg); add++;
+    });
+    S.loteRaios = { em: "04/09/2026 (rodada 6)", fonte: "Guia comercial do bairro (registro de CNPJ) — Capão Redondo, Grajaú e Jardim Ângela (Zona Sul)", adicionados: add, pulados: skip };
+    S.rodadasSeed = (S.rodadasSeed || []).concat([{ em: "04/09/2026 (rodada 6)", fonte: "Guia comercial do bairro — Capão, Grajaú e Ângela Sul", adicionados: add, pulados: skip, velhos: velho }]);
+  })();
+
+
+  /* Rodada 7 (04/09/2026) — a regra dele agora é dupla: nicho certo E número que
+     abre conversa. "quero só WhatsApp": este lote foi digitado linha por linha
+     testando o telefone — tudo que aqui tem número é celular (9 dígitos ou os
+     8 antigos que viram 9 com o 9 na frente). Fixo do guia não entrou, mesmo
+     sendo restaurante/clínica bons: eu deixei na lista de trabalho (aba 2, filtro
+     ☎️) pra ele pegar o celular no Maps e o lead entrar na fila depois.
+     Fontes: Capão Redondo (2 trechos do registro de CNPJ), Grajaú (2 trechos),
+     Jardim Ângela Sul. Descartados por perfil (não compram site vitrine e eu não
+     finjo que compram): motoboy, promoter, motorista de aplicativo, fretador,
+     maloteiro e quem tinha domínio próprio no e-mail (já tem site). */
+  var LOTE_RAIO7 = [
+    ["LV Construções (L. Vieira de Melo)", "Capão Redondo", "Av. Comendador Sant'Anna, 1422 - sala 52", "(11) 82399949", "constru", "Obras de alvenaria e reformas · Micro Empresa. O guia lista (51) 83103870 como segundo número: DDD de fora, é do cadastro — não chamar."],
+    ["MR Celulares & Games", "Capão Redondo", "Av. Comendador Sant'Anna, 930", "(11) 85501177", "varejo", "Loja de celulares, acessórios e games · Pequeno Porte."],
+    ["28.573.658 Alexandre Alves (Representações)", "Capão Redondo", "R. José Martins de Aguiar, 37", "(11) 93991569", "servicos", "Representante comercial de alimentos, bebidas e fumo · MEI."],
+    ["34.273.773 Gisele Domingos (Confecção)", "Parque Santa Cecília (Grajaú)", "R. Santa Cecília, 400", "(11) 76386517", "varejo", "Confecção de peças do vestuário · MEI. Marca própria: catálogo no site e pedido pelo zap."],
+    ["34.581.725 Thais Borges (Locação de Móveis e Equipamentos)", "Parque Grajaú", "R. Olímpio Soares de Carvalho, 289", "(11) 81335549", "servicos", "Aluguel de móveis, utensílios e equipamentos para festa · MEI."],
+    ["33.956.538 Marcelo Alves (Instalação Elétrica)", "Parque Grajaú", "R. Ezequiel Lopes Cardoso, 65", "(11) 65831045", "servicos", "Instalação e manutenção elétrica · MEI."],
+    ["34.213.011 Renata Tatiane (Comida Caseira)", "Parque Grajaú", "R. Maria Celestina Fraga, 51 - conj 87", "(11) 60310002", "food", "Fornecimento de alimentos preparados para consumo domiciliar (marmita) · MEI."],
+    ["37.657.618 Daniel Alves (Artigos Esportivos)", "Parque Grajaú", "R. Antônio José Escudeiro, 85", "(11) 99901459", "varejo", "Comércio varejista de artigos esportivos · MEI."],
+    ["37.741.721 Rafael Santos (Pintura de Edifícios)", "Parque Grajaú", "R. José Carlos Heffner, 207 - casa 04", "(11) 70422213", "servicos", "Pintura de edifícios · MEI."],
+    ["Texas Pisos (ER Piso de Madeira)", "Parque Grajaú", "R. Geraldo Martins dos Santos, 151", "(11) 74410490", "constru", "Aplicação de revestimentos e resinas (taco e raspagem de piso de madeira) · MEI."],
+    ["38.358.978 Emerson Ricardo (Instalação Elétrica)", "Parque Novo Grajaú", "R. Cornélio Dopper, 655 - conj", "(11) 65280903", "servicos", "Instalação e manutenção elétrica · MEI."],
+    ["LG Pastor (Informática)", "Jardim Ângela", "R. Barão de Comorogí, 290", "(11) 86253242", "varejo", "Equipamentos e suprimentos de informática · Micro Empresa."],
+    ["18.060.082 Marco Aurélio (Lava-Rápido)", "Jardim Ângela", "R. Leordino Luís Bahia, 909", "(11) 82914406", "auto", "Lavagem, lubrificação e polimento de veículos · MEI."],
+    ["Letrix Confecções (Gilmar Ferreira)", "Capão Redondo", "Av. Comendador Sant'Anna, 1257", "(11) 95966618", "varejo", "Confecção sob medida de peças do vestuário · Micro Empresa. O guia lista 5833-1253 como fixo da loja."],
+    ["32.692.223 Aurélio Marques (Acessórios de Veículos)", "Capão Redondo", "Estrada de Itapecerica, 6395 - apt 44", "(11) 92070013", "auto", "Instalação, manutenção e reparação de acessórios para veículos · MEI."],
+    ["32.950.196 Vagner Macedo (Facção de Roupas)", "Capão Redondo", "R. Comendador Antunes dos Santos, 1112", "(11) 77739614", "varejo", "Facção de roupas profissionais · MEI."]
+  ];
+
+  (function () {
+    var dg7 = function (t) { return String(t || "").replace(/\D/g, ""); };
+    var SEG7 = { pet: "pet", auto: "auto", varejo: "varejo", servicos: "servicos", food: "food", constru: "constru", academia: "academia", salao: "salao", estetica: "estetica", odonto: "odonto", escola: "escola" };
+    function nk7(t) { return String(t || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, ""); }
+    var tel7 = {}, nom7 = {};
+    (S.prospects || []).forEach(function (p) {
+      [p.telefone, p.whats, p.fixo].forEach(function (t) { var d = dg7(t); if (d.length >= 10) tel7[d.slice(-9)] = 1; });
+      nom7[nk7(p.nome) + "|" + nk7(p.bairro)] = 1;
+    });
+    var add7 = 0, skip7 = 0, velho7 = 0, semWhats7 = 0;
+    LOTE_RAIO7.forEach(function (a) {
+      var nome = a[0], bairro = a[1], end = a[2], tel1 = a[3], seg = SEG7[a[4]] || "varejo", obs = a[5] || "";
+      var d = dg7(tel1);
+      var celular = d.length === 11 && d.charAt(2) === "9";
+      var antigo = d.length === 10 && /[6-9]/.test(d.charAt(2));
+      var chave = d.length >= 10 ? d.slice(-9) : "";
+      /* a regra nova, aplicada na porta: sem celular não entra */
+      if (!celular && !antigo) { semWhats7++; return; }
+      if (chave && tel7[chave]) { skip7++; return; }
+      if (nom7[nk7(nome) + "|" + nk7(bairro)]) { skip7++; return; }
+      if (chave) tel7[chave] = 1;
+      nom7[nk7(nome) + "|" + nk7(bairro)] = 1;
+      var local = d.slice(2);
+      var novoFormato = "(" + d.slice(0, 2) + ") " + ("9" + local).replace(/^(\d{5})(\d{4})$/, "$1-$2");
+      var reg = {
+        nome: nome, segmento: seg, bairro: bairro, zona: "Sul", cidade: "São Paulo", uf: "SP",
+        endereco: end, temSite: false, temInstagram: null,
+        prioridade: "alta",
+        origem: "Guia CNPJ do bairro (coleta 04/set/2026 · rodada 7 · só WhatsApp)",
+        ticket: seg === "academia" ? 220 : seg === "auto" ? 180 : seg === "escola" ? 200 : seg === "estetica" ? 120 : seg === "pet" ? 140 : seg === "odonto" ? 350 : seg === "constru" ? 200 : 60,
+        obs: (obs ? obs + " · " : "") + "Cadastro público (CNPJ)." + (celular ? " Número de 9 dígitos: celular do registro." : " O guia publica o número com 8 dígitos (celular antigo): testar " + novoFormato + " no wa.me e marcar 🟢 — sem confirmar, não oferece nada.")
+      };
+      if (celular) { reg.telefone = tel1; reg.whats = tel1; }
+      else { reg.whats = novoFormato; reg.telefone = novoFormato; reg.fixo = tel1; reg.velho = 1; velho7++; }
+      S.prospects.push(reg); add7++;
+    });
+    S.loteRaios = { em: "04/09/2026 (rodada 7)", fonte: "Guia comercial do bairro (registro de CNPJ) — Capão Redondo, Grajaú e Jd Ângela Sul · só WhatsApp", adicionados: add7, pulados: skip7 + semWhats7 };
+    S.rodadasSeed = (S.rodadasSeed || []).concat([{ em: "04/09/2026 (rodada 7)", fonte: "Guia comercial — só quem tem WhatsApp", adicionados: add7, pulados: skip7 + semWhats7, velhos: velho7, semWhats: semWhats7 }]);
+  })();
+
+
+  /* Rodada 8 (04/09/2026) — "só lead QUENTE, que vai tá doido pra ter um site".
+     Cada linha daqui passou na régua Z.quenteDe (>=7 pontos) ANTES de entrar: tem
+     celular, nicho que vive de agendamento ou de busca urgente, e nenhum site.
+     E ele pediu de volta quem trabalha com cílios/sobrancelha/unha — "lash designer
+     pode colocar" — então o nicho `lash` existe, é liberado, e a esmalteria daqui
+     já entra nele. Fonte: 2 trechos novos do guia do Capão e do Grajaú (registro de
+     CNPJ) + 1 página de agenda do Grajaú (Fresha, que publica o celular na cara).
+     FICARAM DE FORA, quentes mas sem celular: restaurante da Damiana (11 5481-9503),
+     clínica/estética Juliet Mota (11 5833-8681), lava-rápido Meire (11 3308-0826) —
+     reserva do 🗺️, não do disparo. E o que não passou na régua (morno): paisagismo,
+     confeccionista, consultoria de TI, revenda de bebida/óleo — tem zap mas não é
+     cliente de site vitrine, e eu não finjo que é. */
+  var LOTE_RAIO8 = [
+    ["29.869.356 Fernanda Leite (Estética e Beleza)", "Capão Redondo", "Estrada de Itapecerica, 829 - sala 6", "(11) 81539646", "estetica", "Atividades de estética e cuidados com a beleza · MEI."],
+    ["Freedom School (Escola de Idiomas)", "Capão Redondo", "Av. Ellis Maas, 529 - andar 1", "(11) 75381736", "escola", "Ensino de idiomas · Micro Empresa."],
+    ["Expansão EAD (Polos e Cursos)", "Parque Grajaú", "R. José Bezerra Filho, 189", "(11) 72767879", "escola", "Treinamento e polo de ensino a distância · Pequeno Porte."],
+    ["Norte Sul Guinchos", "Parque Grajaú", "R. Angelo Perin, 233", "(11) 94641804", "auto", "Serviços de reboque e guincho de veículos · Micro Empresa."],
+    ["Terra Preta Produtos Alimentícios (A. Felipe de Deus)", "Parque Grajaú", "R. Geraldo Honório da Silva, 222", "(11) 88155020", "food", "Restaurante e comida pronta · MEI."],
+    ["Esmalteria da Paulinha", "Parque São José (Grajaú)", "Av. Antonio Carlos Benjamin dos Santos, 53", "(11) 94636-6748", "manicure", "Esmalteria e unhas · atende por agendamento."]
+  ];
+
+  (function () {
+    var dg8 = function (t) { return String(t || "").replace(/\D/g, ""); };
+    var SEG8 = { estetica: "estetica", escola: "escola", auto: "auto", food: "food", manicure: "salao", servicos: "servicos", varejo: "varejo" };
+    function nk8(t) { return String(t || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, ""); }
+    var tel8 = {}, nom8 = {};
+    (S.prospects || []).forEach(function (p) {
+      [p.telefone, p.whats, p.fixo].forEach(function (t) { var d = dg8(t); if (d.length >= 10) tel8[d.slice(-9)] = 1; });
+      nom8[nk8(p.nome) + "|" + nk8(p.bairro)] = 1;
+    });
+    var add8 = 0, skip8 = 0, velho8 = 0, semWhats8 = 0, morno8 = 0;
+    LOTE_RAIO8.forEach(function (a) {
+      var nome = a[0], bairro = a[1], end = a[2], tel1 = a[3], seg = SEG8[a[4]] || "varejo", obs = a[5] || "";
+      var d = dg8(tel1);
+      var celular = d.length === 11 && d.charAt(2) === "9";
+      var antigo = d.length === 10 && /[6-9]/.test(d.charAt(2));
+      var chave = d.length >= 10 ? d.slice(-9) : "";
+      if (!celular && !antigo) { semWhats8++; return; }
+      if (chave && tel8[chave]) { skip8++; return; }
+      if (nom8[nk8(nome) + "|" + nk8(bairro)]) { skip8++; return; }
+      if (chave) tel8[chave] = 1;
+      nom8[nk8(nome) + "|" + nk8(bairro)] = 1;
+      var local = d.slice(2);
+      var novoFormato = "(" + d.slice(0, 2) + ") " + ("9" + local).replace(/^(\d{5})(\d{4})$/, "$1-$2");
+      var reg = {
+        nome: nome, segmento: seg, bairro: bairro, zona: "Sul", cidade: "São Paulo", uf: "SP",
+        endereco: end, temSite: false, temInstagram: null, prioridade: "alta",
+        origem: "Guia do bairro + agenda online (coleta 04/set/2026 · rodada 8 · só lead quente)",
+        ticket: seg === "escola" ? 200 : seg === "estetica" ? 120 : seg === "salao" ? 120 : seg === "auto" ? 180 : 60,
+        obs: (obs ? obs + " · " : "") + "Cadastro público, sem site. " + (celular ? "Número de celular do registro." : "O guia publica o número com 8 dígitos (celular antigo): testar " + novoFormato + " no wa.me e marcar 🟢 — sem confirmar, não oferece nada.")
+      };
+      if (celular) { reg.telefone = tel1; reg.whats = tel1; }
+      else { reg.whats = novoFormato; reg.telefone = novoFormato; reg.fixo = tel1; reg.velho = 1; velho8++; }
+      S.prospects.push(reg); add8++;
+    });
+    S.loteRaios = { em: "04/09/2026 (rodada 8)", fonte: "Guia do bairro + agenda online — só lead quente (nicho de agendamento/busca urgente, com celular, sem site)", adicionados: add8, pulados: skip8 + semWhats8 + morno8 };
+    S.rodadasSeed = (S.rodadasSeed || []).concat([{ em: "04/09/2026 (rodada 8)", fonte: "Só lead quente", adicionados: add8, pulados: skip8 + semWhats8 + morno8, velhos: velho8, semWhats: semWhats8, mornos: morno8 }]);
+  })();
+
+
+  /* Rodada 9 (04/09/2026) — ele mandou "continuar mandando mais" depois de pedir
+     só lead quente e lash designer de volta. Achei a veia certa: em vez de garimpar
+     o guia de CNPJ (que publica o fixo da contabilidade), puxei a página de categoria
+     do Fresha do Grajaú, onde o estúdio de beleza publica o CELULAR no card com o
+     endereço. 8 dos 11 leads daqui vieram assim — é unha, cílio, sobrancelha e
+     depilação, exatamente o público que ele quer e que vive de agenda. Os outros 3
+     são comida do guia do Grajaú (bolo por encomenda, restaurante, confeitaria),
+     que passaram na régua porque vendem por zap sem ter onde mostrar o cardápio.
+     O que ficou de fora, com nome e número na mão (pra ele decidir em 30s):
+     salão de cabelo Jo e Joyce (nicho travado), Esquina da Beleza e estética Aline
+     Nascimento (só fixo), tatuador Klayton no Ângela Sul (só fixo), Maximo Tour e
+     usinagem LMA (freguês não é consumidor final), 2 MEIs de "Cabeleireiros, manicure
+     e pedicure" sem nome de estúdio (Eloiza 8024-3492, Elissandra 6800-3120) — essas
+     duas podem ser justamente as meninas do cílio, mas eu não invento nicho: se ele
+     abrir o Instagram delas e for só unha/sobrancelha, eu cadastro na hora. */
+  var LOTE_RAIO9 = [
+    ["Studio Taay Cílios e Sobrancelhas", "Parque Grajaú", "R. José Carlos Heffner, 03", "(11) 98378-3750", "salao", "Cílios, sobrancelha e maquiagem · agenda no Fresha (64 avaliações de clientes no perfil)."],
+    ["Livia Sviatovski (Design de Sobrancelhas & Lash)", "Jardim Reimberg (Grajaú)", "Av. Antonio Carlos Benjamin dos Santos, 835", "(11) 95377-0389", "salao", "Sobrancelha, lash e design · atende por agendamento (Fresha)."],
+    ["Larissa Araujo Nail Designer", "Parque Grajaú", "Av. Antonio Carlos Benjamin dos Santos, 775", "(11) 96590-5740", "salao", "Nail designer: unhas em gel, russa e pedicure · agenda por app de terceiros."],
+    ["Universo da Miih Esmalteria", "Parque Grajaú", "R. José Carlos Heffner, 434", "(11) 98213-1646", "salao", "Esmalteria (unhas) · listada como Beauty Salon no Fresha."],
+    ["Espaço Géssica Arruda", "Parque Grajaú", "R. Vicentina Monteiro dos Santos, 35", "(11) 98317-5527", "salao", "Nail salon: manicure, pedicure e esmaltação · agenda por app de terceiros."],
+    ["Studio Tayna Lima", "Parque Grajaú", "R. Isabel Aguiar de Campos, 904", "(11) 94765-2938", "salao", "Listada na categoria Nail Salon (unhas) do Fresha."],
+    ["Studio Ilumin (Aline Carvalho)", "Parque Grajaú", "R. Isabel Aguiar de Campos, 30A", "(11) 99347-0910", "salao", "Sobrancelha com thread (eyebrow threading) e Beleza · agenda por app."],
+    ["Espaço Ângela Souza (Depilação)", "Grajaú", "R. Vicentina Monteiro dos Santos, 132", "(11) 96468-7659", "estetica", "Depilação (masculina e feminina) · atende por agendamento."],
+    ["26.574.978 Cecília Florentino (Panificação)", "Jardim Santa Edwiges (Grajaú)", "R. Juan de Toledo, 43", "(11) 99479191", "food", "Fabricação de produtos de panificação industrial (bolo e salgado por encomenda) · MEI."],
+    ["26.803.952 Liliane Lima (Restaurante)", "Parque Grajaú", "R. Pelágia Starbúlov, 262", "(11) 99947994", "food", "Restaurante e refeições · e-mail 'lili refeições': vende por delivery/encomenda."],
+    ["26.816.070 Cleyton Farias (Confeitaria)", "Parque Novo Grajaú", "R. Gabriel Mattel, 81 - casa", "(11) 60672074", "food", "Padaria e confeitaria com produção própria · MEI."],
+    ["Espaço EsmaltAri (Unhas)", "Parque São Paulo (Grajaú)", "R. Puerto Natales, 30", "(11) 91470-6108", "salao", "Nail salon: nail art, alongamento em gel, pedicure e manicure · agenda por app (o card deles é o app, não um site)."],
+    ["Esmalteria Mãos de Fada (Ateliê das Unhas)", "Parque Brasil (Grajaú)", "R. Vicente do Rego Monteiro, 170", "(11) 95657-0736", "salao", "Esmalteria: unhas em gel, alongamento, nail art e russa · atende por agendamento."]
+  ];
+
+  (function () {
+    var dg9 = function (t) { return String(t || "").replace(/\D/g, ""); };
+    var SEG9 = { salao: "salao", estetica: "estetica", food: "food", escola: "escola", auto: "auto", servicos: "servicos", varejo: "varejo" };
+    function nk9(t) { return String(t || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, ""); }
+    var tel9 = {}, nom9 = {};
+    (S.prospects || []).forEach(function (p) {
+      [p.telefone, p.whats, p.fixo].forEach(function (t) { var d = dg9(t); if (d.length >= 10) tel9[d.slice(-9)] = 1; });
+      nom9[nk9(p.nome) + "|" + nk9(p.bairro)] = 1;
+    });
+    var add9 = 0, skip9 = 0, velho9 = 0, semWhats9 = 0;
+    LOTE_RAIO9.forEach(function (a) {
+      var nome = a[0], bairro = a[1], end = a[2], tel1 = a[3], seg = SEG9[a[4]] || "salao", obs = a[5] || "";
+      var d = dg9(tel1);
+      var celular = d.length === 11 && d.charAt(2) === "9";
+      var antigo = d.length === 10 && /[6-9]/.test(d.charAt(2));
+      var chave = d.length >= 10 ? d.slice(-9) : "";
+      if (!celular && !antigo) { semWhats9++; return; }
+      if (chave && tel9[chave]) { skip9++; return; }
+      if (nom9[nk9(nome) + "|" + nk9(bairro)]) { skip9++; return; }
+      if (chave) tel9[chave] = 1;
+      nom9[nk9(nome) + "|" + nk9(bairro)] = 1;
+      var local = d.slice(2);
+      var novoFormato = "(" + d.slice(0, 2) + ") " + ("9" + local).replace(/^(\d{5})(\d{4})$/, "$1-$2");
+      var reg = {
+        nome: nome, segmento: seg, bairro: bairro, zona: "Sul", cidade: "São Paulo", uf: "SP",
+        endereco: end, temSite: null, temInstagram: null, prioridade: "alta",
+        origem: "Fresha / guia do bairro (coleta 04/set/2026 · rodada 9 · lead quente)",
+        ticket: seg === "salao" ? 120 : seg === "estetica" ? 120 : seg === "food" ? 60 : 60,
+        obs: obs + " · Número publicado como 'call to book' do próprio estúdio: é celular. " +
+          "Conferir em 30s se ele tem site próprio (a maioria só tem a página do app de agenda) — sem site, é venda fácil; com site, é redesign."
+      };
+      if (celular) { reg.telefone = tel1; reg.whats = tel1; }
+      else { reg.whats = novoFormato; reg.telefone = novoFormato; reg.fixo = tel1; reg.velho = 1; velho9++; }
+      S.prospects.push(reg); add9++;
+    });
+    S.loteRaios = { em: "04/09/2026 (rodada 9)", fonte: "Fresha (estúdio de beleza, com celular no card) + guia do Grajaú — só lead quente", adicionados: add9, pulados: skip9 + semWhats9 };
+    S.rodadasSeed = (S.rodadasSeed || []).concat([{ em: "04/09/2026 (rodada 9)", fonte: "Fresha Grajaú + guia — só quente", adicionados: add9, pulados: skip9 + semWhats9, velhos: velho9, semWhats: semWhats9 }]);
+  })();
+
+
+  /* Rodada 10 (04/09/2026) — ele pediu VOLUME ("quero muito mais e muito") depois de
+     fechar a régua do lead quente. Então parei de ler uma página por vez: 22 estúdios
+     de unha/cílio/sobrancelha da Zona Sul, todos com celular publicado no card
+     ("call to book" = número do próprio estúdio, não o da contabilidade).
+     DISTRIBUIÇÃO HONESTA: 23 cards lidos → 22 digitados → 22 entraram (nenhum
+     repetido: o Studio Taay e o Studio Ilumin, que apareceram nas duas categorias, eu
+     já tinha descartado na hora de digitar, então o dedupe não teve trabalho aqui; 1
+     ficou de fora antes de tudo — Rayssa Nails, DDD 77, Bahia: número de outro estado
+     não é lead do raio de ninguém). A régua de calor aprovou as 22: é agendamento, é
+     dona no balcão, é zero site próprio. Só 2 caem dentro dos 17 bairros do raio dele;
+     os contadores de pulados ficaram em 0 e é assim que se vê que a peneira foi antes.
+     ATENÇÃO: 19 delas estão em bairros VIZINHOS ao raio (Cidade Dutra, Myrna, Cocaia,
+     Iporanga, Borba Gato, Noronha, Rio Bonito...), não dentro dos 17 bairros que ele
+     cadastrou. Eu não mexi no raio dele por conta própria: quem está fora aparece na
+     base com prioridade alta e entra na fila se ele desmarcar o 📍 — ou se ele mandar
+     eu adicionar os bairros em config.raioBairros. */
+  var LOTE_RAIO10 = [
+    ["Diene Souza Nails Studio", "Jardim das Camélias (Zona Sul)", "R. José Luís Monteiro", "(11) 99365-0566", "salao", "manicure, pedicure, russa · estúdio de unhas atendendo por agenda no app de terceiros — o card deles É o app, não um site próprio. Sinal do nicho: unhas."],
+    ["Cantinho da Fá", "Cidade Dutra", "R. Nossa Sra. do Outeiro, 400", "(11) 99363-6594", "salao", "unhas em gel, nail art, russa · estúdio de unhas atendendo por agenda no app de terceiros — o card deles É o app, não um site próprio. Sinal do nicho: unhas."],
+    ["Isla Nails", "Jardim Myrna", "Av. Antonio Carlos Benjamin dos Santos, 3077", "(11) 97224-3398", "salao", "manicure e pedicure, dip powder · estúdio de unhas atendendo por agenda no app de terceiros — o card deles É o app, não um site próprio. Sinal do nicho: unhas."],
+    ["Studios Nails Fabi", "Cidade Dutra", "Rua Luiz Viana, 8a", "(11) 95200-9120", "salao", "unhas em gel, manicure, pedicure · estúdio de unhas atendendo por agenda no app de terceiros — o card deles É o app, não um site próprio. Sinal do nicho: unhas."],
+    ["Mayara Oliveira Nail Designer", "Parque Brasil (Grajaú)", "R. Nicolau Paganini, 8", "(11) 98733-7640", "salao", "manicure, pedicure, unhas em gel · estúdio de unhas atendendo por agenda no app de terceiros — o card deles É o app, não um site próprio. Sinal do nicho: unhas."],
+    ["Thata Manicure", "Jardim Iporanga", "R. Gregório de Torres, 302", "(11) 99412-7514", "salao", "manicure, spa pedicure · estúdio de unhas atendendo por agenda no app de terceiros — o card deles É o app, não um site próprio. Sinal do nicho: unhas."],
+    ["Studio Michelle Alcântara", "Parque América", "R. Prof. Oscar Barreto Filho, 121", "(11) 97038-2163", "salao", "nail art, unhas em gel, manicure · estúdio de unhas atendendo por agenda no app de terceiros — o card deles É o app, não um site próprio. Sinal do nicho: unhas."],
+    ["Jo. Esmalteria", "Jardim Azano I", "R. Javarandim, 130", "(11) 98358-1442", "salao", "esmalteria: manicure e nail polish · estúdio de unhas atendendo por agenda no app de terceiros — o card deles É o app, não um site próprio. Sinal do nicho: unhas."],
+    ["NoemiNails", "Vila Natal", "R. Cajá Natal, 124", "(11) 93731-9500", "salao", "manicure, pedicure, spa dos pés · estúdio de unhas atendendo por agenda no app de terceiros — o card deles É o app, não um site próprio. Sinal do nicho: unhas."],
+    ["Studio Thalima", "Jardim Quarto Centenário", "R. Armando Vieira, 477", "(11) 97026-6078", "salao", "alongamento em gel, manicure e pedicure · estúdio de unhas atendendo por agenda no app de terceiros — o card deles É o app, não um site próprio. Sinal do nicho: unhas."],
+    ["Elegance Esmalteria", "Jardim das Pedras", "Av. Carlos Barbosa Santos, 47", "(11) 94024-8046", "salao", "manicure, russa, unhas em gel · estúdio de unhas atendendo por agenda no app de terceiros — o card deles É o app, não um site próprio. Sinal do nicho: unhas."],
+    ["Beauty Velasco", "Jardim Borba Gato", "R. Valsa Chorosa, 28 - casa 2", "(11) 98539-1990", "salao", "manicure, pedicure, nail polish · estúdio de unhas atendendo por agenda no app de terceiros — o card deles É o app, não um site próprio. Sinal do nicho: unhas."],
+    ["Studio Beatriz Naiills", "Parque Residencial Cocaia", "R. Francisco Montesuma, 91", "(11) 91268-5420", "salao", "manicure e pedicure · estúdio de unhas atendendo por agenda no app de terceiros — o card deles É o app, não um site próprio. Sinal do nicho: unhas."],
+    ["Gabi Nails", "Jardim Noronha", "R. Francisco de Zurbarán", "(11) 98596-8923", "salao", "unhas (manicure) · estúdio de unhas atendendo por agenda no app de terceiros — o card deles É o app, não um site próprio. Sinal do nicho: unhas."],
+    ["Studio Gabriela Bento (Sobrancelhas e Micropigmentação)", "Castro Alves (Grajaú)", "R. Francisco Sanches Dias, 285", "(11) 97026-3251", "estetica", "sobrancelha e micropigmentação · estúdio de beleza atendendo por agenda no app de terceiros — o card deles É o app, não um site próprio. Sinal do nicho: sobrancelha."],
+    ["Studio Letícia Trindade (Design de Sobrancelhas)", "Parque América", "R. Prof. Oscar Barreto Filho, 121 - 2º andar", "(11) 95877-5559", "estetica", "sobrancelha, micropigmentação, cílios · estúdio de beleza atendendo por agenda no app de terceiros — o card deles É o app, não um site próprio. Sinal do nicho: sobrancelha."],
+    ["Lu Velozzo Clinic Beauty", "Jardim Myrna", "Av. Carlos Alberto Bastos Machado, 401B", "(11) 98110-4084", "estetica", "sobrancelha, lash lift e tintura de cílios · estúdio de beleza atendendo por agenda no app de terceiros — o card deles É o app, não um site próprio. Sinal do nicho: sobrancelha."],
+    ["Studio Bianca Dantas", "Jardim das Imbuitas", "R. Giovanni Romanelli, 346", "(11) 98274-0539", "estetica", "lash lift e design de sobrancelha · estúdio de beleza atendendo por agenda no app de terceiros — o card deles É o app, não um site próprio. Sinal do nicho: cilios."],
+    ["Andressa Oliveira (Cílios e Sobrancelhas)", "Cidade Dutra", "R. Acuti, 642", "(11) 98066-4295", "estetica", "cílios, sobrancelha, lamination · estúdio de beleza atendendo por agenda no app de terceiros — o card deles É o app, não um site próprio. Sinal do nicho: cilios."],
+    ["Amanda Santos (Terapias de Beleza)", "Terceira Divisão de Interlagos", "Av. Pedro Rochel Götschfritz, 36", "(11) 97614-8234", "estetica", "design de sobrancelha e terapias de beleza · estúdio de beleza atendendo por agenda no app de terceiros — o card deles É o app, não um site próprio. Sinal do nicho: sobrancelha."],
+    ["Auryn Maison", "Vila São José (Cidade Dutra)", "Rua Rubem Souto de Araújo, 894", "(11) 91709-6985", "estetica", "sobrancelha e lash lift · estúdio de beleza atendendo por agenda no app de terceiros — o card deles É o app, não um site próprio. Sinal do nicho: sobrancelha."],
+    ["Estúdio Grasiela Matos", "Rio Bonito", "R. Manoel da Rocha Lins, 150", "(11) 98761-5830", "estetica", "alongamento de cílios, micropigmentação de olho, boca e sobrancelha · estúdio de beleza atendendo por agenda no app de terceiros — o card deles É o app, não um site próprio. Sinal do nicho: cilios."]
+  ];
+
+  (function () {
+    var dgA = function (t) { return String(t || "").replace(/\D/g, ""); };
+    var SEGA = { salao: "salao", estetica: "estetica" };
+    function nkA(t) { return String(t || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, ""); }
+    var telA = {}, nomA = {};
+    (S.prospects || []).forEach(function (p) {
+      [p.telefone, p.whats, p.fixo].forEach(function (t) { var d = dgA(t); if (d.length >= 10) telA[d.slice(-9)] = 1; });
+      nomA[nkA(p.nome) + "|" + nkA(p.bairro)] = 1;
+    });
+    var addA = 0, dupTelA = 0, dupNomA = 0, dddA = 0, semWhatsA = 0;
+    LOTE_RAIO10.forEach(function (a) {
+      var nome = a[0], bairro = a[1], end = a[2], tel1 = a[3], seg = SEGA[a[4]] || "salao", obs = a[5] || "";
+      var d = dgA(tel1);
+      if (d.length === 11 && d.slice(0, 2) !== "11") { dddA++; return; }        /* DDD de fora: não chamar */
+      var celular = d.length === 11 && d.charAt(2) === "9";
+      var antigo = d.length === 10 && /[6-9]/.test(d.charAt(2));
+      if (!celular && !antigo) { semWhatsA++; return; }                          /* a regra do zap na porta */
+      var chave = d.slice(-9);
+      if (telA[chave]) { dupTelA++; return; }
+      if (nomA[nkA(nome) + "|" + nkA(bairro)]) { dupNomA++; return; }
+      telA[chave] = 1; nomA[nkA(nome) + "|" + nkA(bairro)] = 1;
+      S.prospects.push({
+        nome: nome, segmento: seg, bairro: bairro, zona: "Sul", cidade: "São Paulo", uf: "SP",
+        endereco: end, temSite: null, temInstagram: null, prioridade: "alta",
+        telefone: tel1, whats: tel1, ticket: seg === "estetica" ? 120 : 120,
+        origem: "Agenda de beleza por bairro (coleta 04/set/2026 · rodada 10)",
+        obs: obs + " Número publicado como 'call to book' do próprio estúdio: é celular — confirmar no wa.me antes de oferecer (ele só marca 🟢 depois de abrir)."
+      });
+      addA++;
+    });
+    S.loteRaios = { em: "04/09/2026 (rodada 10)", fonte: "Agenda de beleza por bairro (Zona Sul) — 22 estúdios com celular", adicionados: addA, pulados: dupTelA + dupNomA + dddA + semWhatsA };
+    S.rodadasSeed = (S.rodadasSeed || []).concat([{ em: "04/09/2026 (rodada 10)", fonte: "Fresha unhas + cílios/sobrancelha — Zona Sul", adicionados: addA, pulados: dupTelA + dupNomA + dddA + semWhatsA, dddFora: dddA, dupTel: dupTelA, dupNom: dupNomA, semWhats: semWhatsA }]);
+  })();
+
   var LOTE = [
     /* ---- Sorocaba (DDD 15) ---- */
     ["Barbearia Gordo", "Sorocaba", "R. João Gabriel Mendes, 907 - Jardim Maria do Carmo", "(15) 99825-5293"],
@@ -1873,7 +2271,7 @@ window.ZEIK_SEED = {
   S.prospects.forEach(function (p) { if (p.zona === "Interior" && p.cidade) cidades[p.cidade] = 1; });
   S.bairrosPorZona = S.bairrosPorZona || {};
   S.bairrosPorZona.Interior = Object.keys(cidades).sort();
-  S.versao = 14;   // rodada 5: +115 empresas do guia de CNPJ (Capão Redondo e Grajaú)
+  S.versao = 19;   // rodada 10: +20 estúdios de unha/cílio/sobrancelha da Zona Sul (22 digitados, 2 repetidos cortados)
   S.loteInterior = { em: "02/09/2026", fonte: "Solutudo — guia público de empresas", adicionados: novos, pulados: repetidos };
 })();
 
@@ -1974,6 +2372,9 @@ window.ZEIK_SEED = {
         mostrarValorNaAbordagem: false,
         metaSitesMes: 8,
         metaProspectsDia: 10,
+        /* Rodada 6: "vou precisar de 500 prospects, vamos repetir até chegar".
+           É meta de leads CHAMÁVEIS no raio (nicho liberado), não de cadastro. */
+        metaProspects: 1000,
         custoFixoMes: 250,
         /* Onde o número do preço aparece: "nunca" | "quando-perguntar" | "sempre".
            O padrão é o pedido do Ezequiel: nada de preço na abordagem. */
@@ -1981,6 +2382,22 @@ window.ZEIK_SEED = {
         /* Ritmo de disparo. Baixo de propósito: número novo que manda muito é
            bloqueado pelo WhatsApp e você perde a linha inteira. */
         limiteDisparoDia: 40,
+        /* Rodada 6, pedido dele na cara: "você passou muita barbearia e
+           cabeleireiro" e "pizzaria é muito difícil de atender a mensagem".
+           Estes nichos ficam FORA da fila de disparo — o cadastro continua na
+           base (histórico, preço, quem já respondeu), só para de ser abordado.
+           Ele troca isso em Configurações; vazio = chama todo mundo de novo. */
+        nichosFora: ["barbearia", "salao", "pizzaria"],
+        /* Rodada 7, pedido dele: "quero só WhatsApp". Com isto ligado, número que
+           não abre conversa (fixo) não entra na fila — nem hoje, nem na próxima.
+           Desliga e o fixo volta a ser tentado (por ligação, porque zap não abre). */
+        somenteWhats: true,
+        /* Rodada 8, pedido dele: "só coloque lead QUENTE, que vai tá doido pra ter
+           um site". Não é adjetivo solto — é pontuação (Z.quenteDe): nicho que vive
+           de agendamento + sem site + quem decide é o dono + já vendendo pelo zap.
+           Ligado, a fila só aceita quem passa na régua; ele desliga no card. */
+        somenteQuentes: true,
+        quenteMinimo: 7,
         cadencia: { antesMin: 4, antesMax: 8, pacote: 10, pausaMin: 10, pausaMax: 20 },
         /* Roteiro em camadas: abertura, gatilho depois da resposta automática do
            comércio, convite de reunião com dois horários, e o "não apareceu". */
@@ -2210,6 +2627,8 @@ window.ZEIK_SEED = {
     looksEndLista: looksEndLista, parseEndLista: parseEndLista,
     looksGuiaCnpj: looksGuiaCnpj, parseGuiaCnpj: parseGuiaCnpj, segPorCnae: segPorCnae, fonesRepetidos: fonesRepetidos, pautaRaio: pautaRaio,
     criaLoteCode: criaLoteCode, looksLoteCode: looksLoteCode, parseLoteCode: parseLoteCode,
+    /* getter: o NICHOS é um var definido mais abaixo — por valor aqui seria undefined */
+    get NICHOS() { return NICHOS; }, nichoDe: nichoDe, nichoLabel: nichoLabel, nichosFora: nichosFora, nichoBloqueado: nichoBloqueado, nichoResumo: nichoResumo, ehChamavel: ehChamavel, resumoChamavel: resumoChamavel, quenteDe: quenteDe, ehQuente: ehQuente, QUENTE_PONTOS: QUENTE_PONTOS,
     doisHorarios: doisHorarios, pixCopiaECola: pixCopiaECola, crc16: crc16,
     apiDisparar: apiDisparar, parseColeta: parseColeta, detectSeg: detectSeg,
     CIDADES_INTERIOR: CIDADES_INTERIOR,
@@ -2572,7 +2991,9 @@ window.ZEIK_SEED = {
       var hoje = todayISO();
       var pool = st.prospects.filter(function (p) {
         if (o.somenteSemContato && (p.status !== "novo" && p.status !== "adiado")) return false;
-        if (o.canal === "whatsapp" && !numWhatsapp(p)) return false;
+        /* regra dele, rodada 7: sem celular não tem conversa. Vale mesmo quando o
+           payload não pediu canal nenhum — a peneira mora no config agora. */
+        if ((o.canal === "whatsapp" || (st.config && st.config.somenteWhats !== false)) && !numWhatsapp(p)) return false;
         if (p.whatsOk === "nao") return false;
         if (o.segmento && p.segmento !== o.segmento) return false;
         if (o.zona === "Interior" && !ehInterior(p)) return false;
@@ -2580,10 +3001,18 @@ window.ZEIK_SEED = {
         if (o.cidade && String(p.cidade || "").toLowerCase() !== String(o.cidade).toLowerCase()) return false;
         if (o.raio || o.zona === "Raio") { if (!ehRaio(p, st.config)) return false; }
         if (o.minScore != null && self.score(p) < o.minScore) return false;
+        /* Nicho fora da fila: ele pediu pra parar de chamar barbearia, salão de
+           beleza e pizzaria. O lead continua na base e o script continua pronto —
+           quem decide é config.nichosFora (Configurações → 🚫 nichos fora). */
+        if (o.respeitarNichos !== false && nichoBloqueado(p, st.config)) return false;
+        /* rodada 8: "só lead quente que vai tá doido pra ter um site" — sem isto a
+           fila enche de CNPJ morno que não compra nada e queima o disparo do dia. */
+        if (o.somenteQuentes !== false && st.config && st.config.somenteQuentes !== false && !ehQuente(p, st.config)) return false;
         if (o.pularJaContatado && p.ultimoContato) return false;
         return true;
       }).sort(function (a, b) {
-        var d = ((b.whatsOk === "sim" ? 12 : 0) + self.score(b)) - ((a.whatsOk === "sim" ? 12 : 0) + self.score(a));
+        var d = ((b.whatsOk === "sim" ? 12 : 0) + self.score(b) + quenteDe(b, st.config).pontos * 2) -
+                 ((a.whatsOk === "sim" ? 12 : 0) + self.score(a) + quenteDe(a, st.config).pontos * 2);
         return d;
       }).slice(0, o.limite || 50);
       var c = {
@@ -2899,7 +3328,7 @@ window.ZEIK_SEED = {
         stp.prospects.push(p); porNome[k] = p; novos++;
       });
       if (obj.config && !o.semConfig) {
-        var keep = ["cadencia", "limiteDisparoDia", "rota", "voz", "pix", "mpLink", "disparoApi", "politicaPreco", "basePrivada", "lockInatividade"];
+        var keep = ["cadencia", "limiteDisparoDia", "rota", "voz", "pix", "mpLink", "disparoApi", "politicaPreco", "nichosFora", "somenteWhats", "somenteQuentes", "quenteMinimo", "metaProspects", "basePrivada", "lockInatividade"];
         Object.keys(obj.config).forEach(function (k) {
           if (keep.indexOf(k) < 0 && k !== "bairros" && k !== "bairrosPorZona") return;
           if (obj.config[k] === undefined || obj.config[k] === null) return;
@@ -3056,10 +3485,21 @@ window.ZEIK_SEED = {
      rodar um lote por vez, sempre no mesmo lugar (Maps ou guia do bairro), e deixar o
      painel contar o que falta. alvo é por par bairro×nicho.                       */
   var PautaNichos = [
-    { id: "food", alvo: 40 }, { id: "odonto", alvo: 18 }, { id: "estetica", alvo: 22 },
-    { id: "salao", alvo: 30 }, { id: "barbearia", alvo: 30 }, { id: "pet", alvo: 20 },
-    { id: "auto", alvo: 26 }, { id: "constru", alvo: 24 }, { id: "varejo", alvo: 34 },
-    { id: "academia", alvo: 16 }, { id: "servicos", alvo: 22 }, { id: "escola", alvo: 14 }
+    /* Rodada 6: alvos reajustados com a meta dele (500 chamáveis no raio) e com a
+       peneira nova — e cada linha declara o nicho que ela caça, pra pauta parar de
+       mandar ele prospectar o que ele mandou parar de chamar. */
+    { id: "food", alvo: 45, nichos: ["restaurante", "lanchonete", "padaria", "mercearia"] },
+    { id: "odonto", alvo: 24, nichos: ["odonto"] },
+    { id: "estetica", alvo: 30, nichos: ["estetica", "manicure"] },
+    { id: "salao", alvo: 12, nichos: ["salao"], foraSe: "salao" },
+    { id: "barbearia", alvo: 8, nichos: ["barbearia"], foraSe: "barbearia" },
+    { id: "pet", alvo: 24, nichos: ["pet"] },
+    { id: "auto", alvo: 35, nichos: ["auto"] },
+    { id: "constru", alvo: 30, nichos: ["constru"] },
+    { id: "varejo", alvo: 45, nichos: ["varejo"] },
+    { id: "academia", alvo: 20, nichos: ["academia"] },
+    { id: "servicos", alvo: 46, nichos: ["servicos", "clinica", "outro"] },
+    { id: "escola", alvo: 20, nichos: ["escola"] }
   ];
   function slugBairro(t) {
     return semAcento(t).replace(/\s+/g, "-").replace(/-+/g, "-").replace(/^-|-$/g, "");
@@ -3085,7 +3525,7 @@ window.ZEIK_SEED = {
     var nomeSeg = {};
     segs.forEach(function (g) { nomeSeg[g.id] = g.nome; });
     var bairros = raioLista(cfg);
-    var porBairro = {};
+    var porBairro = {}, porTrav = {};
     (prospects || []).forEach(function (p) {
       if (!ehRaio(p, cfg)) return;
       var b = semAcento(p.bairro || p.cidade || "");
@@ -3094,17 +3534,28 @@ window.ZEIK_SEED = {
       if (!chave) return;
       porBairro[chave] = porBairro[chave] || {};
       porBairro[chave][p.segmento] = (porBairro[chave][p.segmento] || 0) + 1;
+      /* o que está travado por nicho NÃO conta como "temos": senão a pauta mostra
+         "Capão/serviços: 39 de 46" e 27 daquelas pessoas ele não pode chamar */
+      if (nichoBloqueado(p, cfg)) {
+        porTrav[chave] = porTrav[chave] || {};
+        porTrav[chave][p.segmento] = (porTrav[chave][p.segmento] || 0) + 1;
+      }
     });
-    var alvo = [], falta = 0, hoje = 0;
+    var alvo = [], falta = 0, hoje = 0, fora = nichosFora(cfg);
     bairros.slice(0, 6).forEach(function (b, bi) {
       var rotulo = rot[bi] || b;
       PautaNichos.forEach(function (n) {
-        var tem = (porBairro[b] || {})[n.id] || 0;
+        var bruto = (porBairro[b] || {})[n.id] || 0;
+        var trav = (porTrav[b] || {})[n.id] || 0;
+        var tem = bruto - trav;
+        /* nicho que ele tirou da fila: se sobrou zero chamável ali, a linha some da
+           pauta (mandar caçar barbearia que ele não chama é desperdício de rodada) */
+        if (n.foraSe && fora.indexOf(n.foraSe) >= 0 && tem <= 0) return;
         var devem = n.alvo, resta = Math.max(0, devem - tem);
         falta += resta; hoje += tem;
         alvo.push({
           bairro: rotulo, bairroKey: b, segmento: n.id, nicho: nomeSeg[n.id] || n.id,
-          temos: tem, alvo: devem, resta: resta,
+          temos: tem, bruto: bruto, travados: trav, alvo: devem, resta: resta,
           mapa: "site:google.com/maps " + (nomeSeg[n.id] || n.id).split(" ")[0].toLowerCase() + " " + rotulo + " são paulo",
           buscaMaps: (nomeSeg[n.id] || "comércio").split(" ")[0].toLowerCase() + " em " + rotulo + ", São Paulo",
           url: "https://endlista.com.br/bairro/" + slugCategoria(n.id) + "/" + b + "/sao-paulo/sp",
@@ -3274,6 +3725,245 @@ window.ZEIK_SEED = {
     });
     return saida;
   }
+
+  /* ------------------------------------------------------------------ */
+  /* NICHOS — a peneira que o SEGMENTO não faz                            */
+  /* O segmento decide a MENSAGEM (a dor, o gancho, o script). O nicho     */
+  /* decide se o lead ENTRA NA FILA. Camadas separadas de propósito:       */
+  /* "Barbearia" e "Salão" têm scripts bons, mas ele já tem barbearia      */
+  /* demais no bairro e não quer mais vender pra esse público — então o    */
+  /* cadastro fica na base, com script pronto, só trancado na triagem.     */
+  /* A fonte é o nome (o guia traz razão social + fantasia); sem nome      */
+  /* claro o fallback é o segmento, nunca um chute livre.                  */
+  /* ------------------------------------------------------------------ */
+  var NICHOS = [
+    { id: "restaurante", nome: "Restaurante / comida pronta", emoji: "🍽️" },
+    { id: "padaria", nome: "Padaria / confeitaria", emoji: "🥖" },
+    { id: "lanchonete", nome: "Lanchonete / hamburgueria / bar", emoji: "🍔" },
+    { id: "mercearia", nome: "Mercado / mercearia / distribuidora", emoji: "🛒" },
+    { id: "clinica", nome: "Clínica / consultório / laboratório", emoji: "🩺" },
+    { id: "odonto", nome: "Dentista / clínica odontológica", emoji: "🦷" },
+    { id: "estetica", nome: "Estética / spa / sobrancelha", emoji: "✨" },
+    /* rodada 8: ele pediu de volta quem trabalha com cílios e sobrancelha — "aquela
+       menina que mexe com sobrancelha pode colocar". É nicho próprio, e o CNAE delas
+       é o mesmo do salão ("Cabeleireiros, manicure e pedicure"), por isso a regra
+       vem ANTES da linha do salão no classificador. */
+    { id: "lash", nome: "Lash designer / sobrancelhas / cílios", emoji: "👁️" },
+    { id: "manicure", nome: "Manicure / pedicure / unhas", emoji: "💅" },
+    { id: "academia", nome: "Academia / estúdio de movimento", emoji: "🏋️" },
+    { id: "escola", nome: "Escola / curso / autoescola", emoji: "🎓" },
+    { id: "pet", nome: "Pet shop / veterinária", emoji: "🐶" },
+    { id: "auto", nome: "Oficina / auto center", emoji: "🔧" },
+    { id: "constru", nome: "Material de construção / ferragem", emoji: "🧱" },
+    { id: "varejo", nome: "Loja / boutique / ótica", emoji: "🛍️" },
+    { id: "servicos", nome: "Serviços (festas, reforma, papelaria…)", emoji: "🧰" },
+    { id: "outro", nome: "Sem categoria no cadastro", emoji: "🏪" },
+    /* os três últimos são exatamente o que ele mandou parar de mandar */
+    { id: "barbearia", nome: "Barbearia / corte masculino", emoji: "💈", fora: true },
+    { id: "salao", nome: "Salão de beleza / cabeleireiro", emoji: "💇‍♀️", fora: true },
+    { id: "pizzaria", nome: "Pizzaria", emoji: "🍕", fora: true }
+  ];
+
+  /* Junta nome + obs + CNAE e derruba acento/pontuação: os testes abaixo
+     são todos em caixa baixa sem acento, então "Clínica" vira "clinica". */
+  function NOME_LIMPO() {
+    var x = "";
+    for (var i = 0; i < arguments.length; i++) x += " " + String(arguments[i] == null ? "" : arguments[i]);
+    return x.toLowerCase()
+      .normalize("NFD").replace(/[̀-ͯ]/g, "")
+      .replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim();
+  }
+
+  /* Ordem = decisão. Cada linha de cima vence a de baixo, e a ordem aqui
+     carrega erros que eu já cometi lendo guia demais:
+     • "Salão de Festas" NÃO é salão de beleza (por isso a 1ª linha);
+     • manicure antes de salão: "Salão Bella Unhas" vende unha;
+     • barbearia antes de salão: "Salão Barbearia Ideal" é público masculino;
+     • pizzaria antes de restaurante: "Restaurante e Pizzaria Figueiredo" é
+       pizzaria, e pizzaria ele não quer na fila;
+     • escola antes de "auto" (autoescola) e padaria antes de pet (petit). */
+  var RE_NICHO = [
+    ["servicos", /salao de festas|salao( )de( )festa|espaco para eventos|buffet|cerimonial|casa de shows|audit?orio|chacara/],
+    ["pizzaria", /pizzar|pizzeria|calzone|porcao de pizza/],
+    ["barbearia", /barbear|barbeir|barber|navalha|corte masculino|barba e cabelo|salao masculino|macho man/],
+    /* "lash" vem antes de tudo de beleza: cílios/sobrancelha é o que ele QUER, e o
+       CNAE dessas meninas é o do salão — se a linha de cabelo rodar antes, ela some. */
+    ["lash", /lash|brow|(^| )cilios?( |$)|extensao de cilios|sobrancelhas?( |$)|design de sobrancelha|depila(?:cao)? de sobrancelha|micropigmentac|henna( |$)|permanent make|maquiag|cosmetolog/],
+    /* O CNAE "Cabeleireiros, manicure e pedicure" é o MEI que faz cabelo E unha.
+       Pra ele, unha sozinha é cliente; cabelo junto é o salão que ele não quer —
+       então a palavra "cabeleireir" puxa pra salao ANTES de a manicure ser testada. */
+    ["salao", /cabeleireir|cabeleire|cabelos?( |$)|cabelo de|escova|progressiva|colorista|tranca|chapinha|salao de beleza|saloes de beleza|beleza feminina|corte e escova|masqueamento|mascamento/],
+    ["manicure", /manicure|pedicure|nail|unhas|unha de gel|esmalter|studio de unhas|spa das unhas|alongamento de unhas/],
+    ["salao", /salao de|salao/],
+    ["estetica", /estetica|esthetic|skin|depila|cera quente|drenagem|massagem (modeladora|relax)|microagulh|laser|sobrancelha|(^| )cilios( |$)|botox|peeling|harmonizacao|limpeza de pele|cosmeto|(^| )spa( |$)|salao de beleza( e estetica)?( |$)/],
+    ["odonto", /odont|dentist|implante dent|ortodont|aparelho dentari|clinica dentaria|protese dent|clareamento dental/],
+    ["escola", /escola|creche|educacao (infantil|basica|especial)|ensino (fundamental|medio|infantil)|cursinho|vestibular|concurso publico|curso (pre|livre|tecnico)|idiomas|autoescola|cdc |formacao profissional|instituicao de ensino|instituicoes de ensino|faculdade|professor|reforco escolar|bercario/],
+    ["academia", /academia|crossfit|pilates|gym|box de treino|doj|muay thai|jiu ?jitsu|karate|taekwondo|luta|personal train|estudio de (movimento|treino|danca)|natacao|fisicultu/],
+    ["pet", /pet ?shop|petshop|pet center|veterinar|banho e tosa|tosa higi|aquario|rao (para|de)|pets|clube canino|dog (shop|sitter)|gato/],
+    ["auto", /auto|oficina|mecanic|funilar|pintura automot|borracharia|retifica|autopeca|moto|motel|troca de oleo|veiculo|cambio|injecao eletronica|alinhamento|balanceamento|suspensao/],
+    ["constru", /constru|material de |materiais de |tintas|ferragem|deposito de materia|casa de constru|hidraulica|telhad|esquadri|marmoraria|granit|vedacao|madeira|ferro e aco|aluminio|vidros temper|pre ?moldad/],
+    ["restaurante", /restaurante|cantina|churrascaria|self ?service|marmitaria|marmitex|esfiharia|kibe|salgadaria|gastronomia|comida (por quilo|caseira|natural)|frango assado|caldo de|sopa|refeic|cozinha|rotisseria|porcoes|comercial de alimentos|pescados|graos e oleaginosas/],
+    ["lanchonete", /lanchonete|hamburgueria|burger|sanduiche|pastelaria|pastel|salgados|sorveteria|acai|bacon|lanche|dog |doguinho|cachorro ?quente|choperia|bar( |$)|petisc|frango frito|crepe|wrap|taco|marmid/],
+    ["padaria", /padaria|panificadora|confeitaria|doces|doceria|bolos|folheado|pao de|queijaria|laticin|delicatessen|brigadeir|confeiteir/],
+    ["mercearia", /mercadinho|mercado|mercearia|armazem|acougue|hortifruti|sacolao|atacad|distribuidora|deposito|bebidas|adega|carnes|verduras|frutas|graos|agua e gas|gas e agua|revenda de gas|mercearia/],
+    ["clinica", /clinica|consultorio|policlinic|laborator|analises clin|fisioter|psicolog|psicanal|fonoau|nutricion|raio x|ultrassom|ecograf|vacina|enfermag|clin med|medic|optometr|oculista|oftalmolog|podolog|acupunt|diagnos|exame|cardio|pediatr|dermatolog|ortoped|gineco|urolog|endocrin|geriatr|pronto ?atendimento|pronto Socorro|saude (mental|da mulher|da familia)|home care|cirurg|estetoscopio|clinico geral/],
+    ["varejo", /loja|boutique|moda|roupas|calcado|otica|otico|joalheria|relojoaria|utilidades|presentes|flores|floricult|viveiro|moveis|eletrodomestic|informatica|papelaria|livraria|material (escolar|papel|construcao|de expediente)|cosmetico|perfumaria|artigos( de)?|magazine|shopping|brecho|bazar|souvenir|materiais/],
+    ["servicos", /servico|reforma|eletricista|eletrica|encanador|serralher|pintor|pintura|vidracaria|vidrac|limpeza|lavanderia|tinturaria|costura|costureira|alfaiat|chaveiro|dedetiza|imobiliaria|contab|contador|advog|juridic|seguros|grafica|impressao|fotograf|filmagem|assistencia tecnica|conserto|manutencao|instalac|montagem|frete|mudanca|transporte|taxis|lotacao|seguranca|vigilancia|portaria|copiadora|traduc|digitacao|corretor|consorcio|banco|loteria|loterica|cartorio|secagem|representac|engenharia|arquitet|impermeab|desentupidora|desinch|guincho|reboque|zelador|faxina/],
+    ["excluido", /^igreja|^paroquia|templo|missao evangel|ministerio|associacao de moradores|assoc de pais|^apm |condominio|sindicato|society|campestre|^cmef|^ee |^emef|^prof |^cre |^drem|^nudire|fundacao|^ong |^asso$|exaltacao|testemunhas|assembleia de deus|catolic/]
+  ];
+
+  /* Nicho -> rótulo (a UI mostra o nome bonito, o código usa o id). */
+  function nichoLabel(id) {
+    for (var i = 0; i < NICHOS.length; i++) if (NICHOS[i].id === id) return NICHOS[i];
+    return { id: id, nome: id, emoji: "🏷️" };
+  }
+
+  function nichoDe(p) {
+    if (!p) return "outro";
+    if (p.nicho) return p.nicho;
+    var x = NOME_LIMPO(p.nome, p.obs, p.cnae, p.racao, p.descricao, p.atividade);
+    for (var i = 0; i < RE_NICHO.length; i++) if (RE_NICHO[i][1].test(x)) return RE_NICHO[i][0];
+    var seg = String(p.segmento || "");
+    if (seg === "barbearia") return "barbearia";
+    if (seg === "salao") return /lash|brow|sobrancelha|cilios/i.test(String(p.nome || "")) ? "lash" : "salao";
+    if (seg === "estetica") return "estetica";
+    if (seg === "odonto") return "odonto";
+    if (seg === "pet") return "pet";
+    if (seg === "auto") return "auto";
+    if (seg === "constru") return "constru";
+    if (seg === "academia") return "academia";
+    if (seg === "escola") return "escola";
+    if (seg === "food") return "restaurante";
+    return "outro";
+  }
+
+  /* O padrão vem do NICHOS[].fora; a escolha dele no config manda por cima
+     (nichosFora: [] = "pode chamar todo mundo de novo"). */
+  function nichosFora(cfg) {
+    if (cfg && Array.isArray(cfg.nichosFora)) return cfg.nichosFora.slice();
+    var d = [];
+    for (var i = 0; i < NICHOS.length; i++) if (NICHOS[i].fora) d.push(NICHOS[i].id);
+    return d;
+  }
+
+  function nichoBloqueado(p, cfg) {
+    var fora = nichosFora(cfg);
+    if (!fora.length) return false;
+    return fora.indexOf(nichoDe(p)) >= 0;
+  }
+
+  /* Contagem por nicho: pra regra dos 500 ele precisa saber quantos leads
+     UTILIZAVEIS existem, não quantos cadastros existem. */
+  function nichoResumo(lista, cfg) {
+    var por = {}, i, id;
+    lista = lista || [];
+    for (i = 0; i < lista.length; i++) {
+      id = nichoDe(lista[i]);
+      por[id] = (por[id] || 0) + 1;
+    }
+    var arrFora = nichosFora(cfg), fora = {};
+    for (i = 0; i < arrFora.length; i++) fora[arrFora[i]] = 1;
+    var travados = 0, nomes = [];
+    Object.keys(por).sort(function (a, b) { return por[b] - por[a]; }).forEach(function (k) {
+      if (fora[k]) { travados += por[k]; nomes.push(k + ":" + por[k]); }
+    });
+    return { por: por, travados: travados, nomes: nomes, fora: arrFora.slice(), total: lista.length, disponiveis: lista.length - travados };
+  }
+
+
+  /* ------------------------------------------------------------------ */
+  /* CHAMÁVEL — a regra dele, rodada 7                                    */
+  /* "quero só WhatsApp": número fixo não abre conversa, então lead sem    */
+  /* celular confirmado não é prospect, é ficha de trabalho. O painel      */
+  /* passa a contar CHAMÁVEL = tem número de celular + nicho liberado +    */
+  /* não marcado como "não tem WhatsApp". É este número que vira meta,     */
+  /* não a contagem de cadastros (que enchia os olhos e não a agenda).     */
+  /* ------------------------------------------------------------------ */
+  function ehChamavel(p, cfg) {
+    if (!p) return false;
+    if (p.whatsOk === "nao") return false;
+    if (!numWhatsapp(p)) return false;
+    return !nichoBloqueado(p, cfg);
+  }
+
+  function resumoChamavel(prospects, cfg) {
+    var todos = (prospects || []).filter(function (p) { return ehRaio(p, cfg); });
+    var semWhats = todos.filter(function (p) { return !numWhatsapp(p) && p.whatsOk !== "nao"; });
+    var nichoFora = todos.filter(function (p) { return nichoBloqueado(p, cfg); });
+    var cham = todos.filter(function (p) { return ehChamavel(p, cfg); });
+    return {
+      noRaio: todos.length, chamaveis: cham.length,
+      soFixo: semWhats.length, travadosPorNicho: nichoFora.length,
+      quentes: cham.filter(function (p) { return ehQuente(p, cfg); }).length,
+      mornos: cham.filter(function (p) { return !ehQuente(p, cfg); }).length,
+      /* anel vizinho: quente, com celular, só que fora dos bairros do raio — ele
+         decide na hora se atende (a fila sem 📍 já leva), o número tem que aparecer */
+      quentesFora: (prospects || []).filter(function (p) { return !ehRaio(p, cfg) && numWhatsapp(p) && !nichoBloqueado(p, cfg) && ehQuente(p, cfg); }).length,
+      semSite: cham.filter(function (p) { return p.temSite === false; }).length
+    };
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* LEAD QUENTE — a régua do "vai tá doido pra ter um site"             */
+  /* Ele cansou de lead morno: "só coloque lead quente". Então o painel  */
+  /* para de fingir que todo CNPJ sem site é oportunidade. Cada ponto é  */
+  /* um sinal que dá pra apontar o dedo, não um palpite:                 */
+  /*   nicho que VIVE de agendamento  = site com horário paga a fatura   */
+  /*   sem site                       = a oportunidade existe           */
+  /*   já vendendo pelo zap/IG        = já gasta energia com marketing   */
+  /*   MEI / dono atende              = quem ouve é quem assina         */
+  /*   celular confirmado             = dá pra falar hoje               */
+  /* Abaixo do mínimo o lead continua na base (com script) — só não      */
+  /* desperdiça o disparo do dia dele.                                   */
+  /* ------------------------------------------------------------------ */
+  var QUENTE_PONTOS = {
+    lash: 6, manicure: 6, estetica: 5, clinica: 5, odonto: 5, academia: 4,
+    escola: 4, pet: 4, restaurante: 3, lanchonete: 3, padaria: 2, servicos: 2,
+    varejo: 2, constru: 2, auto: 2, merceria: 1, mercearia: 1, outro: 0,
+    /* travados por nicho ganham negativo: se ele liberar o nicho, ainda tem que
+       provar que é quente — a lista liberada não virar lista aberta */
+    barbearia: -4, salao: -4, pizzaria: -4
+  };
+
+  /* O obs do seed carrega instrução minha ("testar no wa.me e marcar 🟢", "o guia
+     publica…"). Nada disso é sinal de que o dono quer um site — e a régua chegava
+     em 12 pontos pra TODO mundo por causa disso. Antes de pontuar, fora a burocracia. */
+  /* A nota do cadastro é [sinal real do negócio] · [burocracia minha]. O corte é no
+     primeiro marcador de burocracia — o que vem depois não é fato do lead, é
+     instrução minha, e não pode virar ponto. */
+  var OBS_LIXO = /cadastro ?p[úu]blico|telefone de registro|telefone do an[úu]ncio|o guia (publica|lista|traz)|n[úu]mero de registro|wa\.me|conferir no|confirmar no|solutudo|apontador|endlista|coleta \d|rodada \d/i;
+  function obsUtil(p) {
+    var raw = String((p && p.obs) || "");
+    var m = raw.search(OBS_LIXO);
+    if (m > 0) raw = raw.slice(0, m);
+    else if (m === 0) return "";
+    return raw.replace(/[,;:·•]+\s*$/, "");
+  }
+
+  function quenteDe(p, cfg) {
+    var mot = [], t = 0;
+    if (!p) return { quente: false, pontos: 0, motivo: [] };
+    if (p.temSite === true) return { quente: false, pontos: -1, motivo: ["já tem site"] };
+    var n = nichoDe(p);
+    t += QUENTE_PONTOS[n] || 0;
+    if (QUENTE_PONTOS[n] >= 4) mot.push(nichoLabel(n).emoji + " " + nichoLabel(n).nome + " vive de agendamento");
+    var x = NOME_LIMPO(p.nome, obsUtil(p), p.instagram, p.cnae, p.racao, p.descricao, p.site);
+    /* "insta" sozinho pegava "INSTALAÇÃO elétrica" e inflava o score de eletricista —
+       agora é a palavra Instagram inteira (ou "@loja" digitada no campo insta). */
+    if (/instagram|(^| )insta($| )|social|perfil|seguidor/.test(x) || /(^|[^a-z0-9.])@[a-z0-9._]+/.test(String(p.instagram || ""))) { t += 3; mot.push("📸 já investe em imagem (rede social) e não tem site"); }
+    if (/ifood|delivery|encomenda|catalogo|marca propria|pedido pelo zap|orcamento pelo zap|agend|reserva|marcar/.test(x)) { t += 3; mot.push("vende pelo zap — site organiza e fecha sozinho"); }
+    if (/guincho|24 ?h|socorro|emergenc|urgente|desentupidora|chaveiro|reboque/.test(x)) { t += 3; mot.push("cliente procura no Google na hora da necessidade — sem site, ele liga pro concorrente"); }
+    if (/restaurante|lanchonete|cardapio|ifood|delivery|comida caseira|marmita|padaria|confeitaria/.test(x)) { t += 2; mot.push("🍽️ cardápio: o cliente decide no Google antes de sair de casa"); }
+    if (/\bmei\b|micro empresa|dono atende|quem decide/.test(x)) { t += 1; mot.push("dono = quem decide (não tem que passar por gerente)"); }
+    if (p.prioridade === "alta") t += 1;
+    if (p.whatsOk === "sim") { t += 2; mot.push("🟢 WhatsApp confirmado"); }
+    else if (numWhatsapp(p)) { t += 1; mot.push("🔎 tem celular (falta confirmar o zap)"); }
+    if (ehRaio(p, cfg)) { t += 1; mot.push("dentro do seu raio (dá pra visitar hoje)"); }
+    var minimo = (cfg && cfg.quenteMinimo) || 7;
+    return { quente: t >= minimo, pontos: t, minimo: minimo, nicho: n, motivo: mot };
+  }
+
+  function ehQuente(p, cfg) { return quenteDe(p, cfg).quente; }
 
   function crc16(payload) {
     var crc = 0xFFFF;
@@ -3850,6 +4540,8 @@ window.ZEIK_SEED = {
     looksEndLista: looksEndLista, parseEndLista: parseEndLista,
     looksGuiaCnpj: looksGuiaCnpj, parseGuiaCnpj: parseGuiaCnpj, segPorCnae: segPorCnae, fonesRepetidos: fonesRepetidos,
     criaLoteCode: criaLoteCode, looksLoteCode: looksLoteCode, parseLoteCode: parseLoteCode,
+    /* getter: o NICHOS é um var definido mais abaixo — por valor aqui seria undefined */
+    get NICHOS() { return NICHOS; }, nichoDe: nichoDe, nichoLabel: nichoLabel, nichosFora: nichosFora, nichoBloqueado: nichoBloqueado, nichoResumo: nichoResumo, ehChamavel: ehChamavel, resumoChamavel: resumoChamavel, quenteDe: quenteDe, ehQuente: ehQuente, QUENTE_PONTOS: QUENTE_PONTOS,
     CIDADES_INTERIOR: CIDADES_INTERIOR
   };
   function escapeHtml(s) {
@@ -5088,7 +5780,19 @@ barbearia: {
       '</div></div>';
     return topbar(
       ui().saudacao() + ", " + (cfg.responsavel || "chefe").split(" ")[0] + " 👋",
-      hoje + " · " + esc(cfg.cidade) + " · " + m.prospects + " empresas mapeadas (" + s.prospects.filter(function (p) { return p.zona === "Interior"; }).length + " de cidade pequena)",
+      hoje + " · " + esc(cfg.cidade) + " · " + m.prospects + " empresas mapeadas (" + s.prospects.filter(function (p) { return p.zona === "Interior"; }).length + " de cidade pequena)" +
+      (function () {
+        /* o número que ele perguntou: quantos leads BOBOS sobram depois da peneira
+           de nicho — e quanto falta pra meta dos 500 que ele definiu */
+        /* rodada 7: chamável = celular + nicho liberado. É este o número que ele
+           quer ver crescendo, não a pilha de cadastro com telefone fixo dentro. */
+        var rc = Z.resumoChamavel(s.prospects, cfg);
+        var meta = Number(cfg.metaProspects) || 1000;
+        return " · <b style='color:#0a7'>" + rc.chamaveis + "</b> chamáveis no raio · <b style='color:#c40'>🔥 " + rc.quentes + "</b> quentes (meta " + meta + ", faltam " + Math.max(0, meta - rc.chamaveis) + ")" +
+          (rc.quentesFora ? " · <b style='color:#a60'>+" + rc.quentesFora + "</b> quentes no anel vizinho (fora do raio: fila sem 📍)" : "") +
+          (rc.soFixo ? " · " + rc.soFixo + " só com fixo (🗺️ pegar o celular)" : "") +
+          (rc.travadosPorNicho ? " · " + rc.travadosPorNicho + " travados por nicho" : "");
+      })(),
       '<button class="btn sm ghost" data-act="export-backup">⬇ Backup</button>' +
       '<button class="btn sm ghost" data-act="ensinar">🎓 Como usar</button>' +
       '<button class="btn sm" data-act="novo-prospect">+ Novo prospect</button>'
@@ -5330,12 +6034,20 @@ barbearia: {
       '<div class="li-lead"><div class="row" style="gap:7px">' +
       '<span class="li-title truncate">' + esc(p.nome) + '</span>' +
       statusPill(p.status) +
-      (p.prioridade === "alta" ? badge("🔥 alta", "red") : p.prioridade === "baixa" ? badge("baixa", "gray") : "") +
+      (function () {
+        /* rodada 8: 🔥 não é enfeite — é a régua do "esse cara quer um site agora",
+           e o motivo aparece no title do card, pra ele saber POR QUE entrou na fila */
+        var q = Z.quenteDe ? Z.quenteDe(p, st().config) : null;
+        if (!q) return p.prioridade === "alta" ? badge("🔥 alta", "red") : "";
+        return (q.quente ? badge("🔥 quente · " + q.pontos + " pts", "green") : (p.prioridade === "alta" ? badge("morno", "gray") : "")) +
+          (q.motivo && q.motivo.length ? '<span class="tiny" title="' + esc(q.motivo.join(" · ")) + '" style="cursor:help"> ' + esc(q.motivo[0]) + (q.motivo.length > 1 ? " +" + (q.motivo.length - 1) : "") + "</span>" : "");
+      })() +
       '</div>' +
       '<div class="li-meta">' +
       '<span>' + esc(p.bairro) + '</span>' + (p.endereco ? '<span class="truncate">· ' + esc(p.endereco) + '</span>' : '') +
       (p.cidade && p.cidade !== "São Paulo" ? '<span class="badge indigo" title="Cidade pequena do interior">' + esc(p.cidade) + (p.uf ? "/" + esc(p.uf) : "") + '</span>' : "") +
       (p.zona ? '<span class="badge gray" title="Zona da cidade">' + esc(p.zona) + '</span>' : '') +
+      (Z.nichoBloqueado(p, st().config) ? '<span class="badge red" title="Nicho que ele mandou tirar da fila: fica na base, não entra na fila">⛔ ' + esc(Z.nichoLabel(Z.nichoDe(p)).nome) + '</span>' : "") +
       (p.whatsOk === "sim" ? '<span class="badge green" title="Você abriu o wa.me e o número existe: está na fila de verdade">🟢 WhatsApp ativo</span>' :
         p.whatsOk === "nao" ? '<span class="badge red" title="Você marcou: não tem WhatsApp — ficou fora da fila">✖ sem WhatsApp</span>' :
         (Z.numWhatsapp(p) ? '<span class="badge orange" title="Celular ainda não confirmado por você">🔎 confirmar o WhatsApp</span>' : '')) +
@@ -5934,6 +6646,50 @@ barbearia: {
       '<p class="tiny" style="margin:8px 0 0">👉 Pra usar no <b>celular e no iPad ao mesmo tempo</b> sem servidor: exporte o arquivo aqui, salve no seu Drive/iCloud e carregue lá. O PIN é por aparelho.</p>' +
       '</div>' +
 
+      (function () {
+        /* Rodada 6 — o pedido dele em uma frase: "chega de barbearia e
+           cabeleireiro" e "pizzaria é difícil de atender a mensagem". A
+           peneira mora aqui: o lead continua na base, só sai da fila. */
+        var stt = st(), cf = stt.config;
+        var doRaio = stt.prospects.filter(function (p) { return Z.ehRaio(p, cf); });
+        var r = Z.nichoResumo(doRaio, cf);
+        var chips = Z.NICHOS.map(function (n) {
+          var on = r.fora.indexOf(n.id) >= 0, qtd = r.por[n.id] || 0;
+          return '<label class="check" style="gap:6px"><input type="checkbox" data-act="nicho-fora-toggle" data-nicho="' + n.id + '"' + (on ? " checked" : "") + '>' +
+            n.emoji + ' ' + esc(n.nome) + ' <span class="tiny">· ' + qtd + ' no raio</span></label>';
+        }).join("");
+        return '<div class="card"><div class="card-title">🚫 Nichos que eu não quero mais <span class="badge ' + (r.travados ? "red" : "gray") + '">' + r.travados + ' travados</span></div>' +
+          '<p class="tiny" style="margin:0 0 8px">Você prospectou, fechou 1 cliente e viu o problema: <b>tinha barbearia e salão demais</b>. O que está marcado aqui <b>não entra mais na fila de disparo</b> nem no código do lote. O cadastro continua na base (histórico, telefone, script pronto) — nada foi apagado; se você desmarcar, ele volta pra fila do jeito que estava.</p>' +
+          '<div class="row wrap" style="gap:6px 16px">' + chips + '</div>' +
+          '<div class="hr"></div><div class="card-title" style="font-size:13.5px">📲 Só WhatsApp</div>' +
+          '<label class="check" style="margin-top:6px"><input type="checkbox" data-autosave="config.somenteWhats"' + (cf.somenteWhats !== false ? " checked" : "") + '> <b>lead sem celular não entra na fila</b> — número fixo não abre conversa no zap</label>' +
+          (function () {
+            var rc2 = Z.resumoChamavel(stt.prospects, cf);
+            var meta2 = Number(cf.metaProspects) || 500;
+            var pct2 = Math.min(100, Math.round((rc2.chamaveis / meta2) * 100));
+            return '<div style="background:rgba(0,0,0,.07);border-radius:999px;height:8px;margin:8px 0 6px;overflow:hidden">' +
+              '<div style="height:8px;width:' + pct2 + '%;background:linear-gradient(90deg,#0a7,#3c6)"></div></div>' +
+              '<p class="tiny" style="margin:0">No seu raio: <b>' + rc2.noRaio + '</b> cadastros · <b style="color:#0a7">' + rc2.chamaveis + '</b> chamáveis (celular + nicho liberado) · <b>' + rc2.soFixo + '</b> só com fixo · <b>' + rc2.travadosPorNicho + '</b> travados por nicho.' +
+              ' Meta: <b>' + meta2 + '</b> prospects → <b>' + pct2 + '%</b>, faltam <b>' + Math.max(0, meta2 - rc2.chamaveis) + '</b>.</p>' +
+              '<p class="tiny" style="margin:6px 0 0">Os <b>' + rc2.soFixo + ' com fixo</b> não são lixo: abra o <b>🗺️ Pegar celular</b> no card e, com o número confirmado, eles entram na fila na hora — é o caminho mais rápido pra fechar a meta sem esperar minha raspagem.</p>' +
+            '<div class="hr"></div><div class="card-title" style="font-size:13.5px">🔥 Só lead quente</div>' +
+            '<label class="check" style="margin-top:6px"><input type="checkbox" data-autosave="config.somenteQuentes"' + (cf.somenteQuentes !== false ? " checked" : "") + '> <b>fila só com quem tem fome de site</b> — morno continua na base, não gasta seu disparo</label>' +
+            '<div class="row wrap" style="gap:10px;margin-top:8px;align-items:flex-end">' +
+            '<label class="field"><span class="lbl">Pontos pra ser quente</span><input type="number" data-autosave="config.quenteMinimo" value="' + (Number(cf.quenteMinimo) || 7) + '" step="1" style="width:96px"></label>' +
+            '<label class="field"><span class="lbl">Meta de chamáveis</span><input type="number" data-autosave="config.metaProspects" value="' + (Number(cf.metaProspects) || 1000) + '" step="50" style="width:110px"></label></div>' +
+            '<p class="tiny" style="margin:8px 0 0">Como o ponto é contado (o motivo aparece no <b>title</b> do card do lead): <b>+6</b> lash designer / cílios / sobrancelha / unhas · <b>+5</b> estética, clínica, dentista · <b>+4</b> academia, curso, pet · <b>+3</b> restaurante e comida · <b>+3</b> já paga rede social e não tem site · <b>+3</b> vende por zap/catálogo · <b>+3</b> busca de necessidade (guincho, chaveiro, 24h) · <b>+2</b> WhatsApp 🟢 confirmado · <b>+1</b> celular 🔎 · <b>+1</b> prioridade alta · <b>+1</b> dentro do raio · <b>-</b> quem tem site não é lead novo.</p>' +
+            (function () {
+              var qt = stt.prospects.filter(function (p) { return Z.ehRaio(p, cf) && Z.ehQuente(p, cf); });
+              var por = {};
+              qt.forEach(function (p) { var n = Z.nichoDe(p); por[n] = (por[n] || 0) + 1; });
+              var txt = Object.keys(por).sort(function (a, b) { return por[b] - por[a]; }).slice(0, 6).map(function (k) { return Z.nichoLabel(k).emoji + " " + Z.nichoLabel(k).nome + " <b>" + por[k] + "</b>"; }).join(" · ");
+              var comZap = qt.filter(function (p) { return Z.numWhatsapp(p); }).length;
+              return '<p class="tiny" style="margin:6px 0 0">Quentes no seu raio: <b>' + qt.length + '</b> — <b>' + comZap + '</b> com celular (o resto é 🗺️). ' + txt + '</p>';
+            })();
+          })() +
+          '</div>' +
+          '';
+      })() +
       '<div class="card"><div class="card-title">🛟 Backup, importação e reset</div>' +
       '<div class="col">' +
       '<button class="btn quiet" data-act="export-backup">⬇ Baixar backup .json (guarde no Google Drive)</button>' +
@@ -6139,6 +6895,19 @@ barbearia: {
 
   /* ------------------------- handlers do disparo ------------------------- */
   App.handlers["campanha-nova"] = function () { App.modalCampanha(); };
+
+  /* Liga/desliga um nicho da peneira (Configurações → 🚫 Nichos que eu não
+     quero mais). Guarda no config pra sobreviver ao reload e ao import da seed. */
+  App.handlers["nicho-fora-toggle"] = function (el) {
+    var id = el.getAttribute("data-nicho"); if (!id) return;
+    var cfg = st().config, atual = Z.nichosFora(cfg), i = atual.indexOf(id);
+    if (el.checked && i < 0) atual.push(id);
+    if (!el.checked && i >= 0) atual.splice(i, 1);
+    cfg.nichosFora = atual;
+    window.ZeikStore.save();
+    render();
+    U.toast(atual.length ? "🚫 Fora da fila agora: " + atual.join(", ") : "Peneira desligada — todo nicho volta pra fila.", "info", 5000);
+  };
   App.handlers["p-whats-ok"] = function (el) {
     var p = window.ZeikStore.marcarWhats(el.getAttribute("data-id"), "sim");
     render();
@@ -7807,7 +8576,8 @@ barbearia: {
       '<label class="field full"><span class="lbl">Filtro fino</span><div class="col" style="gap:4px">' +
       '<label class="check"><input type="checkbox" data-f="somenteSemContato" checked> só quem eu ainda não chamei</label>' +
       '<label class="check"><input type="checkbox" data-f="pularJaContatado" checked> pular quem já recebeu mensagem (recomendado)</label>' +
-      '<label class="check"><input type="checkbox" data-f="somenteWhats" checked> só quem tem celular (WhatsApp) — fixo fica fora</label>' +
+      '<label class="check"><input type="checkbox" data-f="somenteWhats"' + (st().config.somenteWhats !== false ? ' checked' : '') + '> só quem tem celular (WhatsApp) — <b>regra dele: sem zap não entra</b> (desmarque só se for ligar)</label>' +
+      '<label class="check"><input type="checkbox" data-f="somenteQuentes"' + (st().config.somenteQuentes !== false ? ' checked' : '') + '> \ud83d\udd25 <b>só lead quente</b> — quem tem cara de querer um site agora (régua Z.quenteDe, edita em Configurações)</label>' +
       '<label class="check"><input type="checkbox" data-f="somenteSemSite" checked> destacar quem não tem site (venda fácil)</label>' +
       "</div></label>" +
       '<div class="field full"><span class="lbl">Cadência (o que salva o número)</span>' +
@@ -7827,16 +8597,38 @@ barbearia: {
     function calc() {
       var f = readForm(ov);
       var n = prever(f);
+      var trav = Z.nichoResumo ? Z.nichoResumo(st().prospects.filter(function (p) {
+        if (f.raio && Z.ehRaio && !Z.ehRaio(p, st().config)) return false;
+        if (f.somenteWhats && !Z.numWhatsapp(p)) return false;
+        return true;
+      }), st().config).travados : 0;
+      var mornos = f.somenteQuentes !== false ? st().prospects.filter(function (p) {
+        if (Z.nichoBloqueado && Z.nichoBloqueado(p, st().config)) return false;
+        if (!Z.numWhatsapp(p)) return false;
+        return !Z.ehQuente(p, st().config);
+      }).length : 0;
       var el = ov.querySelector("#camPrev");
       if (el) el.innerHTML = n ? "<b>" + n.length + "</b> leads prontos pra fila · " +
+        "\ud83d\udd25 <b>" + n.filter(function (p) { return Z.ehQuente(p, st().config); }).length + "</b> quentes" +
+        (mornos ? " · <span class=\"tiny\">" + mornos + " mornos (nicho bom, zap bom, mas sem fome de site) ficaram fora</span>" : "") +
         "<b>" + n.filter(function (p) { return p.prioridade === "alta"; }).length + "</b> de prioridade alta · " +
-        "renda potencial <b>" + money(n.reduce(function (a, p) { return a + (Number(p.ticket) || 0); }, 0)) + "</b> de ticket somado (só pra você saber o tamanho do bairro)." :
+        "renda potencial <b>" + money(n.reduce(function (a, p) { return a + (Number(p.ticket) || 0); }, 0)) + "</b> de ticket somado (só pra você saber o tamanho do bairro)." +
+        (trav ? " <span class=\"tiny\">⛔ <b>" + trav + "</b> do nicho que você travou ficaram fora — libera em Configurações → 🚫 Nichos</span>" : "") :
         "Nenhum lead bate com esse filtro — solte um dos filtros ou rode o Coletor 🧰.";
       ov._leads = n;
     }
     function prever(f) {
       var lista = st().prospects.filter(function (p) {
+        /* o nicho que ele não quer mais passa na frente de qualquer filtro: se
+           está travado, não entra na fila nem na prévia — mesma regra da store */
+        if (Z.nichoBloqueado && Z.nichoBloqueado(p, st().config)) return false;
         if (f.somenteWhats && !Z.numWhatsapp(p)) return false;
+        /* rodada 7: o config também manda aqui, pra prévia bater com a loja
+           (criarCampanha lê config.somenteWhats e corta fixo do mesmo jeito) */
+        if (!f.somenteWhats && st().config.somenteWhats !== false && !Z.numWhatsapp(p)) return false;
+        /* rodada 8: "só coloque lead quente que vai tá doido pra ter um site" */
+        if (f.somenteQuentes && Z.ehQuente && !Z.ehQuente(p, st().config)) return false;
+        if (!f.somenteQuentes && st().config.somenteQuentes !== false && Z.ehQuente && !Z.ehQuente(p, st().config)) return false;
         if (f.somenteSemContato && p.status !== "novo" && p.status !== "adiado") return false;
         if (f.pularJaContatado && p.ultimoContato) return false;
         if (f.segmento && p.segmento !== f.segmento) return false;
@@ -7862,6 +8654,7 @@ barbearia: {
       zona: f.zona, cidade: f.cidade, segmento: f.segmento,
       limite: Math.max(1, Number(f.limite) || 24),
       somenteSemContato: !!f.somenteSemContato, pularJaContatado: !!f.pularJaContatado,
+      somenteQuentes: f.somenteQuentes !== false,
       raio: !!f.raio,
       canal: f.somenteWhats ? "whatsapp" : "",
       cadencia: { antesMin: Number(f.antesMin) || 4, antesMax: Number(f.antesMax) || 8, pacote: Number(f.pacote) || 10, pausaMin: Number(f.pausaMin) || 10, pausaMax: Math.max(Number(f.pausaMin) || 10, Number(f.pausaMax) || 20) }
@@ -7870,6 +8663,11 @@ barbearia: {
   App.handlers["campanha-criar"] = function (el) {
     var ov = el.closest(".overlay");
     var payload = campanhaPayload(ov);
+    /* o check vira o config: na próxima fila ele não marca de novo */
+    var fr = readForm(ov);
+    st().config.somenteWhats = !!fr.somenteWhats;
+    st().config.somenteQuentes = fr.somenteQuentes !== false;
+    window.ZeikStore.save();
     var c = window.ZeikStore.criarCampanha(payload);
     U.closeModal(ov);
     if (!c.itens.length) { U.toast("A fila nasceu vazia: solte um filtro e tente de novo.", "err", 6000); U.go("disparo"); return; }
@@ -8172,7 +8970,22 @@ barbearia: {
   function pautaUI() {
     var p = Z.pautaRaio ? Z.pautaRaio(st().config, st().prospects) : { itens: [], temos: 0, faltam: 0, total: 0 };
     var rs = st().rodadasResumo || { rodadas: 0, total: 0, hoje: 0 };
-    var cab = '<div class="callout">📍 <b>' + p.temos + '</b> empresas nos bairros do seu raio · faltam <b>' + p.faltam +
+    var rs7 = Z.resumoChamavel ? Z.resumoChamavel(st().prospects, st().config)
+      : { chamaveis: p.temos, soFixo: 0, travadosPorNicho: 0, noRaio: p.temos };
+    var meta7 = Number(st().config.metaProspects) || 500;
+    var falta7 = Math.max(0, meta7 - rs7.chamaveis);
+    var pct7 = Math.min(100, Math.round((rs7.chamaveis / meta7) * 100));
+    var cab = '<div class="callout">🎯 Meta: <b>' + meta7 + '</b> prospects com WhatsApp e nicho certo no raio · <b style="color:#0a7">' + rs7.chamaveis + '</b> hoje (<b>' + pct7 + '%</b>)' +
+      (function () {
+        var rr = ((window.ZEIK_SEED || {}).rodadasSeed || []);
+        var ult = rr.length ? rr[rr.length - 1] : null;
+        var porRodada = ult && ult.adicionados ? ult.adicionados : 0;
+        return (falta7 && porRodada) ? ' · faltam <b>' + falta7 + '</b> — no ritmo da última raspagem (<b>+' + porRodada + '</b> com zap por rodada) são ~<b>' + Math.ceil(falta7 / porRodada) + '</b> rodadas' : (falta7 ? ' · faltam <b>' + falta7 + '</b>' : ' · <b>meta batida</b> ✔');
+      })() +
+      '<br><span class="tiny">📲 <b>' + rs7.soFixo + '</b> cadastros do raio têm telefone mas é <b>fixo</b> — abrem o <b>🗺️ Pegar celular</b> no card, você cola o zap, eles contam como chamáveis na hora. É a reserva que faz a meta andar sem depender da minha página nova.</span>' +
+      (rs7.travadosPorNicho ? '<br><span class="tiny">⛔ <b>' + rs7.travadosPorNicho + '</b> travados por nicho (barbearia, salão, pizzaria): ficam na base, não entram na fila. Libera em Configurações → 🚫 Nichos.</span>' : '') +
+      '</div>' +
+      '<div class="callout">📍 <b>' + p.temos + '</b> empresas contáveis nos bairros do seu raio · faltam <b>' + p.faltam +
       '</b> pra fechar a pauta de ' + p.total + ' combinações (bairro × nicho). Rodadas: <b>' + (rs.rodadas || 0) +
       '</b> · <b>' + (rs.total || 0) + '</b> leads entrados · <b>' + (rs.hoje || 0) + '</b> hoje.</div>';
     var guias = '<div class="row wrap" style="gap:6px;margin:8px 0">' +
@@ -8184,7 +8997,8 @@ barbearia: {
     var linhas = p.itens.slice(0, 12).map(function (i) {
       return '<div class="li"><div class="li-seg">' + esc((seg(i.segmento) || {}).emoji || "🏪") + '</div>' +
         '<div class="li-lead"><div class="li-title truncate">' + esc(i.bairro) + " · " + esc(i.nicho) + '</div>' +
-        '<div class="li-meta"><span class="mono">' + i.temos + "/" + i.alvo + "</span>· faltam " + i.resta + " neste lote</div></div>" +
+        '<div class="li-meta"><span class="mono">' + i.temos + "/" + i.alvo + "</span>· faltam " + i.resta + " neste lote" +
+          (i.travados ? ' <span class="badge red" title="leads deste nicho que você travou em Configurações — não contam como temos">⛔ ' + i.travados + ' travados</span>' : "") + "</div></div>" +
         '<div class="li-actions">' +
         '<button class="btn xs ghost" data-act="rodada-copiar" data-q=\"' + esc(i.buscaMaps) + '\" title=\"Copiar a busca pra colar no Google Maps\">📋 busca</button>' +
         '<a class="btn xs quiet" href="' + esc(i.url) + '" target="_blank" rel="noopener">🔎 guia</a>' +
@@ -8208,6 +9022,9 @@ barbearia: {
     var quentes = (el.getAttribute("data-filtro") || "") === "quentes";
     var lista = s2.prospects.filter(function (p) {
       if (!Z.ehRaio(p, cfg)) return false;
+      /* não devolvo código com barbearia/salão/pizzaria dentro: o que ele
+         travou em Configurações fica travado também no copia-e-cola */
+      if (Z.nichoBloqueado && Z.nichoBloqueado(p, cfg)) return false;
       if (quentes && !(p.prioridade === "alta" || p.whatsOk === "sim" || p.temSite === false)) return false;
       return true;
     });
