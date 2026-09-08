@@ -693,6 +693,34 @@ input[type="range"]::-moz-range-thumb {
 .cobrar-qr { display: flex; justify-content: center; padding: 12px; background: #fff; border-radius: 16px; }
 .cobrar-qr img { width: 220px; height: 220px; image-rendering: pixelated; }
 
+/* ===== 👑 Ticket alto — deck da reunião ================================= */
+.deck-body { background: var(--bg); }
+.deck-slide { background: var(--card-bg); border: 1px solid var(--hairline); border-radius: 20px; padding: 20px 18px; box-shadow: 0 6px 24px rgba(0, 0, 0, .06); }
+.deck-k { font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.deck-slide h2 { font-size: 25px; line-height: 1.16; margin: 0 0 12px; letter-spacing: -.015em; }
+.deck-slide.big h2 { font-size: 33px; }
+.deck-slide ul { margin: 0; padding-left: 18px; }
+.deck-slide li { font-size: 16.5px; line-height: 1.5; margin: 0 0 9px; }
+.deck-slide.big li { font-size: 19px; font-weight: 600; }
+.deck-nota { margin: 14px 0 0; padding: 9px 11px; border-radius: 12px; background: color-mix(in srgb, var(--warn) 12%, transparent); color: var(--text-2); font-size: 12.5px; }
+.deck-tbl { display: grid; gap: 7px; margin: 0 0 13px; }
+.deck-row { border: 1px solid var(--hairline); border-radius: 14px; padding: 9px 11px; display: grid; gap: 2px; }
+.deck-row.on { border-color: var(--ok); background: color-mix(in srgb, var(--ok) 9%, transparent); }
+.deck-row b { font-size: 16px; }
+.deck-row span { font-size: 15px; color: var(--text); font-variant-numeric: tabular-nums; }
+.deck-row p { margin: 0; font-size: 12.5px; color: var(--muted); }
+.deck-pontos { display: flex; gap: 5px; }
+.deck-pontos i { width: 9px; height: 9px; border-radius: 50%; background: var(--hairline); cursor: pointer; }
+.deck-pontos i.on { background: var(--indigo); }
+.sep { width: 1px; background: var(--hairline); margin: 0 2px; }
+@media (max-width: 620px) { .deck-slide h2 { font-size: 21px; } .deck-slide li { font-size: 15px; } .deck-slide.big h2 { font-size: 26px; } }
+@media print {
+  .deck-print .modal-foot, .deck-print [data-close], .deck-print .deck-pontos { display: none !important; }
+  .deck-print .modal-body { max-height: none !important; overflow: visible !important; }
+  .deck-print [data-deck-body] > div { display: block !important; }
+  .deck-print .deck-slide { break-inside: avoid; page-break-inside: avoid; box-shadow: none; margin-bottom: 12px; }
+}
+
 </style>
 </head>
 <body>
@@ -709,6 +737,7 @@ input[type="range"]::-moz-range-thumb {
 
     <nav aria-label="Navegação principal">
       <button class="nav-item" data-act="nav" data-view="dashboard"><span class="ico">◧</span> Dashboard</button>
+      <button class="nav-item" data-act="nav" data-view="ticket"><span class="ico">👑</span> Ticket alto <span class="count" data-count="ticket"></span></button>
       <button class="nav-item" data-act="nav" data-view="prospeccao"><span class="ico">🧲</span> Prospecção <span class="count" data-count="prospeccao"></span></button>
       <button class="nav-item" data-act="nav" data-view="disparo"><span class="ico">📣</span> Disparo <span class="count" data-count="disparo"></span></button>
       <button class="nav-item" data-act="nav" data-view="pipeline"><span class="ico">📊</span> Pipeline <span class="count" data-count="pipeline"></span></button>
@@ -748,7 +777,7 @@ input[type="range"]::-moz-range-thumb {
    arquivos publicados (index-novo.html) desenharem as telas sem travar.
    Rode: node tools/extrair-meta.js  (depois de mexer em assets/js/seed.js) */
 (function (w) {
-w.ZEIK_SEED = {"versao":21,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto da Mooca","Parque da Mooca","Vila Prudente","Sacomã","Ipiranga","Itaquera","Cidade Líder","São Mateus","Penha","Vila Matilde","Guaianases","Vila Formosa","Carrão","Aricanduva","Ermelino Matarazzo","Vila Alpina"],"Norte":["Santana","Tucuruvi","Casa Verde","Freguesia do Ó","Vila Guilherme","Imirim","Vila Maria","Santa Teresinha","Cachoeirinha","Jaçanã","Mandaqui","Lauzane Paulista","Parque Peruche","Jardim São Paulo","Vila Mazzei","Brasilândia"],"Oeste":["Butantã","Vila Butantã","Lapa","Alto da Lapa","Pinheiros","Alto de Pinheiros","Vila Madalena","Perdizes","Pompéia","Vila Leopoldina","Pirituba","Jaraguá","Perus","Rio Pequeno","Jaguaré","Jardim Bonfiglioli","Vila Lageado","Real Parque"],"Centro":["Consolação","Bela Vista","República","Santa Cecília","Higienópolis","Bom Retiro","Brás","Belém","Liberdade","Sé","Vila Buarque","Canindé"],"Interior":["Bady Bassitt","Botucatu","Campinas","Itararé","Itatinga","Itu","Jundiaí","Monte Alto","Sorocaba","São Manuel","Ubatuba","Votorantim"],"Sul":["Capão Redondo","Jardim Ângela","Jardim São Luís","Campo Limpo","M'Boi Mirim","Grajaú","Parelheiros","Vargem Grande","Cidade Dutra","Interlagos","Santo Amaro","Morumbi","Paraisópolis","Socorro","Jardim Marsilão"]},"segmentos":[{"id":"barbearia","nome":"Barbearia / Cabeleireiro","emoji":"💈","buscaTermo":"barbearia","ticketMedio":55,"dor":"Cliente acha no Instagram e no Google Maps, mas não tem onde mostrar preço, horário e agenda.","gancho":"Site vitrine + página de agendamento + feed do Instagram organizado. Quem pesquisa 'barbearia no seu bairro' te acha primeiro.","agendador":true,"script":"Opa, {{contato}}! Tudo certo? 👊\n\nAqui é {{nomeZeik}}, agência de sites da região de {{bairro}}.\n\nProcurei a {{empresa}} no Google e vi que vocês ainda não têm site próprio — hoje quem pesquisa {{buscaLocal}} acaba caindo no perfil de alguém que investe em anúncio.\n\nA gente monta um site profissional pra {{empresa}} com:\n• Página inicial com sua identidade\n• Tabela de preços (corte, barba, combos)\n• Botão de agendamento no WhatsApp\n• Localização + horário de funcionamento\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nTambém criamos/organizamos o Instagram se precisar: layout de feed, destaques, fotos dos cortes com padrão.\n\nTe mando um modelo pronto do site da {{empresa}} pra você ver antes de decidir? Leva 2 min 👇","followup":"Opa {{contato}}, {{nomeZeik}} de novo! 🙂\n\nSeparei um modelo de site com o nome da {{empresa}} e a foto da sua fachada. Ficou muito bom.\n\nSe te ajudar a encher a agenda de semana, a gente entrega em {{prazo}}, e o valor só entra na conversa depois que você ver o modelo.\n\nPosso te mandar o link de prévia agora?","fechamento":"Perfeito, {{contato}}! 🚀\n\nFecho assim:\n✅ Site profissional {{empresa}} ({{preco}} à vista ou no PIX)\n✅ Entrega em {{prazo}}\n✅ Bônus: organização do feed do Instagram + destaques\n\nMe manda: logo/fotos dos cortes, tabela de preço, endereço, WhatsApp e horários.\n\nJá começo hoje. Obrigado pela confiança! 🙏"},{"id":"salao","nome":"Salão de Beleza / Estética","emoji":"💇‍♀️","buscaTermo":"salão de beleza","ticketMedio":130,"dor":"Movimento depende de indicação e do Instagram; sem portfólio organizado a cliente 'some' antes de agendar.","gancho":"Site com antes/depois + tabela de serviços + Instagram com feed organizado pra virar vitrine de vendas.","agendador":true,"script":"Oi {{contato}}, tudo bem? 😊\n\nAqui é {{nomeZeik}}, a agência de sites da região de {{bairro}}.\n\nDei uma olhada no trabalho da {{empresa}} — o nível é ótimo, mas hoje quem procura {{buscaLocal}} não encontra um site com seus serviços e valores.\n\nPosso colocar no ar um site da {{empresa}} com:\n• Serviços e tabela de preços\n• Fotos de antes e depois\n• Botão de agendamento no WhatsApp\n• Endereço, horário e maps\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE se o Instagram estiver parado ou com feed bagunçado, a gente cria a conta e organiza o feed (destaques de serviços, promoções, avaliações).\n\nQuer que eu te mande um modelo com a cara da {{empresa}}?","followup":"Oi {{contato}}! {{nomeZeik}} aqui 🙂\n\nFiz um pré-modelo do site da {{empresa}} com a paleta do salão. Ficou elegante e bem fácil de agendar pelo WhatsApp.\n\nPosso te mandar a prévia pra você ver com suas clientes?","fechamento":"Fechado, {{contato}}! 💛\n\nO que você recebe:\n✅ Site {{empresa}} — {{preco}}\n✅ Tabela de preços + antes/depois\n✅ Botão de agendamento WhatsApp\n✅ Organização do feed do Instagram + 3 destaques\n✅ Entrega em {{prazo}}\n\nMe manda logo, 6 fotos, tabela de valores, endereço e horário. Começo hoje!"},{"id":"estetica","nome":"Clínica de Estética","emoji":"✨","buscaTermo":"estética","ticketMedio":180,"dor":"Serviço de alto ticket (limpeza de pele, drenagem, laser) é vendido por confiança — e confiança vem de presença profissional.","gancho":"Site com especialidades, protocolos e provas sociais + Instagram educativo para gerar autoridade.","agendador":true,"script":"Olá {{contato}}, tudo bem? Aqui é {{nomeZeik}}, agência de sites do bairro.\n\nA {{empresa}} atende um público que pesquisa antes de marcar — e hoje não aparece um site profissional quando buscam por {{buscaLocal}}.\n\nUm site bem feito aumenta percepção de valor e justifica o seu preço, com:\n• Página de cada protocolo (drenagem, limpeza, massagem)\n• Pacotes e investimento\n• Antes/depois + avaliações\n• Agendamento pelo WhatsApp\n\n💰 {{valorZeik}}\n⚡ Entrega em {{prazo}}\n\nTambém estruturamos o Instagram: feed padronizado, destaques de protocolos e regras de antes/depois.\n\nPosso te enviar um modelo da {{empresa}} para avaliar?","followup":"Oi {{contato}}, {{nomeZeik}} aqui 🙂\n\nMontei uma prévia do site da {{empresa}} com foco em agendamento e pacotes.\n\nSe fizer sentido, consigo entregar em {{prazo}}. Quer ver a prévia?","fechamento":"Ótimo, {{contato}}! 📋\n\n✅ Site {{empresa}} — {{preco}}\n✅ Páginas de protocolos + pacotes\n✅ Antes/depois com autorização da cliente\n✅ Feed do Instagram organizado\n✅ Entrega em {{prazo}}\n\nMe envia logo, fotos dos procedimentos, tabela e endereço."},{"id":"odonto","nome":"Clínica Odontológica","emoji":"🦷","buscaTermo":"dentista","ticketMedio":350,"dor":"Concorrência forte na Av. Belmira Marin; paciente compara preço e credibilidade antes de entrar.","gancho":"Site com especialidades, convênios, parcelamento e avaliações — mais implantando/orto fechando.","agendador":true,"script":"Bom dia/boa tarde, {{contato}}. Falo com o responsável da {{empresa}}?\n\nAqui é {{nomeZeik}}, agência de sites da sua região.\n\nNa sua rua tem várias clínicas: o paciente pesquisa \"{{buscaLocal}}\" no Google e escolhe quem aparece bem. A {{empresa}} ainda não tem um site com especialidades, convênios e condições de parcelamento.\n\nO que entrego:\n• Site institucional + página por tratamento (implante, ortodontia, clareamento)\n• Formulário direto no WhatsApp\n• Avaliações do Google e CRO/responsável técnico\n• Convênios aceitos e parcelamento\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE ajudo na organização do Instagram (feed clínico, destaques de casos).\n\nMe permite te mandar uma prévia do site?","followup":"Olá {{contato}}! {{nomeZeik}} aqui 🙂\n\nSeparei um layout de site voltado para captação de implante e aparelho pra {{empresa}}.\n\nPosso te chamar 5 min hoje pra mostrar?","fechamento":"Perfeito, {{contato}} 🤝\n\n✅ Site {{empresa}} — {{preco}}\n✅ Páginas por tratamento + avaliações\n✅ Botão de WhatsApp + horários\n✅ Organização do feed do Instagram\n✅ Entrega em {{prazo}}\n\nPreciso de: logo, fotos do consultório, lista de tratamentos, convênios, endereço e horário."},{"id":"pet","nome":"Pet Shop / Veterinária","emoji":"🐶","buscaTermo":"pet shop","ticketMedio":90,"dor":"Dono de pet decide por confiança e urgência (banho e tosa, emergência 24h).","gancho":"Site com serviços, plantão 24h, tabela de banho e tosa, loja e agendamento.","agendador":true,"script":"Oi {{contato}}, tudo bem? Aqui é {{nomeZeik}}, agência de sites do bairro.\n\nVi a {{empresa}} e pensei: dono de pet pesquisa \"{{buscaLocal}}\" no celular antes de ir e não acha um site de vocês com horário, preço do banho e tosa e se tem plantão.\n\nFaço um site com:\n• Serviços e tabela (banho, tosa, veterinário, táxi dog)\n• Horário e plantão 24h em destaque\n• Agendamento pelo WhatsApp\n• Fotos dos pets clientes (prova social forte)\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nTambém crio ou organizo o Instagram, que é onde o bairro escolhe pet shop.\n\nTe mando uma prévia?","followup":"Oi {{contato}}! {{nomeZeik}} aqui 🐾\n\nFiz um modelo do site da {{empresa}} com a tabela de banho e tosa em destaque.\n\nQuer que eu te mande pra você mostrar pra equipe?","fechamento":"Fechado, {{contato}} 🐾\n\n✅ Site {{empresa}} — {{preco}}\n✅ Tabela de serviços + agendamento WhatsApp\n✅ Página de plantão/urgência\n✅ Feed do Instagram organizado\n✅ Entrega em {{prazo}}"},{"id":"auto","nome":"Oficina / Auto Center / Borracharia","emoji":"🔧","buscaTermo":"oficina mecânica","ticketMedio":260,"dor":"Quem quebra o carro de noite não sabe em quem confiar — quem tem Google Meu Negócio + site leva a corrida.","gancho":"Site com serviços, orçamento por WhatsApp, confiança (avaliações) e rota de socorro.","agendador":false,"script":"Fala {{contato}}, tudo na paz? Aqui é {{nomeZeik}}, agência de sites da região de {{bairro}}.\n\nPassei na {{empresa}} e olhei no Google: vocês têm boa reputação, mas não têm site pra pedir orçamento.\n\nHoje quem tá na beira da estrada pesquisa {{buscaLocal}} e chama quem passa confiança online.\n\nMeu site pra {{empresa}} vem com:\n• Serviços (elétrica, suspensão, injeção, alinhamento, troca de óleo)\n• Pedido de orçamento direto no WhatsApp\n• Avaliações do Google + fotos da oficina\n• Horário e mapa\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE se não tiver Instagram, a gente cria e já deixa com padrão (antes/depois, serviço do dia).\n\nTopa ver uma prévia sem compromisso?","followup":"E aí {{contato}}, {{nomeZeik}} aqui 🙂\n\nMontei a prévia do site da {{empresa}} com botão de orçamento no WhatsApp.\n\nSe ajudar a entrar mais carro por semana, o site se paga na primeira semana. Posso te mostrar?","fechamento":"Boa, {{contato}}! 🔧\n\n✅ Site {{empresa}} — {{preco}}\n✅ Orçamento por WhatsApp + serviços\n✅ Avaliações do Google na home\n✅ Instagram criado/organizado\n✅ Entrega em {{prazo}}\n\nManda: logo, fotos da oficina, lista de serviços, horário e endereço."},{"id":"constru","nome":"Material de Construção / Depósito","emoji":"🧱","buscaTermo":"material de construção","ticketMedio":400,"dor":"Pedreiro e cliente final cotam por WhatsApp e concorrente responde primeiro.","gancho":"Site com catálogo, preço do dia, entrega e orçamento por lista de material.","agendador":false,"script":"Bom dia {{contato}}, aqui é {{nomeZeik}}, agência de sites do bairro.\n\nTrabalhei com algumas lojas de material da região e vi que a {{empresa}} ainda não tem um site com o catálogo e o telefone de entrega.\n\nQuem faz obra manda a lista pra 4 lojas — e muita gente chega digitando \"{{buscaLocal}}\" no Google. Compra de quem responde rápido e passa confiança.\n\nO site da {{empresa}} teria:\n• Categorias (cimento, tinta, hidráulico, elétrico, ferramentas)\n• Pedido de orçamento por lista no WhatsApp\n• Entrega e prazo em destaque\n• Horário, mapa e telefone grande\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nTambém deixamos o Instagram com padrão de preço do dia/frete grátis.\n\nPosso te mandar uma prévia?","followup":"Oi {{contato}}! {{nomeZeik}} 🙂\n\nFiz uma prévia do site da {{empresa}} com botão de \"pedir orçamento por lista\" no WhatsApp.\n\nQuer ver? Leva 2 min.","fechamento":"Fechado, {{contato}} 🧱\n\n✅ Site {{empresa}} — {{preco}}\n✅ Catálogo + orçamento por lista\n✅ Entrega e horário em destaque\n✅ Instagram organizado\n✅ Entrega em {{prazo}}"},{"id":"food","nome":"Pizzaria / Hamburgueria / Restaurante","emoji":"🍕","buscaTermo":"delivery","ticketMedio":55,"dor":"Cardápio no Instagram que some no scroll, pedido por DM atrasando e cliente indo pro iFood que cobra taxa.","gancho":"Cardápio digital no site próprio + botão de pedido no WhatsApp + Instagram com feed de comida que dá fome.","agendador":false,"script":"Opa {{contato}}, tudo bem? Aqui é {{nomeZeik}}, agência de sites do bairro.\n\nOlhei o perfil da {{empresa}} e o cardápio: dá água na boca 👌 Só que quem digita \"{{buscaLocal}}\" no Google não acha um cardápio seu — e o cliente precisa sair do Instagram pra pedir.\n\nFaço um site com:\n• Cardápio digital com preços e fotos\n• Botão de pedido no WhatsApp (sem taxa de aplicativo)\n• Promoção do dia em destaque\n• Promoção do dia em destaque + delivery area e mapa\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE a gente organiza seu Instagram: feed com padrão de comida, destaques de cardápio/horário/delivery.\n\nTe mando o modelo da {{empresa}} agora?","followup":"Opa {{contato}}! {{nomeZeik}} 🙂\n\nMontei a prévia do cardápio digital da {{empresa}} pro pedido cair direto no seu WhatsApp — sem comissão de app.\n\nQuer ver?","fechamento":"Show, {{contato}} 🍕\n\n✅ Site + cardápio digital — {{preco}}\n✅ Pedido direto no WhatsApp (sem taxa de app)\n✅ Destaques de promoção\n✅ Feed do Instagram organizado\n✅ Entrega em {{prazo}}\n\nManda o cardápio em texto ou foto que eu já digito tudo."},{"id":"academia","nome":"Academia / Studio","emoji":"🏋️","buscaTermo":"academia","ticketMedio":130,"dor":"Matrícula de bairro é decidida por localização, preço e horário — e por quem aparece bem no Google.","gancho":"Site com planos, horários de aula, professor e matrícula pelo WhatsApp; Instagram com aula do dia.","agendador":true,"script":"Oi {{contato}}, tudo bem? {{nomeZeik}}, agência de sites do bairro.\n\nPassei em frente à {{empresa}} e fui ver no Google: vocês não têm página com planos e horários. Quem mora perto e pesquisa {{buscaLocal}} acaba matriculando em quem mostra preço.\n\nSite que entrego:\n• Planos e formas de pagamento\n• Grade de aulas (funcional, pilates, luta)\n• Professores + estrutura\n• Matrícula/aula experimental pelo WhatsApp\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE organizamos o Instagram com feed de treino e destaques de horário/aula experimental.\n\nPosso te mandar uma prévia?","followup":"Oi {{contato}}! {{nomeZeik}} 🙂\n\nFiz a prévia do site da {{empresa}} com destaque pra aula experimental gratuita.\n\nMando pra você avaliar?","fechamento":"Fechado, {{contato}} 💪\n\n✅ Site {{empresa}} — {{preco}}\n✅ Planos + grade de aulas\n✅ Matrícula por WhatsApp\n✅ Feed do Instagram + destaques\n✅ Entrega em {{prazo}}"},{"id":"servicos","nome":"Serralheria / Elétrica / Serviços","emoji":"🛠️","buscaTermo":"prestador de serviço","ticketMedio":300,"dor":"Serviço é vendido por urgência e confiança; sem site, só indicados te acham.","gancho":"Site com portfólio de obras, região atendida e orçamento por foto no WhatsApp.","agendador":false,"script":"Olá {{contato}}, tudo bem? Aqui é {{nomeZeik}}, agência de sites do bairro.\n\nServiço de {{servico}} é contratado por confiança: quem precisa pesquisa \"{{buscaLocal}}\" e contrata quem mostra obra pronta, CEP atendido e responde na hora.\n\nHoje a {{empresa}} não tem um site com isso.\n\nEntrego:\n• Portfólio de trabalhos (foto antes/depois)\n• Serviços e região atendida\n• \"Manda foto que eu orço\" pelo WhatsApp\n• Avaliações de clientes + horário\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nTambém criamos/organizamos seu Instagram — pra muita gente é o seu único portfólio hoje.\n\nPosso te mandar o modelo da {{empresa}}?","followup":"Oi {{contato}}, {{nomeZeik}} aqui 🙂\n\nFiz uma prévia do site da {{empresa}} com o botão de orçamento por foto.\n\nServe pra você? Mando o link.","fechamento":"Perfeito, {{contato}} 🛠️\n\n✅ Site {{empresa}} — {{preco}}\n✅ Portfólio + região atendida\n✅ Orçamento por foto no WhatsApp\n✅ Instagram criado/organizado\n✅ Entrega em {{prazo}}\n\nMe manda 8 fotos de serviços prontos que eu monto o portfólio."},{"id":"varejo","nome":"Loja / Comércio de Bairro","emoji":"🛍️","buscaTermo":"loja de bairro","ticketMedio":60,"dor":"Cliente pesquisa preço online, não acha, e compra no Centro ou pela internet.","gancho":"Site com vitrine, categorias, WhatsApp por produto e Instagram de ofertas.","agendador":false,"script":"Oi {{contato}}! Aqui é {{nomeZeik}}, agência de sites da região de {{bairro}}.\n\nDei uma olhada na {{empresa}}. Produtos bons, atendimento bom — mas quem pesquisa na internet não encontra vocês e acaba comprando em outro lugar.\n\nCom um site simples a loja consegue:\n• Mostrar vitrine e categorias com preço\n• Receber pedido/proposta pelo WhatsApp\n• Divulgar promoção e condições (credionário/carnê)\n• Endereço, horário e mapa\n\nHoje, quem precisa disso no bairro pesquisa \"{{buscaLocal}}\" no Google e fecha com quem aparece primeiro.\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE se o Instagram estiver sem padrão, a gente cria/organiza com destaques de oferta e novidades.\n\nTe mando um modelo com a cara da {{empresa}}?","followup":"Oi {{contato}}, {{nomeZeik}} 🙂\n\nMontei a prévia do site da {{empresa}} com a vitrine e o botão de WhatsApp.\n\nQuer ver o link?","fechamento":"Fechado, {{contato}} 🛍️\n\n✅ Site {{empresa}} — {{preco}}\n✅ Vitrine + pedido por WhatsApp\n✅ Promoções em destaque\n✅ Feed do Instagram organizado\n✅ Entrega em {{prazo}}"},{"id":"escola","nome":"Escola / Curso / Autoescola","emoji":"🎓","buscaTermo":"curso / autoescola","ticketMedio":220,"dor":"Matrícula é sazonal e o aluno compara preço, parcelas e avaliações de ex-alunos.","gancho":"Site com cursos, valores, documentos necessários e matrícula pelo WhatsApp.","agendador":true,"script":"Olá {{contato}}, tudo bem? Aqui é {{nomeZeik}}, agência de sites do bairro.\n\nQuem vai se matricular compara no celular: preço, parcela, documentação e o que ex-aluno fala.\n\nHoje a {{empresa}} não tem uma página única com isso.\n\nFaço um site com:\n• Cursos e valores + parcelamento\n• Documentos necessários e etapas\n• Depoimentos de alunos aprovados\n• Matrícula/aula experimental pelo WhatsApp\n\nHoje, quem precisa disso no bairro pesquisa \"{{buscaLocal}}\" no Google e fecha com quem aparece primeiro.\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE organizamos seu Instagram (aprovação de aluno é o melhor conteúdo que existe).\n\nPosso te mandar uma prévia?","followup":"Oi {{contato}}! {{nomeZeik}} 🙂\n\nFiz a prévia do site da {{empresa}} com a tabela de cursos e depoimentos.\n\nMando pra você ver?","fechamento":"Perfeito, {{contato}} 🎓\n\n✅ Site {{empresa}} — {{preco}}\n✅ Cursos + parcelamento + docs\n✅ Depoimentos de alunos\n✅ Instagram organizado\n✅ Entrega em {{prazo}}"},{"id":"generico","nome":"Outro / Genérico","emoji":"🏪","buscaTermo":"empresa","ticketMedio":0,"dor":"Negócio bom no bairro, invisível no Google.","gancho":"Site profissional em 48h + Instagram organizado + manutenção mensal opcional.","agendador":false,"script":"Opa {{contato}}, tudo bem? Aqui é {{nomeZeik}}, da Zeik Digital, agência de sites da região de {{bairro}}.\n\nPassei pela {{empresa}} e fui procurar no Google: vocês ainda não têm um site próprio.\n\nIsso significa que quem pesquisa na região encontra o concorrente primeiro.\n\nO que a gente faz:\n• Site profissional com sua marca\n• Serviços/produtos + preços\n• Botão de WhatsApp e localização\n• Se você não tem Instagram, a gente cria; se tem e está desorganizado, a gente arruma o feed\n\nHoje, quem precisa disso no bairro pesquisa \"{{buscaLocal}}\" no Google e fecha com quem aparece primeiro.\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nQuer que eu te mande um modelo pronto da {{empresa}} pra você ver sem compromisso?","followup":"Oi {{contato}}, {{nomeZeik}} aqui 🙂\n\nSeparei um modelo do site da {{empresa}}. Ficou bonito e rápido de mexer.\n\nPosso te enviar o link da prévia?","fechamento":"Fechado, {{contato}} 🤝\n\n✅ Site {{empresa}} — {{preco}}\n✅ Serviços + WhatsApp + mapa\n✅ Instagram criado/organizado\n✅ Entrega em {{prazo}}\n\nMe manda fotos, serviços, endereço e horário que eu começo hoje."}],"objecoes":[{"q":"\"Já tenho site.\"","a":"Manda o link? Se ele demora pra carregar, não abre direito no celular ou está sem atualização, o problema é o contrário: site pronto que não converte.\n\nFaço uma análise gratuita de velocidade e mobile e te mostro em 5 minutos o que está te custando cliente. Se estiver bom, você fica com a análise — sem compromisso."},{"q":"\"Não tenho tempo pra isso.\"","a":"Justamente. Eu faço tudo: você me manda 6 fotos e seus preços pelo WhatsApp, e em 48h o site já está no ar.\n\nVocê não precisa sentar, preencher nada, nem aprender ferramenta nova. Se quiser mexer depois, explico em 10 min — e a manutenção mensal de R$ {{manut}} já resolve as atualizações por você."},{"q":"\"Está caro. R$ {{preco}} é muito.\"","a":"Entendo. Vamos em números: um site desses custa {{preco}} uma vez.\n\nSe ele te trouxer 1 cliente novo por mês, se paga. No serviço de {{servico}}, 1 cliente já paga o site e sobra.\n\nDá pra começar com o pacote essencial ({{precoMin}}) e evoluir depois — e dá pra dividir. O que não dá é ficar mais um mês invisível pra quem pesquisa na {{bairro}}."},{"q":"\"Já tenho Instagram.\"","a":"Perfeito, e é por isso que dá certo juntos: o Instagram é a vitrine, o site é onde a pessoa fecha.\n\nHoje, no Instagram, você depende do algoritmo e não tem link de orçamento, preço fixo nem Google te achando. O site coloca a {{empresa}} em quem pesquisa {{buscaLocal}}.\n\nE se o feed estiver desorganizado, eu já deixo padrão pra você."},{"q":"\"Vou pensar.\"","a":"Combinadíssimo. Só te peço duas coisas:\n\n1) Te mando a prévia do site da {{empresa}} hoje à noite, aí você pensa olhando o resultado, não a ideia.\n2) Se aprovar essa semana, entrego dentro do prazo de {{prazo}}.\n\nPosso mandar no WhatsApp mesmo?"},{"q":"\"Tenho medo de não saber mexer.\"","a":"Você não precisa mexer. Manda um áudio pra mim dizendo \"troca o preço da pizza grande\" e eu atualizo.\n\nNo plano de R$ {{manut}}/mês, as alterações são por você não: é só mensagem no WhatsApp. Sem site nunca mais vai virar dor de cabeça."},{"q":"\"Meu público não usa internet.\"","a":"Usa mais do que parece: quem mora na {{bairro}} pesquisa no Google e decide pelo WhatsApp, e 9 em cada 10 clientes chegam por celular.\n\nMesmo a senhora que veio por indicação quis ver seu número e sua foto antes de entrar. O site é o que passa a confiança pra esse cliente."},{"q":"\"Por que não faço eu mesmo no Canva/Wix?\"","a":"Dá pra fazer, e tem gente que faz e vende bem. A diferença está em:\n\n• Carregar rápido no 4G do bairro (o template pronto não carrega)\n• Aparecer no Google (título, endereço, mapa)\n• Botão de WhatsApp e formulário que chega pra você\n• Acabamento que faz seu serviço parecer mais caro que o do vizinho\n\nE se um dia você quiser assumir sozinho, eu entrego o projeto aberto e explico tudo."}],"prospects":[],"prospectosVazios":true,"semBase":true,"metaEm":"2026-09-04"};
+w.ZEIK_SEED = {"versao":24,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto da Mooca","Parque da Mooca","Vila Prudente","Sacomã","Ipiranga","Itaquera","Cidade Líder","São Mateus","Penha","Vila Matilde","Guaianases","Vila Formosa","Carrão","Aricanduva","Ermelino Matarazzo","Vila Alpina"],"Norte":["Santana","Tucuruvi","Casa Verde","Freguesia do Ó","Vila Guilherme","Imirim","Vila Maria","Santa Teresinha","Cachoeirinha","Jaçanã","Mandaqui","Lauzane Paulista","Parque Peruche","Jardim São Paulo","Vila Mazzei","Brasilândia"],"Oeste":["Butantã","Vila Butantã","Lapa","Alto da Lapa","Pinheiros","Alto de Pinheiros","Vila Madalena","Perdizes","Pompéia","Vila Leopoldina","Pirituba","Jaraguá","Perus","Rio Pequeno","Jaguaré","Jardim Bonfiglioli","Vila Lageado","Real Parque"],"Centro":["Consolação","Bela Vista","República","Santa Cecília","Higienópolis","Bom Retiro","Brás","Belém","Liberdade","Sé","Vila Buarque","Canindé"],"Interior":["Bady Bassitt","Botucatu","Campinas","Itararé","Itatinga","Itu","Jundiaí","Monte Alto","Sorocaba","São Manuel","Ubatuba","Votorantim"],"Sul":["Capão Redondo","Jardim Ângela","Jardim São Luís","Campo Limpo","M'Boi Mirim","Grajaú","Parelheiros","Vargem Grande","Cidade Dutra","Interlagos","Santo Amaro","Morumbi","Paraisópolis","Socorro","Jardim Marsilão"]},"segmentos":[{"id":"barbearia","nome":"Barbearia / Cabeleireiro","emoji":"💈","buscaTermo":"barbearia","ticketMedio":55,"dor":"Cliente acha no Instagram e no Google Maps, mas não tem onde mostrar preço, horário e agenda.","gancho":"Site vitrine + página de agendamento + feed do Instagram organizado. Quem pesquisa 'barbearia no seu bairro' te acha primeiro.","agendador":true,"script":"Opa, {{contato}}! Tudo certo? 👊\n\nAqui é {{nomeZeik}}, agência de sites da região de {{bairro}}.\n\nProcurei a {{empresa}} no Google e vi que vocês ainda não têm site próprio — hoje quem pesquisa {{buscaLocal}} acaba caindo no perfil de alguém que investe em anúncio.\n\nA gente monta um site profissional pra {{empresa}} com:\n• Página inicial com sua identidade\n• Tabela de preços (corte, barba, combos)\n• Botão de agendamento no WhatsApp\n• Localização + horário de funcionamento\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nTambém criamos/organizamos o Instagram se precisar: layout de feed, destaques, fotos dos cortes com padrão.\n\nTe mando um modelo pronto do site da {{empresa}} pra você ver antes de decidir? Leva 2 min 👇","followup":"Opa {{contato}}, {{nomeZeik}} de novo! 🙂\n\nSeparei um modelo de site com o nome da {{empresa}} e a foto da sua fachada. Ficou muito bom.\n\nSe te ajudar a encher a agenda de semana, a gente entrega em {{prazo}}, e o valor só entra na conversa depois que você ver o modelo.\n\nPosso te mandar o link de prévia agora?","fechamento":"Perfeito, {{contato}}! 🚀\n\nFecho assim:\n✅ Site profissional {{empresa}} ({{preco}} à vista ou no PIX)\n✅ Entrega em {{prazo}}\n✅ Bônus: organização do feed do Instagram + destaques\n\nMe manda: logo/fotos dos cortes, tabela de preço, endereço, WhatsApp e horários.\n\nJá começo hoje. Obrigado pela confiança! 🙏"},{"id":"salao","nome":"Salão de Beleza / Estética","emoji":"💇‍♀️","buscaTermo":"salão de beleza","ticketMedio":130,"dor":"Movimento depende de indicação e do Instagram; sem portfólio organizado a cliente 'some' antes de agendar.","gancho":"Site com antes/depois + tabela de serviços + Instagram com feed organizado pra virar vitrine de vendas.","agendador":true,"script":"Oi {{contato}}, tudo bem? 😊\n\nAqui é {{nomeZeik}}, a agência de sites da região de {{bairro}}.\n\nDei uma olhada no trabalho da {{empresa}} — o nível é ótimo, mas hoje quem procura {{buscaLocal}} não encontra um site com seus serviços e valores.\n\nPosso colocar no ar um site da {{empresa}} com:\n• Serviços e tabela de preços\n• Fotos de antes e depois\n• Botão de agendamento no WhatsApp\n• Endereço, horário e maps\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE se o Instagram estiver parado ou com feed bagunçado, a gente cria a conta e organiza o feed (destaques de serviços, promoções, avaliações).\n\nQuer que eu te mande um modelo com a cara da {{empresa}}?","followup":"Oi {{contato}}! {{nomeZeik}} aqui 🙂\n\nFiz um pré-modelo do site da {{empresa}} com a paleta do salão. Ficou elegante e bem fácil de agendar pelo WhatsApp.\n\nPosso te mandar a prévia pra você ver com suas clientes?","fechamento":"Fechado, {{contato}}! 💛\n\nO que você recebe:\n✅ Site {{empresa}} — {{preco}}\n✅ Tabela de preços + antes/depois\n✅ Botão de agendamento WhatsApp\n✅ Organização do feed do Instagram + 3 destaques\n✅ Entrega em {{prazo}}\n\nMe manda logo, 6 fotos, tabela de valores, endereço e horário. Começo hoje!"},{"id":"estetica","nome":"Clínica de Estética","emoji":"✨","buscaTermo":"estética","ticketMedio":180,"dor":"Serviço de alto ticket (limpeza de pele, drenagem, laser) é vendido por confiança — e confiança vem de presença profissional.","gancho":"Site com especialidades, protocolos e provas sociais + Instagram educativo para gerar autoridade.","agendador":true,"script":"Olá {{contato}}, tudo bem? Aqui é {{nomeZeik}}, agência de sites do bairro.\n\nA {{empresa}} atende um público que pesquisa antes de marcar — e hoje não aparece um site profissional quando buscam por {{buscaLocal}}.\n\nUm site bem feito aumenta percepção de valor e justifica o seu preço, com:\n• Página de cada protocolo (drenagem, limpeza, massagem)\n• Pacotes e investimento\n• Antes/depois + avaliações\n• Agendamento pelo WhatsApp\n\n💰 {{valorZeik}}\n⚡ Entrega em {{prazo}}\n\nTambém estruturamos o Instagram: feed padronizado, destaques de protocolos e regras de antes/depois.\n\nPosso te enviar um modelo da {{empresa}} para avaliar?","followup":"Oi {{contato}}, {{nomeZeik}} aqui 🙂\n\nMontei uma prévia do site da {{empresa}} com foco em agendamento e pacotes.\n\nSe fizer sentido, consigo entregar em {{prazo}}. Quer ver a prévia?","fechamento":"Ótimo, {{contato}}! 📋\n\n✅ Site {{empresa}} — {{preco}}\n✅ Páginas de protocolos + pacotes\n✅ Antes/depois com autorização da cliente\n✅ Feed do Instagram organizado\n✅ Entrega em {{prazo}}\n\nMe envia logo, fotos dos procedimentos, tabela e endereço."},{"id":"odonto","nome":"Clínica Odontológica","emoji":"🦷","buscaTermo":"dentista","ticketMedio":350,"dor":"Concorrência forte na Av. Belmira Marin; paciente compara preço e credibilidade antes de entrar.","gancho":"Site com especialidades, convênios, parcelamento e avaliações — mais implantando/orto fechando.","agendador":true,"script":"Bom dia/boa tarde, {{contato}}. Falo com o responsável da {{empresa}}?\n\nAqui é {{nomeZeik}}, agência de sites da sua região.\n\nNa sua rua tem várias clínicas: o paciente pesquisa \"{{buscaLocal}}\" no Google e escolhe quem aparece bem. A {{empresa}} ainda não tem um site com especialidades, convênios e condições de parcelamento.\n\nO que entrego:\n• Site institucional + página por tratamento (implante, ortodontia, clareamento)\n• Formulário direto no WhatsApp\n• Avaliações do Google e CRO/responsável técnico\n• Convênios aceitos e parcelamento\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE ajudo na organização do Instagram (feed clínico, destaques de casos).\n\nMe permite te mandar uma prévia do site?","followup":"Olá {{contato}}! {{nomeZeik}} aqui 🙂\n\nSeparei um layout de site voltado para captação de implante e aparelho pra {{empresa}}.\n\nPosso te chamar 5 min hoje pra mostrar?","fechamento":"Perfeito, {{contato}} 🤝\n\n✅ Site {{empresa}} — {{preco}}\n✅ Páginas por tratamento + avaliações\n✅ Botão de WhatsApp + horários\n✅ Organização do feed do Instagram\n✅ Entrega em {{prazo}}\n\nPreciso de: logo, fotos do consultório, lista de tratamentos, convênios, endereço e horário."},{"id":"pet","nome":"Pet Shop / Veterinária","emoji":"🐶","buscaTermo":"pet shop","ticketMedio":90,"dor":"Dono de pet decide por confiança e urgência (banho e tosa, emergência 24h).","gancho":"Site com serviços, plantão 24h, tabela de banho e tosa, loja e agendamento.","agendador":true,"script":"Oi {{contato}}, tudo bem? Aqui é {{nomeZeik}}, agência de sites do bairro.\n\nVi a {{empresa}} e pensei: dono de pet pesquisa \"{{buscaLocal}}\" no celular antes de ir e não acha um site de vocês com horário, preço do banho e tosa e se tem plantão.\n\nFaço um site com:\n• Serviços e tabela (banho, tosa, veterinário, táxi dog)\n• Horário e plantão 24h em destaque\n• Agendamento pelo WhatsApp\n• Fotos dos pets clientes (prova social forte)\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nTambém crio ou organizo o Instagram, que é onde o bairro escolhe pet shop.\n\nTe mando uma prévia?","followup":"Oi {{contato}}! {{nomeZeik}} aqui 🐾\n\nFiz um modelo do site da {{empresa}} com a tabela de banho e tosa em destaque.\n\nQuer que eu te mande pra você mostrar pra equipe?","fechamento":"Fechado, {{contato}} 🐾\n\n✅ Site {{empresa}} — {{preco}}\n✅ Tabela de serviços + agendamento WhatsApp\n✅ Página de plantão/urgência\n✅ Feed do Instagram organizado\n✅ Entrega em {{prazo}}"},{"id":"auto","nome":"Oficina / Auto Center / Borracharia","emoji":"🔧","buscaTermo":"oficina mecânica","ticketMedio":260,"dor":"Quem quebra o carro de noite não sabe em quem confiar — quem tem Google Meu Negócio + site leva a corrida.","gancho":"Site com serviços, orçamento por WhatsApp, confiança (avaliações) e rota de socorro.","agendador":false,"script":"Fala {{contato}}, tudo na paz? Aqui é {{nomeZeik}}, agência de sites da região de {{bairro}}.\n\nPassei na {{empresa}} e olhei no Google: vocês têm boa reputação, mas não têm site pra pedir orçamento.\n\nHoje quem tá na beira da estrada pesquisa {{buscaLocal}} e chama quem passa confiança online.\n\nMeu site pra {{empresa}} vem com:\n• Serviços (elétrica, suspensão, injeção, alinhamento, troca de óleo)\n• Pedido de orçamento direto no WhatsApp\n• Avaliações do Google + fotos da oficina\n• Horário e mapa\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE se não tiver Instagram, a gente cria e já deixa com padrão (antes/depois, serviço do dia).\n\nTopa ver uma prévia sem compromisso?","followup":"E aí {{contato}}, {{nomeZeik}} aqui 🙂\n\nMontei a prévia do site da {{empresa}} com botão de orçamento no WhatsApp.\n\nSe ajudar a entrar mais carro por semana, o site se paga na primeira semana. Posso te mostrar?","fechamento":"Boa, {{contato}}! 🔧\n\n✅ Site {{empresa}} — {{preco}}\n✅ Orçamento por WhatsApp + serviços\n✅ Avaliações do Google na home\n✅ Instagram criado/organizado\n✅ Entrega em {{prazo}}\n\nManda: logo, fotos da oficina, lista de serviços, horário e endereço."},{"id":"constru","nome":"Material de Construção / Depósito","emoji":"🧱","buscaTermo":"material de construção","ticketMedio":400,"dor":"Pedreiro e cliente final cotam por WhatsApp e concorrente responde primeiro.","gancho":"Site com catálogo, preço do dia, entrega e orçamento por lista de material.","agendador":false,"script":"Bom dia {{contato}}, aqui é {{nomeZeik}}, agência de sites do bairro.\n\nTrabalhei com algumas lojas de material da região e vi que a {{empresa}} ainda não tem um site com o catálogo e o telefone de entrega.\n\nQuem faz obra manda a lista pra 4 lojas — e muita gente chega digitando \"{{buscaLocal}}\" no Google. Compra de quem responde rápido e passa confiança.\n\nO site da {{empresa}} teria:\n• Categorias (cimento, tinta, hidráulico, elétrico, ferramentas)\n• Pedido de orçamento por lista no WhatsApp\n• Entrega e prazo em destaque\n• Horário, mapa e telefone grande\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nTambém deixamos o Instagram com padrão de preço do dia/frete grátis.\n\nPosso te mandar uma prévia?","followup":"Oi {{contato}}! {{nomeZeik}} 🙂\n\nFiz uma prévia do site da {{empresa}} com botão de \"pedir orçamento por lista\" no WhatsApp.\n\nQuer ver? Leva 2 min.","fechamento":"Fechado, {{contato}} 🧱\n\n✅ Site {{empresa}} — {{preco}}\n✅ Catálogo + orçamento por lista\n✅ Entrega e horário em destaque\n✅ Instagram organizado\n✅ Entrega em {{prazo}}"},{"id":"food","nome":"Pizzaria / Hamburgueria / Restaurante","emoji":"🍕","buscaTermo":"delivery","ticketMedio":55,"dor":"Cardápio no Instagram que some no scroll, pedido por DM atrasando e cliente indo pro iFood que cobra taxa.","gancho":"Cardápio digital no site próprio + botão de pedido no WhatsApp + Instagram com feed de comida que dá fome.","agendador":false,"script":"Opa {{contato}}, tudo bem? Aqui é {{nomeZeik}}, agência de sites do bairro.\n\nOlhei o perfil da {{empresa}} e o cardápio: dá água na boca 👌 Só que quem digita \"{{buscaLocal}}\" no Google não acha um cardápio seu — e o cliente precisa sair do Instagram pra pedir.\n\nFaço um site com:\n• Cardápio digital com preços e fotos\n• Botão de pedido no WhatsApp (sem taxa de aplicativo)\n• Promoção do dia em destaque\n• Promoção do dia em destaque + delivery area e mapa\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE a gente organiza seu Instagram: feed com padrão de comida, destaques de cardápio/horário/delivery.\n\nTe mando o modelo da {{empresa}} agora?","followup":"Opa {{contato}}! {{nomeZeik}} 🙂\n\nMontei a prévia do cardápio digital da {{empresa}} pro pedido cair direto no seu WhatsApp — sem comissão de app.\n\nQuer ver?","fechamento":"Show, {{contato}} 🍕\n\n✅ Site + cardápio digital — {{preco}}\n✅ Pedido direto no WhatsApp (sem taxa de app)\n✅ Destaques de promoção\n✅ Feed do Instagram organizado\n✅ Entrega em {{prazo}}\n\nManda o cardápio em texto ou foto que eu já digito tudo."},{"id":"academia","nome":"Academia / Studio","emoji":"🏋️","buscaTermo":"academia","ticketMedio":130,"dor":"Matrícula de bairro é decidida por localização, preço e horário — e por quem aparece bem no Google.","gancho":"Site com planos, horários de aula, professor e matrícula pelo WhatsApp; Instagram com aula do dia.","agendador":true,"script":"Oi {{contato}}, tudo bem? {{nomeZeik}}, agência de sites do bairro.\n\nPassei em frente à {{empresa}} e fui ver no Google: vocês não têm página com planos e horários. Quem mora perto e pesquisa {{buscaLocal}} acaba matriculando em quem mostra preço.\n\nSite que entrego:\n• Planos e formas de pagamento\n• Grade de aulas (funcional, pilates, luta)\n• Professores + estrutura\n• Matrícula/aula experimental pelo WhatsApp\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE organizamos o Instagram com feed de treino e destaques de horário/aula experimental.\n\nPosso te mandar uma prévia?","followup":"Oi {{contato}}! {{nomeZeik}} 🙂\n\nFiz a prévia do site da {{empresa}} com destaque pra aula experimental gratuita.\n\nMando pra você avaliar?","fechamento":"Fechado, {{contato}} 💪\n\n✅ Site {{empresa}} — {{preco}}\n✅ Planos + grade de aulas\n✅ Matrícula por WhatsApp\n✅ Feed do Instagram + destaques\n✅ Entrega em {{prazo}}"},{"id":"servicos","nome":"Serralheria / Elétrica / Serviços","emoji":"🛠️","buscaTermo":"prestador de serviço","ticketMedio":300,"dor":"Serviço é vendido por urgência e confiança; sem site, só indicados te acham.","gancho":"Site com portfólio de obras, região atendida e orçamento por foto no WhatsApp.","agendador":false,"script":"Olá {{contato}}, tudo bem? Aqui é {{nomeZeik}}, agência de sites do bairro.\n\nServiço de {{servico}} é contratado por confiança: quem precisa pesquisa \"{{buscaLocal}}\" e contrata quem mostra obra pronta, CEP atendido e responde na hora.\n\nHoje a {{empresa}} não tem um site com isso.\n\nEntrego:\n• Portfólio de trabalhos (foto antes/depois)\n• Serviços e região atendida\n• \"Manda foto que eu orço\" pelo WhatsApp\n• Avaliações de clientes + horário\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nTambém criamos/organizamos seu Instagram — pra muita gente é o seu único portfólio hoje.\n\nPosso te mandar o modelo da {{empresa}}?","followup":"Oi {{contato}}, {{nomeZeik}} aqui 🙂\n\nFiz uma prévia do site da {{empresa}} com o botão de orçamento por foto.\n\nServe pra você? Mando o link.","fechamento":"Perfeito, {{contato}} 🛠️\n\n✅ Site {{empresa}} — {{preco}}\n✅ Portfólio + região atendida\n✅ Orçamento por foto no WhatsApp\n✅ Instagram criado/organizado\n✅ Entrega em {{prazo}}\n\nMe manda 8 fotos de serviços prontos que eu monto o portfólio."},{"id":"varejo","nome":"Loja / Comércio de Bairro","emoji":"🛍️","buscaTermo":"loja de bairro","ticketMedio":60,"dor":"Cliente pesquisa preço online, não acha, e compra no Centro ou pela internet.","gancho":"Site com vitrine, categorias, WhatsApp por produto e Instagram de ofertas.","agendador":false,"script":"Oi {{contato}}! Aqui é {{nomeZeik}}, agência de sites da região de {{bairro}}.\n\nDei uma olhada na {{empresa}}. Produtos bons, atendimento bom — mas quem pesquisa na internet não encontra vocês e acaba comprando em outro lugar.\n\nCom um site simples a loja consegue:\n• Mostrar vitrine e categorias com preço\n• Receber pedido/proposta pelo WhatsApp\n• Divulgar promoção e condições (credionário/carnê)\n• Endereço, horário e mapa\n\nHoje, quem precisa disso no bairro pesquisa \"{{buscaLocal}}\" no Google e fecha com quem aparece primeiro.\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE se o Instagram estiver sem padrão, a gente cria/organiza com destaques de oferta e novidades.\n\nTe mando um modelo com a cara da {{empresa}}?","followup":"Oi {{contato}}, {{nomeZeik}} 🙂\n\nMontei a prévia do site da {{empresa}} com a vitrine e o botão de WhatsApp.\n\nQuer ver o link?","fechamento":"Fechado, {{contato}} 🛍️\n\n✅ Site {{empresa}} — {{preco}}\n✅ Vitrine + pedido por WhatsApp\n✅ Promoções em destaque\n✅ Feed do Instagram organizado\n✅ Entrega em {{prazo}}"},{"id":"escola","nome":"Escola / Curso / Autoescola","emoji":"🎓","buscaTermo":"curso / autoescola","ticketMedio":220,"dor":"Matrícula é sazonal e o aluno compara preço, parcelas e avaliações de ex-alunos.","gancho":"Site com cursos, valores, documentos necessários e matrícula pelo WhatsApp.","agendador":true,"script":"Olá {{contato}}, tudo bem? Aqui é {{nomeZeik}}, agência de sites do bairro.\n\nQuem vai se matricular compara no celular: preço, parcela, documentação e o que ex-aluno fala.\n\nHoje a {{empresa}} não tem uma página única com isso.\n\nFaço um site com:\n• Cursos e valores + parcelamento\n• Documentos necessários e etapas\n• Depoimentos de alunos aprovados\n• Matrícula/aula experimental pelo WhatsApp\n\nHoje, quem precisa disso no bairro pesquisa \"{{buscaLocal}}\" no Google e fecha com quem aparece primeiro.\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE organizamos seu Instagram (aprovação de aluno é o melhor conteúdo que existe).\n\nPosso te mandar uma prévia?","followup":"Oi {{contato}}! {{nomeZeik}} 🙂\n\nFiz a prévia do site da {{empresa}} com a tabela de cursos e depoimentos.\n\nMando pra você ver?","fechamento":"Perfeito, {{contato}} 🎓\n\n✅ Site {{empresa}} — {{preco}}\n✅ Cursos + parcelamento + docs\n✅ Depoimentos de alunos\n✅ Instagram organizado\n✅ Entrega em {{prazo}}"},{"id":"generico","nome":"Outro / Genérico","emoji":"🏪","buscaTermo":"empresa","ticketMedio":0,"dor":"Negócio bom no bairro, invisível no Google.","gancho":"Site profissional em 48h + Instagram organizado + manutenção mensal opcional.","agendador":false,"script":"Opa {{contato}}, tudo bem? Aqui é {{nomeZeik}}, da Zeik Digital, agência de sites da região de {{bairro}}.\n\nPassei pela {{empresa}} e fui procurar no Google: vocês ainda não têm um site próprio.\n\nIsso significa que quem pesquisa na região encontra o concorrente primeiro.\n\nO que a gente faz:\n• Site profissional com sua marca\n• Serviços/produtos + preços\n• Botão de WhatsApp e localização\n• Se você não tem Instagram, a gente cria; se tem e está desorganizado, a gente arruma o feed\n\nHoje, quem precisa disso no bairro pesquisa \"{{buscaLocal}}\" no Google e fecha com quem aparece primeiro.\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nQuer que eu te mande um modelo pronto da {{empresa}} pra você ver sem compromisso?","followup":"Oi {{contato}}, {{nomeZeik}} aqui 🙂\n\nSeparei um modelo do site da {{empresa}}. Ficou bonito e rápido de mexer.\n\nPosso te enviar o link da prévia?","fechamento":"Fechado, {{contato}} 🤝\n\n✅ Site {{empresa}} — {{preco}}\n✅ Serviços + WhatsApp + mapa\n✅ Instagram criado/organizado\n✅ Entrega em {{prazo}}\n\nMe manda fotos, serviços, endereço e horário que eu começo hoje."}],"objecoes":[{"q":"\"Já tenho site.\"","a":"Manda o link? Se ele demora pra carregar, não abre direito no celular ou está sem atualização, o problema é o contrário: site pronto que não converte.\n\nFaço uma análise gratuita de velocidade e mobile e te mostro em 5 minutos o que está te custando cliente. Se estiver bom, você fica com a análise — sem compromisso."},{"q":"\"Não tenho tempo pra isso.\"","a":"Justamente. Eu faço tudo: você me manda 6 fotos e seus preços pelo WhatsApp, e em 48h o site já está no ar.\n\nVocê não precisa sentar, preencher nada, nem aprender ferramenta nova. Se quiser mexer depois, explico em 10 min — e a manutenção mensal de R$ {{manut}} já resolve as atualizações por você."},{"q":"\"Está caro. R$ {{preco}} é muito.\"","a":"Entendo. Vamos em números: um site desses custa {{preco}} uma vez.\n\nSe ele te trouxer 1 cliente novo por mês, se paga. No serviço de {{servico}}, 1 cliente já paga o site e sobra.\n\nDá pra começar com o pacote essencial ({{precoMin}}) e evoluir depois — e dá pra dividir. O que não dá é ficar mais um mês invisível pra quem pesquisa na {{bairro}}."},{"q":"\"Já tenho Instagram.\"","a":"Perfeito, e é por isso que dá certo juntos: o Instagram é a vitrine, o site é onde a pessoa fecha.\n\nHoje, no Instagram, você depende do algoritmo e não tem link de orçamento, preço fixo nem Google te achando. O site coloca a {{empresa}} em quem pesquisa {{buscaLocal}}.\n\nE se o feed estiver desorganizado, eu já deixo padrão pra você."},{"q":"\"Vou pensar.\"","a":"Combinadíssimo. Só te peço duas coisas:\n\n1) Te mando a prévia do site da {{empresa}} hoje à noite, aí você pensa olhando o resultado, não a ideia.\n2) Se aprovar essa semana, entrego dentro do prazo de {{prazo}}.\n\nPosso mandar no WhatsApp mesmo?"},{"q":"\"Tenho medo de não saber mexer.\"","a":"Você não precisa mexer. Manda um áudio pra mim dizendo \"troca o preço da pizza grande\" e eu atualizo.\n\nNo plano de R$ {{manut}}/mês, as alterações são por você não: é só mensagem no WhatsApp. Sem site nunca mais vai virar dor de cabeça."},{"q":"\"Meu público não usa internet.\"","a":"Usa mais do que parece: quem mora na {{bairro}} pesquisa no Google e decide pelo WhatsApp, e 9 em cada 10 clientes chegam por celular.\n\nMesmo a senhora que veio por indicação quis ver seu número e sua foto antes de entrar. O site é o que passa a confiança pra esse cliente."},{"q":"\"Por que não faço eu mesmo no Canva/Wix?\"","a":"Dá pra fazer, e tem gente que faz e vende bem. A diferença está em:\n\n• Carregar rápido no 4G do bairro (o template pronto não carrega)\n• Aparecer no Google (título, endereço, mapa)\n• Botão de WhatsApp e formulário que chega pra você\n• Acabamento que faz seu serviço parecer mais caro que o do vizinho\n\nE se um dia você quiser assumir sozinho, eu entrego o projeto aberto e explico tudo."}],"prospects":[],"prospectosVazios":true,"semBase":true,"metaEm":"2026-09-08"};
 })(typeof window !== "undefined" ? window : this);
 
 </script>
@@ -894,7 +923,22 @@ w.ZEIK_SEED = {"versao":21,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
         linkBase: "",
         limiteToques: 3,      /* 3 toques sem resposta = silêncio. Bairro pequeno, insistir queima. */
         validadeDias: 45,     /* chumbo velho: revalidar o número antes de abordar */
-        medirRoteiro: true,   /* conta resposta por VERSÃO do texto (mexe no texto = versão nova) */
+        medirRoteiro: true,    /* conta resposta por VERSÃO do texto (mexe no texto = versão nova) */
+        /* Rodada 13: tíquete. Chumbo que paga R$ 60 e dá trabalho três vezes não é chumbo
+           bom. Estes campos mudam a ORDEM da fila (quem paga mais aparece primeiro) sem
+           esconder ninguém — esconder é com o interruptor de baixo, ligado por ele. */
+        pesoGrana: 2,          /* 0 = ignora · 2 = empurra o pagador forte pro topo · 4 = manda nele */
+        ticketAlvo: 180,       /* a régua: ticket médio deste valor pra cima é "bom pagador" */
+        soGrana: false,        /* true = fila só com nível A/B (o payload tem --so-grana igual) */
+        premiumParaA: true,    /* nível A recebe a copy de POSICIONAMENTO, não a de "precisa de site" */
+        /* Rodada 15 — a tese dele: "bairro nobre fecha mais fácil". Não é preconceito, é
+           preço de tabela: no Morumbi o mesmo par de cílios custa 1,7x o que custa no Capão.
+           O fator mexe em DUAS coisas — a nota da régua e o PISO da proposta (em bairro
+           nobre você não abre com o degrau de baixo). Nada some: o Capão continua sendo
+           o quintal, só que sem carregar o bônus que o Morumbi ganha. */
+        bairrosOuro: "Morumbi 1.7, Panamby 1.7, Real Parque 1.6, Vila Progredior 1.6, Jardim Leonor 1.6, Vila Suzana 1.6, Fazenda Morumbi 1.6, Vila Andrade 1.5, Brooklin 1.7, Chácara Santo Antônio 1.6, Campo Belo 1.7, Vila Olímpia 1.8, Itaim Bibi 1.8, Novo Mundo 1.6, Saúde 1.5, Paraíso 1.5, Jabaquara 1.2, Pinheiros 1.7, Alto de Pinheiros 1.8, Jardim Paulista 1.8, Vila Madalana 1.6, Perdizes 1.5, Consolação 1.5, Butantã 1.2, Rio Pequeno 1.2, Jaguaré 1.1, Lapa 1.3, Vila Leopoldina 1.3, Santo Amaro 1.3, Campo Limpo 1.0, Capão Redondo 1.0, Socorro 1.2, Jardim Bonfiglio 1.2, Jardim Londrina 1.2, Jardim Guarapiranga 1.1, Jardim Ângela 1.0, Grajaú 0.9, Jardim Nakamura 0.9, Parelheiros 1.0",
+        ouroPara: 1.45,        /* fator a partir do qual o bairro vira "nobre" pra tela 👑 e pro piso */
+        chaoOuro: true,        /* true = em bairro nobre a proposta começa no piso do bairro */
         /* Fechou? Já entra a TAXA. Sem isto o "sim" vira uma memória e a mensalidade
            ninguém cobra no dia certo — é assim que cliente some no 2º mês. */
         taxaAoFechar: true,
@@ -1129,7 +1173,7 @@ w.ZEIK_SEED = {"versao":21,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
     looksGuiaCnpj: looksGuiaCnpj, parseGuiaCnpj: parseGuiaCnpj, segPorCnae: segPorCnae, fonesRepetidos: fonesRepetidos, pautaRaio: pautaRaio,
     criaLoteCode: criaLoteCode, looksLoteCode: looksLoteCode, parseLoteCode: parseLoteCode,
     /* getter: o NICHOS é um var definido mais abaixo — por valor aqui seria undefined */
-    get NICHOS() { return NICHOS; }, nichoDe: nichoDe, nichoLabel: nichoLabel, nichosFora: nichosFora, metaSeed: metaSeed, segmentosBase: segmentosBase, objecoesBase: objecoesBase, bairrosPorZonaBase: bairrosPorZonaBase, nichoBloqueado: nichoBloqueado, nichoResumo: nichoResumo, ehChamavel: ehChamavel, resumoChamavel: resumoChamavel, quenteDe: quenteDe, ehQuente: ehQuente, QUENTE_PONTOS: QUENTE_PONTOS, rotaPara: rotaPara, rotaNichoDe: rotaNichoDe, slug: slug, janelaIdeal: janelaIdeal, idadeLead: idadeLead, linkModelo: linkModelo, chaveRoteiro: chaveRoteiro, esgotado: esgotado, motivoEspera: motivoEspera, linkModeloLocal: linkModeloLocal,
+    get NICHOS() { return NICHOS; }, nichoDe: nichoDe, nichoLabel: nichoLabel, nichosFora: nichosFora, metaSeed: metaSeed, segmentosBase: segmentosBase, objecoesBase: objecoesBase, bairrosPorZonaBase: bairrosPorZonaBase, nichoBloqueado: nichoBloqueado, nichoResumo: nichoResumo, ehChamavel: ehChamavel, resumoChamavel: resumoChamavel, quenteDe: quenteDe, ehQuente: ehQuente, QUENTE_PONTOS: QUENTE_PONTOS, rotaPara: rotaPara, rotaNichoDe: rotaNichoDe, slug: slug, janelaIdeal: janelaIdeal, idadeLead: idadeLead, linkModelo: linkModelo, chaveRoteiro: chaveRoteiro, esgotado: esgotado, motivoEspera: motivoEspera, granaDe: granaDe, granaLabel: granaLabel, ouroDe: ouroDe, ouroMapa: ouroMapa, boaGrana: boaGrana, escadaPreco: escadaPreco, planoPara: planoPara, ESCADA: ESCADA, falasAlta: falasAlta, roteiroReuniao: roteiroReuniao, deckDe: deckDe, filaGrana: filaGrana, linkModeloLocal: linkModeloLocal,
     doisHorarios: doisHorarios, pixCopiaECola: pixCopiaECola, crc16: crc16,
     apiDisparar: apiDisparar, parseColeta: parseColeta, detectSeg: detectSeg,
     CIDADES_INTERIOR: CIDADES_INTERIOR,
@@ -1323,14 +1367,18 @@ w.ZEIK_SEED = {"versao":21,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
       /* A taxa do mês corrente só é criada se ainda não existir (re-entrante: marcar e
          desmarcar não gera cobrança fantasma). */
       var mk = monthKey(), criada = null;
-      if (cfg.taxaAoFechar !== false && Number(cfg.manutMes) > 0) {
+      /* Rodada 14: quem fecha pela tela 👑 sai no DEGRAU sugerido, não na mensalidade
+         chã de R$ 97. Sem isso a escada era enfeite: vendia Autoridade e cobrava
+         Presença. o.manut manda; sem ele, comportamento antigo (cfg.manutMes). */
+      var valorTaxa = Number(o && o.manut) > 0 ? Number(o.manut) : Number(cfg.manutMes);
+      if (cfg.taxaAoFechar !== false && valorTaxa > 0) {
         var existe = st.financeiro.filter(function (f) {
           return f.clienteId === cli.id && f.tipo === "manutencao" && f.mes === mk;
         })[0];
         if (!existe) {
           criada = {
             id: uid("f"), clienteId: cli.id, dealId: deal.id, tipo: "manutencao", taxa: true,
-            descricao: "Taxa mensal — " + p.nome, valor: Number(cfg.manutMes),
+            descricao: "Taxa mensal" + (o && o.plano ? " (" + o.plano + ")" : "") + " — " + p.nome, valor: valorTaxa,
             data: todayISO(), mes: mk, status: "a_receber", recorrente: true,
             venceEm: (function () { var d = new Date(); d.setDate(d.getDate() + 30); return d.toISOString().slice(0, 10); })()
           };
@@ -1340,6 +1388,35 @@ w.ZEIK_SEED = {"versao":21,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
       this.saveNow();
       this.log("cliente", "Fechou " + p.nome + (criada ? " · taxa de " + fmtBRL(Number(cfg.manutMes)) + "/mês lançada" : ""), cli.id);
       return { cliente: cli, deal: deal, taxa: criada };
+    },
+    /* Marcar o lead DIRETO da tela 👑 (sem fila de campanha). O pedido dele foi uma
+       tela de conversão, não uma lista: aqui o clique move a ficha e o FECHOU liga a
+       mesma máquina de taxa que a fila já usa. */
+    marcarLead: function (id, estado) {
+      var st = this.state, self = this;
+      var p = (st.prospects || []).filter(function (x) { return x.id === id; })[0];
+      if (!p) return null;
+      var agora = new Date().toISOString(), taxa = null;
+      if (estado === "enviado") {
+        p.toques = (Number(p.toques) || 0) + 1;
+        p.ultimoContato = agora;
+        if (p.status === "novo") p.status = "contato_feito";
+        self.statRoteiro(p, "m1", "enviado");
+      } else if (estado === "respondeu") {
+        p.status = "respondeu"; p.ultimoContato = agora; self.statRoteiro(p, "m1", "respondeu");
+      } else if (estado === "reuniao") {
+        p.status = "convertido"; p.proximoPasso = "reunião de 20 min — levar slides e a conta do ticket";
+        p.ultimoContato = agora; self.statRoteiro(p, "m1", "reunião");
+      } else if (estado === "ganhou") {
+        var plx = planoPara(p, st.config);
+        var r = self.fecharLead(id, { manut: plx.plano.manut, plano: plx.plano.nome, valor: plx.plano.valor });
+        taxa = r && r.taxa ? { valor: r.taxa.valor, vence: r.taxa.venceEm } : null;
+      } else if (estado === "perdeu") {
+        p.status = "sem_retorno"; p.silencio = true;
+      }
+      p.atualizadoEm = agora;
+      this.saveNow();
+      return { status: p.status, toques: Number(p.toques) || 0, taxa: taxa };
     },
     /* Vencimentos: quantas taxas caem nos próximos N dias. É o número que faz ele ligar
        antes de virar cliente "esquecido". */
@@ -1364,10 +1441,35 @@ w.ZEIK_SEED = {"versao":21,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
     importSeed: function (seed) {
       var st = this.state;
       var existing = {};
-      st.prospects.forEach(function (p) { existing[p.nome.toLowerCase()] = 1; });
+      st.prospects.forEach(function (p) { existing[p.nome.toLowerCase()] = p; });
+      var fundidas = 0;
+      var dg9 = function (t) { var d = String(t || "").replace(/\D/g, ""); return d.length >= 9 ? d.slice(-9) : ""; };
       (seed.prospects || []).forEach(function (p) {
         if (!p || !p.nome) return;
-        if (existing[p.nome.toLowerCase()]) return;
+        var velha = existing[p.nome.toLowerCase()];
+        /* Rodada 14: aqui morria chumbo. Mesma empresa vista em outra coleta tinha o nome
+           e o importava dropava a linha nova \u2014 inclusive quando a linha nova era a que
+           TINHA o celular. Nome repetido agora é FUSÃO: preenche o que falta, nunca por
+           cima de dado que ele já confirmou. Telefone diferente não some: é anotado. */
+        if (velha) {
+          var mudou = false;
+          var telVelho = numWhatsapp(velha), telNovo = numWhatsapp(p);
+          if (!telVelho && telNovo) {
+            velha.whats = p.whats || p.telefone || velha.whats;
+            if (!velha.telefone) velha.telefone = p.telefone || p.whats;
+            mudou = true;
+          } else if (telVelho && telNovo && dg9(telVelho) !== dg9(telNovo) && String(velha.obs || "").indexOf(telNovo) < 0) {
+            velha.obs = String(velha.obs || "") + " \u00b7 \u26a0 2\u00ba zap visto na fonte: " + (p.whats || p.telefone || telNovo);
+            mudou = true;
+          }
+          if (!Number(velha.ticket) && Number(p.ticket)) { velha.ticket = Number(p.ticket); mudou = true; }
+          if (!velha.endereco && p.endereco) { velha.endereco = p.endereco; mudou = true; }
+          if (!velha.origem && p.origem) { velha.origem = p.origem; mudou = true; }
+          if ((velha.temSite === null || velha.temSite === undefined) && p.temSite !== undefined) { velha.temSite = p.temSite; mudou = true; }
+          if (!velha.obs && p.obs) { velha.obs = p.obs; mudou = true; }
+          if (mudou) { velha.atualizadoEm = new Date().toISOString(); fundidas++; }
+          return;
+        }
         st.prospects.push({
           id: uid("p"),
           nome: p.nome,
@@ -1390,13 +1492,18 @@ w.ZEIK_SEED = {"versao":21,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
           status: p.status || "novo",
           origem: p.origem || "Pesquisa",
           obs: p.obs || "",
+          /* rodada 13: sem este campo o ticket que a raspagem achou morria no import e a
+             régua de grana ficava só com o texto. Teste 20 pega se ele sumir de novo. */
+          ticket: Number(p.ticket) || 0,
+          whatsOk: p.whatsOk || "",
           criadoEm: new Date().toISOString(),
           atualizadoEm: new Date().toISOString(),
           ultimoContato: null,
           convertidoId: null
         });
-        existing[p.nome.toLowerCase()] = 1;
+        existing[p.nome.toLowerCase()] = st.prospects[st.prospects.length - 1];
       });
+      return { fundidas: fundidas };
     },
 
     migrate: function () {
@@ -1639,6 +1746,8 @@ w.ZEIK_SEED = {"versao":21,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
         if (p.whatsOk === "nao") return false;
         /* rodada 12: 3 toques sem resposta ou "para de me chamar" = sai da fila sozinho. */
         if (p.silencio || esgotado(p, st.config)) return false;
+        /* com o \ud83d\udcb0 ligado, chumbo de ticket baixo n\u00e3o entra (ele pediu: cliente ruim custa caro) */
+        if (!boaGrana(p, st.config)) return false;
         if (o.segmento && p.segmento !== o.segmento) return false;
         if (o.zona === "Interior" && !ehInterior(p)) return false;
         else if (o.zona && o.zona !== "Interior" && p.zona !== o.zona) return false;
@@ -1655,8 +1764,9 @@ w.ZEIK_SEED = {"versao":21,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
         if (o.pularJaContatado && p.ultimoContato) return false;
         return true;
       }).sort(function (a, b) {
-        var d = ((b.whatsOk === "sim" ? 12 : 0) + self.score(b) + quenteDe(b, st.config).pontos * 2) -
-                 ((a.whatsOk === "sim" ? 12 : 0) + self.score(a) + quenteDe(a, st.config).pontos * 2);
+        var pg = Number(st.config.pesoGrana); if (!isFinite(pg)) pg = 2;
+        var d = ((b.whatsOk === "sim" ? 12 : 0) + self.score(b) + quenteDe(b, st.config).pontos * 2 + granaDe(b, st.config).pontos * pg) -
+                 ((a.whatsOk === "sim" ? 12 : 0) + self.score(a) + quenteDe(a, st.config).pontos * 2 + granaDe(a, st.config).pontos * pg);
         return d;
       }).slice(0, o.limite || 50);
       var c = {
@@ -1797,7 +1907,9 @@ w.ZEIK_SEED = {"versao":21,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
           whatsapp: st.config.whatsapp, whatsappDisplay: st.config.whatsappDisplay, email: st.config.email,
           instagram: st.config.instagram, precoSite: st.config.precoSite, precoSiteMin: st.config.precoSiteMin,
           precoSiteMax: st.config.precoSiteMax, manutMes: st.config.manutMes, prazoEntrega: st.config.prazoEntrega,
-          politicaPreco: st.config.politicaPreco, rota: st.config.rota, pix: st.config.pix, mpLink: st.config.mpLink },
+          politicaPreco: st.config.politicaPreco, rota: st.config.rota, pix: st.config.pix, mpLink: st.config.mpLink,
+          pesoGrana: st.config.pesoGrana, ticketAlvo: st.config.ticketAlvo, soGrana: st.config.soGrana, premiumParaA: st.config.premiumParaA,
+          bairrosOuro: st.config.bairrosOuro, ouroPara: st.config.ouroPara, chaoOuro: st.config.chaoOuro },
         prospects: st.prospects
       }, null, 1);
     },
@@ -1989,7 +2101,7 @@ w.ZEIK_SEED = {"versao":21,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
         stp.prospects.push(p); porNome[k] = p; novos++;
       });
       if (obj.config && !o.semConfig) {
-        var keep = ["cadencia", "limiteDisparoDia", "rota", "voz", "pix", "mpLink", "disparoApi", "politicaPreco", "nichosFora", "somenteWhats", "somenteQuentes", "quenteMinimo", "rotaPorNicho", "metaProspects", "basePrivada", "lockInatividade", "taxaAoFechar", "tetoDia", "linkBase", "limiteToques", "validadeDias", "mediarRoteiro"];
+        var keep = ["cadencia", "limiteDisparoDia", "rota", "voz", "pix", "mpLink", "disparoApi", "politicaPreco", "nichosFora", "somenteWhats", "somenteQuentes", "quenteMinimo", "rotaPorNicho", "metaProspects", "basePrivada", "lockInatividade", "taxaAoFechar", "tetoDia", "linkBase", "limiteToques", "validadeDias", "mediarRoteiro", "pesoGrana", "ticketAlvo", "soGrana", "premiumParaA", "bairrosOuro", "ouroPara", "chaoOuro"];
         Object.keys(obj.config).forEach(function (k) {
           if (keep.indexOf(k) < 0 && k !== "bairros" && k !== "bairrosPorZona") return;
           if (obj.config[k] === undefined || obj.config[k] === null) return;
@@ -2631,6 +2743,270 @@ w.ZEIK_SEED = {"versao":21,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
   function ehQuente(p, cfg) { return quenteDe(p, cfg).quente; }
 
   /* ------------------------------------------------------------------ */
+  /* QUEM PAGA — a régua de tíquete                                       */
+  /* Não é "nicho bonito": é sinal de dinheiro no texto que a gente TEM.   */
+  /* Cada ponto é uma prova de que sobra caixa pra pagar o site + mensali- */
+  /* dade, ou de que o serviço dela é de alto valor recorrente. O avesso    */
+  /* também pontua (esmaltação barata, atendimento em casa, "promoção") pra */
+  /* chumbo de rodapé não subir ao topo por engano.                         */
+  /* ------------------------------------------------------------------ */
+
+  /* ------------------------------------------------------------------ */
+  /* BAIRRO NOBRE — o mapa de fator                                      */
+  /* Não é "bairro chique", é o preço que a própria tabela da região     */
+  /* manda: "Morumbi 1.7" quer dizer que o MESMO serviço sai 1,7x mais   */
+  /* caro lá do que no Capão. A lista é editável em Scripts (o dado vem  */
+  /* de cardápio publicado, não do meu palpite). Fator baixo não pune o   */
+  /* quintal dele: só não ganha o bônus.                                  */
+  /* ------------------------------------------------------------------ */
+  var OURO_CACHE = { texto: "", mapa: null };
+  function normTxt(t) {
+    return String(t || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim();
+  }
+  function ouroMapa(cfg) {
+    var txt = String((cfg && cfg.bairrosOuro) || "");
+    if (OURO_CACHE.mapa && OURO_CACHE.texto === txt) return OURO_CACHE.mapa;
+    var m = [];
+    txt.split(",").forEach(function (parte) {
+      var q = parte.trim();
+      if (!q) return;
+      var mm = q.match(/^(.*?)(\d+(?:[.,]\d+)?)\s*$/);
+      if (!mm) { m.push({ nome: normTxt(q), nomeBonito: q, fator: 1 }); return; }
+      m.push({ nome: normTxt(mm[1]), nomeBonito: String(mm[1]).trim(), fator: Number(String(mm[2]).replace(",", ".")) || 1 });
+    });
+    m.sort(function (a, b) { return b.nome.length - a.nome.length; });
+    OURO_CACHE.texto = txt; OURO_CACHE.mapa = m;
+    return m;
+  }
+  function ouroDe(p, cfg) {
+    var m = ouroMapa(cfg);
+    /* Só o BAIRRO manda no fator, e só casando o nome inteiro de um recorte dele:
+       "Jardim Paulistano" não é "Jardim Paulista", e o endereço "Chácara Santo Antônio
+       (Zona Leste)" é outro bairro homônimo do outro lado da cidade. Falso positivo aqui
+       = proposta de R$ 935 pra quem cobra R$ 60, e a culpa cai no painel. */
+    var bruto = String((p && p.bairro) || "");
+    var partes = [], buf = "", q;
+    for (q = 0; q < bruto.length; q++) {
+      var ch = bruto.charAt(q);
+      if (ch === "(" || ch === ")" || ch === "," || ch === "-" || ch === "/" || ch === "\u00b7" || ch === " \u00b7 ") { if (buf.trim()) partes.push(buf); buf = ""; }
+      else buf += ch;
+    }
+    if (buf.trim()) partes.push(buf);
+    partes.push(bruto);
+    var cand = [];
+    for (q = 0; q < partes.length; q++) { var nn = normTxt(partes[q]); if (nn && cand.indexOf(nn) < 0) cand.push(nn); }
+    var casa = function (c, k) { return c === k || c.slice(-(k.length + 1)) === " " + k; };
+    var achado = null, i;
+    for (i = 0; i < m.length && cand.length; i++) {
+      for (var c2 = 0; c2 < cand.length; c2++) { if (casa(cand[c2], m[i].nome)) { achado = m[i]; break; } }
+      if (achado) break;
+    }
+    var fator = achado ? (Number(achado.fator) || 1) : 1;
+    var para = Number(cfg && cfg.ouroPara); if (!isFinite(para) || para <= 0) para = 1.45;
+    var nobre = fator >= para;
+    var base = Number(cfg && cfg.precoSite); if (!isFinite(base) || base <= 0) base = 550;
+    var chao = (cfg && cfg.chaoOuro === false) ? 0 : Math.round(base * fator / 10) * 10;
+    return { fator: fator, nobre: nobre, nome: achado ? achado.nomeBonito : ((p && p.bairro) || ""), chao: chao,
+             motivo: achado ? (nobre ? "bairro de tabela alta (" + achado.nomeBonito + " · " + String(fator).replace(".", ",") + "x)" : "tabela de bairro comum (" + achado.nomeBonito + ")") : "bairro fora do mapa de fator" };
+  }
+  var GRANA_SINAIS = [
+    [/(micropigment|henna|laser|depila\u00e7\u00e3o definitiva|podologia|peeling|microagulh|harmoniza\u00e7|botox|est\u00e9tica avan\|cl\u00ednica|consult\u00f3ri|fisio|nutricion|academia|crossfit|pilates|odont|dentista)/i, 4, "procedimento/serviço de valor"],
+    [/(russian|acr\u00edlico|acrylic|dip powder|alongamento|gel em molde|fibra|nail design)/i, 3, "unha em gel/acr\u00edlico (ticket 150 a 300)"],
+    [/(noiva|bridal|maquiagem|makeup|penteado|festa|evento)/i, 3, "servi\u00e7o de evento (pagamento alto e \u00fanico)"],
+    [/(academy|curso|turma|formanda|formando|aula|workshop)/i, 3, "d\u00e1 curso (caixa de matr\u00edcula)"],
+    [/(studio|espa\u00e7o|ateli\u00ea|center|boutique|luxo|premium|vip|sal[\u00e3]o)/i, 2, "montou casa, n\u00e3o atende na sala de casa"],
+    [/(sala ?\d|\d\u00ba ?andar|2\u00ba ?andar|loja ?\d|cobertura|conjunto ?\d|anexo|s\u00f3l\u00e3o)/i, 2, "endere\u00e7o com sala/pr\u00e9dio"],
+    [/(unidade|matriz|filial|2 unidades|3 unidades|& ?podologia| & |\bplus\b)/i, 3, "mais de um servi\u00e7o/unidade na mesma casa"],
+    [/(conv[\u00ee]nio|cart[\u00e3]o|parcela|pix|faturamento|nota fiscal)/i, 1, "recebe em cart\u00e3o/parcelado"],
+    [/(segunda a s\u00e1bado|s\u00e1bado|domingo|hor\u00e1rio estendido|noite)/i, 1, "agenda cheia o dia todo"],
+    [/(promo\w*|desconto|barato|unhas a r\$ ?\d\d|gr[\u00e1]tis)/i, -3, "se anuncia por preço baixo"],
+    [/(casa ?\d+| \bcasa\b|quintal|fundo de|garagem)/i, -2, "atende em casa (ticket baixo, sem estrutura)"]
+  ];
+  function granaDe(p, cfg) {
+    if (!p) return { pontos: 0, nivel: "D", motivo: [], nome: "" };
+    /* Aqui eu leio o texto BRUTO (não o obsUtil): a régua de calor precisa do obsUtil pra
+       não pontuar a própria anotação de "marcar/agenda", mas grana se mede no que está
+       escrito no cardápio publicado dela (russian, acrílico, laser, podologia, sala 20).
+       O ticket numérico é o que segura a nota — é ele, não o adjetivo. */
+    var txt = String(p.nome || "") + " " + String(p.obs || "") + " " + String(p.endereco || "") + " " + String(p.servicos || "") + " " + String(p.atividade || "");
+    var t = 0, mot = [];
+    for (var i = 0; i < GRANA_SINAIS.length; i++) {
+      try { if (GRANA_SINAIS[i][0].test(txt)) { t += GRANA_SINAIS[i][1]; mot.push(GRANA_SINAIS[i][2]); } } catch (e) {}
+    }
+    var tk = Number(p.ticket) || 0;
+    /* lead que chegou por COLA de lote não traz a coluna ticket (o formato tem 7 campos) —
+       resgata o número da observação, que é onde a raspagem escreve "ticket médio 220". */
+    if (!tk) { var mt = String(p.obs || "").match(/ticket m[\u00e9e]dio (\d{2,4})/); if (mt) tk = Number(mt[1]); }
+    var alvo = Number((cfg && cfg.ticketAlvo) || 180);
+    if (tk >= alvo * 2) { t += 4; mot.push("ticket " + tk + " (2x o alvo)"); }
+    else if (tk >= alvo) { t += 2; mot.push("ticket " + tk + " no alvo"); }
+    else if (tk && tk < alvo * 0.6) { t -= 2; mot.push("ticket " + tk + " abaixo do alvo"); }
+    var separ = String(p.obs || "").match(/,|\u00b7/g);
+    if (separ && separ.length >= 3) { t += 1; mot.push("card\u00e1pio largo (3+ servi\u00e7os)"); }
+    if (p.temSite === true) { t -= 1; mot.push("j\u00e1 tem site (urg\u00eancia menor)"); }
+    var our = ouroDe(p, cfg);
+    if (our.fator >= 1.6) { t += 3; mot.push(our.motivo); }
+    else if (our.fator >= 1.4) { t += 2; mot.push(our.motivo); }
+    else if (our.fator >= 1.25) { t += 1; mot.push("bairro com tabela um pouco acima (" + our.nome + ")"); }
+    t = Math.max(0, Math.min(14, t));
+    var nivel = t >= 7 ? "A" : t >= 4 ? "B" : t >= 2 ? "C" : "D";
+    /* O card mostra 4 motivos no máximo. O do bairro vai pro primeiro lugar quando conta,
+       senão o critério que ele ACABOU de pedir ("por que esse está na minha frente?") some
+       embaixo dos sinais de sempre e a régua vira caixa-preta de novo. */
+    var mostr = mot.slice(0, 4);
+    if (our.fator >= 1.25 && mot.indexOf(our.motivo) >= 0) {
+      mostr = [our.motivo].concat(mostr.filter(function (x) { return x !== our.motivo; })).slice(0, 4);
+    }
+    return { pontos: t, nivel: nivel, motivo: mostr, nome: p.nome || "" };
+  }
+  var GRANA_LABEL = {
+    A: { nome: "paga bem", emoji: "\ud83d\udcb0\ud83d\udcb0", cor: "green" },
+    B: { nome: "d\u00e1 pra subir o ticket", emoji: "\ud83d\udcb0", cor: "blue" },
+    C: { nome: "ticket apertado", emoji: "\ud83e\ude99", cor: "gray" },
+    D: { nome: "chumbo de R$ 40 \u2014 evite", emoji: "\ud83d\udeab", cor: "red" }
+  };
+  function granaLabel(nv) { return GRANA_LABEL[nv] || GRANA_LABEL.D; }
+  /* ESCADA DE PREÇO — o repertório que ele pediu. Ele vende UMA coisa a R$ 550 pra gente
+     que pagaria 1.500 sem pensar. Três degraus com nome de resultado, cada um entregando
+     a razão do próximo. O nível da régua de grana escolhe por qual começar — A nunca
+     entra pelo barato. */
+  var ESCADA = [
+    { id: "presenca", nome: "Presen\u00e7a", mult: 1,
+      entrega: "p\u00e1gina de uma se\u00e7\u00e3o com o que ela j\u00e1 tem: endere\u00e7o, hor\u00e1rio, card\u00e1pio curto, bot\u00e3o de WhatsApp",
+      pra: "quem s\u00f3 precisa parar de sumir no mapa",
+      proximo: "Agenda \u2014 card\u00e1pio com pre\u00e7o, antes/depois e bot\u00e3o de reagendar" },
+    { id: "agenda", nome: "Agenda", mult: 1.8,
+      entrega: "p\u00e1gina completa + card\u00e1pio com valores + antes/depois + bot\u00e3o de reagendar caindo no zap dela + pol\u00edtica de remarca\u00e7\u00e3o (\u00e9 o que derruba no-show)",
+      pra: "quem vive de hora marcada e perde cliente no compareceu/n\u00e3o compareceu",
+      proximo: "Autoridade \u2014 p\u00e1gina por procedimento, prova de resultado, Google otimizado e relat\u00f3rio mensal" },
+    { id: "autoridade", nome: "Autoridade", mult: 2.8,
+      entrega: "tudo do Agenda + uma p\u00e1gina por procedimento (\u00e9 a que ranqueia), depoimentos, Google Meu Neg\u00f3cio ajustado, relat\u00f3rio mensal de liga\u00e7\u00f5es/cliques e revis\u00e3o de texto por trimestre",
+      pra: "quem cobra caro e precisa justificar o caro antes de o cliente perguntar",
+      proximo: "" }
+  ];
+  function escadaPreco(cfg) {
+    var base = Number((cfg && cfg.precoSite) || 550);
+    var man = Number((cfg && cfg.manutMes) || 97);
+    return ESCADA.map(function (e) {
+      return { id: e.id, nome: e.nome, entrega: e.entrega, pra: e.pra, proximo: e.proximo,
+               valor: Math.round(base * e.mult / 10) * 10, manut: Math.round(man * e.mult) };
+    });
+  }
+  function planoPara(p, cfg) {
+    var nv = p ? granaDe(p, cfg).nivel : "C";
+    var esc = escadaPreco(cfg);
+    var i = nv === "A" ? 2 : nv === "B" ? 1 : 0;
+    /* Em bairro nobre o degrau de baixo é tiro no pé: ela compara com o que já paga no
+       procedimento e não te chama de caro. O piso do bairro puxa a proposta pra cima —
+       é isso que faz a reunião fechar em Autoridade e não em R$ 550. */
+    var our = ouroDe(p, cfg), puxou = false;
+    if (our.chao > 0) {
+      for (var k = i; k < esc.length; k++) { if (esc[k].valor >= our.chao) { if (k !== i) { i = k; puxou = true; } break; } }
+    }
+    return { nivel: nv, plano: esc[i], subir: esc[i + 1] || null, escada: esc, ouro: our, chaoAplicado: puxou };
+  }
+  /* Com o \ud83d\udcb0 ligado, o chumbo de R$ 40 nem entra na fila. Sem ele, nada some:
+     o peso s\u00f3 reordena, pra ele gastar o toque do dia com quem tem caixa. */
+  function boaGrana(p, cfg) {
+    if (!cfg || !cfg.soGrana) return true;
+    var n = granaDe(p, cfg).nivel;
+    return n === "A" || n === "B";
+  }
+
+
+  /* ------------------------------------------------------------------ */
+  /* ABORDAGEM DE TICKET ALTO — o pacote pra quem paga bem                */
+  /* Regra que não muda: nenhum R$ na abertura e no convite. O preço só   */
+  /* entra (a) quando ELA pergunta, (b) no deck da reunião. Aqui a aposta */
+  /* é outra: o assunto é a tabela dela, o no-show e o tempo dela.         */
+  /* ------------------------------------------------------------------ */
+  function falasAlta(p, cfg) {
+    var g = granaDe(p, cfg), pl = planoPara(p, cfg);
+    return {
+      abertura: "{{saud}} {{contato}}! {{nomeZeik}} aqui, faço a p\u00e1gina da {{empresa}}. Antes de te tomar tempo: olhei sua agenda no aplicativo e o seu card\u00e1pio — {{achado}}. N\u00e3o \u00e9 caso de ‘falta cliente’, \u00e9 caso de cliente que chega j\u00e1 escolhendo pelo pre\u00e7o da vitrine do app.\\n\\nVou te mostrar duas coisas em 5 minutos: a pr\u00e9via que montei e a conta simples de quantos atendimentos acima do seu ticket pagam a p\u00e1gina. Se fizer sentido, marcamos 20 minutos; se n\u00e3o, a pr\u00e9via fica com voc\u00ea.",
+      convite: "{{contato}}, pra n\u00e3o virar conversa de WhatsApp sem fim: 20 minutos, voc\u00ea a\u00ed no seu espa\u00e7o ou por v\u00eddeo. {{doisHorarios}}\\n\\nLevo tr\u00eas coisas: a p\u00e1gina aberta no celular, tr\u00eas p\u00e1ginas de concorrente que cobram mais que voc\u00ea e a conta do seu ticket. N\u00e3o levo contrato pra assinar na pressa.",
+      valor: "Fechando por escrito, o que eu entrego e o que custa: {{planoNome}} — {{planoEntrega}}. Investimento {{planoValor}} na montagem + {{planoManut}}/m\u00eas (hospedagem, dom\u00ednio, mudan\u00e7a de card\u00e1pio e o relat\u00f3rio do que a p\u00e1gina fez).\\n\\nComo eu trabalho com quem tem agenda cheia: o primeiro m\u00eas \u00e9 a p\u00e1gina no ar com o seu conte\u00fado. Voc\u00ea s\u00f3 renova o m\u00eas seguinte se estiver usando. E se em 7 dias voc\u00ea achar que n\u00e3o \u00e9 pra voc\u00ea, eu tiro do ar e n\u00e3o cobro a montagem.",
+      quebras: [
+        { g: "“t\u00e1 caro”", f: "Est\u00e1. Comparado a n\u00e3o pagar nada por estar no app — que \u00e9 o lugar onde a sua cliente decide pelo pre\u00e7o da lista. Faz a conta comigo: quantos atendimentos de {{valorZeik}} voc\u00ea faz numa semana? A p\u00e1gina se paga em {{pagarEm}} de agenda. Se eu estiver errado, me diz o seu n\u00famero que eu refa\u00e7o aqui na tua frente." },
+        { g: "“minha sobrinha faz”", f: "Ela deve fazer bonito. O que muda n\u00e3o \u00e9 quem digita, \u00e9 o que a p\u00e1gina faz sozinha depois: card\u00e1pio atualizado, bot\u00e3o de reagendar e o texto que segura o pre\u00e7o alto. Se voc\u00ea j\u00e1 tem quem mant\u00e9m, fa\u00e7o s\u00f3 o esqueleto e te ensino a mexer — a\u00ed cai um degrau da escada. Prefiro perder a mensalidade a te vender o pacote cheio." },
+        { g: "“n\u00e3o preciso, agenda t\u00e1 cheia”", f: "\u00c0 cheia \u00e9 o melhor momento, e eu digo por qu\u00ea: quem t\u00e1 cheio vende hor\u00e1rio, quem t\u00e1 vazio vende pre\u00e7o. Agora voc\u00ea consegue escolher cliente e sustentar a tabela. Em mar\u00e7o, quando a agenda abrir, voc\u00ea volta a receber quem chega pelo pre\u00e7o baixo do app — e a\u00ed \u00e9 dif\u00edcil subir de novo." },
+        { g: "“depois eu vejo”", f: "Justo. Fa\u00e7o diferente ent\u00e3o: deixo a pr\u00e9via no ar at\u00e9 {{dataLimite}} e n\u00e3o te mando nada nesse intervalo. Se voc\u00ea gostar, a gente marca. Se n\u00e3o responder, eu tiro e apago seu contato — sem cobran\u00e7a e sem ‘fechamento’ em cima de voc\u00ea.\\n\\nS\u00f3 aviso uma coisa: quando o servi\u00e7o \u00e9 ‘depois’, quase nunca \u00e9 o dinheiro que trava, \u00e9 a falta de foto de antes/depois. Se for isso, mando a lista das 6 fotos que resolvem." },
+        { g: "“j\u00e1 tentei e n\u00e3o funcionou”", f: "Normal — e quase sempre o que n\u00e3o funcionou foi p\u00e1gina-brochura: bonita, sem card\u00e1pio com pre\u00e7o e sem caminho de a\u00e7\u00e3o. Me manda o link que voc\u00ea tinha. Eu olho, te digo em tr\u00eas linhas o que estava errado e, se n\u00e3o der pra aproveitar nada, voc\u00ea n\u00e3o paga a conversa." }
+      ],
+      fecho: "Fechado, {{contato}}. Hoje eu s\u00f3 preciso de tr\u00eas coisas, e resolvemos em 4 minutos aqui: (1) suas 6 melhores fotos de antes/depois, (2) o card\u00e1pio com os pre\u00e7os que voc\u00ea QUER praticar — n\u00e3o os de hoje, (3) o Pix {{valorZeik}} pra travar a data de entrega.\\n\\nP\u00e1gina no ar at\u00e9 {{prazoEntrega}}, depois ajustamos o que incomodar. Mensalidade come\u00e7a a contar no m\u00eas seguinte, e voc\u00ea cancela quando quiser, sem multa."
+    };
+  }
+  /* Roteiro da reuni\u00e3o de 20 minutos: seis falas na ordem, com o que ele tem que
+     FAZER em cada uma. Regra dele: quem faz a pergunta faz a venda. */
+  function roteiroReuniao(p, cfg) {
+    var g = granaDe(p, cfg), pl = planoPara(p, cfg);
+    var tk = Number(p && p.ticket) || Number(cfg && cfg.ticketAlvo) || 180;
+    return [
+      { t: "1 \u00b7 Espelho (2 min)", f: "N\u00e3o fale do site. Abra com: ‘me conta sua semana: quantos atendimentos, ticket m\u00e9dio de quanto, quantos remarcam’. Deixe ela falar. N\u00famero na mesa \u00e9 o que sustenta o pre\u00e7o no fim.", por: "ticket dela: " + tk },
+      { t: "2 \u00b7 Diagn\u00f3stico na tela (4 min)", f: "Abra o celular DELA no app, procure a {{empresa}} e depois uma concorrente com site. A diferen\u00e7a de confian\u00e7a entre as duas telas faz o argumento sozinha — fique 40 segundos sem falar nada.", por: "n\u00edvel na r\u00e9gua de grana: " + g.nivel },
+      { t: "3 \u00b7 O que muda na agenda (3 min)", f: "Tr\u00eas frases: cliente que chega pelo seu site aceita a sua tabela; bot\u00e3o de reagendar derruba no-show; card\u00e1pio com pre\u00e7o filtra quem s\u00f3 quer promo\u00e7\u00e3o. Nada de ‘SEO’, ‘funil’, ‘posicionamento digital’.", por: "quem paga alto n\u00e3o precisa de jarg\u00e3o" },
+      { t: "4 \u00b7 Escada (3 min)", f: "Mostre os tr\u00eas degraus na ordem e PARE. N\u00e3o justifique ainda. Quem j\u00e1 paga caro por procedimento n\u00e3o negocia valor, escolhe tamanho: comece pelo {{planoNome}}.", por: "degrau sugerido: " + pl.plano.nome },
+      { t: "5 \u00b7 Pre\u00e7o (2 min)", f: "Fale uma vez, sem ‘a partir de’, e fique calado at\u00e9 ela responder. Se vier obje\u00e7\u00e3o, use a quebra do pacote (t\u00e1 caro / sobrinha / agenda cheia / depois / j\u00e1 tentei). Nunca desconte no primeiro ‘t\u00e1 caro’: troque de degrau, n\u00e3o de pre\u00e7o.", por: "compara\u00e7\u00e3o honesta: a mensalidade contra um atendimento perdido hoje" },
+      { t: "6 \u00b7 Sa\u00edda com data (3 min)", f: "Feche com as tr\u00eas coisas do passo de hoje: 6 fotos, card\u00e1pio com os pre\u00e7os que ela QUER praticar e o Pix pra travar a data. Se ela n\u00e3o fechar, combine a data da pr\u00e9via no ar e saia. Reuni\u00e3o sem pr\u00f3ximo passo \u00e9 papo.", por: "prazo na mesa: " + (cfg.prazoEntrega || "7 dias") }
+    ];
+  }
+  /* O DECK. Uma ideia por tela, fonte grande, iPad virado pra cliente.
+     Slide que se l\u00e1 em mais de 8 segundos n\u00e3o \u00e9 slide, \u00e9 par\u00e1grafo. */
+  function deckDe(p, cfg) {
+    if (!p) return [];
+    var pl = planoPara(p, cfg), g = granaDe(p, cfg), es = pl.escada;
+    return [
+      { k: "Capa", h: "A p\u00e1gina da " + (p.nome || "sua casa"), big: true, lines: [String(p.bairro || ""), "Pre\u00e7o e confian\u00e7a: como ela passa a escolher pelo seu trabalho", (cfg.responsavel || "ZEIK") + " \u00b7 " + new Date().toLocaleDateString("pt-BR")] },
+      { k: "O que eu vi", h: "Tr\u00eas coisas da sua casa hoje", lines: ["Agenda cheia pelo aplicativo — e l\u00e1 o seu pre\u00e7o \u00e9 comparado linha a linha", "Sem p\u00e1gina pr\u00f3pria: quem procura seu nome n\u00e3o acha a tabela, acha a concorrente", "Remarca\u00e7\u00e3o manual, mensagem por mensagem — e o furo que isso deixa no seu dia"], nota: "Se ela discordar de algum item, deixe. A\u00ed voc\u00ea descobre qual \u00e9 o assunto real da conversa." },
+      { k: "A armadilha", h: "Quem chega pelo app chega pelo pre\u00e7o", lines: ["No aplicativo, quem escolhe a cliente \u00e9 a vitrine — n\u00e3o voc\u00ea", "Cliente que vem por compara\u00e7\u00e3o pede desconto na primeira mensagem", "Tabela sua, no seu endere\u00e7o: a regra passa a ser quanto VOC\u00ca cobra"] },
+      { k: "A mudan\u00e7a", h: "Quem chega pela sua p\u00e1gina chega pelo trabalho", lines: ["Antes/depois na frente, pre\u00e7o logo abaixo, sem lista do lado", "Bot\u00e3o cai no SEU WhatsApp, n\u00e3o no chat do aplicativo", "Pol\u00edtica de remarca\u00e7\u00e3o escrita: quem fura paga, e n\u00e3o \u00e9 voc\u00ea que briga"] },
+      { k: "Quem j\u00e1 est\u00e1 aqui", h: "Prova do bairro, n\u00e3o portf\u00f3lio de longe", lines: ["{{provaLocal}}", "N\u00e3o \u00e9 sobre site: \u00e9 sobre quem est\u00e1 no mesmo raio que voc\u00ea e parou de disputar pre\u00e7o"], nota: "S\u00f3 cite nome com licen\u00e7a da cliente. Sem licen\u00e7a, cite n\u00famero: ‘4 casas aqui perto com a p\u00e1gina no ar’." },
+      { k: "O que vai na p\u00e1gina", h: "Oito blocos, nenhum decorativo", lines: ["Abertura com o servi\u00e7o de maior ticket", "Card\u00e1pio com os pre\u00e7os que voc\u00ea QUER praticar", "Antes/depois (6 fotos bastam)", "Pol\u00edtica de remarca\u00e7\u00e3o", "Depoimento com print", "Endere\u00e7o, mapa e hor\u00e1rio", "Bot\u00e3o de agendar no seu zap", "Uma p\u00e1gina por procedimento (\u00e9 a que o Google acha)"] },
+      { k: "Os tr\u00eas degraus", h: "Escolha tamanho, n\u00e3o pre\u00e7o", tabela: es.map(function (e) { return { nome: e.nome, valor: e.valor, manut: e.manut, entrega: e.entrega, pra: e.pra }; }), lines: ["Come\u00e7o pelo " + pl.plano.nome + ": " + (g.motivo[0] || "seu servi\u00e7o \u00e9 de valor").toLowerCase()]
+        .concat(pl.chaoAplicado ? ["Aqui no " + pl.ouro.nome + ", a porta de entrada \u00e9 " + fmtBRL(pl.ouro.chao) + " \u2014 abaixo disso a p\u00e1gina n\u00e3o segura a sua tabela."] : []), nota: "Mostre os tr\u00eas e cale. Quem paga R$ 250 num procedimento n\u00e3o pechincha R$ 990, escolhe o pacote." },
+      { k: "A conta", h: "Quantos atendimentos pagam a p\u00e1gina", lines: ["Ticket m\u00e9dio que ela falou: ______", "Atendimentos por semana: ______", "Custo da p\u00e1gina no m\u00eas: ______", "Divide e aparece: ______ clientes"], nota: "Fa\u00e7a a conta na calculadora DELA. N\u00famero que ela faz, ela acredita." },
+      { k: "Como eu trabalho", h: "Primeiro a pr\u00e9via, depois o dinheiro", lines: ["P\u00e1gina montada antes de cobrar um real", "No ar em " + (cfg.prazoEntrega || "7 dias") + " e ajusto o que incomodar por 15 dias", "Mensalidade: hospedagem, dom\u00ednio, mudan\u00e7a de card\u00e1pio e relat\u00f3rio do que a p\u00e1gina fez", "Cancela quando quiser, sem multa — e leva o conte\u00fado"] },
+      { k: "Se der errado", h: "O risco fica comigo", lines: ["N\u00e3o gostou em 7 dias: tiro do ar e n\u00e3o cobro a montagem", "Atrasou a data combinada: o m\u00eas de mensalidade \u00e9 meu", "Sem fotos? Monto com o que existe e trocamos depois"] , nota: "Fale isso olhando na cara. \u00c9 a frase que fecha mais que desconto." },
+      { k: "Hoje", h: "Tr\u00eas coisas e a gente come\u00e7a", big: true, lines: ["Suas 6 melhores fotos de antes/depois", "Card\u00e1pio com o pre\u00e7o que voc\u00ea quer praticar", "Pix pra travar a data de entrega"], nota: "Termine em " + pl.plano.nome + " (" + fmtBRL(pl.plano.valor) + " + " + fmtBRL(pl.plano.manut) + "/m\u00eas). N\u00e3o pergunte ‘o que voc\u00ea achou’. Pergunte ‘quando voc\u00ea me manda as fotos’." }
+    ];
+  }
+  /* A fila do dinheiro: a tela Ticket alto e o --so-grana do gerador de payload
+     usam ESTE c\u00f3digo — uma verdade s\u00f3, duas leituras. */
+  function filaGrana(cfg, opts) {
+    opts = opts || {};
+    var api = (typeof window !== "undefined" && window.ZeikStore) || null;
+    var st2 = (opts.state || (api && api.state) || { prospects: [] });
+    cfg = cfg || (st2.config || {});
+    var out = [];
+    (st2.prospects || []).forEach(function (p) {
+      if (!p) return;
+      if (nichoBloqueado(p, cfg)) return;
+      if (!numWhatsapp(p)) return;
+      var g = granaDe(p, cfg);
+      var aceita = opts.incluirC ? (g.nivel !== "D") : (g.nivel === "A" || g.nivel === "B");
+      if (!aceita) return;
+      if (opts.soRaio && !ehRaio(p, cfg)) return;
+      if (opts.soQuentes && !ehQuente(p, cfg)) return;
+      if (opts.semContato && (p.ultimoContato || (Number(p.toques) || 0) > 0)) return;
+      var our2 = ouroDe(p, cfg);
+      if (opts.soOuro && !our2.nobre) return;
+      out.push({ prospect: p, grana: g, plano: planoPara(p, cfg), ouro: our2 });
+    });
+    out.sort(function (a, b) {
+      return b.grana.pontos - a.grana.pontos || (b.ouro.fator || 1) - (a.ouro.fator || 1) || (Number(b.prospect.ticket) || 0) - (Number(a.prospect.ticket) || 0);
+    });
+    var total = 0, tks = [];
+    out.forEach(function (r) {
+      total += r.plano.plano.valor;
+      var t = Number(r.prospect.ticket) || 0; if (t) tks.push(t);
+    });
+    return { itens: out, potencial: total,
+      ticketMedio: tks.length ? Math.round(tks.reduce(function (a, b) { return a + b; }, 0) / tks.length) : 0,
+      A: out.filter(function (r) { return r.grana.nivel === "A"; }).length,
+      B: out.filter(function (r) { return r.grana.nivel === "B"; }).length,
+      C: out.filter(function (r) { return r.grana.nivel === "C"; }).length };
+  }
+  /* ------------------------------------------------------------------ */
   /* ROTEIRO POR NICHO — a abordagem que dá vontade                       */
   /* O config.rota é o esqueleto geral (bom pra oficina, mercadinho,      */
   /* pintor). Pra quem vive de agenda — lash, unha, estética, salão — o   */
@@ -2654,9 +3030,35 @@ w.ZEIK_SEED = {"versao":21,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
     },
     lash: "_beleza", manicure: "_beleza", estetica: "_beleza", salao: "_beleza"
   };
+  ROTA_NICHO._premiumOuro = {
+    nome: "Bairro nobre — indicação, reputação e escassez",
+    emoji: "🌆",
+    m1: "{{saud}} {{contato}}! Aqui é {{nomeZeik}}. Faço site pra estúdio de {{bairro}}, e aqui a conversa é diferente, então vou direto no ponto: {{empresa}} não tem problema de volume, tem problema de quem chega pagando o preço da lista do aplicativo.\n\nNum bairro onde todo mundo se conhece, a indicação é o motor. E indicação sem página vira o seguinte: a cliente anota seu nome, pesquisa à noite e acha a CONCORRENTE no primeiro resultado — e é lá que ela agenda. A página que eu monto serve pra uma coisa só: quem procura {{empresa}} encontra {{empresa}}, com a SUA tabela na cara e a política de remarcação escrita.\n\n{{provaLocal}} Deixei uma prévia montada antes de te cobrar qualquer coisa: te mando o link, você abre aí no seu celular e me diz se é o seu nível. Se não for, eu tiro e não insisto.",
+    gatilho: "{{contato}}, uma pergunta e eu paro de ocupar seu tempo: das suas 3 últimas clientes, quantas chegaram pelo seu nome (Google, Instagram, indicação) e quantas chegaram pelo aplicativo? Se foi o app, é ali que o seu preço é decidido por outra pessoa. A prévia da {{empresa}} está pronta — te mando o link pra comparar com a página de quem cobra o dobro no mesmo bairro?",
+    followup: "{{contato}}, é a última mensagem e não tem cobrança em cima. Duas coisas combinadas por escrito: (1) enquanto estivermos conversando, eu não ofereço pro estúdio a alguns quarteirões da {{empresa}} — 90 dias de reserva pro seu lado; (2) se o momento não é agora, me diz 'agora não' e eu apago o contato. A prévia continua guardada se você mudar de ideia.",
+    reuniao: "Fechado. {{doisHorarios}} — 20 minutos no seu espaço ou por vídeo. Levo três coisas: a página aberta no celular, o mapa dos seus concorrentes diretos no bairro com o preço que cada um anuncia e a conta do seu ticket na calculadora DELA. Não levo contrato pra assinar na pressa."
+  };
+  ROTA_NICHO._premium = {
+    nome: "Pagadora forte (n\u00edvel A) \u2014 posicionamento e pre\u00e7o",
+    emoji: "\ud83d\udcb0",
+    m1: "{{saud}} {{contato}}! Aqui \u00e9 {{nomeZeik}}, fa\u00e7o site pra quem j\u00e1 tem agenda cheia mas ainda depende do aplicativo pra existir no {{bairro}}. Dei uma olhada na {{empresa}}: {{achado}}.\n\nVou ser direto, porque o seu tempo vale: cliente que chega pelo app te escolhe pelo pre\u00e7o da vitrine do aplicativo. Cliente que chega pelo SEU site chega te escolhendo pelo trabalho \u2014 e aceita o valor da SUA tabela, n\u00e3o o que a compara\u00e7\u00e3o da lista imp\u00f5e.\n\nO que eu monto pra {{empresa}}: p\u00e1gina pr\u00f3pria com sua tabela, fotos de antes/depois, pol\u00edtica de remarca\u00e7\u00e3o e o bot\u00e3o de agendar caindo no SEU WhatsApp. Voc\u00ea para de disputar pre\u00e7o na vitrine do aplicativo e volta a cobrar pela sua tabela.\n\n{{provaLocal}} Fa\u00e7o primeiro e mando o link depois: voc\u00ea abre a\u00ed no seu celular, olha com calma e decide. Se n\u00e3o quiser, a pr\u00e9via fica com voc\u00ea de qualquer jeito.",
+    gatilho: "{{contato}} deve ter ca\u00eddo na autom\u00e1tica do balc\u00e3o \ud83d\ude04 ent\u00e3o fecho em uma linha: quantos servi\u00e7os por semana voc\u00ea faz acima de {{valorZeik}}? \u00c9 nisso que a p\u00e1gina se paga \u2014 n\u00e3o em \u2018ter site\u2019. O modelo da {{empresa}} j\u00e1 est\u00e1 montado com sua tabela e a pol\u00edtica de remarca\u00e7\u00e3o. Mando o link?",
+    followup: "{{contato}}, passo aqui uma vez s\u00f3: deixei a pr\u00e9via da {{empresa}} guardada. Se hoje n\u00e3o \u00e9 prioridade, me avisa que eu te deixo em paz \u2014 s\u00f3 pe\u00e7o que, quando voc\u00ea resolver fazer, olhe a que eu montei antes de fechar com algu\u00e9m do bairro.",
+    reuniao: "Fechado. {{doisHorarios}} \u2014 20 minutos, no WhatsApp ou a\u00ed na {{empresa}}. Levo a p\u00e1gina aberta no seu celular e a gente ajusta juntas o que vai na home: foto de antes/depois, sua tabela e o bot\u00e3o de agendar. Qual dos dois fica melhor?"
+  };
 
   /* nicho -> cópia ("_chave" é só pra não duplicar texto no arquivo) */
-  function rotaNichoDe(nicho) {
+  function rotaNichoDe(nicho, p, cfg) {
+    /* n\u00edvel A na r\u00e9gua de grana troca a c\u00f3pia pela premium do mesmo nicho:
+       com quem tem caixa, o argumento \u00e9 posicionamento e pre\u00e7o, n\u00e3o "precisa de site". */
+    if (p && cfg && cfg.premiumParaA !== false && (nicho === "lash" || nicho === "manicure" || nicho === "estetica" || nicho === "salao")) {
+      /* Bairro nobre vende por ESCASSEZ e reputação, não por "você precisa de site": nível
+         A/B + fator do mapa acima do corte troca pela copy _premiumOuro. Sem isso ele manda
+         o texto do Capão Redondo pra uma clínica do Itaim e ouve "não tenho interesse". */
+      var nvA = granaDe(p, cfg).nivel;
+      if ((nvA === "A" || nvA === "B") && ouroDe(p, cfg).nobre && ROTA_NICHO._premiumOuro) return ROTA_NICHO._premiumOuro;
+      if (nvA === "A" && ROTA_NICHO._premium) return ROTA_NICHO._premium;
+    }
     var r = ROTA_NICHO[nicho];
     if (!r) return null;
     if (typeof r === "string") r = ROTA_NICHO[r];
@@ -2669,7 +3071,7 @@ w.ZEIK_SEED = {"versao":21,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
     tipo = tipo || "m1";
     var base = (cfg && cfg.rota) || {};
     if (!cfg || cfg.rotaPorNicho === false || !p) return base[tipo] || "";
-    var r = rotaNichoDe(nichoDe(p));
+    var r = rotaNichoDe(nichoDe(p), p, cfg);
     return (r && r[tipo]) || base[tipo] || "";
   }
 
@@ -3334,7 +3736,7 @@ w.ZEIK_SEED = {"versao":21,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
     looksGuiaCnpj: looksGuiaCnpj, parseGuiaCnpj: parseGuiaCnpj, segPorCnae: segPorCnae, fonesRepetidos: fonesRepetidos,
     criaLoteCode: criaLoteCode, looksLoteCode: looksLoteCode, parseLoteCode: parseLoteCode,
     /* getter: o NICHOS é um var definido mais abaixo — por valor aqui seria undefined */
-    get NICHOS() { return NICHOS; }, nichoDe: nichoDe, nichoLabel: nichoLabel, nichosFora: nichosFora, metaSeed: metaSeed, segmentosBase: segmentosBase, objecoesBase: objecoesBase, bairrosPorZonaBase: bairrosPorZonaBase, nichoBloqueado: nichoBloqueado, nichoResumo: nichoResumo, ehChamavel: ehChamavel, resumoChamavel: resumoChamavel, quenteDe: quenteDe, ehQuente: ehQuente, QUENTE_PONTOS: QUENTE_PONTOS, rotaPara: rotaPara, rotaNichoDe: rotaNichoDe, slug: slug, janelaIdeal: janelaIdeal, idadeLead: idadeLead, linkModelo: linkModelo, chaveRoteiro: chaveRoteiro, esgotado: esgotado, motivoEspera: motivoEspera, linkModeloLocal: linkModeloLocal,
+    get NICHOS() { return NICHOS; }, nichoDe: nichoDe, nichoLabel: nichoLabel, nichosFora: nichosFora, metaSeed: metaSeed, segmentosBase: segmentosBase, objecoesBase: objecoesBase, bairrosPorZonaBase: bairrosPorZonaBase, nichoBloqueado: nichoBloqueado, nichoResumo: nichoResumo, ehChamavel: ehChamavel, resumoChamavel: resumoChamavel, quenteDe: quenteDe, ehQuente: ehQuente, QUENTE_PONTOS: QUENTE_PONTOS, rotaPara: rotaPara, rotaNichoDe: rotaNichoDe, slug: slug, janelaIdeal: janelaIdeal, idadeLead: idadeLead, linkModelo: linkModelo, chaveRoteiro: chaveRoteiro, esgotado: esgotado, motivoEspera: motivoEspera, granaDe: granaDe, granaLabel: granaLabel, ouroDe: ouroDe, ouroMapa: ouroMapa, boaGrana: boaGrana, escadaPreco: escadaPreco, planoPara: planoPara, ESCADA: ESCADA, falasAlta: falasAlta, roteiroReuniao: roteiroReuniao, deckDe: deckDe, filaGrana: filaGrana, linkModeloLocal: linkModeloLocal,
     CIDADES_INTERIOR: CIDADES_INTERIOR
   };
   function escapeHtml(s) {
@@ -4077,6 +4479,24 @@ barbearia: {
         if (u) return "a prévia da " + ((alvo && alvo.nome) || "sua empresa") + " já está no ar: " + u + " — abre aí no seu celular, 40 segundos, e fica com você mesmo se você disser não";
         return cfg.linkModelo || "te mando o link aqui no WhatsApp agora";
       })(),
+      /* {{plano*}} — a escada de preço no texto. Vem da RÉGUA DE GRANA do lead
+         (nível A começa pelo topo), não de uma tabela fixa: mudou o preço na
+         configuração, mudou a mensagem. */
+      planoNome: (function () { try { var pl = Z.planoPara(alvo, cfg); return pl.plano.nome + " (começando pelo " + pl.plano.nome.toLowerCase() + " porque " + (pl.nivel === "A" ? "ela paga bem" : pl.nivel === "B" ? "dá pra subir o ticket" : "é a porta de entrada") + ")"; } catch (e) { return "o pacote combinado"; } })(),
+      planoEntrega: (function () { try { return Z.planoPara(alvo, cfg).plano.entrega; } catch (e) { return "página completa com o seu cardápio"; } })(),
+      planoValor: (function () { try { return Z.fmtBRL(Z.planoPara(alvo, cfg).plano.valor); } catch (e) { return Z.fmtBRL(cfg.precoSite); } })(),
+      planoManut: (function () { try { return Z.fmtBRL(Z.planoPara(alvo, cfg).plano.manut); } catch (e) { return Z.fmtBRL(cfg.manutMes); } })(),
+      degrauBaixo: (function () { try { var pl = Z.planoPara(alvo, cfg), i = pl.escada.indexOf(pl.plano); return Z.fmtBRL(pl.escada[Math.max(0, i - 1)].valor); } catch (e) { return Z.fmtBRL(cfg.precoSite); } })(),
+      /* quantos atendimentos DELAS pagam a mensalidade — a conta que ela aceita fazer na hora */
+      pagarEm: (function () {
+        try {
+          var pl = Z.planoPara(alvo, cfg), tk = Number(alvo.ticket || (sg && sg.ticketMedio) || cfg.ticketAlvo || 180);
+          var n = Math.max(1, Math.round(pl.plano.manut / Math.max(40, tk)));
+          return n + " atendimento" + (n > 1 ? "s" : "");
+        } catch (e) { return "um atendimento"; }
+      })(),
+      dataLimite: (function () { var d = new Date(); d.setDate(d.getDate() + 15); return ("0" + d.getDate()).slice(-2) + "/" + ("0" + (d.getMonth() + 1)).slice(-2); })(),
+      prazoEntrega: cfg.prazoEntrega || "7 dias",
       cidadeLead: alvo.cidade || cidade,
       ticket: (Number(alvo.ticket || (sg && sg.ticketMedio) || 0)) ? Z.fmtBRL(Number(alvo.ticket || (sg && sg.ticketMedio))) : "o valor do seu serviço",
       /* {{buscaLocal}}: a palavra-chave real que o vizinho digita no Google */
@@ -4180,7 +4600,7 @@ barbearia: {
   }
 
   /* ------------------------------ NAVEGAÇÃO ---------------------------- */
-  var routes = ["dashboard", "prospeccao", "disparo", "pipeline", "clientes", "financeiro", "tarefas", "scripts", "gerador", "config"];
+  var routes = ["dashboard", "ticket", "prospeccao", "disparo", "pipeline", "clientes", "financeiro", "tarefas", "scripts", "gerador", "config"];
   function currentView() {
     var h = (location.hash || "").replace(/^#\/?/, "").split("?")[0];
     return routes.indexOf(h) >= 0 ? h : "dashboard";
@@ -4423,6 +4843,7 @@ barbearia: {
        derrubar o painel: a view quebra sozinha, diz o que faltou e oferece a saída. */
     try {
     switch (view) {
+      case "ticket": html = viewTicketAlto(); break;
       case "prospeccao": html = viewProspect(); break;
       case "pipeline": html = viewPipeline(); break;
       case "clientes": html = viewClientes(); break;
@@ -4470,7 +4891,11 @@ barbearia: {
       clientes: s.clientes.length,
       financeiro: s.financeiro.filter(function (f) { return f.status === "a_receber"; }).length,
       tarefas: s.tarefas.filter(function (t) { return !t.concluida && Z.diasAteData(t.data) <= 1; }).length,
-      disparo: (s.campanhas || []).reduce(function (n, c) { return n + c.itens.filter(function (x) { return x.estado === "na fila"; }).length; }, 0)
+      disparo: (s.campanhas || []).reduce(function (n, c) { return n + c.itens.filter(function (x) { return x.estado === "na fila"; }).length; }, 0),
+      /* 👑 é o número que ele quer ver sem abrir nada: quantos pagadores ainda esperam toque */
+      ticket: (function () {
+        try { return Z.filaGrana(s.config, { semContato: true }).itens.length; } catch (e) { return 0; }
+      })()
     };
     document.querySelectorAll("[data-count]").forEach(function (el) {
       var k = el.getAttribute("data-count");
@@ -4735,6 +5160,257 @@ barbearia: {
   /* ====================================================================== */
   /*  PROSPECÇÃO                                                             */
   /* ====================================================================== */
+  /* ====================================================================== */
+  /* TELA 👑 TICKET ALTO — a fila do dinheiro                                */
+  /* Não é um filtro da Prospecção: é a resposta pra "os clientes que eu     */
+  /* consigo são ruins porque o tíquete é baixo". Aqui só entra quem tem      */
+  /* caixa, e cada card já vem com a conversa da reunião pronta pra copiar.   */
+  /* ====================================================================== */
+  App.ticketFiltro = App.ticketFiltro || { soRaio: false, semContato: true, incluirC: false, soOuro: false };
+  App.ticketLimite = App.ticketLimite || 18;
+
+  function ticketCtx(p) { return ui().scriptCtx({ p: p, empresa: p.nome, contato: p.contato || "chefe" }); }
+  function ticketFala(p, k) {
+    var f = Z.falasAlta(p, st().config);
+    if (k.indexOf("quebra") === 0) {
+      var i = Number(k.slice(6)) || 0;
+      var q = (f.quebras || [])[i] || f.quebras[0];
+      return ui().fillVars(q.g + "\n\n" + q.f, ticketCtx(p));
+    }
+    return ui().fillVars(f[k] || "", ticketCtx(p));
+  }
+
+  function viewTicketAlto() {
+    var s = st(), f = App.ticketFiltro;
+    var fila = Z.filaGrana(s.config, { soRaio: f.soRaio, semContato: f.semContato, incluirC: f.incluirC, soOuro: f.soOuro });
+    var largo = Z.filaGrana(s.config, { soRaio: f.soRaio, incluirC: f.incluirC, soOuro: f.soOuro });
+    /* Quantos na base estão em bairro de tabela alta (o filtro ligado não muda este número:
+       ele existe pra ele ver antes de ligar se vale a pena olhar só por aí hoje). */
+    var ouro = Z.filaGrana(s.config, { soOuro: true, incluirC: f.incluirC });
+    var chip = function (k, label, on) {
+      return '<button class="btn sm ' + (on ? "" : "quiet") + '" data-act="ticket-filtro" data-k="' + k + '">' + label + "</button>";
+    };
+    var stats = '<div class="grid four">' +
+      '<div class="card stat"><div class="lbl">Bom pagador na mira</div><div class="val">' + fila.itens.length + '</div><div class="delta">' + (f.soOuro ? "só bairro de tabela alta" : "nível A e B · " + ouro.itens.length + " em bairro nobre") + '</div></div>' +
+      '<div class="card stat"><div class="lbl">Nível A puro</div><div class="val">' + fila.A + '</div><div class="delta">começam pelo topo da escada</div></div>' +
+      '<div class="card stat"><div class="lbl">Ticket médio</div><div class="val">' + (fila.ticketMedio ? money(fila.ticketMedio) : "—") + '</div><div class="delta">no cardápio publicado delas</div></div>' +
+      '<div class="card stat"><div class="lbl">Potencial desta tela</div><div class="val">' + money(fila.potencial) + '</div><div class="delta">se todo mundo topar o degrau sugerido</div></div>' +
+      "</div>";
+    var filtros = '<div class="row wrap" style="margin:12px 0">' +
+      chip("soRaio", "📍 só dentro do raio", !!f.soRaio) +
+      chip("semContato", "✋ só quem ainda não tocou", !!f.semContato) +
+      chip("incluirC", "🧱 incluir nível C (dá pra subir)", !!f.incluirC) +
+      chip("soOuro", "🏙 só bairro de tabela alta", !!f.soOuro) +
+      '<span class="tiny" style="align-self:center">' + (largo.itens.length - fila.itens.length) + " já foi tocada · " + fila.itens.length + " esperando o primeiro toque</span>" +
+      "</div>";
+    var cab = '<div class="page-head"><h1>👑 Ticket alto</h1><p class="sub">A régua não mede "nicho bonito", mede sinal de caixa: procedimento de valor, espaço montado, curso próprio, ticket do cardápio. Quem anuncia promoção ou atende na sala de casa desce — e não aparece aqui.</p></div>';
+    if (!fila.itens.length) {
+      return cab + stats + filtros +
+        '<div class="card"><div class="card-title">Ninguém passou no corte com esses filtros</div>' +
+        (f.soOuro && f.soRaio
+          ? '<p class="tiny" style="margin:6px 0 10px;color:var(--warn)">🏙 + 📍 ao mesmo tempo dá zero hoje: os bairros de tabela alta do mapa (Morumbi, Brooklin, Itaim) ficam <b>fora</b> dos 17 bairros do seu raio. Não é bug — é geografia. Escolha um: atenda esses por vídeo/visita agendada (deixe o 📍 ligado e aceite os 25 min de carro), ou escreva Morumbi / Vila Andrade / Brooklin no campo de bairros do raio em Configurações.</p>'
+          : '') +
+        '<p class="tiny" style="margin:6px 0 10px">Ou a base está vazia neste aparelho (aí é só colar o lote no Coletor — ele volta com o ticket em cada ficha), ou o recorte está apertado: tire o filtro do raio ou ligue o nível C.</p>' +
+        '<div class="row wrap"><button class="btn sm ghost" data-act="coletor-abrir">🧰 Colar lote</button>' +
+        '<button class="btn sm ghost" data-act="ticket-filtro" data-k="incluirC">👇 incluir nível C</button>' +
+        '<button class="btn sm ghost" data-act="ticket-filtro" data-k="soRaio">📍 tirar o filtro do raio</button>' +
+        (f.soOuro ? '<button class="btn sm ghost" data-act="ticket-filtro" data-k="soOuro">🏙 tirar o filtro de bairro nobre</button>' : (ouro.itens.length ? '<button class="btn sm ghost" data-act="ticket-filtro" data-k="soOuro">🏙 ver só os ' + ouro.itens.length + ' de bairro nobre</button>' : "")) +
+        '</div></div>';
+    }
+    var vis = fila.itens.slice(0, App.ticketLimite);
+    var corpo = vis.map(function (r, i) {
+      var p = r.prospect, g = r.grana, pl = r.plano, lb = Z.granaLabel(g.nivel);
+      var aberto = Z.numWhatsapp(p);
+      var ft = Number(r.ouro.fator) || 1;
+      return '<div class="card" style="margin-bottom:10px">' +
+        '<div class="card-title">' + (i + 1) + ". " + esc(p.nome) + " " + badge(lb.emoji + " " + g.nivel + " · " + g.pontos + " pts", lb.cor) + " " +
+        (r.ouro.nobre ? badge("🏙 " + r.ouro.nome + " · tabela " + String(ft).replace(".", ",") + "x", "ok") : "") + "</div>" +
+        '<p class="tiny" style="margin:4px 0 0">' + esc(p.bairro || "") + (p.endereco ? " · " + esc(p.endereco) : "") + (Number(p.ticket) ? " · ticket " + money(Number(p.ticket)) : "") + " · " + (aberto ? esc(aberto) : "sem zap") + "</p>" +
+        '<p class="tiny" style="margin:5px 0 0;color:var(--ok)">por que está aqui: ' + esc(g.motivo.join(" • ") || "régua de grana") + "</p>" +
+        '<p class="tiny" style="margin:5px 0 0">🎯 degrau sugerido: <b>' + esc(pl.plano.nome) + "</b> " + money(pl.plano.valor) + " + " + money(pl.plano.manut) + "/mês — " + esc(pl.plano.pra) + (pl.subir ? " · se topar, " + esc(pl.subir.nome) + " " + money(pl.subir.valor) : " (topo da escada)") +
+          (pl.chaoAplicado ? '</p><p class="tiny" style="margin:4px 0 0;color:var(--ok)">🏙 piso deste bairro: ' + money(pl.ouro.chao) + " — abaixo disso a página não segura a tabela daqui, então o degrau foi empurrado pra cima. Preço na mesa é o SEU, não o da vizinha.</p>" : "") + "</p>" +
+        (String(p.obs || "").indexOf("2º zap") >= 0 ? '<p class="tiny" style="margin:4px 0 0;color:var(--warn)">⚠ a fonte mostrou dois celulares: ' + esc(String(p.obs).slice(-48)) + "</p>" : "") +
+        (p.ultimoContato ? '<p class="tiny" style="margin:4px 0 0">último toque em ' + esc(String(p.ultimoContato).slice(0, 10)) + " · " + (Number(p.toques) || 0) + " tentativa(s)</p>" : "") +
+        '<div class="row wrap" style="margin-top:9px">' +
+        '<button class="btn sm" data-act="ticket-copiar" data-pid="' + p.id + '" data-k="abertura">📋 1ª (posicionamento)</button>' +
+        '<button class="btn sm ghost" data-act="ticket-copiar" data-pid="' + p.id + '" data-k="convite">📅 convidar pra reunião</button>' +
+        '<button class="btn sm ghost" data-act="ticket-copiar" data-pid="' + p.id + '" data-k="valor">💰 mandar o valor</button>' +
+        '<button class="btn sm ghost" data-act="ticket-copiar" data-pid="' + p.id + '" data-k="fecho">🤝 fechar hoje</button>' +
+        '<button class="btn sm ghost" data-act="ticket-roteiro" data-pid="' + p.id + '">🧠 roteiro da reunião</button>' +
+        '<button class="btn sm ghost" data-act="ticket-slides" data-pid="' + p.id + '">📽 slides</button>' +
+        '<button class="btn sm ghost" data-act="ticket-objecoes" data-pid="' + p.id + '">🛡 as 5 quebras</button>' +
+        '<button class="btn sm ghost" data-act="ticket-zap" data-pid="' + p.id + '">📱 abrir zap</button>' +
+        '<span class="sep"></span>' +
+        '<button class="btn sm quiet" data-act="ticket-marcar" data-pid="' + p.id + '" data-e="enviado" title="contei que mandei">✅ falei</button>' +
+        '<button class="btn sm quiet" data-act="ticket-marcar" data-pid="' + p.id + '" data-e="respondeu">💬 respondeu</button>' +
+        '<button class="btn sm quiet" data-act="ticket-marcar" data-pid="' + p.id + '" data-e="reuniao">📅 reunião marcada</button>' +
+        '<button class="btn sm quiet" data-act="ticket-marcar" data-pid="' + p.id + '" data-e="ganhou">🏆 FECHOU (+taxa)</button>' +
+        '<button class="btn sm quiet" data-act="ticket-marcar" data-pid="' + p.id + '" data-e="perdeu">🚫 não</button>' +
+        "</div></div>";
+    }).join("");
+    var mais = fila.itens.length > App.ticketLimite
+      ? '<div class="row" style="justify-content:center;margin:10px 0"><button class="btn quiet" data-act="ticket-mais">Mostrar mais ' + (fila.itens.length - App.ticketLimite) + " de " + fila.itens.length + "</button></div>"
+      : '<p class="tiny" style="text-align:center;margin:10px 0">Fim da lista — ' + fila.itens.length + " casa(s) com caixa pra pagar o degrau de cima.</p>";
+    return cab + stats + filtros + corpo + mais;
+  }
+
+  /* DECK DA REUNIÃO — 11 telas, uma ideia cada, iPad virado pra cliente.
+     Regra dele: slide que precisa de parágrafo não é slide. E o preço só
+     aparece na tela 7 (escada) e na última (fecho) — nunca antes da conta. */
+  App.deck = { pid: null, i: 0, ov: null };
+  function deckHtml() {
+    var s = st(), d = App.deck;
+    var p = s.prospects.filter(function (x) { return x.id === d.pid; })[0];
+    if (!p) return '<div class="card"><div class="card-title">Lead não encontrado</div><p class="tiny">Feche e abra de novo.</p></div>';
+    var deck = Z.deckDe(p, s.config), ctx = ticketCtx(p);
+    var sl = deck[Math.max(0, Math.min(deck.length - 1, d.i))] || deck[0];
+    var corpo = '<div class="deck-slide' + (sl.big ? " big" : "") + '">' +
+      '<div class="deck-k">' + esc(sl.k) + " · " + (d.i + 1) + "/" + deck.length + "</div>" +
+      "<h2>" + esc(ui().fillVars(sl.h, ctx)) + "</h2>" +
+      (sl.tabela ? '<div class="deck-tbl">' + sl.tabela.map(function (t, ti) {
+        return '<div class="deck-row' + (ti === 0 ? " on" : "") + '"><b>' + esc(t.nome) + "</b><span>" + money(t.valor) + " + " + money(t.manut) + "/mês</span><p>" + esc(t.pra) + "</p></div>";
+      }).join("") + "</div>" : "") +
+      "<ul>" + (sl.lines || []).map(function (l) { return "<li>" + esc(ui().fillVars(String(l), ctx)).replace(/\n/g, "<br>") + "</li>"; }).join("") + "</ul>" +
+      (sl.nota ? '<p class="deck-nota">🗒 pra você: ' + esc(sl.nota) + "</p>" : "") +
+      "</div>";
+    var nav = '<div class="row" style="justify-content:space-between;align-items:center;margin-top:10px">' +
+      '<button class="btn sm quiet" data-act="deck-ir" data-d="-1"' + (d.i === 0 ? " disabled" : "") + ">← anterior</button>" +
+      '<div class="deck-pontos">' + deck.map(function (_, j) { return '<i data-act="deck-ir" data-d="' + j + '" class="' + (j === d.i ? "on" : "") + '"></i>'; }).join("") + "</div>" +
+      (d.i >= deck.length - 1
+        ? '<button class="btn sm" data-act="deck-ir" data-d="1">terminar →</button>'
+        : '<button class="btn sm" data-act="deck-ir" data-d="1">próxima →</button>') +
+      "</div>";
+    var rod = '<div class="row wrap" style="margin-top:8px">' +
+      '<button class="btn sm ghost" data-act="deck-copiar">📋 copiar a fala desta tela</button>' +
+      '<button class="btn sm ghost" data-act="deck-copiar-tudo">🗂 copiar o deck inteiro (roteiro)</button>' +
+      '<button class="btn sm ghost" data-act="deck-imprimir">🖨 salvar em PDF</button>' +
+      '<span class="tiny" style="align-self:center">no teclado: ← → · no iPad: arraste os dedos na tela</span></div>';
+    var topo = '<div class="row" style="align-items:center;gap:8px;margin-bottom:6px"><b>📽 ' + esc(p.nome) + "</b>" +
+      '<span class="tiny">' + esc(p.bairro || "") + " · " + (Number(p.ticket) ? "ticket " + money(Number(p.ticket)) : "ticket a confirmar") + "</span></div>";
+    return topo + corpo + nav + rod;
+  }
+  App.desenharDeck = function () {
+    var el = App.deck.ov && App.deck.ov.querySelector("[data-deck-body]");
+    if (el) el.innerHTML = deckHtml();
+  };
+  App.modalDeck = function (pid) {
+    var p = st().prospects.filter(function (x) { return x.id === pid; })[0];
+    if (!p) { ui().toast("Esse lead não está nesta base (cola o lote primeiro).", "warn", 6000); return; }
+    var deck = Z.deckDe(p, st().config);
+    if (!deck.length) { ui().toast("Sem deck pra essa ficha.", "warn"); return; }
+    App.deck = { pid: pid, i: 0, ov: null };
+    var ov = ui().openModal('<div class="modal-head"><div class="grow"><h2>📽 Slides da reunião</h2><p class="tiny" style="margin:3px 0 0">Uma ideia por tela. Fale por 40 segundos em cada e passe.</p></div><button class="x" data-close aria-label="Fechar">✕</button></div><div class="modal-body deck-body"><div data-deck-body>' + deckHtml() + "</div></div>");
+    App.deck.ov = ov;
+    if (!App.deckKey) {
+      App.deckKey = function (ev) {
+        if (!App.deck || !App.deck.ov || !document.body.contains(App.deck.ov)) return;
+        if (ev.key === "ArrowRight") { ev.preventDefault(); App.handlers["deck-ir"]({ getAttribute: function () { return "1"; } }); }
+        else if (ev.key === "ArrowLeft") { ev.preventDefault(); App.handlers["deck-ir"]({ getAttribute: function () { return "-1"; } }); }
+      };
+      document.addEventListener("keydown", App.deckKey);
+    }
+  };
+
+  App.handlers["ticket-filtro"] = function (el) {
+    var k = el.getAttribute("data-k");
+    if (k in App.ticketFiltro) App.ticketFiltro[k] = !App.ticketFiltro[k];
+    App.ticketLimite = 18;
+    App.render();
+  };
+  App.handlers["ticket-mais"] = function () { App.ticketLimite += 18; App.render(); };
+  App.handlers["ticket-copiar"] = function (el) {
+    var pid = el.getAttribute("data-pid"), k = el.getAttribute("data-k");
+    var p = st().prospects.filter(function (x) { return x.id === pid; })[0];
+    if (!p) return;
+    var txt = ticketFala(p, k);
+    if (!txt) { ui().toast("Essa fala ainda não existe no pacote.", "warn"); return; }
+    ui().copy(txt, "Copiada: " + k + " — cola no zap dela");
+  };
+  App.handlers["ticket-roteiro"] = function (el) {
+    var p = st().prospects.filter(function (x) { return x.id === el.getAttribute("data-pid"); })[0];
+    if (!p) return;
+    var r = Z.roteiroReuniao(p, st().config);
+    var txt = "REUNIÃO DE 20 MIN — " + p.nome + "\n\n" + r.map(function (x) {
+      return x.t + "\n" + ui().fillVars(x.f, ticketCtx(p)) + "\n(por que agora: " + x.por + ")";
+    }).join("\n\n");
+    ui().openModal(ui().modalShell("🧠 Roteiro da reunião — " + esc(p.nome), "Seis falas, na ordem, com o tempo de cada uma.",
+      '<div class="script-box" style="max-height:none;white-space:pre-wrap">' + esc(txt) + "</div>",
+      '<button class="btn" data-act="ticket-roteiro-copiar" data-pid="' + p.id + '">📋 Copiar o roteiro</button><button class="btn quiet" data-close>Fechar</button>'));
+  };
+  App.handlers["ticket-roteiro-copiar"] = function (el) {
+    var p = st().prospects.filter(function (x) { return x.id === el.getAttribute("data-pid"); })[0];
+    if (!p) return;
+    var txt = "REUNIÃO DE 20 MIN — " + p.nome + "\n\n" + Z.roteiroReuniao(p, st().config).map(function (x) {
+      return x.t + "\n" + ui().fillVars(x.f, ticketCtx(p)) + "\n(por que agora: " + x.por + ")";
+    }).join("\n\n");
+    ui().copy(txt, "Roteiro copiado");
+  };
+  App.handlers["ticket-objecoes"] = function (el) {
+    var p = st().prospects.filter(function (x) { return x.id === el.getAttribute("data-pid"); })[0];
+    if (!p) return;
+    var f = Z.falasAlta(p, st().config);
+    var corpo = (f.quebras || []).map(function (q, i) {
+      return '<div class="card quiet" style="padding:10px;margin-bottom:8px"><div class="card-title" style="margin-bottom:4px">' + esc(ui().fillVars(q.g, ticketCtx(p))) + '</div>' +
+        '<p style="margin:0;font-size:13px">' + esc(ui().fillVars(q.f, ticketCtx(p))) + "</p>" +
+        '<button class="btn sm ghost" style="margin-top:6px" data-act="ticket-copiar" data-pid="' + p.id + '" data-k="quebra' + i + '">📋 copiar</button></div>';
+    }).join("");
+    ui().openModal(ui().modalShell("🛡 As cinco quebras — " + esc(p.nome), "Na ordem em que elas aparecem quando o preço é alto. Nunca desconte na primeira: troque de degrau, não de preço.", corpo, '<button class="btn quiet" data-close>Fechar</button>'));
+  };
+  App.handlers["ticket-zap"] = function (el) {
+    var p = st().prospects.filter(function (x) { return x.id === el.getAttribute("data-pid"); })[0];
+    if (!p) return;
+    var link = ui().waLink(p.whats || p.telefone, ticketFala(p, "abertura"));
+    if (link) { window.open(link, "_blank", "noopener"); S.marcarToque && S.marcarToque(p.id); }
+  };
+  App.handlers["ticket-slides"] = function (el) { App.modalDeck(el.getAttribute("data-pid")); };
+  App.handlers["ticket-marcar"] = function (el) {
+    var pid = el.getAttribute("data-pid"), e = el.getAttribute("data-e");
+    var r = S.marcarLead(pid, e);
+    if (!r) { ui().toast("Ficha não encontrada neste aparelho.", "warn"); return; }
+    if (e === "ganhou") {
+      ui().toast("🏆 Virou cliente" + (r.taxa ? " · taxa de " + money(r.taxa.valor) + "/mês lançada em A receber (vence " + r.taxa.vence + ")" : ""), "ok", 8000);
+    } else if (e === "enviado") {
+      ui().toast("\u2705 Anotado: " + r.toques + " toque(s) \u2014 j\u00e1 n\u00e3o \u00e9 mais primeiro contato", "ok");
+    } else if (e === "reuniao") {
+      ui().toast("📅 Reunião marcada. Abra os slides antes de sair de casa: botão 📽.", "ok", 7000);
+    } else if (e === "perdeu") {
+      ui().toast("🚫 Fora da mira. Se ela responder daqui a meses, o histórico fica na ficha.", "warn");
+    } else {
+      ui().toast("💬 Respondeu — responda hoje, a janela dela fecha em 48h.", "ok");
+    }
+    App.render();
+  };
+  App.handlers["deck-ir"] = function (el) {
+    var d = el.getAttribute("data-d");
+    var s = st(), p = s.prospects.filter(function (x) { return x.id === App.deck.pid; })[0];
+    var n = p ? Z.deckDe(p, s.config).length : 0;
+    if (d === "-1" || d === "1") App.deck.i = Math.max(0, Math.min(n - 1, App.deck.i + Number(d)));
+    else App.deck.i = Math.max(0, Math.min(n - 1, Number(d) || 0));
+    App.desenharDeck();
+  };
+  App.handlers["deck-copiar"] = function () {
+    var s = st(), p = s.prospects.filter(function (x) { return x.id === App.deck.pid; })[0];
+    if (!p) return;
+    var deck = Z.deckDe(p, s.config), sl = deck[App.deck.i] || deck[0], ctx = ticketCtx(p);
+    var txt = sl.k + " — " + ui().fillVars(sl.h, ctx) + "\n" + (sl.lines || []).map(function (l) { return "• " + ui().fillVars(String(l), ctx); }).join("\n") + (sl.nota ? "\n\n(pra você: " + sl.nota + ")" : "");
+    ui().copy(txt, "Fala da tela copiada");
+  };
+  App.handlers["deck-copiar-tudo"] = function () {
+    var s = st(), p = s.prospects.filter(function (x) { return x.id === App.deck.pid; })[0];
+    if (!p) return;
+    var ctx = ticketCtx(p);
+    var txt = "SLIDES DA REUNIÃO — " + p.nome + "\n\n" + Z.deckDe(p, s.config).map(function (sl, i) {
+      return (i + 1) + " · " + sl.k + " — " + ui().fillVars(sl.h, ctx) + "\n" + (sl.lines || []).map(function (l) { return "   " + ui().fillVars(String(l), ctx); }).join("\n") + (sl.nota ? "\n   🗒 " + sl.nota : "");
+    }).join("\n\n");
+    ui().copy(txt, "Deck inteiro copiado — dá pra colar num bloco de notas e levar");
+  };
+  App.handlers["deck-imprimir"] = function () {
+    var ov = App.deck.ov;
+    if (!ov) return;
+    ov.classList.add("deck-print");
+    setTimeout(function () { try { window.print(); } catch (e) { ui().toast("Não consegui abrir a impressão: use Ctrl+P.", "warn"); } ov.classList.remove("deck-print"); }, 80);
+  };
+
   function viewProspect() {
     var S = window.ZeikStore, s = st(), f = App.filters, m2 = S.stats();
     var list = s.prospects.slice();
@@ -5326,10 +6002,30 @@ barbearia: {
         var melhor = rs.filter(function (x) { return x.tipo === "m1" && x.env >= 5; }).sort(function (a, b) { return b.taxa - a.taxa; })[0];
         return '<div class="card" style="margin-bottom:14px"><div class="card-title">📊 Medição das versões <span class="badge gray">' + rs.length + ' registrada' + (rs.length === 1 ? "" : "s") + '</span></div>' +
           '<p class="tiny" style="margin:0 0 8px">Cada texto tem uma versão (é o CRC dele): <b>editou uma palavra, o contador começa do zero</b>. Assim "a nova abordagem é melhor" deixa de ser opinião. Os números entram sozinhos quando você marca ✔ Enviado / 💬 Respondeu / 📅 Reunião / 🏆 Fechou no card do lead.</p>' +
+          (function () {
+            var es = Z.escadaPreco ? Z.escadaPreco(s.config) : [];
+            if (!es.length) return "";
+            return '<h4 style="margin:14px 0 4px">\ud83e\ude9c Escada de pre\u00e7o (o repert\u00f3rio do ticket alto)</h4>' +
+              '<p class="tiny" style="margin:0 0 6px">Um produto s\u00f3, a ' + money(s.config.precoSite) + ', \u00e9 cobrar pouco de quem pagaria o triplo sem pensar. Comece pelo degrau que a r\u00e9gua de grana manda \u2014 n\u00e3o pelo que voc\u00ea acha que ela pode.</p>' +
+              '<div class="grid three">' + es.map(function (e) {
+                return '<div class="card quiet" style="padding:10px;margin:0"><div class="card-title" style="margin-bottom:4px">' + esc(e.nome) + " \u00b7 <b>" + money(e.valor) + "</b> + " + money(e.manut) + "/m\u00eas</div><p class=\"tiny\" style=\"margin:0 0 4px\">" + esc(e.entrega) + "</p><p class=\"tiny\" style=\"margin:0\">pra quem: " + esc(e.pra) + (e.proximo ? " \u2192 " + esc(e.proximo) : "") + "</p></div>";
+              }).join("") + "</div>";
+          })() +
           (rs.length ? '<div class="tbl-wrap"><table class="tbl"><thead><tr><th>roteiro</th><th>tipo</th><th>enviadas</th><th>respostas</th><th>taxa</th><th>reuniões</th><th>texto</th></tr></thead><tbody>' + rs.slice(0, 10).map(linha).join("") + '</tbody></table></div>' +
             (melhor ? '<p class="tiny" style="margin:8px 0 0">📈 Hoje a mensagem que mais responde é a de <b>' + esc(Z.nichoLabel ? (Z.nichoLabel(melhor.nicho).nome || melhor.nicho) : melhor.nicho) + '</b> (' + melhor.taxa + '% de ' + melhor.env + ' enviadas). ' + (melhor.nicho === "geral" ? "A cópia de nicho ainda não bateu a geral — mexe nela, não no raio." : "Manda os próximos de beleza com essa e deixa a geral pro resto do bairro.") + '</p>' : '<p class="tiny" style="margin:8px 0 0">Com menos de 5 enviadas por versão eu não aposto em nada: marca mais toque antes de mudar texto.</p>')
             : '<p class="tiny" style="margin:0 0 8px">Nenhum envio marcado ainda. Manda a 1ª mensagem pro primeiro da fila e aperta ✔ Enviado — a partir daí isto vira decisão em número, não em sensação.</p>') +
+          '<label class="check" style="margin:10px 0 0"><input type="checkbox" data-autosave="config.soGrana"' + (cfg.soGrana ? " checked" : "") + '> <b>💰 fila só com quem paga bem (nível A e B)</b> — chumbo de R$ 40 sai da fila e do lote</label>' +
+          '<label class="check" style="margin:6px 0 0"><input type="checkbox" data-autosave="config.premiumParaA"' + (cfg.premiumParaA !== false ? " checked" : "") + '> <b>usar a copy de posicionamento com as nível A</b> (n\u00e3o \u00e9 "voc\u00ea precisa de site", \u00e9 "voc\u00ea est\u00e1 cobrando pouco")</label>' +
+          '<label class="check" style="margin:6px 0 0"><input type="checkbox" data-autosave="config.chaoOuro"' + (cfg.chaoOuro !== false ? " checked" : "") + '> <b>🏙 piso por bairro</b> — em bairro de tabela alta a proposta começa no degrau que segura a tabela dali (nada de abrir no degrau barato pra "quebrar o gelo")</label>' +
+          '<div class="grid two" style="margin-top:8px">' +
+          '<label class="field"><span class="lbl">Fator mínimo pra tratar o bairro como nobre</span><input type="number" step="0.05" data-autosave="config.ouroPara" value="' + esc(String(cfg.ouroPara == null ? 1.45 : cfg.ouroPara)) + '"><span class="tiny">1,45 quer dizer: o bairro precisa sustentar tabela ~45% acima da sua base pra entrar no filtro 🏙, pontuar na régua e receber a copy de indicação/escassez. Descer pra 1,2 incha a tela 👑 com gente que não paga mais — e foi exatamente isso que ele reclamou dos leads anteriores.</span></label>' +
+          '<label class="field"><span class="lbl">Mapa de fator por bairro</span><textarea data-autosave="config.bairrosOuro" rows="4" class="mono tiny" style="width:100%">' + esc(String(cfg.bairrosOuro || "")) + '</textarea><span class="tiny">formato: <span class="mono">Nome do bairro 1.7</span>, separado por vírgula. É daqui que sai o filtro 🏙, o ponto extra na régua e o piso da proposta — um lugar só, não duas listas. Fator 1,0 = sua tabela atual. Descobriu um bairro caro? Escreve aqui que a fila e o preço se ajustam sozinhos.</span></label>' +
+          '</div>' +
           '<div class="grid two" style="margin-top:12px">' +
+          '<label class="field"><span class="lbl">Ticket alvo (R$) pra considerar bom pagador</span><input type="number" step="10" data-autosave="config.ticketAlvo" value="' + esc(String(cfg.ticketAlvo == null ? 180 : cfg.ticketAlvo)) + '"><span class="tiny">a r\u00e9gua de grana olha procedimento de valor (micropigmenta\u00e7\u00e3o, laser, podologia, gel/acr\u00edlico, noiva, curso), endere\u00e7o com sala, mais de uma unidade e o ticket que voc\u00ea anotou. Desconta quem se anuncia por pre\u00e7o baixo ou atende na sala de casa.</span></label>' +
+          '<label class="field"><span class="lbl">Peso da grana na ordem da fila (0 a 4)</span><input type="number" step="1" data-autosave="config.pesoGrana" value="' + esc(String(cfg.pesoGrana == null ? 2 : cfg.pesoGrana)) + '"><span class="tiny">2 = pagador forte sobe uns degraus. 4 = a fila vira o dinheiro primeiro, quente que paga pouco espera.</span></label>' +
+          '</div>' +
+          '<div class="grid two" style="margin-top:8px">' +
           '<label class="field"><span class="lbl">Link do Pages publicado (pro modelo da cliente)</span><input type="text" data-autosave="config.linkBase" value="' + esc(String(cfg.linkBase || "")) + '" placeholder="https://seuusuario.github.io/ZEIK-DIGITAL/"><span class="tiny">com isto preenchido, a mensagem troca “te mando o link” pela URL real do site dela — e o botão do card vira 🔗 Copiar link. Vazio = o painel promete só o que existe.</span></label>' +
           '<label class="field"><span class="lbl">Toques antes de sair da fila</span><input type="number" step="1" data-autosave="config.limiteToques" value="' + esc(String(cfg.limiteToques == null ? 3 : cfg.limiteToques)) + '"><span class="tiny">3 é o número honesto num bairro onde todo mundo se conhece. Passou, sai da fila sozinho.</span></label>' +
           '</div>' +
@@ -5712,6 +6408,9 @@ barbearia: {
     var link = Z.linkModelo(p, cfgF);
     var fechados = window.ZeikStore.clientesDoBairro ? window.ZeikStore.clientesDoBairro(p.bairro) : [];
     var toquesN = Number(p.toques) || 0;
+    var gr = Z.granaDe ? Z.granaDe(p, st().config) : null;
+    var grLb = gr ? Z.granaLabel(gr.nivel) : null;
+    var pl = Z.planoPara ? Z.planoPara(p, st().config) : null;
     var tetoDe = Number(st().config.tetoDia) || 0;
     var enviadosHoje = Number(c.enviadosHoje) || 0;
     var tetoBatido = tetoDe && idx >= tetoDe;
@@ -5741,6 +6440,8 @@ barbearia: {
         (toquesN ? '<span>👉 ' + toquesN + "º toque</span>" : "") +
         (fechados.length ? '<span style="color:var(--ok)">🏆 você já atende ' + esc(fechados[0].nome) + " aqui no bairro — fala isso</span>" : "") +
         (link ? '<span>🔗 modelo dela pronto pra abrir</span>' : '<span>✍️ modelo local ainda não gerado</span>') +
+        (gr ? '<span style="color:' + (gr.nivel === "A" ? "var(--ok)" : gr.nivel === "D" ? "var(--warn)" : "inherit") + '">💰 ' + esc(gr.nivel) + " · " + gr.pontos + " pts · " + esc(grLb.nome) + (gr.motivo.length ? " (" + esc(gr.motivo[0]) + ")" : "") + "</span>" : "") +
+      (pl ? '<p class="tiny" style="margin:4px 0 0">\ud83c\udfaf comece pelo <b>' + esc(pl.plano.nome) + " \u00b7 " + money(pl.plano.valor) + " + " + money(pl.plano.manut) + "/m\u00eas</b> \u2014 " + esc(pl.plano.entrega) + (pl.subir ? " <span style=\"color:var(--ok)\">Se ela topar, o pr\u00f3ximo degrau \u00e9 " + esc(pl.subir.nome) + " (" + money(pl.subir.valor) + ")</span>" : "") + "</p>" : "") +
         (p.proximoPasso ? '<span>🎯 próximo passo: <b>' + esc(p.proximoPasso) + '</b></span>' : "") +
         (tetoBatido ? '<span style="color:var(--warn)">⏳ teto de ' + tetoDe + " toques do dia batido (" + enviadosHoje + ") — o resto amanhã na janela dela</span>" : "") +
         (meuR && meuR.env ? '<span>📊 esta versão: ' + meuR.env + " enviadas · " + meuR.resp + " respostas · " + meuR.taxa + "%</span>" : "<span>📊 sem envio marcado ainda nesta versão do texto</span>") +
