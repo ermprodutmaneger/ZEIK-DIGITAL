@@ -738,6 +738,7 @@ input[type="range"]::-moz-range-thumb {
     <nav aria-label="Navegação principal">
       <button class="nav-item" data-act="nav" data-view="dashboard"><span class="ico">◧</span> Dashboard</button>
       <button class="nav-item" data-act="nav" data-view="ticket"><span class="ico">👑</span> Ticket alto <span class="count" data-count="ticket"></span></button>
+      <button class="nav-item" data-act="nav" data-view="advogados"><span class="ico">⚖️</span> Advogados <span class="count" data-count="advogados"></span></button>
       <button class="nav-item" data-act="nav" data-view="prospeccao"><span class="ico">🧲</span> Prospecção <span class="count" data-count="prospeccao"></span></button>
       <button class="nav-item" data-act="nav" data-view="disparo"><span class="ico">📣</span> Disparo <span class="count" data-count="disparo"></span></button>
       <button class="nav-item" data-act="nav" data-view="pipeline"><span class="ico">📊</span> Pipeline <span class="count" data-count="pipeline"></span></button>
@@ -777,7 +778,7 @@ input[type="range"]::-moz-range-thumb {
    arquivos publicados (index-novo.html) desenharem as telas sem travar.
    Rode: node tools/extrair-meta.js  (depois de mexer em assets/js/seed.js) */
 (function (w) {
-w.ZEIK_SEED = {"versao":26,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto da Mooca","Parque da Mooca","Vila Prudente","Sacomã","Ipiranga","Itaquera","Cidade Líder","São Mateus","Penha","Vila Matilde","Guaianases","Vila Formosa","Carrão","Aricanduva","Ermelino Matarazzo","Vila Alpina"],"Norte":["Santana","Tucuruvi","Casa Verde","Freguesia do Ó","Vila Guilherme","Imirim","Vila Maria","Santa Teresinha","Cachoeirinha","Jaçanã","Mandaqui","Lauzane Paulista","Parque Peruche","Jardim São Paulo","Vila Mazzei","Brasilândia"],"Oeste":["Butantã","Vila Butantã","Lapa","Alto da Lapa","Pinheiros","Alto de Pinheiros","Vila Madalena","Perdizes","Pompéia","Vila Leopoldina","Pirituba","Jaraguá","Perus","Rio Pequeno","Jaguaré","Jardim Bonfiglioli","Vila Lageado","Real Parque"],"Centro":["Consolação","Bela Vista","República","Santa Cecília","Higienópolis","Bom Retiro","Brás","Belém","Liberdade","Sé","Vila Buarque","Canindé"],"Interior":["Bady Bassitt","Botucatu","Campinas","Itararé","Itatinga","Itu","Jundiaí","Monte Alto","Sorocaba","São Manuel","Ubatuba","Votorantim"],"Sul":["Capão Redondo","Jardim Ângela","Jardim São Luís","Campo Limpo","M'Boi Mirim","Grajaú","Parelheiros","Vargem Grande","Cidade Dutra","Interlagos","Santo Amaro","Morumbi","Paraisópolis","Socorro","Jardim Marsilão"]},"segmentos":[{"id":"barbearia","nome":"Barbearia / Cabeleireiro","emoji":"💈","buscaTermo":"barbearia","ticketMedio":55,"dor":"Cliente acha no Instagram e no Google Maps, mas não tem onde mostrar preço, horário e agenda.","gancho":"Site vitrine + página de agendamento + feed do Instagram organizado. Quem pesquisa 'barbearia no seu bairro' te acha primeiro.","agendador":true,"script":"Opa, {{contato}}! Tudo certo? 👊\n\nAqui é {{nomeZeik}}, agência de sites da região de {{bairro}}.\n\nProcurei a {{empresa}} no Google e vi que vocês ainda não têm site próprio — hoje quem pesquisa {{buscaLocal}} acaba caindo no perfil de alguém que investe em anúncio.\n\nA gente monta um site profissional pra {{empresa}} com:\n• Página inicial com sua identidade\n• Tabela de preços (corte, barba, combos)\n• Botão de agendamento no WhatsApp\n• Localização + horário de funcionamento\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nTambém criamos/organizamos o Instagram se precisar: layout de feed, destaques, fotos dos cortes com padrão.\n\nTe mando um modelo pronto do site da {{empresa}} pra você ver antes de decidir? Leva 2 min 👇","followup":"Opa {{contato}}, {{nomeZeik}} de novo! 🙂\n\nSeparei um modelo de site com o nome da {{empresa}} e a foto da sua fachada. Ficou muito bom.\n\nSe te ajudar a encher a agenda de semana, a gente entrega em {{prazo}}, e o valor só entra na conversa depois que você ver o modelo.\n\nPosso te mandar o link de prévia agora?","fechamento":"Perfeito, {{contato}}! 🚀\n\nFecho assim:\n✅ Site profissional {{empresa}} ({{preco}} à vista ou no PIX)\n✅ Entrega em {{prazo}}\n✅ Bônus: organização do feed do Instagram + destaques\n\nMe manda: logo/fotos dos cortes, tabela de preço, endereço, WhatsApp e horários.\n\nJá começo hoje. Obrigado pela confiança! 🙏"},{"id":"salao","nome":"Salão de Beleza / Estética","emoji":"💇‍♀️","buscaTermo":"salão de beleza","ticketMedio":130,"dor":"Movimento depende de indicação e do Instagram; sem portfólio organizado a cliente 'some' antes de agendar.","gancho":"Site com antes/depois + tabela de serviços + Instagram com feed organizado pra virar vitrine de vendas.","agendador":true,"script":"Oi {{contato}}, tudo bem? 😊\n\nAqui é {{nomeZeik}}, a agência de sites da região de {{bairro}}.\n\nDei uma olhada no trabalho da {{empresa}} — o nível é ótimo, mas hoje quem procura {{buscaLocal}} não encontra um site com seus serviços e valores.\n\nPosso colocar no ar um site da {{empresa}} com:\n• Serviços e tabela de preços\n• Fotos de antes e depois\n• Botão de agendamento no WhatsApp\n• Endereço, horário e maps\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE se o Instagram estiver parado ou com feed bagunçado, a gente cria a conta e organiza o feed (destaques de serviços, promoções, avaliações).\n\nQuer que eu te mande um modelo com a cara da {{empresa}}?","followup":"Oi {{contato}}! {{nomeZeik}} aqui 🙂\n\nFiz um pré-modelo do site da {{empresa}} com a paleta do salão. Ficou elegante e bem fácil de agendar pelo WhatsApp.\n\nPosso te mandar a prévia pra você ver com suas clientes?","fechamento":"Fechado, {{contato}}! 💛\n\nO que você recebe:\n✅ Site {{empresa}} — {{preco}}\n✅ Tabela de preços + antes/depois\n✅ Botão de agendamento WhatsApp\n✅ Organização do feed do Instagram + 3 destaques\n✅ Entrega em {{prazo}}\n\nMe manda logo, 6 fotos, tabela de valores, endereço e horário. Começo hoje!"},{"id":"estetica","nome":"Clínica de Estética","emoji":"✨","buscaTermo":"estética","ticketMedio":180,"dor":"Serviço de alto ticket (limpeza de pele, drenagem, laser) é vendido por confiança — e confiança vem de presença profissional.","gancho":"Site com especialidades, protocolos e provas sociais + Instagram educativo para gerar autoridade.","agendador":true,"script":"Olá {{contato}}, tudo bem? Aqui é {{nomeZeik}}, agência de sites do bairro.\n\nA {{empresa}} atende um público que pesquisa antes de marcar — e hoje não aparece um site profissional quando buscam por {{buscaLocal}}.\n\nUm site bem feito aumenta percepção de valor e justifica o seu preço, com:\n• Página de cada protocolo (drenagem, limpeza, massagem)\n• Pacotes e investimento\n• Antes/depois + avaliações\n• Agendamento pelo WhatsApp\n\n💰 {{valorZeik}}\n⚡ Entrega em {{prazo}}\n\nTambém estruturamos o Instagram: feed padronizado, destaques de protocolos e regras de antes/depois.\n\nPosso te enviar um modelo da {{empresa}} para avaliar?","followup":"Oi {{contato}}, {{nomeZeik}} aqui 🙂\n\nMontei uma prévia do site da {{empresa}} com foco em agendamento e pacotes.\n\nSe fizer sentido, consigo entregar em {{prazo}}. Quer ver a prévia?","fechamento":"Ótimo, {{contato}}! 📋\n\n✅ Site {{empresa}} — {{preco}}\n✅ Páginas de protocolos + pacotes\n✅ Antes/depois com autorização da cliente\n✅ Feed do Instagram organizado\n✅ Entrega em {{prazo}}\n\nMe envia logo, fotos dos procedimentos, tabela e endereço."},{"id":"odonto","nome":"Clínica Odontológica","emoji":"🦷","buscaTermo":"dentista","ticketMedio":350,"dor":"Concorrência forte na Av. Belmira Marin; paciente compara preço e credibilidade antes de entrar.","gancho":"Site com especialidades, convênios, parcelamento e avaliações — mais implantando/orto fechando.","agendador":true,"script":"Bom dia/boa tarde, {{contato}}. Falo com o responsável da {{empresa}}?\n\nAqui é {{nomeZeik}}, agência de sites da sua região.\n\nNa sua rua tem várias clínicas: o paciente pesquisa \"{{buscaLocal}}\" no Google e escolhe quem aparece bem. A {{empresa}} ainda não tem um site com especialidades, convênios e condições de parcelamento.\n\nO que entrego:\n• Site institucional + página por tratamento (implante, ortodontia, clareamento)\n• Formulário direto no WhatsApp\n• Avaliações do Google e CRO/responsável técnico\n• Convênios aceitos e parcelamento\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE ajudo na organização do Instagram (feed clínico, destaques de casos).\n\nMe permite te mandar uma prévia do site?","followup":"Olá {{contato}}! {{nomeZeik}} aqui 🙂\n\nSeparei um layout de site voltado para captação de implante e aparelho pra {{empresa}}.\n\nPosso te chamar 5 min hoje pra mostrar?","fechamento":"Perfeito, {{contato}} 🤝\n\n✅ Site {{empresa}} — {{preco}}\n✅ Páginas por tratamento + avaliações\n✅ Botão de WhatsApp + horários\n✅ Organização do feed do Instagram\n✅ Entrega em {{prazo}}\n\nPreciso de: logo, fotos do consultório, lista de tratamentos, convênios, endereço e horário."},{"id":"pet","nome":"Pet Shop / Veterinária","emoji":"🐶","buscaTermo":"pet shop","ticketMedio":90,"dor":"Dono de pet decide por confiança e urgência (banho e tosa, emergência 24h).","gancho":"Site com serviços, plantão 24h, tabela de banho e tosa, loja e agendamento.","agendador":true,"script":"Oi {{contato}}, tudo bem? Aqui é {{nomeZeik}}, agência de sites do bairro.\n\nVi a {{empresa}} e pensei: dono de pet pesquisa \"{{buscaLocal}}\" no celular antes de ir e não acha um site de vocês com horário, preço do banho e tosa e se tem plantão.\n\nFaço um site com:\n• Serviços e tabela (banho, tosa, veterinário, táxi dog)\n• Horário e plantão 24h em destaque\n• Agendamento pelo WhatsApp\n• Fotos dos pets clientes (prova social forte)\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nTambém crio ou organizo o Instagram, que é onde o bairro escolhe pet shop.\n\nTe mando uma prévia?","followup":"Oi {{contato}}! {{nomeZeik}} aqui 🐾\n\nFiz um modelo do site da {{empresa}} com a tabela de banho e tosa em destaque.\n\nQuer que eu te mande pra você mostrar pra equipe?","fechamento":"Fechado, {{contato}} 🐾\n\n✅ Site {{empresa}} — {{preco}}\n✅ Tabela de serviços + agendamento WhatsApp\n✅ Página de plantão/urgência\n✅ Feed do Instagram organizado\n✅ Entrega em {{prazo}}"},{"id":"auto","nome":"Oficina / Auto Center / Borracharia","emoji":"🔧","buscaTermo":"oficina mecânica","ticketMedio":260,"dor":"Quem quebra o carro de noite não sabe em quem confiar — quem tem Google Meu Negócio + site leva a corrida.","gancho":"Site com serviços, orçamento por WhatsApp, confiança (avaliações) e rota de socorro.","agendador":false,"script":"Fala {{contato}}, tudo na paz? Aqui é {{nomeZeik}}, agência de sites da região de {{bairro}}.\n\nPassei na {{empresa}} e olhei no Google: vocês têm boa reputação, mas não têm site pra pedir orçamento.\n\nHoje quem tá na beira da estrada pesquisa {{buscaLocal}} e chama quem passa confiança online.\n\nMeu site pra {{empresa}} vem com:\n• Serviços (elétrica, suspensão, injeção, alinhamento, troca de óleo)\n• Pedido de orçamento direto no WhatsApp\n• Avaliações do Google + fotos da oficina\n• Horário e mapa\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE se não tiver Instagram, a gente cria e já deixa com padrão (antes/depois, serviço do dia).\n\nTopa ver uma prévia sem compromisso?","followup":"E aí {{contato}}, {{nomeZeik}} aqui 🙂\n\nMontei a prévia do site da {{empresa}} com botão de orçamento no WhatsApp.\n\nSe ajudar a entrar mais carro por semana, o site se paga na primeira semana. Posso te mostrar?","fechamento":"Boa, {{contato}}! 🔧\n\n✅ Site {{empresa}} — {{preco}}\n✅ Orçamento por WhatsApp + serviços\n✅ Avaliações do Google na home\n✅ Instagram criado/organizado\n✅ Entrega em {{prazo}}\n\nManda: logo, fotos da oficina, lista de serviços, horário e endereço."},{"id":"constru","nome":"Material de Construção / Depósito","emoji":"🧱","buscaTermo":"material de construção","ticketMedio":400,"dor":"Pedreiro e cliente final cotam por WhatsApp e concorrente responde primeiro.","gancho":"Site com catálogo, preço do dia, entrega e orçamento por lista de material.","agendador":false,"script":"Bom dia {{contato}}, aqui é {{nomeZeik}}, agência de sites do bairro.\n\nTrabalhei com algumas lojas de material da região e vi que a {{empresa}} ainda não tem um site com o catálogo e o telefone de entrega.\n\nQuem faz obra manda a lista pra 4 lojas — e muita gente chega digitando \"{{buscaLocal}}\" no Google. Compra de quem responde rápido e passa confiança.\n\nO site da {{empresa}} teria:\n• Categorias (cimento, tinta, hidráulico, elétrico, ferramentas)\n• Pedido de orçamento por lista no WhatsApp\n• Entrega e prazo em destaque\n• Horário, mapa e telefone grande\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nTambém deixamos o Instagram com padrão de preço do dia/frete grátis.\n\nPosso te mandar uma prévia?","followup":"Oi {{contato}}! {{nomeZeik}} 🙂\n\nFiz uma prévia do site da {{empresa}} com botão de \"pedir orçamento por lista\" no WhatsApp.\n\nQuer ver? Leva 2 min.","fechamento":"Fechado, {{contato}} 🧱\n\n✅ Site {{empresa}} — {{preco}}\n✅ Catálogo + orçamento por lista\n✅ Entrega e horário em destaque\n✅ Instagram organizado\n✅ Entrega em {{prazo}}"},{"id":"food","nome":"Pizzaria / Hamburgueria / Restaurante","emoji":"🍕","buscaTermo":"delivery","ticketMedio":55,"dor":"Cardápio no Instagram que some no scroll, pedido por DM atrasando e cliente indo pro iFood que cobra taxa.","gancho":"Cardápio digital no site próprio + botão de pedido no WhatsApp + Instagram com feed de comida que dá fome.","agendador":false,"script":"Opa {{contato}}, tudo bem? Aqui é {{nomeZeik}}, agência de sites do bairro.\n\nOlhei o perfil da {{empresa}} e o cardápio: dá água na boca 👌 Só que quem digita \"{{buscaLocal}}\" no Google não acha um cardápio seu — e o cliente precisa sair do Instagram pra pedir.\n\nFaço um site com:\n• Cardápio digital com preços e fotos\n• Botão de pedido no WhatsApp (sem taxa de aplicativo)\n• Promoção do dia em destaque\n• Promoção do dia em destaque + delivery area e mapa\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE a gente organiza seu Instagram: feed com padrão de comida, destaques de cardápio/horário/delivery.\n\nTe mando o modelo da {{empresa}} agora?","followup":"Opa {{contato}}! {{nomeZeik}} 🙂\n\nMontei a prévia do cardápio digital da {{empresa}} pro pedido cair direto no seu WhatsApp — sem comissão de app.\n\nQuer ver?","fechamento":"Show, {{contato}} 🍕\n\n✅ Site + cardápio digital — {{preco}}\n✅ Pedido direto no WhatsApp (sem taxa de app)\n✅ Destaques de promoção\n✅ Feed do Instagram organizado\n✅ Entrega em {{prazo}}\n\nManda o cardápio em texto ou foto que eu já digito tudo."},{"id":"academia","nome":"Academia / Studio","emoji":"🏋️","buscaTermo":"academia","ticketMedio":130,"dor":"Matrícula de bairro é decidida por localização, preço e horário — e por quem aparece bem no Google.","gancho":"Site com planos, horários de aula, professor e matrícula pelo WhatsApp; Instagram com aula do dia.","agendador":true,"script":"Oi {{contato}}, tudo bem? {{nomeZeik}}, agência de sites do bairro.\n\nPassei em frente à {{empresa}} e fui ver no Google: vocês não têm página com planos e horários. Quem mora perto e pesquisa {{buscaLocal}} acaba matriculando em quem mostra preço.\n\nSite que entrego:\n• Planos e formas de pagamento\n• Grade de aulas (funcional, pilates, luta)\n• Professores + estrutura\n• Matrícula/aula experimental pelo WhatsApp\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE organizamos o Instagram com feed de treino e destaques de horário/aula experimental.\n\nPosso te mandar uma prévia?","followup":"Oi {{contato}}! {{nomeZeik}} 🙂\n\nFiz a prévia do site da {{empresa}} com destaque pra aula experimental gratuita.\n\nMando pra você avaliar?","fechamento":"Fechado, {{contato}} 💪\n\n✅ Site {{empresa}} — {{preco}}\n✅ Planos + grade de aulas\n✅ Matrícula por WhatsApp\n✅ Feed do Instagram + destaques\n✅ Entrega em {{prazo}}"},{"id":"servicos","nome":"Serralheria / Elétrica / Serviços","emoji":"🛠️","buscaTermo":"prestador de serviço","ticketMedio":300,"dor":"Serviço é vendido por urgência e confiança; sem site, só indicados te acham.","gancho":"Site com portfólio de obras, região atendida e orçamento por foto no WhatsApp.","agendador":false,"script":"Olá {{contato}}, tudo bem? Aqui é {{nomeZeik}}, agência de sites do bairro.\n\nServiço de {{servico}} é contratado por confiança: quem precisa pesquisa \"{{buscaLocal}}\" e contrata quem mostra obra pronta, CEP atendido e responde na hora.\n\nHoje a {{empresa}} não tem um site com isso.\n\nEntrego:\n• Portfólio de trabalhos (foto antes/depois)\n• Serviços e região atendida\n• \"Manda foto que eu orço\" pelo WhatsApp\n• Avaliações de clientes + horário\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nTambém criamos/organizamos seu Instagram — pra muita gente é o seu único portfólio hoje.\n\nPosso te mandar o modelo da {{empresa}}?","followup":"Oi {{contato}}, {{nomeZeik}} aqui 🙂\n\nFiz uma prévia do site da {{empresa}} com o botão de orçamento por foto.\n\nServe pra você? Mando o link.","fechamento":"Perfeito, {{contato}} 🛠️\n\n✅ Site {{empresa}} — {{preco}}\n✅ Portfólio + região atendida\n✅ Orçamento por foto no WhatsApp\n✅ Instagram criado/organizado\n✅ Entrega em {{prazo}}\n\nMe manda 8 fotos de serviços prontos que eu monto o portfólio."},{"id":"varejo","nome":"Loja / Comércio de Bairro","emoji":"🛍️","buscaTermo":"loja de bairro","ticketMedio":60,"dor":"Cliente pesquisa preço online, não acha, e compra no Centro ou pela internet.","gancho":"Site com vitrine, categorias, WhatsApp por produto e Instagram de ofertas.","agendador":false,"script":"Oi {{contato}}! Aqui é {{nomeZeik}}, agência de sites da região de {{bairro}}.\n\nDei uma olhada na {{empresa}}. Produtos bons, atendimento bom — mas quem pesquisa na internet não encontra vocês e acaba comprando em outro lugar.\n\nCom um site simples a loja consegue:\n• Mostrar vitrine e categorias com preço\n• Receber pedido/proposta pelo WhatsApp\n• Divulgar promoção e condições (credionário/carnê)\n• Endereço, horário e mapa\n\nHoje, quem precisa disso no bairro pesquisa \"{{buscaLocal}}\" no Google e fecha com quem aparece primeiro.\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE se o Instagram estiver sem padrão, a gente cria/organiza com destaques de oferta e novidades.\n\nTe mando um modelo com a cara da {{empresa}}?","followup":"Oi {{contato}}, {{nomeZeik}} 🙂\n\nMontei a prévia do site da {{empresa}} com a vitrine e o botão de WhatsApp.\n\nQuer ver o link?","fechamento":"Fechado, {{contato}} 🛍️\n\n✅ Site {{empresa}} — {{preco}}\n✅ Vitrine + pedido por WhatsApp\n✅ Promoções em destaque\n✅ Feed do Instagram organizado\n✅ Entrega em {{prazo}}"},{"id":"escola","nome":"Escola / Curso / Autoescola","emoji":"🎓","buscaTermo":"curso / autoescola","ticketMedio":220,"dor":"Matrícula é sazonal e o aluno compara preço, parcelas e avaliações de ex-alunos.","gancho":"Site com cursos, valores, documentos necessários e matrícula pelo WhatsApp.","agendador":true,"script":"Olá {{contato}}, tudo bem? Aqui é {{nomeZeik}}, agência de sites do bairro.\n\nQuem vai se matricular compara no celular: preço, parcela, documentação e o que ex-aluno fala.\n\nHoje a {{empresa}} não tem uma página única com isso.\n\nFaço um site com:\n• Cursos e valores + parcelamento\n• Documentos necessários e etapas\n• Depoimentos de alunos aprovados\n• Matrícula/aula experimental pelo WhatsApp\n\nHoje, quem precisa disso no bairro pesquisa \"{{buscaLocal}}\" no Google e fecha com quem aparece primeiro.\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE organizamos seu Instagram (aprovação de aluno é o melhor conteúdo que existe).\n\nPosso te mandar uma prévia?","followup":"Oi {{contato}}! {{nomeZeik}} 🙂\n\nFiz a prévia do site da {{empresa}} com a tabela de cursos e depoimentos.\n\nMando pra você ver?","fechamento":"Perfeito, {{contato}} 🎓\n\n✅ Site {{empresa}} — {{preco}}\n✅ Cursos + parcelamento + docs\n✅ Depoimentos de alunos\n✅ Instagram organizado\n✅ Entrega em {{prazo}}"},{"id":"generico","nome":"Outro / Genérico","emoji":"🏪","buscaTermo":"empresa","ticketMedio":0,"dor":"Negócio bom no bairro, invisível no Google.","gancho":"Site profissional em 48h + Instagram organizado + manutenção mensal opcional.","agendador":false,"script":"Opa {{contato}}, tudo bem? Aqui é {{nomeZeik}}, da Zeik Digital, agência de sites da região de {{bairro}}.\n\nPassei pela {{empresa}} e fui procurar no Google: vocês ainda não têm um site próprio.\n\nIsso significa que quem pesquisa na região encontra o concorrente primeiro.\n\nO que a gente faz:\n• Site profissional com sua marca\n• Serviços/produtos + preços\n• Botão de WhatsApp e localização\n• Se você não tem Instagram, a gente cria; se tem e está desorganizado, a gente arruma o feed\n\nHoje, quem precisa disso no bairro pesquisa \"{{buscaLocal}}\" no Google e fecha com quem aparece primeiro.\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nQuer que eu te mande um modelo pronto da {{empresa}} pra você ver sem compromisso?","followup":"Oi {{contato}}, {{nomeZeik}} aqui 🙂\n\nSeparei um modelo do site da {{empresa}}. Ficou bonito e rápido de mexer.\n\nPosso te enviar o link da prévia?","fechamento":"Fechado, {{contato}} 🤝\n\n✅ Site {{empresa}} — {{preco}}\n✅ Serviços + WhatsApp + mapa\n✅ Instagram criado/organizado\n✅ Entrega em {{prazo}}\n\nMe manda fotos, serviços, endereço e horário que eu começo hoje."}],"objecoes":[{"q":"\"Já tenho site.\"","a":"Manda o link? Se ele demora pra carregar, não abre direito no celular ou está sem atualização, o problema é o contrário: site pronto que não converte.\n\nFaço uma análise gratuita de velocidade e mobile e te mostro em 5 minutos o que está te custando cliente. Se estiver bom, você fica com a análise — sem compromisso."},{"q":"\"Não tenho tempo pra isso.\"","a":"Justamente. Eu faço tudo: você me manda 6 fotos e seus preços pelo WhatsApp, e em 48h o site já está no ar.\n\nVocê não precisa sentar, preencher nada, nem aprender ferramenta nova. Se quiser mexer depois, explico em 10 min — e a manutenção mensal de R$ {{manut}} já resolve as atualizações por você."},{"q":"\"Está caro. R$ {{preco}} é muito.\"","a":"Entendo. Vamos em números: um site desses custa {{preco}} uma vez.\n\nSe ele te trouxer 1 cliente novo por mês, se paga. No serviço de {{servico}}, 1 cliente já paga o site e sobra.\n\nDá pra começar com o pacote essencial ({{precoMin}}) e evoluir depois — e dá pra dividir. O que não dá é ficar mais um mês invisível pra quem pesquisa na {{bairro}}."},{"q":"\"Já tenho Instagram.\"","a":"Perfeito, e é por isso que dá certo juntos: o Instagram é a vitrine, o site é onde a pessoa fecha.\n\nHoje, no Instagram, você depende do algoritmo e não tem link de orçamento, preço fixo nem Google te achando. O site coloca a {{empresa}} em quem pesquisa {{buscaLocal}}.\n\nE se o feed estiver desorganizado, eu já deixo padrão pra você."},{"q":"\"Vou pensar.\"","a":"Combinadíssimo. Só te peço duas coisas:\n\n1) Te mando a prévia do site da {{empresa}} hoje à noite, aí você pensa olhando o resultado, não a ideia.\n2) Se aprovar essa semana, entrego dentro do prazo de {{prazo}}.\n\nPosso mandar no WhatsApp mesmo?"},{"q":"\"Tenho medo de não saber mexer.\"","a":"Você não precisa mexer. Manda um áudio pra mim dizendo \"troca o preço da pizza grande\" e eu atualizo.\n\nNo plano de R$ {{manut}}/mês, as alterações são por você não: é só mensagem no WhatsApp. Sem site nunca mais vai virar dor de cabeça."},{"q":"\"Meu público não usa internet.\"","a":"Usa mais do que parece: quem mora na {{bairro}} pesquisa no Google e decide pelo WhatsApp, e 9 em cada 10 clientes chegam por celular.\n\nMesmo a senhora que veio por indicação quis ver seu número e sua foto antes de entrar. O site é o que passa a confiança pra esse cliente."},{"q":"\"Por que não faço eu mesmo no Canva/Wix?\"","a":"Dá pra fazer, e tem gente que faz e vende bem. A diferença está em:\n\n• Carregar rápido no 4G do bairro (o template pronto não carrega)\n• Aparecer no Google (título, endereço, mapa)\n• Botão de WhatsApp e formulário que chega pra você\n• Acabamento que faz seu serviço parecer mais caro que o do vizinho\n\nE se um dia você quiser assumir sozinho, eu entrego o projeto aberto e explico tudo."}],"prospects":[],"prospectosVazios":true,"semBase":true,"metaEm":"2026-09-08"};
+w.ZEIK_SEED = {"versao":28,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto da Mooca","Parque da Mooca","Vila Prudente","Sacomã","Ipiranga","Itaquera","Cidade Líder","São Mateus","Penha","Vila Matilde","Guaianases","Vila Formosa","Carrão","Aricanduva","Ermelino Matarazzo","Vila Alpina"],"Norte":["Santana","Tucuruvi","Casa Verde","Freguesia do Ó","Vila Guilherme","Imirim","Vila Maria","Santa Teresinha","Cachoeirinha","Jaçanã","Mandaqui","Lauzane Paulista","Parque Peruche","Jardim São Paulo","Vila Mazzei","Brasilândia"],"Oeste":["Butantã","Vila Butantã","Lapa","Alto da Lapa","Pinheiros","Alto de Pinheiros","Vila Madalena","Perdizes","Pompéia","Vila Leopoldina","Pirituba","Jaraguá","Perus","Rio Pequeno","Jaguaré","Jardim Bonfiglioli","Vila Lageado","Real Parque"],"Centro":["Consolação","Bela Vista","República","Santa Cecília","Higienópolis","Bom Retiro","Brás","Belém","Liberdade","Sé","Vila Buarque","Canindé"],"Interior":["Bady Bassitt","Botucatu","Campinas","Itararé","Itatinga","Itu","Jundiaí","Monte Alto","Sorocaba","São Manuel","Ubatuba","Votorantim"],"Sul":["Capão Redondo","Jardim Ângela","Jardim São Luís","Campo Limpo","M'Boi Mirim","Grajaú","Parelheiros","Vargem Grande","Cidade Dutra","Interlagos","Santo Amaro","Morumbi","Paraisópolis","Socorro","Jardim Marsilão"]},"segmentos":[{"id":"barbearia","nome":"Barbearia / Cabeleireiro","emoji":"💈","buscaTermo":"barbearia","ticketMedio":55,"dor":"Cliente acha no Instagram e no Google Maps, mas não tem onde mostrar preço, horário e agenda.","gancho":"Site vitrine + página de agendamento + feed do Instagram organizado. Quem pesquisa 'barbearia no seu bairro' te acha primeiro.","agendador":true,"script":"Opa, {{contato}}! Tudo certo? 👊\n\nAqui é {{nomeZeik}}, agência de sites da região de {{bairro}}.\n\nProcurei a {{empresa}} no Google e vi que vocês ainda não têm site próprio — hoje quem pesquisa {{buscaLocal}} acaba caindo no perfil de alguém que investe em anúncio.\n\nA gente monta um site profissional pra {{empresa}} com:\n• Página inicial com sua identidade\n• Tabela de preços (corte, barba, combos)\n• Botão de agendamento no WhatsApp\n• Localização + horário de funcionamento\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nTambém criamos/organizamos o Instagram se precisar: layout de feed, destaques, fotos dos cortes com padrão.\n\nTe mando um modelo pronto do site da {{empresa}} pra você ver antes de decidir? Leva 2 min 👇","followup":"Opa {{contato}}, {{nomeZeik}} de novo! 🙂\n\nSeparei um modelo de site com o nome da {{empresa}} e a foto da sua fachada. Ficou muito bom.\n\nSe te ajudar a encher a agenda de semana, a gente entrega em {{prazo}}, e o valor só entra na conversa depois que você ver o modelo.\n\nPosso te mandar o link de prévia agora?","fechamento":"Perfeito, {{contato}}! 🚀\n\nFecho assim:\n✅ Site profissional {{empresa}} ({{preco}} à vista ou no PIX)\n✅ Entrega em {{prazo}}\n✅ Bônus: organização do feed do Instagram + destaques\n\nMe manda: logo/fotos dos cortes, tabela de preço, endereço, WhatsApp e horários.\n\nJá começo hoje. Obrigado pela confiança! 🙏"},{"id":"salao","nome":"Salão de Beleza / Estética","emoji":"💇‍♀️","buscaTermo":"salão de beleza","ticketMedio":130,"dor":"Movimento depende de indicação e do Instagram; sem portfólio organizado a cliente 'some' antes de agendar.","gancho":"Site com antes/depois + tabela de serviços + Instagram com feed organizado pra virar vitrine de vendas.","agendador":true,"script":"Oi {{contato}}, tudo bem? 😊\n\nAqui é {{nomeZeik}}, a agência de sites da região de {{bairro}}.\n\nDei uma olhada no trabalho da {{empresa}} — o nível é ótimo, mas hoje quem procura {{buscaLocal}} não encontra um site com seus serviços e valores.\n\nPosso colocar no ar um site da {{empresa}} com:\n• Serviços e tabela de preços\n• Fotos de antes e depois\n• Botão de agendamento no WhatsApp\n• Endereço, horário e maps\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE se o Instagram estiver parado ou com feed bagunçado, a gente cria a conta e organiza o feed (destaques de serviços, promoções, avaliações).\n\nQuer que eu te mande um modelo com a cara da {{empresa}}?","followup":"Oi {{contato}}! {{nomeZeik}} aqui 🙂\n\nFiz um pré-modelo do site da {{empresa}} com a paleta do salão. Ficou elegante e bem fácil de agendar pelo WhatsApp.\n\nPosso te mandar a prévia pra você ver com suas clientes?","fechamento":"Fechado, {{contato}}! 💛\n\nO que você recebe:\n✅ Site {{empresa}} — {{preco}}\n✅ Tabela de preços + antes/depois\n✅ Botão de agendamento WhatsApp\n✅ Organização do feed do Instagram + 3 destaques\n✅ Entrega em {{prazo}}\n\nMe manda logo, 6 fotos, tabela de valores, endereço e horário. Começo hoje!"},{"id":"estetica","nome":"Clínica de Estética","emoji":"✨","buscaTermo":"estética","ticketMedio":180,"dor":"Serviço de alto ticket (limpeza de pele, drenagem, laser) é vendido por confiança — e confiança vem de presença profissional.","gancho":"Site com especialidades, protocolos e provas sociais + Instagram educativo para gerar autoridade.","agendador":true,"script":"Olá {{contato}}, tudo bem? Aqui é {{nomeZeik}}, agência de sites do bairro.\n\nA {{empresa}} atende um público que pesquisa antes de marcar — e hoje não aparece um site profissional quando buscam por {{buscaLocal}}.\n\nUm site bem feito aumenta percepção de valor e justifica o seu preço, com:\n• Página de cada protocolo (drenagem, limpeza, massagem)\n• Pacotes e investimento\n• Antes/depois + avaliações\n• Agendamento pelo WhatsApp\n\n💰 {{valorZeik}}\n⚡ Entrega em {{prazo}}\n\nTambém estruturamos o Instagram: feed padronizado, destaques de protocolos e regras de antes/depois.\n\nPosso te enviar um modelo da {{empresa}} para avaliar?","followup":"Oi {{contato}}, {{nomeZeik}} aqui 🙂\n\nMontei uma prévia do site da {{empresa}} com foco em agendamento e pacotes.\n\nSe fizer sentido, consigo entregar em {{prazo}}. Quer ver a prévia?","fechamento":"Ótimo, {{contato}}! 📋\n\n✅ Site {{empresa}} — {{preco}}\n✅ Páginas de protocolos + pacotes\n✅ Antes/depois com autorização da cliente\n✅ Feed do Instagram organizado\n✅ Entrega em {{prazo}}\n\nMe envia logo, fotos dos procedimentos, tabela e endereço."},{"id":"odonto","nome":"Clínica Odontológica","emoji":"🦷","buscaTermo":"dentista","ticketMedio":350,"dor":"Concorrência forte na Av. Belmira Marin; paciente compara preço e credibilidade antes de entrar.","gancho":"Site com especialidades, convênios, parcelamento e avaliações — mais implantando/orto fechando.","agendador":true,"script":"Bom dia/boa tarde, {{contato}}. Falo com o responsável da {{empresa}}?\n\nAqui é {{nomeZeik}}, agência de sites da sua região.\n\nNa sua rua tem várias clínicas: o paciente pesquisa \"{{buscaLocal}}\" no Google e escolhe quem aparece bem. A {{empresa}} ainda não tem um site com especialidades, convênios e condições de parcelamento.\n\nO que entrego:\n• Site institucional + página por tratamento (implante, ortodontia, clareamento)\n• Formulário direto no WhatsApp\n• Avaliações do Google e CRO/responsável técnico\n• Convênios aceitos e parcelamento\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE ajudo na organização do Instagram (feed clínico, destaques de casos).\n\nMe permite te mandar uma prévia do site?","followup":"Olá {{contato}}! {{nomeZeik}} aqui 🙂\n\nSeparei um layout de site voltado para captação de implante e aparelho pra {{empresa}}.\n\nPosso te chamar 5 min hoje pra mostrar?","fechamento":"Perfeito, {{contato}} 🤝\n\n✅ Site {{empresa}} — {{preco}}\n✅ Páginas por tratamento + avaliações\n✅ Botão de WhatsApp + horários\n✅ Organização do feed do Instagram\n✅ Entrega em {{prazo}}\n\nPreciso de: logo, fotos do consultório, lista de tratamentos, convênios, endereço e horário."},{"id":"pet","nome":"Pet Shop / Veterinária","emoji":"🐶","buscaTermo":"pet shop","ticketMedio":90,"dor":"Dono de pet decide por confiança e urgência (banho e tosa, emergência 24h).","gancho":"Site com serviços, plantão 24h, tabela de banho e tosa, loja e agendamento.","agendador":true,"script":"Oi {{contato}}, tudo bem? Aqui é {{nomeZeik}}, agência de sites do bairro.\n\nVi a {{empresa}} e pensei: dono de pet pesquisa \"{{buscaLocal}}\" no celular antes de ir e não acha um site de vocês com horário, preço do banho e tosa e se tem plantão.\n\nFaço um site com:\n• Serviços e tabela (banho, tosa, veterinário, táxi dog)\n• Horário e plantão 24h em destaque\n• Agendamento pelo WhatsApp\n• Fotos dos pets clientes (prova social forte)\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nTambém crio ou organizo o Instagram, que é onde o bairro escolhe pet shop.\n\nTe mando uma prévia?","followup":"Oi {{contato}}! {{nomeZeik}} aqui 🐾\n\nFiz um modelo do site da {{empresa}} com a tabela de banho e tosa em destaque.\n\nQuer que eu te mande pra você mostrar pra equipe?","fechamento":"Fechado, {{contato}} 🐾\n\n✅ Site {{empresa}} — {{preco}}\n✅ Tabela de serviços + agendamento WhatsApp\n✅ Página de plantão/urgência\n✅ Feed do Instagram organizado\n✅ Entrega em {{prazo}}"},{"id":"auto","nome":"Oficina / Auto Center / Borracharia","emoji":"🔧","buscaTermo":"oficina mecânica","ticketMedio":260,"dor":"Quem quebra o carro de noite não sabe em quem confiar — quem tem Google Meu Negócio + site leva a corrida.","gancho":"Site com serviços, orçamento por WhatsApp, confiança (avaliações) e rota de socorro.","agendador":false,"script":"Fala {{contato}}, tudo na paz? Aqui é {{nomeZeik}}, agência de sites da região de {{bairro}}.\n\nPassei na {{empresa}} e olhei no Google: vocês têm boa reputação, mas não têm site pra pedir orçamento.\n\nHoje quem tá na beira da estrada pesquisa {{buscaLocal}} e chama quem passa confiança online.\n\nMeu site pra {{empresa}} vem com:\n• Serviços (elétrica, suspensão, injeção, alinhamento, troca de óleo)\n• Pedido de orçamento direto no WhatsApp\n• Avaliações do Google + fotos da oficina\n• Horário e mapa\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE se não tiver Instagram, a gente cria e já deixa com padrão (antes/depois, serviço do dia).\n\nTopa ver uma prévia sem compromisso?","followup":"E aí {{contato}}, {{nomeZeik}} aqui 🙂\n\nMontei a prévia do site da {{empresa}} com botão de orçamento no WhatsApp.\n\nSe ajudar a entrar mais carro por semana, o site se paga na primeira semana. Posso te mostrar?","fechamento":"Boa, {{contato}}! 🔧\n\n✅ Site {{empresa}} — {{preco}}\n✅ Orçamento por WhatsApp + serviços\n✅ Avaliações do Google na home\n✅ Instagram criado/organizado\n✅ Entrega em {{prazo}}\n\nManda: logo, fotos da oficina, lista de serviços, horário e endereço."},{"id":"constru","nome":"Material de Construção / Depósito","emoji":"🧱","buscaTermo":"material de construção","ticketMedio":400,"dor":"Pedreiro e cliente final cotam por WhatsApp e concorrente responde primeiro.","gancho":"Site com catálogo, preço do dia, entrega e orçamento por lista de material.","agendador":false,"script":"Bom dia {{contato}}, aqui é {{nomeZeik}}, agência de sites do bairro.\n\nTrabalhei com algumas lojas de material da região e vi que a {{empresa}} ainda não tem um site com o catálogo e o telefone de entrega.\n\nQuem faz obra manda a lista pra 4 lojas — e muita gente chega digitando \"{{buscaLocal}}\" no Google. Compra de quem responde rápido e passa confiança.\n\nO site da {{empresa}} teria:\n• Categorias (cimento, tinta, hidráulico, elétrico, ferramentas)\n• Pedido de orçamento por lista no WhatsApp\n• Entrega e prazo em destaque\n• Horário, mapa e telefone grande\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nTambém deixamos o Instagram com padrão de preço do dia/frete grátis.\n\nPosso te mandar uma prévia?","followup":"Oi {{contato}}! {{nomeZeik}} 🙂\n\nFiz uma prévia do site da {{empresa}} com botão de \"pedir orçamento por lista\" no WhatsApp.\n\nQuer ver? Leva 2 min.","fechamento":"Fechado, {{contato}} 🧱\n\n✅ Site {{empresa}} — {{preco}}\n✅ Catálogo + orçamento por lista\n✅ Entrega e horário em destaque\n✅ Instagram organizado\n✅ Entrega em {{prazo}}"},{"id":"food","nome":"Pizzaria / Hamburgueria / Restaurante","emoji":"🍕","buscaTermo":"delivery","ticketMedio":55,"dor":"Cardápio no Instagram que some no scroll, pedido por DM atrasando e cliente indo pro iFood que cobra taxa.","gancho":"Cardápio digital no site próprio + botão de pedido no WhatsApp + Instagram com feed de comida que dá fome.","agendador":false,"script":"Opa {{contato}}, tudo bem? Aqui é {{nomeZeik}}, agência de sites do bairro.\n\nOlhei o perfil da {{empresa}} e o cardápio: dá água na boca 👌 Só que quem digita \"{{buscaLocal}}\" no Google não acha um cardápio seu — e o cliente precisa sair do Instagram pra pedir.\n\nFaço um site com:\n• Cardápio digital com preços e fotos\n• Botão de pedido no WhatsApp (sem taxa de aplicativo)\n• Promoção do dia em destaque\n• Promoção do dia em destaque + delivery area e mapa\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE a gente organiza seu Instagram: feed com padrão de comida, destaques de cardápio/horário/delivery.\n\nTe mando o modelo da {{empresa}} agora?","followup":"Opa {{contato}}! {{nomeZeik}} 🙂\n\nMontei a prévia do cardápio digital da {{empresa}} pro pedido cair direto no seu WhatsApp — sem comissão de app.\n\nQuer ver?","fechamento":"Show, {{contato}} 🍕\n\n✅ Site + cardápio digital — {{preco}}\n✅ Pedido direto no WhatsApp (sem taxa de app)\n✅ Destaques de promoção\n✅ Feed do Instagram organizado\n✅ Entrega em {{prazo}}\n\nManda o cardápio em texto ou foto que eu já digito tudo."},{"id":"academia","nome":"Academia / Studio","emoji":"🏋️","buscaTermo":"academia","ticketMedio":130,"dor":"Matrícula de bairro é decidida por localização, preço e horário — e por quem aparece bem no Google.","gancho":"Site com planos, horários de aula, professor e matrícula pelo WhatsApp; Instagram com aula do dia.","agendador":true,"script":"Oi {{contato}}, tudo bem? {{nomeZeik}}, agência de sites do bairro.\n\nPassei em frente à {{empresa}} e fui ver no Google: vocês não têm página com planos e horários. Quem mora perto e pesquisa {{buscaLocal}} acaba matriculando em quem mostra preço.\n\nSite que entrego:\n• Planos e formas de pagamento\n• Grade de aulas (funcional, pilates, luta)\n• Professores + estrutura\n• Matrícula/aula experimental pelo WhatsApp\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE organizamos o Instagram com feed de treino e destaques de horário/aula experimental.\n\nPosso te mandar uma prévia?","followup":"Oi {{contato}}! {{nomeZeik}} 🙂\n\nFiz a prévia do site da {{empresa}} com destaque pra aula experimental gratuita.\n\nMando pra você avaliar?","fechamento":"Fechado, {{contato}} 💪\n\n✅ Site {{empresa}} — {{preco}}\n✅ Planos + grade de aulas\n✅ Matrícula por WhatsApp\n✅ Feed do Instagram + destaques\n✅ Entrega em {{prazo}}"},{"id":"servicos","nome":"Serralheria / Elétrica / Serviços","emoji":"🛠️","buscaTermo":"prestador de serviço","ticketMedio":300,"dor":"Serviço é vendido por urgência e confiança; sem site, só indicados te acham.","gancho":"Site com portfólio de obras, região atendida e orçamento por foto no WhatsApp.","agendador":false,"script":"Olá {{contato}}, tudo bem? Aqui é {{nomeZeik}}, agência de sites do bairro.\n\nServiço de {{servico}} é contratado por confiança: quem precisa pesquisa \"{{buscaLocal}}\" e contrata quem mostra obra pronta, CEP atendido e responde na hora.\n\nHoje a {{empresa}} não tem um site com isso.\n\nEntrego:\n• Portfólio de trabalhos (foto antes/depois)\n• Serviços e região atendida\n• \"Manda foto que eu orço\" pelo WhatsApp\n• Avaliações de clientes + horário\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nTambém criamos/organizamos seu Instagram — pra muita gente é o seu único portfólio hoje.\n\nPosso te mandar o modelo da {{empresa}}?","followup":"Oi {{contato}}, {{nomeZeik}} aqui 🙂\n\nFiz uma prévia do site da {{empresa}} com o botão de orçamento por foto.\n\nServe pra você? Mando o link.","fechamento":"Perfeito, {{contato}} 🛠️\n\n✅ Site {{empresa}} — {{preco}}\n✅ Portfólio + região atendida\n✅ Orçamento por foto no WhatsApp\n✅ Instagram criado/organizado\n✅ Entrega em {{prazo}}\n\nMe manda 8 fotos de serviços prontos que eu monto o portfólio."},{"id":"varejo","nome":"Loja / Comércio de Bairro","emoji":"🛍️","buscaTermo":"loja de bairro","ticketMedio":60,"dor":"Cliente pesquisa preço online, não acha, e compra no Centro ou pela internet.","gancho":"Site com vitrine, categorias, WhatsApp por produto e Instagram de ofertas.","agendador":false,"script":"Oi {{contato}}! Aqui é {{nomeZeik}}, agência de sites da região de {{bairro}}.\n\nDei uma olhada na {{empresa}}. Produtos bons, atendimento bom — mas quem pesquisa na internet não encontra vocês e acaba comprando em outro lugar.\n\nCom um site simples a loja consegue:\n• Mostrar vitrine e categorias com preço\n• Receber pedido/proposta pelo WhatsApp\n• Divulgar promoção e condições (credionário/carnê)\n• Endereço, horário e mapa\n\nHoje, quem precisa disso no bairro pesquisa \"{{buscaLocal}}\" no Google e fecha com quem aparece primeiro.\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE se o Instagram estiver sem padrão, a gente cria/organiza com destaques de oferta e novidades.\n\nTe mando um modelo com a cara da {{empresa}}?","followup":"Oi {{contato}}, {{nomeZeik}} 🙂\n\nMontei a prévia do site da {{empresa}} com a vitrine e o botão de WhatsApp.\n\nQuer ver o link?","fechamento":"Fechado, {{contato}} 🛍️\n\n✅ Site {{empresa}} — {{preco}}\n✅ Vitrine + pedido por WhatsApp\n✅ Promoções em destaque\n✅ Feed do Instagram organizado\n✅ Entrega em {{prazo}}"},{"id":"escola","nome":"Escola / Curso / Autoescola","emoji":"🎓","buscaTermo":"curso / autoescola","ticketMedio":220,"dor":"Matrícula é sazonal e o aluno compara preço, parcelas e avaliações de ex-alunos.","gancho":"Site com cursos, valores, documentos necessários e matrícula pelo WhatsApp.","agendador":true,"script":"Olá {{contato}}, tudo bem? Aqui é {{nomeZeik}}, agência de sites do bairro.\n\nQuem vai se matricular compara no celular: preço, parcela, documentação e o que ex-aluno fala.\n\nHoje a {{empresa}} não tem uma página única com isso.\n\nFaço um site com:\n• Cursos e valores + parcelamento\n• Documentos necessários e etapas\n• Depoimentos de alunos aprovados\n• Matrícula/aula experimental pelo WhatsApp\n\nHoje, quem precisa disso no bairro pesquisa \"{{buscaLocal}}\" no Google e fecha com quem aparece primeiro.\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nE organizamos seu Instagram (aprovação de aluno é o melhor conteúdo que existe).\n\nPosso te mandar uma prévia?","followup":"Oi {{contato}}! {{nomeZeik}} 🙂\n\nFiz a prévia do site da {{empresa}} com a tabela de cursos e depoimentos.\n\nMando pra você ver?","fechamento":"Perfeito, {{contato}} 🎓\n\n✅ Site {{empresa}} — {{preco}}\n✅ Cursos + parcelamento + docs\n✅ Depoimentos de alunos\n✅ Instagram organizado\n✅ Entrega em {{prazo}}"},{"id":"advogado","nome":"Advocacia (1 a 1)","emoji":"⚖️","buscaTermo":"advogado","ticketMedio":4930,"dor":"O nome dele vale mais que a página dele: quem pesquisa o escritório acha o portal de terceiros, e o texto publicado usa a linguagem do comércio — que é justamente o que a OAB veda.","gancho":"Página própria no domínio dele, informativa e sóbria: nome + OAB, áreas escolhidas por ele, o conteúdo que ele já escreve no lugar certo, sem preço e sem promessa. Revisada quando a regra mudar.","agendador":false,"script":"{{saud}} {{contato}}. Aqui é {{nomeZeik}}, faço página pra escritório de {{bairro}}. Fui procurar uma informação da {{empresa}} e o que me fez escrever foi um trecho do texto: {{achado}}.\n\nNão é “te falta cliente” — escritório que vive de indicação não precisa disso. O que falta é o que o colega encontra quando digita seu nome antes de te indicar, e o que sobra quando a página está escrita com linguagem de comércio.\n\nO que eu monto: página no SEU domínio com nome, OAB, áreas e conteúdo, informativa e sóbria — sem preço, sem antes/depois de caso, sem promessa. E não te colo em lista de disparo nenhuma.\n\n{{linkModelo}}. Se topar, eu mando a versão reescrita antes de você decidir qualquer coisa.","followup":"{{contato}}, última mensagem minha, sem cobrança em cima. Duas coisas por escrito: (1) enquanto conversarmos, não ofereço a mesma área de Direito a outro escritório no seu raio; (2) me diz “agora não” que eu apago o contato e não insisto. A proposta reescrita fica guardada se você mudar de ideia.","fechamento":"Fechado, {{contato}}. Quatro coisas e eu começo: (1) nome completo e número de inscrição na OAB (e o da sociedade); (2) as áreas como você quer que apareçam — as que você quer, não as do template; (3) o que você já escreveu (artigo, aula, livro): é material, não enfeite; (4) o Pix {{valorZeik}} pra travar a data.\n\nNo ar até {{prazoEntrega}} e ajusto o texto por 15 dias. Mensalidade começa no mês seguinte, e o conteúdo é seu."},{"id":"generico","nome":"Outro / Genérico","emoji":"🏪","buscaTermo":"empresa","ticketMedio":0,"dor":"Negócio bom no bairro, invisível no Google.","gancho":"Site profissional em 48h + Instagram organizado + manutenção mensal opcional.","agendador":false,"script":"Opa {{contato}}, tudo bem? Aqui é {{nomeZeik}}, da Zeik Digital, agência de sites da região de {{bairro}}.\n\nPassei pela {{empresa}} e fui procurar no Google: vocês ainda não têm um site próprio.\n\nIsso significa que quem pesquisa na região encontra o concorrente primeiro.\n\nO que a gente faz:\n• Site profissional com sua marca\n• Serviços/produtos + preços\n• Botão de WhatsApp e localização\n• Se você não tem Instagram, a gente cria; se tem e está desorganizado, a gente arruma o feed\n\nHoje, quem precisa disso no bairro pesquisa \"{{buscaLocal}}\" no Google e fecha com quem aparece primeiro.\n\n💰 {{valorZeik}}\n⚡ No ar em {{prazo}}\n\nQuer que eu te mande um modelo pronto da {{empresa}} pra você ver sem compromisso?","followup":"Oi {{contato}}, {{nomeZeik}} aqui 🙂\n\nSeparei um modelo do site da {{empresa}}. Ficou bonito e rápido de mexer.\n\nPosso te enviar o link da prévia?","fechamento":"Fechado, {{contato}} 🤝\n\n✅ Site {{empresa}} — {{preco}}\n✅ Serviços + WhatsApp + mapa\n✅ Instagram criado/organizado\n✅ Entrega em {{prazo}}\n\nMe manda fotos, serviços, endereço e horário que eu começo hoje."}],"objecoes":[{"q":"\"Já tenho site.\"","a":"Manda o link? Se ele demora pra carregar, não abre direito no celular ou está sem atualização, o problema é o contrário: site pronto que não converte.\n\nFaço uma análise gratuita de velocidade e mobile e te mostro em 5 minutos o que está te custando cliente. Se estiver bom, você fica com a análise — sem compromisso."},{"q":"\"Não tenho tempo pra isso.\"","a":"Justamente. Eu faço tudo: você me manda 6 fotos e seus preços pelo WhatsApp, e em 48h o site já está no ar.\n\nVocê não precisa sentar, preencher nada, nem aprender ferramenta nova. Se quiser mexer depois, explico em 10 min — e a manutenção mensal de R$ {{manut}} já resolve as atualizações por você."},{"q":"\"Está caro. R$ {{preco}} é muito.\"","a":"Entendo. Vamos em números: um site desses custa {{preco}} uma vez.\n\nSe ele te trouxer 1 cliente novo por mês, se paga. No serviço de {{servico}}, 1 cliente já paga o site e sobra.\n\nDá pra começar com o pacote essencial ({{precoMin}}) e evoluir depois — e dá pra dividir. O que não dá é ficar mais um mês invisível pra quem pesquisa na {{bairro}}."},{"q":"\"Já tenho Instagram.\"","a":"Perfeito, e é por isso que dá certo juntos: o Instagram é a vitrine, o site é onde a pessoa fecha.\n\nHoje, no Instagram, você depende do algoritmo e não tem link de orçamento, preço fixo nem Google te achando. O site coloca a {{empresa}} em quem pesquisa {{buscaLocal}}.\n\nE se o feed estiver desorganizado, eu já deixo padrão pra você."},{"q":"\"Vou pensar.\"","a":"Combinadíssimo. Só te peço duas coisas:\n\n1) Te mando a prévia do site da {{empresa}} hoje à noite, aí você pensa olhando o resultado, não a ideia.\n2) Se aprovar essa semana, entrego dentro do prazo de {{prazo}}.\n\nPosso mandar no WhatsApp mesmo?"},{"q":"\"Tenho medo de não saber mexer.\"","a":"Você não precisa mexer. Manda um áudio pra mim dizendo \"troca o preço da pizza grande\" e eu atualizo.\n\nNo plano de R$ {{manut}}/mês, as alterações são por você não: é só mensagem no WhatsApp. Sem site nunca mais vai virar dor de cabeça."},{"q":"\"Meu público não usa internet.\"","a":"Usa mais do que parece: quem mora na {{bairro}} pesquisa no Google e decide pelo WhatsApp, e 9 em cada 10 clientes chegam por celular.\n\nMesmo a senhora que veio por indicação quis ver seu número e sua foto antes de entrar. O site é o que passa a confiança pra esse cliente."},{"q":"\"Por que não faço eu mesmo no Canva/Wix?\"","a":"Dá pra fazer, e tem gente que faz e vende bem. A diferença está em:\n\n• Carregar rápido no 4G do bairro (o template pronto não carrega)\n• Aparecer no Google (título, endereço, mapa)\n• Botão de WhatsApp e formulário que chega pra você\n• Acabamento que faz seu serviço parecer mais caro que o do vizinho\n\nE se um dia você quiser assumir sozinho, eu entrego o projeto aberto e explico tudo."}],"prospects":[],"prospectosVazios":true,"semBase":true,"metaEm":"2026-09-11"};
 })(typeof window !== "undefined" ? window : this);
 
 </script>
@@ -939,6 +940,11 @@ w.ZEIK_SEED = {"versao":26,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
         bairrosOuro: "Morumbi 1.7, Panamby 1.7, Campo Belo 1.7, Brooklin 1.7, Moema 1.6, Indianópolis 1.6, Cidade Monções 1.5, Vila Alexandria 1.3, Vila Mascote 1.2, Planalto Paulista 1.2, Parque Jabaquara 1.1, Real Parque 1.6, Vila Progredior 1.6, Jardim Leonor 1.6, Vila Suzana 1.6, Fazenda Morumbi 1.6, Vila Andrade 1.5, Brooklin 1.7, Chácara Santo Antônio 1.6, Campo Belo 1.7, Vila Olímpia 1.8, Itaim Bibi 1.8, Novo Mundo 1.6, Saúde 1.5, Paraíso 1.5, Jabaquara 1.2, Pinheiros 1.7, Alto de Pinheiros 1.8, Jardim Paulista 1.8, Vila Madalana 1.6, Perdizes 1.5, Consolação 1.5, Butantã 1.2, Rio Pequeno 1.2, Jaguaré 1.1, Lapa 1.3, Vila Leopoldina 1.3, Santo Amaro 1.3, Granja Julieta 1.5, Jardim Promissão 1.4, Jardim Aeroporto 1.2, Campo Limpo 1.0, Capão Redondo 1.0, Socorro 1.2, Jardim Bonfiglio 1.2, Jardim Londrina 1.2, Jardim Guarapiranga 1.1, Jardim Ângela 1.0, Grajaú 0.9, Jardim Nakamura 0.9, Parelheiros 1.0",
         ouroPara: 1.45,        /* fator a partir do qual o bairro vira "nobre" pra tela 👑 e pro piso */
         chaoOuro: true,        /* true = em bairro nobre a proposta começa no piso do bairro */
+        /* ── rodada 18 · advocacia: nicho com escada, régua e regras próprias ── */
+        advMedio: 1150,        /* o Médio da advocacia ("Institucional"); o resto da escada sai daqui */
+        advManut: 170,         /* manutenção-base do nicho; ×1 / ×1,8 / ×2,8 na escada */
+        ticketAlvoAdv: 3000,   /* pra advogado "bom pagador" começa em 3 mil por causa, não em 180 */
+        advNoDisparo: true,    /* true = este nicho nunca entra em fila de disparo (1 a 1 sempre) */
         /* Fechou? Já entra a TAXA. Sem isto o "sim" vira uma memória e a mensalidade
            ninguém cobra no dia certo — é assim que cliente some no 2º mês. */
         taxaAoFechar: true,
@@ -1173,7 +1179,9 @@ w.ZEIK_SEED = {"versao":26,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
     looksGuiaCnpj: looksGuiaCnpj, parseGuiaCnpj: parseGuiaCnpj, segPorCnae: segPorCnae, fonesRepetidos: fonesRepetidos, pautaRaio: pautaRaio,
     criaLoteCode: criaLoteCode, looksLoteCode: looksLoteCode, parseLoteCode: parseLoteCode,
     /* getter: o NICHOS é um var definido mais abaixo — por valor aqui seria undefined */
-    get NICHOS() { return NICHOS; }, nichoDe: nichoDe, nichoLabel: nichoLabel, nichosFora: nichosFora, metaSeed: metaSeed, segmentosBase: segmentosBase, objecoesBase: objecoesBase, bairrosPorZonaBase: bairrosPorZonaBase, nichoBloqueado: nichoBloqueado, nichoResumo: nichoResumo, ehChamavel: ehChamavel, resumoChamavel: resumoChamavel, quenteDe: quenteDe, ehQuente: ehQuente, QUENTE_PONTOS: QUENTE_PONTOS, rotaPara: rotaPara, rotaNichoDe: rotaNichoDe, slug: slug, janelaIdeal: janelaIdeal, idadeLead: idadeLead, linkModelo: linkModelo, chaveRoteiro: chaveRoteiro, esgotado: esgotado, motivoEspera: motivoEspera, granaDe: granaDe, granaLabel: granaLabel, ouroDe: ouroDe, ouroMapa: ouroMapa, chaveLead: chaveLead, chaveNome: chaveNome, coreNome: coreNome, irmaosDe: irmaosDe, unirDuplicatas: unirDuplicatas, iguaisNaBase: iguaisNaBase, melhorQue: melhorQue, portaDe: porta, bairroBaseDe: bairroBase, boaGrana: boaGrana, escadaPreco: escadaPreco, planoPara: planoPara, ESCADA: ESCADA, falasAlta: falasAlta, roteiroReuniao: roteiroReuniao, deckDe: deckDe, filaGrana: filaGrana, linkModeloLocal: linkModeloLocal,
+    get NICHOS() { return NICHOS; }, nichoDe: nichoDe, nichoLabel: nichoLabel, nichosFora: nichosFora, metaSeed: metaSeed, segmentosBase: segmentosBase, objecoesBase: objecoesBase, bairrosPorZonaBase: bairrosPorZonaBase, nichoBloqueado: nichoBloqueado, nichoResumo: nichoResumo, ehChamavel: ehChamavel, resumoChamavel: resumoChamavel, quenteDe: quenteDe, ehQuente: ehQuente, QUENTE_PONTOS: QUENTE_PONTOS, rotaPara: rotaPara, rotaNichoDe: rotaNichoDe, slug: slug, janelaIdeal: janelaIdeal, idadeLead: idadeLead, linkModelo: linkModelo, chaveRoteiro: chaveRoteiro, esgotado: esgotado, motivoEspera: motivoEspera, granaDe: granaDe, granaLabel: granaLabel, ouroDe: ouroDe, ouroMapa: ouroMapa, chaveLead: chaveLead, chaveNome: chaveNome, coreNome: coreNome, irmaosDe: irmaosDe, unirDuplicatas: unirDuplicatas, iguaisNaBase: iguaisNaBase, melhorQue: melhorQue, portaDe: porta, bairroBaseDe: bairroBase, boaGrana: boaGrana, escadaPreco: escadaPreco, planoPara: planoPara, ESCADA: ESCADA,
+    ADV_LEI: ADV_LEI, ESCADA_ADV: ESCADA_ADV, honorarioAdv: honorarioAdv, TABELA_OABSP: TABELA_OABSP,
+    baseDoNicho: baseDoNicho, nichoSemDisparo: nichoSemDisparo, falasAdv: falasAdv, falasAlta: falasAlta, roteiroReuniao: roteiroReuniao, deckDe: deckDe, filaGrana: filaGrana, linkModeloLocal: linkModeloLocal,
     doisHorarios: doisHorarios, pixCopiaECola: pixCopiaECola, crc16: crc16,
     apiDisparar: apiDisparar, parseColeta: parseColeta, detectSeg: detectSeg,
     CIDADES_INTERIOR: CIDADES_INTERIOR,
@@ -1776,6 +1784,12 @@ w.ZEIK_SEED = {"versao":26,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
            beleza e pizzaria. O lead continua na base e o script continua pronto —
            quem decide é config.nichosFora (Configurações → 🚫 nichos fora). */
         if (o.respeitarNichos !== false && nichoBloqueado(p, st.config)) return false;
+        /* Rodada 18: ADVOCACIA não entra em fila de disparo. Não é frescura minha nem
+           pudor do painel: publicidade ativa mandada a quem não pediu contato é o que o
+           escritório NÃO pode fazer com a base dele — e comprar de mim um "disparo" pra
+           depois levar um PAD é o tipo de negócio que eu não faço. A triagem da aba
+           ⚖️ é 1 a 1, sempre; desliga em Configurações → advNoDisparo se um dia quiser. */
+        if (nichoSemDisparo(p, st.config)) return false;
         /* rodada 8: "só lead quente que vai tá doido pra ter um site" — sem isto a
            fila enche de CNPJ morno que não compra nada e queima o disparo do dia. */
         if (o.somenteQuentes !== false && st.config && st.config.somenteQuentes !== false && !ehQuente(p, st.config)) return false;
@@ -1928,7 +1942,9 @@ w.ZEIK_SEED = {"versao":26,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
           precoSiteMax: st.config.precoSiteMax, manutMes: st.config.manutMes, prazoEntrega: st.config.prazoEntrega,
           politicaPreco: st.config.politicaPreco, rota: st.config.rota, pix: st.config.pix, mpLink: st.config.mpLink,
           pesoGrana: st.config.pesoGrana, ticketAlvo: st.config.ticketAlvo, soGrana: st.config.soGrana, premiumParaA: st.config.premiumParaA,
-          bairrosOuro: st.config.bairrosOuro, ouroPara: st.config.ouroPara, chaoOuro: st.config.chaoOuro },
+          bairrosOuro: st.config.bairrosOuro, ouroPara: st.config.ouroPara, chaoOuro: st.config.chaoOuro,
+          advMedio: st.config.advMedio, advManut: st.config.advManut,
+          ticketAlvoAdv: st.config.ticketAlvoAdv, advNoDisparo: st.config.advNoDisparo },
         prospects: st.prospects
       }, null, 1);
     },
@@ -2120,7 +2136,7 @@ w.ZEIK_SEED = {"versao":26,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
         stp.prospects.push(p); porNome[k] = p; novos++;
       });
       if (obj.config && !o.semConfig) {
-        var keep = ["cadencia", "limiteDisparoDia", "rota", "voz", "pix", "mpLink", "disparoApi", "politicaPreco", "nichosFora", "somenteWhats", "somenteQuentes", "quenteMinimo", "rotaPorNicho", "metaProspects", "basePrivada", "lockInatividade", "taxaAoFechar", "tetoDia", "linkBase", "limiteToques", "validadeDias", "mediarRoteiro", "pesoGrana", "ticketAlvo", "soGrana", "premiumParaA", "bairrosOuro", "ouroPara", "chaoOuro"];
+        var keep = ["cadencia", "limiteDisparoDia", "rota", "voz", "pix", "mpLink", "disparoApi", "politicaPreco", "nichosFora", "somenteWhats", "somenteQuentes", "quenteMinimo", "rotaPorNicho", "metaProspects", "basePrivada", "lockInatividade", "taxaAoFechar", "tetoDia", "linkBase", "limiteToques", "validadeDias", "mediarRoteiro", "pesoGrana", "ticketAlvo", "soGrana", "premiumParaA", "bairrosOuro", "ouroPara", "chaoOuro", "advMedio", "advManut", "ticketAlvoAdv", "advNoDisparo"];
         Object.keys(obj.config).forEach(function (k) {
           if (keep.indexOf(k) < 0 && k !== "bairros" && k !== "bairrosPorZona") return;
           if (obj.config[k] === undefined || obj.config[k] === null) return;
@@ -2554,6 +2570,13 @@ w.ZEIK_SEED = {"versao":26,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
     { id: "varejo", nome: "Loja / boutique / ótica", emoji: "🛍️" },
     { id: "servicos", nome: "Serviços (festas, reforma, papelaria…)", emoji: "🧰" },
     { id: "outro", nome: "Sem categoria no cadastro", emoji: "🏪" },
+    /* Rodada 18 (09/09/2026): "cria uma aba e adiciona advogados, quero só prospecção deles
+       porque o tíquete é alto". Não é beleza com preço maior: é um público onde (a) o tíquete
+       da CAUSA dele (piso da tabela de honorários da OAB-SP: 2,6 mil a 9,2 mil) paga a página
+       num serviço só, e (b) a abordagem padrão do painel — "agenda cheia", "comissão do app",
+       "tabela na cara", "antes/depois" — é literalmente o que o Provimento 205/2021 veda.
+       Por isso `semDisparo: true`: disparo em massa pra advogado é vender processo junto. */
+    { id: "advogado", nome: "Advocacia (1 a 1 \u00b7 sem disparo)", emoji: "\u2696\uFE0F", semDisparo: true },
     /* os três últimos são exatamente o que ele mandou parar de mandar */
     { id: "barbearia", nome: "Barbearia / corte masculino", emoji: "💈", fora: true },
     { id: "salao", nome: "Salão de beleza / cabeleireiro", emoji: "💇‍♀️", fora: true },
@@ -2579,6 +2602,10 @@ w.ZEIK_SEED = {"versao":26,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
        pizzaria, e pizzaria ele não quer na fila;
      • escola antes de "auto" (autoescola) e padaria antes de pet (petit). */
   var RE_NICHO = [
+    /* primeiro da lista de propósito: o site de um escritório diz "consultoria", "serviços"
+       e "empresarial", e qualquer regra mais abaixo engoliria o advogado num nicho genérico
+       — aí ele nunca apareceria na aba ⚖️. */
+    ["advogado", /advogad|advocaci|\badv\b|\boab\b|direito (civil|trabalh|penal|previdenc|tribut|imobili|de fam|do trab|do consumidor|empresarial|sucess|administrativ)|assessoria juridica|consultoria juridica|societario|contratos empresariais|due diligence|distrato|usucapion|inventarion|inventari/],
     ["servicos", /salao de festas|salao( )de( )festa|espaco para eventos|buffet|cerimonial|casa de shows|audit?orio|chacara/],
     ["pizzaria", /pizzar|pizzeria|calzone|porcao de pizza/],
     ["barbearia", /barbear|barbeir|barber|navalha|corte masculino|barba e cabelo|salao masculino|macho man/],
@@ -2623,6 +2650,11 @@ w.ZEIK_SEED = {"versao":26,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
     if (seg === "barbearia") return "barbearia";
     if (seg === "salao") return /lash|brow|sobrancelha|cilios/i.test(String(p.nome || "")) ? "lash" : "salao";
     if (seg === "estetica") return "estetica";
+    /* ⚖️ rodada 18: quem GEROU o lote escreveu o ramo na 5ª coluna; o painel tem que respeitar.
+       Sem esta linha, um "ADV Lucas Muniz" importado por cola caía em "outro" (o texto cortado
+       no payload não sempre diz "advogado"), some da aba ⚖️ e a fila do nicho passa a depender
+       do caminho que o lead entrou. A semente e a cola têm que chegar no mesmo lugar. */
+    if (seg === "advogado") return "advogado";
     if (seg === "odonto") return "odonto";
     if (seg === "pet") return "pet";
     if (seg === "auto") return "auto";
@@ -2739,8 +2771,13 @@ w.ZEIK_SEED = {"versao":26,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
   function quenteDe(p, cfg) {
     var mot = [], t = 0;
     if (!p) return { quente: false, pontos: 0, motivo: [] };
-    if (p.temSite === true) return { quente: false, pontos: -1, motivo: ["já tem site"] };
     var n = nichoDe(p);
+    /* ⚖️ Advocacia: "já tem site" não esfria ninguém deste nicho. Quase todo escritório tem
+       uma página feita em template por quem entrou na OAB e nunca revisou — o que faz ele
+       estar quente é a PÁGINA dizer o que a regra não deixa, ou morar num portal de terceiros.
+       Site, aqui, é neutro; o texto é que é o sinal. (Para os outros nichos a regra velha
+       continua: quem já tem página pronta não é prioridade.) */
+    if (p.temSite === true && n !== "advogado") return { quente: false, pontos: -1, motivo: ["já tem site"] };
     t += QUENTE_PONTOS[n] || 0;
     if (QUENTE_PONTOS[n] >= 4) mot.push(nichoLabel(n).emoji + " " + nichoLabel(n).nome + " vive de agendamento");
     var x = NOME_LIMPO(p.nome, obsUtil(p), p.instagram, p.cnae, p.racao, p.descricao, p.site);
@@ -2751,6 +2788,17 @@ w.ZEIK_SEED = {"versao":26,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
     if (/guincho|24 ?h|socorro|emergenc|urgente|desentupidora|chaveiro|reboque/.test(x)) { t += 3; mot.push("cliente procura no Google na hora da necessidade — sem site, ele liga pro concorrente"); }
     if (/restaurante|lanchonete|cardapio|ifood|delivery|comida caseira|marmita|padaria|confeitaria/.test(x)) { t += 2; mot.push("🍽️ cardápio: o cliente decide no Google antes de sair de casa"); }
     if (/\bmei\b|micro empresa|dono atende|quem decide/.test(x)) { t += 1; mot.push("dono = quem decide (não tem que passar por gerente)"); }
+    /* os sinais que fazem um ESCRITÓRIO estar quente — nenhum deles é "não ter site" */
+    if (n === "advogado") {
+      if (/mobirise|\bwix\b|template|builder|portfolio site templates/.test(x)) { t += 4; mot.push("página feita em builder de template (troca sem \u201creforma\u201d)"); }
+      if (/recupere o que e seu|sem compromisso|\bgarant|promessa|24 horas|agende agora|nota 5|avaliacoes|aggregaterating|satisfacao/.test(x)) { t += 4; mot.push("a p\u00e1gina diz o que o Prov. 205/2021 n\u00e3o deixa dizer \u2014 e ele sabe"); }
+      if (/jusbrasil|diretorio|portal|s[o\u00f3] facebook|s[o\u00f3] instagram|sem site/.test(x)) { t += 3; mot.push("o nome dele mora num portal de terceiros"); }
+      if (/bol com|gmail|hotmail|uol com|yahoo/.test(x)) { t += 1; mot.push("e-mail gratuito no rodapé: nada daquela página foi pensado"); }
+      if (/escrito de dois jeitos|link de zap quebrado|sem parentes|numero escrito|n\u00e3o abre|demora pra carregar/.test(x)) { t += 4; mot.push("o n\u00famero publicado n\u00e3o fecha com o formato de discagem: quem clica n\u00e3o fala com ningu\u00e9m"); }
+      /* o NOME_LIMPO come a pontua\u00e7\u00e3o: "12.821 avalia\u00e7\u00f5es" chega aqui como "12 821 avaliacoes" */
+      if (/\d{3,} (avaliacoes|avalia|clientes|familias)/.test(x) || /nota 5[ .]?0/.test(x)) { t += 2; mot.push("conta avalia\u00e7\u00e3o e volume na manchete \u2014 p\u00e1gina que se impulsiona sem revis\u00e3o"); }
+      if (/\bdois celulares|outro numero|9\d{4}-\d{4} e 9/.test(x)) { t += 1; mot.push("dois celulares publicados: a casa tem mais de um número pra conferir"); }
+    }
     if (p.prioridade === "alta") t += 1;
     if (p.whatsOk === "sim") { t += 2; mot.push("🟢 WhatsApp confirmado"); }
     else if (numWhatsapp(p)) { t += 1; mot.push("🔎 tem celular (falta confirmar o zap)"); }
@@ -3029,7 +3077,7 @@ w.ZEIK_SEED = {"versao":26,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
     var fator = achado ? (Number(achado.fator) || 1) : 1;
     var para = Number(cfg && cfg.ouroPara); if (!isFinite(para) || para <= 0) para = 1.45;
     var nobre = fator >= para;
-    var base = Number(cfg && cfg.precoSite); if (!isFinite(base) || base <= 0) base = 550;
+    var base = baseDoNicho(cfg, nichoDe(p)); if (!isFinite(base) || base <= 0) base = 550;
     var chao = (cfg && cfg.chaoOuro === false) ? 0 : Math.round(base * fator / 10) * 10;
     return { fator: fator, nobre: nobre, nome: achado ? achado.nomeBonito : ((p && p.bairro) || ""), chao: chao,
              motivo: achado ? (nobre ? "bairro de tabela alta (" + achado.nomeBonito + " · " + String(fator).replace(".", ",") + "x)" : "tabela de bairro comum (" + achado.nomeBonito + ")") : "bairro fora do mapa de fator" };
@@ -3047,6 +3095,145 @@ w.ZEIK_SEED = {"versao":26,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
     [/(promo\w*|desconto|barato|unhas a r\$ ?\d\d|gr[\u00e1]tis)/i, -3, "se anuncia por preço baixo"],
     [/(casa ?\d+| \bcasa\b|quintal|fundo de|garagem)/i, -2, "atende em casa (ticket baixo, sem estrutura)"]
   ];
+  /* ------------------------------------------------------------------ */
+  /* ADVOCACIA — o nicho que não tem cardápio                                */
+  /* O estúdio de cílios publica preço; o advogado NÃO PODE publicar         */
+  /* honorário como isca (Prov. 205/2021 + Código de Ética, art. 7º e 39).   */
+  /* Então a régua deste nicho não mede o preço DELE: mede o piso da         */
+  /* causa dele, lido na tabela de honorários da OAB-SP. É por isso que       */
+  /* R$ 1.150 na proposta não é atrevimento — é um serviço e meio da           */
+  /* agenda dele. O que a casa cobra do cliente não é conta minha: quem       */
+  /* não publicou nada fica com o piso da área anotado como referência.       */
+  /* ------------------------------------------------------------------ */
+  var TABELA_OABSP = [
+    { re: /penal|criminal|crime|lavagem/, rotulo: "Criminal — acompanhamento/defesa", piso: 9210, fonte: "tabela de honorários OAB-SP (criminal — querela/assistência)" },
+    { re: /familia|divorcio|pensao|guarda|inventari|arrolamento|heranca|partilha|sucess|testamento/, rotulo: "Família/Sucessões — divórcio consensual judicial", piso: 7820, fonte: "tabela de honorários OAB-SP (família)" },
+    { re: /indenizator|danos morais|acidente de trabalho|consumidor|civel|\bcivil\b|ordinario/, rotulo: "Cível — indenizatória (propositura ou defesa)", piso: 6256, fonte: "tabela de honorários OAB-SP (cível indenizatória)" },
+    { re: /imobiliari|contrato|distrato|holding|societar|empresarial|compliance|locacao|usucapion|regulariza/, rotulo: "Empresarial/Imobiliário — minuta de contrato, distrato, holding", piso: 4930, fonte: "tabela de honorários OAB-SP (empresarial — contratos)" },
+    { re: /execuca|cobranca|despejo|titulo extrajudicial/, rotulo: "Execução de título extrajudicial", piso: 3475, fonte: "tabela de honorários OAB-SP (cobrança)" },
+    { re: /previdenc|aposentad|\binss\b|loas|beneficio/, rotulo: "Previdenciário — revisão/concessão (mínimo geral)", piso: 2667, fonte: "OAB-SP, parte geral: 20% do valor econômico da questão (mínimo da tabela)" },
+    { re: /tribut|imposto|execucao fiscal/, rotulo: "Tributário — administrativo/judicial (mínimo geral)", piso: 2667, fonte: "OAB-SP, parte geral" },
+    { re: /trabalh/, rotulo: "Trabalhista — ação de conhecimento (mínimo geral)", piso: 2667, fonte: "OAB-SP, parte geral: 20% do valor da questão, com mínimo de tabela por ação" }
+  ];
+  var OAB_MIN_GERAL = { rotulo: "Ação contenciosa — piso geral da tabela", piso: 2667, fonte: "OAB-SP, parte geral: 20% sobre o valor econômico da questão (mínimo da tabela)" };
+  function honorarioAdv(p, cfg) {
+    var t = NOME_LIMPO(p && p.nome, p && p.obs, p && p.servicos, p && p.atividade, p && p.segmento);
+    for (var i = 0; i < TABELA_OABSP.length; i++) if (TABELA_OABSP[i].re.test(t)) return TABELA_OABSP[i];
+    return OAB_MIN_GERAL;
+  }
+  /* A régua tem DUAS escalas: a de beleza lê cardápio e procedimento; a de advocacia lê
+     estrutura, produção de conteúdo e o que a página está dizendo de errado. "Já tem site"
+     não derruba aqui — ter site ruim é o motivo da conversa, não um impedimento. */
+  var GRANA_SINAIS_ADV = [
+    [/(penal|criminal|inventari|heranca|partilha|holding|societar|tributario|empresarial|compliance|distrato|due diligence|imobiliario)/i, 4, "área com piso de tabela OAB-SP acima de 4 mil: um serviço paga a página"],
+    [/(recupere o que e seu|ganhe sua causa|sem compromisso|consulta (gratis|gratuita)|garantimos|resultado garantido|mais de \d{3,} (clientes|familias)|melhor advogado|24 horas)/i, 4, "a página isca cliente do jeito que a OAB veda — é isso que faz ele me responder"],
+    [/(avaliacoes|estrelas|nota 5|aggregaterating|reviews)/i, 2, "conta avaliação no site: precisa de revisão de texto antes de escalar"],
+    [/(s[oó]cio|fundador|sede pr[oó]pria|advogados associados)/i, 3, "dono no domínio próprio: quem decide é ele, não uma terceirizada"],
+    [/(sala ?\d|conj(?:unto)? ?\d|cj ?\d|\d\s?andar|cobertura|edif\u00edcio|corporate)/i, 2, "sala em prédio (estrutura pra sustentar proposta de quatro dígitos)"],
+    [/(artigo|blog|conte\u00fado|noticia|perguntas frequentes|\bfaq\b|guia|dica do advogado|juridiqu)/i, 3, "j\u00e1 produz conte\u00fado (FAQ, artigo, guia): a p\u00e1gina pr\u00f3pria \u00e9 onde isso vira busca"],
+    [/(mobirise|\bwix\b|portfolio site templates|modelo pronto|template)/i, 3, "site em builder de template (dá pra trocar sem 'reforma')"],
+    /* banca que vende consulta avulsa tem o MESMO problema de um est\u00fadio: hor\u00e1rio perdido em vai-e-vem de mensagem */
+    [/(videoconfer|consulta online|consulta por v[i\u00ed]deo|agendamento pr[e\u00e9]vio|agenda digital)/i, 3, "vende consulta avulsa com hora marcada: a p\u00e1gina tem que fechar hor\u00e1rio sozinha"],
+    [/(wa\.me|whatsapp)/i, 1, "atende no zap: a conversa começa em minutos, não em ofício"],
+    [/(jusbrasil|diret[oó]rio|listado em portal|s[oó] facebook|s[oó] instagram|sem site)/i, 3, "sem página no próprio nome: quem pesquisa acha o portal, não ele"],
+    [/(online (para|pra) todo o brasil|100% online|brasil inteiro)/i, 1, "atende o Brasil todo — a página é o balcão dele"],
+    [/(a partir de r\$|parcelamento|desconto|\bbarato\b|pre[cç]o baixo)/i, -3, "vende por preço (e honorário como vitrine é infração: o cliente que chega assim dá problema)"],
+    [/(shopping|coworking|loja ?\d)/i, -1, "endereço em shopping/coworking: pesa menos na indicação de colega"]
+  ];
+  /* O piso da proposta por nicho. Advogado não compra "R$ 550": compra sobriedade e
+     conformidade, e quem cobra 7 mil por causa estranha a proposta de 550. Ele pediu o
+     Médio do nicho "na região de 1150" — escrevo o Médio, o resto da escada sai dele. */
+  function baseDoNicho(cfg, nico) {
+    cfg = cfg || {};
+    if (nico === "advogado") { var m = Number(cfg.advMedio); return (isFinite(m) && m > 0 ? m : 1150) / 1.8; }
+    var b = Number(cfg.precoSite);
+    return (isFinite(b) && b > 0) ? b : 550;
+  }
+  function nichoLabelDe(id) { for (var i = 0; i < NICHOS.length; i++) if (NICHOS[i].id === id) return NICHOS[i]; return null; }
+  function nichoSemDisparo(p, cfg) {
+    if (cfg && cfg.advNoDisparo === false) return false;
+    var e = nichoLabelDe(nichoDe(p));
+    return !!(e && e.semDisparo);
+  }
+  var ADV_LEI = {
+    provimento: "Provimento 205/2021-CFOAB + Código de Ética e Disciplina (art. 7º e 39)",
+    pode: [
+      "site, blog e perfil no domínio dele: nome completo, número de inscrição na OAB, áreas e qualificações",
+      "conteúdo informativo: artigo que explica um direito, perguntas frequentes, newsletter para quem JÁ é cliente",
+      "anúncio pago com caráter informativo (quem busca \u201ccomo funciona um inventário\u201d chega no texto dele)",
+      "livro, curso ou evento para advogado, estagiário e estudante de Direito — aí a chamada pode ser comercial",
+      "botão de WhatsApp que o CLIENTE inicia (a página não persegue ninguém, não faz remarketing de caso)"
+    ],
+    naoPode: [
+      "promessa de resultado: \u201crecupere o que é seu\u201d, \u201cganhe sua causa\u201d, \u201ca maior indenização da região\u201d",
+      "honorário como vitrine: \u201ca partir de R$\u201d, desconto, \u201cconsulta gratuita\u201d para atrair quem ainda não é cliente",
+      "caso concreto de cliente, antes/depois de processo, valor de condenação em manchete",
+      "ostentação (carro, viagem, troféu) e comparação com outros escritórios",
+      "abordagem ativa a quem não pediu contato: direct, mensagem em grupo, lista de disparo",
+      "pagar por selo de \u201cmelhor advogado\u201d ou usar avaliação de cliente como argumento de venda"
+    ],
+    oQueVendo: "não é “mais clientes” — é uma página que sustenta o nome dele no Google sem abrir processo disciplinar: informativa, sóbria, com o conteúdo que ele já escreve no domínio dele, revisada quando a regra mudar"
+  };
+  /* ESCADA DA ADVOCACIA — os mesmos três degraus com o que cabe num escritório. O texto do
+     meio é diferente de propósito: "cardápio com preço" e "antes/depois" são exatamente as
+     duas coisas que não podem aparecer na página de um advogado. */
+  var ESCADA_ADV = [
+    { id: "presenca", nome: "Presença", mult: 1,
+      entrega: "página única no domínio dele: nome completo + número na OAB, áreas, endereço, horário e botão de WhatsApp — texto revisado, sem preço e sem promessa",
+      pra: "quem hoje só existe no Google Business e no perfil de portal",
+      proximo: "Institucional — uma página por área, o conteúdo organizado e o aviso de caráter informativo" },
+    { id: "agenda", nome: "Institucional", mult: 1.8,
+      entrega: "Presença + uma página por área de atuação (é a que ranqueia na dúvida certa), os artigos que ele já escreve no lugar certo, aviso de publicidade informativa e Google ajustado",
+      pra: "quem vive de indicação e precisa de onde o colega confira o nome antes de indicar",
+      proximo: "Autoridade — política editorial, revisão semestral contra o Provimento 205 e relatório de buscas" },
+    { id: "autoridade", nome: "Autoridade", mult: 2.8,
+      entrega: "Institucional + política editorial do blog, revisão de texto semestral (mudou o provimento, muda a página), relatório do que as pessoas digitaram antes de chegar nele e prioridade de agenda",
+      pra: "quem cobra 6 mil por causa e vende reputação — aqui o site é ativo, não cartão de visita",
+      proximo: "" }
+  ];
+  /* Falas do nicho. Vale mais que no beauty: não prometo cliente, não cito honorário,
+     e a primeira mensagem é uma observação sobre a página dele — não uma oferta. */
+  function falasAdv(p, cfg) {
+    var pl = planoPara(p, cfg), hb = honorarioAdv(p, cfg);
+    return {
+      abertura: "{{saud}} {{contato}}. Não é oferta, e não vai virar lista: li a página da {{empresa}} atrás de uma informação e travei num trecho. {{achado}}.\n\nA advocacia tem uma regra que o resto do mercado não tem: publicidade com promessa de resultado, honorário como isca ou caso concreto de cliente cai no Provimento 205/2021 — e numa fiscalização é a página que vira a prova. Não estou dizendo que a sua está errada por descuido: é que ela foi escrita com a linguagem do comércio \u2014 e a sua não é uma loja.\n\nO que eu faço é isso: página no seu domínio com seu nome, sua OAB, suas áreas e o seu conteúdo — informativa e sóbria, sem preço, sem promessa. Antes de qualquer combinado eu mando a versão reescrita pra você ler com calma: zero custo, e se não servir, eu apago e não insisto.\n\nSe quiser ver, me responde só \"manda\".",
+      convite: "{{contato}}, pra não virar conversa eterna de WhatsApp: 20 minutos, aí no escritório ou por vídeo — {{doisHorarios}}. Levo três coisas e nenhuma apresentação de agência: a sua página aberta ao lado do que aparece quando alguém digita o seu nome, um trecho já reescrito e a lista do que não pode estar numa página de advogado. Não levo contrato pra assinar na pressa.",
+      valor: "Por escrito, o que vai e o que custa: {{planoNome}} — {{planoEntrega}}. Investimento {{planoValor}} na montagem + {{planoManut}}/mês (hospedagem, domínio, revisão do texto quando a regra mudar e o relatório do que a página fez).\n\nDuas coisas que você não vai ouvir de mim: promessa de cliente e \"te mando uma lista de interessados\". Não trabalho com disparo em massa pra advocacia — nem pra você, nem pra ninguém do nicho. O que dá pra medir é quem pesquisou seu nome e o que encontrou.",
+      quebras: [
+        { g: "\u201cadvogado não pode fazer marketing\u201d", f: "Pode, com car\u00e1ter informativo \u2014 o Provimento 205/2021 abre isso expressamente, inclusive an\u00fancio pago e conte\u00fado educativo. O que continua vedado \u00e9 capta\u00e7\u00e3o ativa, promessa e pre\u00e7o como vitrine. \u00c9 justamente por isso que a p\u00e1gina pr\u00f3pria vale mais num escrit\u00f3rio que num com\u00e9rcio: \u00e9 o \u00fanico lugar onde ele publica sem esbarrar na regra." },
+        { g: "\u201ctenho quem faça meu site\u201d", f: "Pode até estar bom. Me manda o link e eu te digo em três linhas o que, no texto de hoje, eu reescreveria antes de alguém impulsionar — sem cobrar essa leitura. Se depois de ler você continuar com quem está, foi um bom papo e fica só isso." },
+        { g: "\u201cnão preciso, cliente vem por indicação\u201d", f: "É assim que escritório bom funciona — e é aí que a página entra: o colega que te indica pesquisa seu nome antes, quem recebeu seu cartão pesquisa à noite, e o que aparece no caminho decide se a indicação vira contrato. Não estou vendendo volume, estou vendendo a porta de quem já veio te procurar." },
+        { g: "\u201ctá caro\u201d", f: "Está, comparado a não pagar nada. Comparado ao piso da tabela da OAB-SP para a sua área, a página se paga num serviço só \u2014 e é assim que eu gostaria de discutir o valor: na escala da sua agenda, não na do site que eu vendo. Se a conta não fechar, me diz quantos atendimentos por mês sustentam a p\u00e1gina e eu refaço aqui, na sua calculadora." },
+        { g: "\u201cdepois eu vejo\u201d", f: "Justo, e sem cobrança em cima: deixo a proposta reescrita guardada até {{dataLimite}} e não te procuro nesse intervalo. Só registro o que quase sempre acontece com \"depois\" nesse mercado — não é o dinheiro que trava, é o concorrente que nesse meio-tempo já apareceu no nome que é seu." }
+      ],
+      fecho: "Fechado, {{contato}}. Preciso de quatro coisas e resolvemos por aqui: (1) seu nome completo e o número de inscrição na OAB (e o da sociedade, se houver); (2) as áreas como você quer que apareçam — as que você quer, não as que o template traz; (3) o que você já escreveu (artigo, palestra, livro, aula): isso é material, não enfeite; (4) o Pix {{valorZeik}} pra travar a data.\n\nNo ar até {{prazoEntrega}}, e ajusto o texto pelo que incomodar por 15 dias. Mensalidade começa no mês seguinte e você cancela quando quiser, sem multa."
+    };
+  }
+  function roteiroAdv(p, cfg) {
+    var g = granaDe(p, cfg), pl = planoPara(p, cfg), hb = honorarioAdv(p, cfg);
+    return [
+      { t: "1 \u00b7 Espelho (3 min)", f: "N\u00e3o fale do site nesta abertura. Abra com: \u201cquantos dos \u00faltimos 10 clientes chegaram por indica\u00e7\u00e3o de colega \u2014 e o que esse colega viu quando pesquisou seu nome?\u201d Deixe ele falar. Escrit\u00f3rio bom tem um nome que s\u00f3 existe dentro do f\u00f3rum.", por: "piso da \u00e1rea dele: " + hb.rotulo + " \u00b7 " + fmtBRL(hb.piso) },
+      { t: "2 \u00b7 A p\u00e1gina dele na tela (4 min)", f: "Abra o site DELE no celular dele. Aponte tr\u00eas coisas sem drama: uma frase que promete, um contato que \u00e9 do portal, e o que n\u00e3o est\u00e1 l\u00e1 (a \u00e1rea principal, o conte\u00fado, o n\u00famero da OAB). Fique 40 segundos calado depois.", por: "n\u00edvel na r\u00e9gua: " + g.nivel },
+      { t: "3 \u00b7 O que a regra permite (3 min)", f: "Leia em voz alta a lista do painel (\u201cisto pode / aquilo n\u00e3o pode\u201d), sem inventar nada al\u00e9m do Provimento 205/2021. \u00c9 aqui que ele te separa do sobrinho que faz Wix: voc\u00ea \u00e9 o \u00fanico que sabe onde \u00e9 a linha.", por: "fontes: Prov. 205/2021, C\u00f3digo de \u00c9tica art. 7\u00ba e 39" },
+      { t: "4 \u00b7 Escada (3 min)", f: "Mostre os tr\u00eas degraus na ordem e PARE. No nicho dele o nome do meio \u00e9 \u201cInstitucional\u201d, n\u00e3o \u201cAgenda\u201d: n\u00e3o h\u00e1 card\u00e1pio nem antes/depois na entrega \u2014 e ele vai reparar (\u00e9 o trabalho dele reparar em texto).", por: "degrau sugerido: " + pl.plano.nome },
+      { t: "5 \u00b7 Pre\u00e7o (2 min)", f: "Fale uma vez, sem \u201ca partir de\u201d, e fique calado at\u00e9 ele responder. Se vier obje\u00e7\u00e3o, troque de degrau, n\u00e3o de pre\u00e7o \u2014 e nunca desconte citando o piso da tabela dele como se fosse a renda dele.", por: "compara\u00e7\u00e3o honesta: um servi\u00e7o da agenda contra a p\u00e1gina no ano" },
+      { t: "6 \u00b7 Sa\u00edda com data (3 min)", f: "Feche com as quatro coisas: nome + OAB, \u00e1reas escolhidas por ele, conte\u00fado j\u00e1 escrito, Pix pra travar a data. Se ele n\u00e3o fechar, combine a data da pr\u00e9via no ar e saia. Reuni\u00e3o sem pr\u00f3ximo passo \u00e9 papo de corredor de f\u00f3rum.", por: "prazo na mesa: " + (cfg.prazoEntrega || "7 dias") }
+    ];
+  }
+  function deckAdv(p, cfg) {
+    var pl = planoPara(p, cfg), hb = honorarioAdv(p, cfg);
+    return [
+      { k: "Capa", h: "A p\u00e1gina da " + (p.nome || "sua banca"), big: true, lines: [String(p.bairro || ""), "N\u00e3o \u00e9 sobre aparecer mais: \u00e9 sobre o que encontram quando digitam seu nome", (cfg.responsavel || "ZEIK") + " \u00b7 " + new Date().toLocaleDateString("pt-BR")] },
+      { k: "O que eu vi", h: "Tr\u00eas coisas da sua p\u00e1gina hoje", lines: [String(p.obs || "").split("\u00b7")[0] || "li a p\u00e1gina inteira antes desta reuni\u00e3o", "Quando algu\u00e9m busca seu nome, quem aparece primeiro \u00e9 o portal, n\u00e3o voc\u00ea", "O conte\u00fado que voc\u00ea j\u00e1 escreveu est\u00e1 espalhado em rede que voc\u00ea n\u00e3o controla"] },
+      { k: "A regra", h: "Publicidade de advogado \u00e9 informativa", lines: ["Pode: site, artigo, an\u00fancio que explica um direito, conte\u00fado educativo", "N\u00e3o pode: promessa de resultado, honor\u00e1rio como isca, caso concreto, ostenta\u00e7\u00e3o", "N\u00e3o fa\u00e7o aqui: disparo em massa, lista de interessados, \u201cno ar hoje com qualquer texto\u201d"], nota: "\u00c9 neste slide que a conversa muda de patamar: o concorrente dele vende cliente; eu vendo risco zero." },
+      { k: "A conta", h: "Um servi\u00e7o paga a p\u00e1gina", lines: ["Piso da tabela OAB-SP na \u00e1rea dele: " + fmtBRL(hb.piso), "Fonte: " + hb.fonte, "Custo da p\u00e1gina no m\u00eas: " + fmtBRL(pl.plano.manut)], nota: "N\u00e3o invente a receita dele. Se ele rir do n\u00famero, anote o n\u00famero REAL dele e refa\u00e7a a conta na calculadora DELE." },
+      { k: "Os tr\u00eas degraus", h: "Escolha tamanho, n\u00e3o pre\u00e7o", tabela: pl.escada.map(function (e) { return { nome: e.nome, valor: e.valor, manut: e.manut, entrega: e.entrega, pra: e.pra }; }), lines: ["Come\u00e7o pelo " + pl.plano.nome].concat(pl.chaoAplicado ? ["Aqui no " + pl.ouro.nome + ", a porta de entrada \u00e9 " + fmtBRL(pl.ouro.chao) + " \u2014 a p\u00e1gina de um escrit\u00f3rio deste bairro n\u00e3o pode custar menos que a tabela local."] : []) },
+      { k: "O que vai na p\u00e1gina", h: "Sete blocos, nenhum comercial", lines: ["Nome completo + n\u00famero de inscri\u00e7\u00e3o na OAB", "\u00c1reas escolhidas por ele (n\u00e3o as do template)", "Forma\u00e7\u00e3o, t\u00edtulos e publica\u00e7\u00f5es", "Conte\u00fado: um texto por d\u00favida real de cliente", "Endere\u00e7o, hor\u00e1rio e bot\u00e3o que o CLIENTE inicia", "Aviso de car\u00e1ter informativo e pol\u00edtica de privacidade", "Nada de pre\u00e7o, nada de antes/depois, nada de promessa"] },
+      { k: "Como eu trabalho", h: "Primeiro o texto, depois o dinheiro", lines: ["Reescrevo um trecho da sua p\u00e1gina antes de cobrar qualquer coisa", "No ar em " + (cfg.prazoEntrega || "7 dias") + ", e ajusto o texto por 15 dias", "Mensalidade: hospedagem, dom\u00ednio, revis\u00e3o quando a regra mudar e relat\u00f3rio de buscas", "Cancela quando quiser, sem multa \u2014 e o conte\u00fado \u00e9 seu"] },
+      { k: "Hoje", h: "Quatro coisas e eu come\u00e7o", big: true, lines: ["Nome completo + OAB (e o da sociedade)", "As \u00e1reas como voc\u00ea quer que apare\u00e7am", "O que voc\u00ea j\u00e1 escreveu (artigo, aula, livro)", "Pix pra travar a data de entrega"], nota: "Termine em " + pl.plano.nome + " (" + fmtBRL(pl.plano.valor) + " + " + fmtBRL(pl.plano.manut) + "/m\u00eas). N\u00e3o pergunte \u2018o que achou\u2019: pergunte \u2018quando voc\u00ea me manda o texto\u2019." }
+    ];
+  }
+
   function granaDe(p, cfg) {
     if (!p) return { pontos: 0, nivel: "D", motivo: [], nome: "" };
     /* Aqui eu leio o texto BRUTO (não o obsUtil): a régua de calor precisa do obsUtil pra
@@ -3054,21 +3241,29 @@ w.ZEIK_SEED = {"versao":26,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
        escrito no cardápio publicado dela (russian, acrílico, laser, podologia, sala 20).
        O ticket numérico é o que segura a nota — é ele, não o adjetivo. */
     var txt = String(p.nome || "") + " " + String(p.obs || "") + " " + String(p.endereco || "") + " " + String(p.servicos || "") + " " + String(p.atividade || "");
+    var nico = nichoDe(p), ehAdv = nico === "advogado";
+    var SINAIS = ehAdv ? GRANA_SINAIS_ADV : GRANA_SINAIS;
     var t = 0, mot = [];
-    for (var i = 0; i < GRANA_SINAIS.length; i++) {
-      try { if (GRANA_SINAIS[i][0].test(txt)) { t += GRANA_SINAIS[i][1]; mot.push(GRANA_SINAIS[i][2]); } } catch (e) {}
+    for (var i = 0; i < SINAIS.length; i++) {
+      try { if (SINAIS[i][0].test(txt)) { t += SINAIS[i][1]; mot.push(SINAIS[i][2]); } } catch (e) {}
     }
     var tk = Number(p.ticket) || 0;
     /* lead que chegou por COLA de lote não traz a coluna ticket (o formato tem 7 campos) —
        resgata o número da observação, que é onde a raspagem escreve "ticket médio 220". */
     if (!tk) { var mt = String(p.obs || "").match(/ticket m[\u00e9e]dio (\d{2,4})/); if (mt) tk = Number(mt[1]); }
-    var alvo = Number((cfg && cfg.ticketAlvo) || 180);
-    if (tk >= alvo * 2) { t += 4; mot.push("ticket " + tk + " (2x o alvo)"); }
-    else if (tk >= alvo) { t += 2; mot.push("ticket " + tk + " no alvo"); }
-    else if (tk && tk < alvo * 0.6) { t -= 2; mot.push("ticket " + tk + " abaixo do alvo"); }
+    if (!tk && ehAdv) tk = honorarioAdv(p, cfg).piso; /* advogado n\u00e3o publica pre\u00e7o: vale o piso da \u00e1rea na tabela OAB-SP */
+    var alvo = Number(cfg && (ehAdv ? cfg.ticketAlvoAdv : cfg.ticketAlvo)) || (ehAdv ? 3000 : 180);
+    /* advogado n\u00e3o publica pre\u00e7o: o n\u00famero que pontua aqui \u00e9 o PISO DA CAUSA dele na
+       tabela da seccional. Chamar isso de "ticket" na tela seria mentir de leve, ent\u00e3o o
+       r\u00f3ulo diz o que \u00e9 \u2014 e o alvo do nicho \u00e9 outro (3 mil, n\u00e3o 180). */
+    var rotTk = ehAdv ? "piso da causa R$ " : "ticket ";
+    if (tk >= alvo * 2) { t += 4; mot.push(rotTk + tk + (ehAdv ? " (2x o alvo da r\u00e9gua do nicho)" : " (2x o alvo)")); }
+    else if (tk >= alvo) { t += 2; mot.push(rotTk + tk + (ehAdv ? " acima do alvo do nicho" : " no alvo")); }
+    else if (tk && tk < alvo * 0.6) { t -= 2; mot.push(rotTk + tk + " abaixo do alvo"); }
     var separ = String(p.obs || "").match(/,|\u00b7/g);
-    if (separ && separ.length >= 3) { t += 1; mot.push("card\u00e1pio largo (3+ servi\u00e7os)"); }
-    if (p.temSite === true) { t -= 1; mot.push("j\u00e1 tem site (urg\u00eancia menor)"); }
+    if (separ && separ.length >= 3) { t += 1; mot.push(ehAdv ? "leque de \u00e1reas publicado (3+ \u00e1reas)" : "card\u00e1pio largo (3+ servi\u00e7os)"); }
+    if (p.temSite === true && !ehAdv) { t -= 1; mot.push("j\u00e1 tem site (urg\u00eancia menor)"); }
+    if (ehAdv) { var hba = honorarioAdv(p, cfg); mot.unshift(hba.rotulo + " \u00b7 piso " + fmtBRL(hba.piso) + " \u2014 " + hba.fonte); }
     var our = ouroDe(p, cfg);
     if (our.fator >= 1.6) { t += 3; mot.push(our.motivo); }
     else if (our.fator >= 1.4) { t += 2; mot.push(our.motivo); }
@@ -3109,18 +3304,27 @@ w.ZEIK_SEED = {"versao":26,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
       pra: "quem cobra caro e precisa justificar o caro antes de o cliente perguntar",
       proximo: "" }
   ];
-  function escadaPreco(cfg) {
-    var base = Number((cfg && cfg.precoSite) || 550);
-    var man = Number((cfg && cfg.manutMes) || 97);
-    return ESCADA.map(function (e) {
+  function escadaPreco(cfg, nico) {
+    var adv = nico === "advogado";
+    var base = baseDoNicho(cfg, nico);
+    var man = adv ? (Number(cfg && cfg.advManut) || 170) : Number((cfg && cfg.manutMes) || 97);
+    var esc0 = adv ? ESCADA_ADV : ESCADA;
+    return esc0.map(function (e) {
       return { id: e.id, nome: e.nome, entrega: e.entrega, pra: e.pra, proximo: e.proximo,
                valor: Math.round(base * e.mult / 10) * 10, manut: Math.round(man * e.mult) };
     });
   }
   function planoPara(p, cfg) {
     var nv = p ? granaDe(p, cfg).nivel : "C";
-    var esc = escadaPreco(cfg);
+    var nico = p ? nichoDe(p) : "";
+    var esc = escadaPreco(cfg, nico);
     var i = nv === "A" ? 2 : nv === "B" ? 1 : 0;
+    /* ⚖️ Advocacia: o degrau de entrada é o MEIO da escada, não o topo (pedido dele na
+       rodada 18: "pode adicionar no médio, aí na região de 1150"). Com escritório, começar
+       pelo Autoridade soa a "pacotão de agência" e Presença é pouco pra quem cobra 7 mil
+       por causa. O Autoridade continua sendo o degrau de CIMA no roteiro — se o piso do
+       bairro puxar, ele sobe sozinho. */
+    if (nico === "advogado") i = (nv === "A" || nv === "B") ? 1 : 0;
     /* Em bairro nobre o degrau de baixo é tiro no pé: ela compara com o que já paga no
        procedimento e não te chama de caro. O piso do bairro puxa a proposta pra cima —
        é isso que faz a reunião fechar em Autoridade e não em R$ 550. */
@@ -3146,6 +3350,9 @@ w.ZEIK_SEED = {"versao":26,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
   /* é outra: o assunto é a tabela dela, o no-show e o tempo dela.         */
   /* ------------------------------------------------------------------ */
   function falasAlta(p, cfg) {
+    /* Advocacia tem falas pr\u00f3prias: "app", "card\u00e1pio" e "antes/depois" na boca de um
+       vendedor de p\u00e1gina \u00e9 o convite pra ele pedir o que a OAB n\u00e3o deixa fazer. */
+    if (p && nichoDe(p) === "advogado") return falasAdv(p, cfg);
     var g = granaDe(p, cfg), pl = planoPara(p, cfg);
     return {
       abertura: "{{saud}} {{contato}}! {{nomeZeik}} aqui, faço a p\u00e1gina da {{empresa}}. Antes de te tomar tempo: olhei sua agenda no aplicativo e o seu card\u00e1pio — {{achado}}. N\u00e3o \u00e9 caso de ‘falta cliente’, \u00e9 caso de cliente que chega j\u00e1 escolhendo pelo pre\u00e7o da vitrine do app.\\n\\nVou te mostrar duas coisas em 5 minutos: a pr\u00e9via que montei e a conta simples de quantos atendimentos acima do seu ticket pagam a p\u00e1gina. Se fizer sentido, marcamos 20 minutos; se n\u00e3o, a pr\u00e9via fica com voc\u00ea.",
@@ -3164,6 +3371,7 @@ w.ZEIK_SEED = {"versao":26,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
   /* Roteiro da reuni\u00e3o de 20 minutos: seis falas na ordem, com o que ele tem que
      FAZER em cada uma. Regra dele: quem faz a pergunta faz a venda. */
   function roteiroReuniao(p, cfg) {
+    if (p && nichoDe(p) === "advogado") return roteiroAdv(p, cfg);
     var g = granaDe(p, cfg), pl = planoPara(p, cfg);
     var tk = Number(p && p.ticket) || Number(cfg && cfg.ticketAlvo) || 180;
     return [
@@ -3179,6 +3387,7 @@ w.ZEIK_SEED = {"versao":26,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
      Slide que se l\u00e1 em mais de 8 segundos n\u00e3o \u00e9 slide, \u00e9 par\u00e1grafo. */
   function deckDe(p, cfg) {
     if (!p) return [];
+    if (nichoDe(p) === "advogado") return deckAdv(p, cfg);
     var pl = planoPara(p, cfg), g = granaDe(p, cfg), es = pl.escada;
     return [
       { k: "Capa", h: "A p\u00e1gina da " + (p.nome || "sua casa"), big: true, lines: [String(p.bairro || ""), "Pre\u00e7o e confian\u00e7a: como ela passa a escolher pelo seu trabalho", (cfg.responsavel || "ZEIK") + " \u00b7 " + new Date().toLocaleDateString("pt-BR")] },
@@ -3205,6 +3414,7 @@ w.ZEIK_SEED = {"versao":26,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
     var out = [];
     (st2.prospects || []).forEach(function (p) {
       if (!p) return;
+      if (opts.nicho && nichoDe(p) !== opts.nicho) return;
       if (nichoBloqueado(p, cfg)) return;
       if (!numWhatsapp(p)) return;
       var g = granaDe(p, cfg);
@@ -3225,8 +3435,17 @@ w.ZEIK_SEED = {"versao":26,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
       total += r.plano.plano.valor;
       var t = Number(r.prospect.ticket) || 0; if (t) tks.push(t);
     });
-    return { itens: out, potencial: total,
-      ticketMedio: tks.length ? Math.round(tks.reduce(function (a, b) { return a + b; }, 0) / tks.length) : 0,
+    /* MEDIANA, não média. Com ⚖️ advocacia na base (piso de causa em milhares), a média
+       subia pra 883 e virava mentira na tela: "ticket médio" tem que ser o que o MEIO da
+       fila cobra, senão o número enfeita o resultado e o cara do Capão Redondo aparece
+       pagando como o do Itaim. */
+    var med = 0;
+    if (tks.length) {
+      tks.sort(function (a, b) { return a - b; });
+      med = tks.length % 2 ? tks[(tks.length - 1) / 2] : Math.round((tks[tks.length / 2 - 1] + tks[tks.length / 2]) / 2);
+    }
+    return { itens: out, potencial: total, ticketMediano: med, mediana: true,
+      ticketMedio: med,
       A: out.filter(function (r) { return r.grana.nivel === "A"; }).length,
       B: out.filter(function (r) { return r.grana.nivel === "B"; }).length,
       C: out.filter(function (r) { return r.grana.nivel === "C"; }).length };
@@ -3253,7 +3472,20 @@ w.ZEIK_SEED = {"versao":26,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
       followup: "{{contato}}, só passando aqui: deixei a prévia da {{empresa}} guardada (com seus serviços e o botão de agendar). Se não for a hora, me avisa e eu te deixo em paz — te chamo quando mudar alguma coisa no bairro. Se você já montou o site por conta, me manda o link que eu te digo o que está te custando cliente, sem cobrar nada.",
       reuniao: "Perfeito. Te proponho {{doisHorarios}} — 20 minutos, no WhatsApp ou aí na {{empresa}}. Levo o site aberto no celular e a gente olha JUNTAS as fotos de antes/depois que vão na home. Qual dos dois fica melhor?"
     },
-    lash: "_beleza", manicure: "_beleza", estetica: "_beleza", salao: "_beleza"
+    lash: "_beleza", manicure: "_beleza", estetica: "_beleza", salao: "_beleza",
+    /* ADVOCACIA — a "abordagem totalmente diferente" que ele pediu. O que muda de fato:
+       (1) abertura = observa\u00e7\u00e3o sobre a p\u00e1gina dele, nunca oferta; (2) nenhum R$ na 1\u00aa
+       mensagem, nem o meu nem o dele; (3) o argumento \u00e9 risco de infra\u00e7\u00e3o (Prov. 205/2021
+       e C\u00f3digo de \u00c9tica), n\u00e3o volume; (4) promessa de cliente n\u00e3o entra em linha alguma;
+       (5) em vez de "seg\u00farei o bairro", reservo a \u00e1rea do Direito: \u00e9 assim que um escrit\u00f3rio
+       entende escassez \u2014 dois criminalistas no mesmo quarteir\u00e3o se canibalizam. */
+    advogado: {
+      nome: "Advocacia (1 a 1, sem disparo)", emoji: "\u2696\uFE0F",
+      m1: "{{saud}} {{contato}}. Aqui \u00e9 {{nomeZeik}}, fa\u00e7o p\u00e1gina pra escrit\u00f3rio de {{bairro}}. Cheguei na {{empresa}} procurando uma informa\u00e7\u00e3o e o que me fez escrever foi um detalhe do texto: {{achado}}.\n\nN\u00e3o vou te dizer \u201cte falta cliente\u201d \u2014 quem vive de indica\u00e7\u00e3o n\u00e3o precisa disso. O que falta, quase sempre, \u00e9 o que o colega v\u00ea quando pesquisa seu nome antes de indicar, e o que a fiscaliza\u00e7\u00e3o v\u00ea numa p\u00e1gina escrita com linguagem de com\u00e9rcio (promessa de resultado e honor\u00e1rio como isca \u00e9 o que o Provimento 205/2021 n\u00e3o deixa).\n\nFa\u00e7o p\u00e1gina informativa e s\u00f3bria: nome, OAB, \u00e1reas, conte\u00fado \u2014 sem pre\u00e7o, sem antes/depois de caso, sem promessa. E n\u00e3o te colo em lista nenhuma: nada de disparo, hoje nem depois. {{linkModelo}}.\n\nMe responde \u201cmanda\u201d que eu te mando a vers\u00e3o reescrita antes de voc\u00ea decidir qualquer coisa. Se n\u00e3o servir, apago e n\u00e3o insisto.",
+      gatilho: "{{contato}}, uma pergunta s\u00f3 e eu n\u00e3o ocupo mais seu tempo: quantos dos seus \u00faltimos 10 clientes chegaram por indica\u00e7\u00e3o? E desses, quantos digitaram seu nome no Google antes de te ligar? \u00c9 a\u00ed que eu mexo \u2014 n\u00e3o em \u201caparecer mais\u201d, em \u201co que aparece\u201d. Se topar, levo um trecho da sua p\u00e1gina j\u00e1 reescrito, sem custo, pra voc\u00ea comparar com o que est\u00e1 no ar hoje.",
+      followup: "{{contato}}, \u00faltima mensagem minha e sem cobran\u00e7a em cima. Duas coisas por escrito: (1) enquanto conversarmos, n\u00e3o ofereço a MESMA \u00e1rea de Direito a outro escrit\u00f3rio no seu raio \u2014 90 dias reservados pro seu lado; (2) se n\u00e3o \u00e9 a hora, me diz \u201cagora n\u00e3o\u201d que eu apago o contato. A proposta reescrita fica guardada se voc\u00ea mudar de ideia.",
+      reuniao: "Perfeito. {{doisHorarios}} \u2014 20 minutos a\u00ed no escrit\u00f3rio ou por v\u00eddeo. Levo tr\u00eas coisas: a sua p\u00e1gina aberta, o texto reescrito de um trecho dela e a lista do que pode e do que n\u00e3o pode estar na p\u00e1gina de um advogado. N\u00e3o levo contrato pra assinar na pressa."
+    }
   };
   ROTA_NICHO._premiumOuro = {
     nome: "Bairro nobre — indicação, reputação e escassez",
@@ -3528,6 +3760,18 @@ w.ZEIK_SEED = {"versao":26,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
     if (pend) fecha(pend);
     return saida;
   }
+  /* O cabeçalho do lote traz a data da coleta ("... · 11/09/2026"). Isso é informação, e o
+     painel passa a usá-la: lote colado na semana é material fresco, entra com prioridade alta
+     — igual à ficha que eu semeei hoje. Sem essa regra, a MESMA empresa chega por dois caminhos
+     e chega diferente (o payload não tem coluna de prioridade), e aí o painel mente sobre o
+     próprio lead conforme o caminho. Lote velho continua "media": a régua de validade não some. */
+  function loteRecente(em, dias) {
+    var m = String(em || "").match(/(\d{2})\/(\d{2})\/(\d{4})/);
+    var d = m ? new Date(Number(m[3]), Number(m[2]) - 1, Number(m[1])) : null;
+    if (!d || isNaN(d.getTime())) return false;
+    var limpa = Number(dias); if (!isFinite(limpa) || limpa <= 0) limpa = 14;
+    return d.getTime() <= Date.now() + 864e5 && (Date.now() - d.getTime()) <= limpa * 864e5;
+  }
   function normalizaLote(r, o, saida, vistos, raw) {
     var nome = clean(r.nome || "");
     if (!nome || nome.length < 3 || !/[A-Za-zÀ-ú]{3}/.test(nome) || /^(nome|telefone|cidade|bairro|site|insta)\w*$/i.test(nome)) { saida.ignorados.push(String(raw || r.nome || "").slice(0, 60)); return; }
@@ -3543,7 +3787,7 @@ w.ZEIK_SEED = {"versao":26,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
       site: clean(r.site), insta: clean(r.insta), obs: clean(r.obs),
       coletadoEm: clean(r.coletadoEm || o.em || ""),
       segmento: o.segmento || detectSeg(nome + " " + clean(r.obs) + " " + clean(r.insta)),
-      prioridade: o.prioridade || "media",
+      prioridade: o.prioridade || (loteRecente(o.em) ? "alta" : "media"),
       origem: o.origem || "Coletor",
       temSite: r.site ? true : null,
       temInstagram: r.insta ? true : null
@@ -3972,7 +4216,9 @@ w.ZEIK_SEED = {"versao":26,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
     looksGuiaCnpj: looksGuiaCnpj, parseGuiaCnpj: parseGuiaCnpj, segPorCnae: segPorCnae, fonesRepetidos: fonesRepetidos,
     criaLoteCode: criaLoteCode, looksLoteCode: looksLoteCode, parseLoteCode: parseLoteCode,
     /* getter: o NICHOS é um var definido mais abaixo — por valor aqui seria undefined */
-    get NICHOS() { return NICHOS; }, nichoDe: nichoDe, nichoLabel: nichoLabel, nichosFora: nichosFora, metaSeed: metaSeed, segmentosBase: segmentosBase, objecoesBase: objecoesBase, bairrosPorZonaBase: bairrosPorZonaBase, nichoBloqueado: nichoBloqueado, nichoResumo: nichoResumo, ehChamavel: ehChamavel, resumoChamavel: resumoChamavel, quenteDe: quenteDe, ehQuente: ehQuente, QUENTE_PONTOS: QUENTE_PONTOS, rotaPara: rotaPara, rotaNichoDe: rotaNichoDe, slug: slug, janelaIdeal: janelaIdeal, idadeLead: idadeLead, linkModelo: linkModelo, chaveRoteiro: chaveRoteiro, esgotado: esgotado, motivoEspera: motivoEspera, granaDe: granaDe, granaLabel: granaLabel, ouroDe: ouroDe, ouroMapa: ouroMapa, chaveLead: chaveLead, chaveNome: chaveNome, coreNome: coreNome, irmaosDe: irmaosDe, unirDuplicatas: unirDuplicatas, iguaisNaBase: iguaisNaBase, melhorQue: melhorQue, portaDe: porta, bairroBaseDe: bairroBase, boaGrana: boaGrana, escadaPreco: escadaPreco, planoPara: planoPara, ESCADA: ESCADA, falasAlta: falasAlta, roteiroReuniao: roteiroReuniao, deckDe: deckDe, filaGrana: filaGrana, linkModeloLocal: linkModeloLocal,
+    get NICHOS() { return NICHOS; }, nichoDe: nichoDe, nichoLabel: nichoLabel, nichosFora: nichosFora, metaSeed: metaSeed, segmentosBase: segmentosBase, objecoesBase: objecoesBase, bairrosPorZonaBase: bairrosPorZonaBase, nichoBloqueado: nichoBloqueado, nichoResumo: nichoResumo, ehChamavel: ehChamavel, resumoChamavel: resumoChamavel, quenteDe: quenteDe, ehQuente: ehQuente, QUENTE_PONTOS: QUENTE_PONTOS, rotaPara: rotaPara, rotaNichoDe: rotaNichoDe, slug: slug, janelaIdeal: janelaIdeal, idadeLead: idadeLead, linkModelo: linkModelo, chaveRoteiro: chaveRoteiro, esgotado: esgotado, motivoEspera: motivoEspera, granaDe: granaDe, granaLabel: granaLabel, ouroDe: ouroDe, ouroMapa: ouroMapa, chaveLead: chaveLead, chaveNome: chaveNome, coreNome: coreNome, irmaosDe: irmaosDe, unirDuplicatas: unirDuplicatas, iguaisNaBase: iguaisNaBase, melhorQue: melhorQue, portaDe: porta, bairroBaseDe: bairroBase, boaGrana: boaGrana, escadaPreco: escadaPreco, planoPara: planoPara, ESCADA: ESCADA,
+    ADV_LEI: ADV_LEI, ESCADA_ADV: ESCADA_ADV, honorarioAdv: honorarioAdv, TABELA_OABSP: TABELA_OABSP,
+    baseDoNicho: baseDoNicho, nichoSemDisparo: nichoSemDisparo, falasAdv: falasAdv, falasAlta: falasAlta, roteiroReuniao: roteiroReuniao, deckDe: deckDe, filaGrana: filaGrana, linkModeloLocal: linkModeloLocal,
     CIDADES_INTERIOR: CIDADES_INTERIOR
   };
   function escapeHtml(s) {
@@ -4081,11 +4327,27 @@ w.ZEIK_SEED = {"versao":26,"bairrosPorZona":{"Leste":["Tatuapé","Mooca","Alto d
   var POR_SEG = {
     barbearia: "grafite", auto: "grafite", salao: "rosa", estetica: "serena", odonto: "clinico",
     pet: "verde", constru: "concreto", servicos: "concreto", food: "brasa", academia: "eletrico",
-    varejo: "vitrine", escola: "classico", generico: "classico"
+    varejo: "vitrine", escola: "classico", generico: "classico",
+    /* ⚖️ advocacia: tema clínico (branco, sóbrio) — grafite parece bar, rosa parece salão */
+    advogado: "clinico"
   };
 
   /* ------------------------- CONTEÚDO POR SEGMENTO ---------------------- */
   var CONTEUDO = {
+    /* ⚖️ ADVOCACIA — o único preset que existe pra CABER numa regra, não pra vender.
+       Sem depoimento (avaliação de cliente como argumento é o que a OAB veda), sem preço
+       na vitrine, sem "antes/depois" de causa, sem urgência comercial. O texto responde a
+       dúvida e apresenta a banca; o resto é conversa de contrato. */
+    advogado: {
+      kicker: "Advocacia", heroTitle: "Atuação técnica, atendimento direto",
+      heroSub: "Áreas de atuação, qualificação e contato direto com o advogado responsável. Conteúdo de caráter informativo.",
+      sobre: "A banca atua com foco nas áreas listadas abaixo, conduzindo cada caso do primeiro contato até a decisão. Aqui você encontra quem assina o processo, o que é tratado em cada área e como começar — sem promessa de resultado e sem tabela de honorários, porque a condição é combinada por escrito, caso a caso.",
+      servicos: [["Direito Civil", "Contratos, responsabilidade civil e cobrança."], ["Família e Sucessões", "Divórcio, guarda, inventário e partilha."], ["Trabalho", "Reclamação e defesa, verbas rescisórias e acordo."], ["Empresarial", "Contratos, societário e consultiva preventiva."]],
+      depo: [],
+      emoji: "\u2696\uFE0F",
+      trust: ["Quem recebe você é quem assina a causa", "Honorários combinados em contrato, por escrito", "Andamento explicado em linguagem clara, sem juridiqu\u00eAs"],
+      faq: [["Como come\u00e7a o atendimento?", "Voc\u00ea descreve o caso pelo WhatsApp ou e-mail. Se houver conflito de interesses, marcamos a an\u00e1lise com o advogado respons\u00e1vel."], ["Atendem online?", "Sim, para todo o pa\u00eds, com assinatura digital e documentos enviados com anteced\u00eancia."], ["Quanto custa?", "Condi\u00e7\u00e3o de honor\u00e1rios \u00e9 combinada diretamente, por escrito, conforme o caso. Publicidade de advogado \u00e9 informativa, n\u00e3o uma vitrine de pre\u00e7o."], ["Preciso levar documentos?", "Traga o que j\u00e1 tiver: contrato, notifica\u00e7\u00e3o, protocol\u00e3o. O resto a gente pede na an\u00e1lise."]]
+    },
 barbearia: {
       kicker: "Barbearia", heroTitle: "Corte na régua, barba no detalhe",
       heroSub: "Agende pelo WhatsApp e chegue na hora. Sem fila, sem espera, sem chatice.",
@@ -4442,9 +4704,9 @@ barbearia: {
       '  <p class="lead">' + e(d.sobre || ("No bairro desde sempre, a " + empresa + " atende com hora marcada e aquele cuidado de quem conhece o cliente pelo nome. Estamos na " + (d.endereco || bairro) + ", pertinho de você.")) + '</p>\n' +
       '  <ul class="checks">' + trust.map(function (x) { return '<li>' + e(x) + '</li>'; }).join("") + '</ul>\n' +
       '  </div>\n  ' + (t.hero === "split" ? panel.replace('class="card panel"', 'class="card panel"') : panel) + '\n</div></section>\n\n' +
-      '<section class="section"><div class="wrap">\n' +
+      (deps ? '<section class="section"><div class="wrap">\n' +
       '  <h2>O que dizem os clientes</h2><p class="sub">Avaliações de quem já foi atendido.</p>\n' +
-      '  <div class="grid g2">' + deps + '</div>\n</div></section>\n\n' +
+      '  <div class="grid g2">' + deps + '</div>\n</div></section>\n\n' : "") +
       (faqHtml ? '<section id="faq" class="section alt"><div class="wrap" style="max-width:760px">\n  <h2>Perguntas frequentes</h2><p class="sub">O que a gente mais ouve no balcão — respondido antes de você perguntar.</p>\n  ' + faqHtml + '\n</div></section>\n\n' : "") +
       '<section id="contato" class="section"><div class="wrap"><div class="final">\n' +
       '  <h2>Pronto pra ' + e(d.verboAgendar || "agendar") + '?</h2>\n' +
@@ -4452,7 +4714,11 @@ barbearia: {
       '  <a class="btn big" href="' + waLink + encodeURIComponent("Olá! Vim pelo site da " + empresa + " e quero " + (d.verboAgendar || "agendar") + ".") + '" target="_blank" rel="noopener">Falar agora no WhatsApp</a>\n' +
       '</div></div></section>\n</main>\n\n' +
       '<footer class="foot"><div class="wrap row">\n' +
-      '  <span>© ' + new Date().getFullYear() + ' ' + e(empresa) + ' · ' + e(bairro) + (d.cnpj ? ' · CNPJ ' + e(d.cnpj) : '') + '</span>\n' +
+      '  <span>© ' + new Date().getFullYear() + ' ' + e(empresa) + ' · ' + e(bairro) + (d.cnpj ? ' · CNPJ ' + e(d.cnpj) : '') +
+      /* ⚖️ quem é escritório leva o número da inscrição e o aviso de caráter informativo no
+         rodapé — é o que a página dele precisa ter e é o que o template dele nunca teve. */
+      (d.segmento === "advogado" ? ' · OAB ' + e(d.oab || 'inscrição no rodapé') : '') + '</span>\n' +
+      (d.segmento === "advogado" ? '  <span class="tiny">Publicidade de caráter informativo, nos termos do Provimento 205/2021-CFOAB. Este site não promete resultado, não anuncia valor de honorários e não capta clientela.</span>\n' : '') +
       '  <a href="https://wa.me/5511990147836?text=' + encodeURIComponent("Vi o site da " + empresa + " e quero um assim para meu negócio.") + '" target="_blank" rel="noopener">Site criado por Zeik Digital · (11) 99014-7836</a>\n' +
       '</div></footer>\n\n' +
       '<a class="wa-float" href="' + waLink + encodeURIComponent("Olá! Vim pelo site da " + empresa + ".") + '" target="_blank" rel="noopener" aria-label="WhatsApp">\n' +
@@ -4747,6 +5013,23 @@ barbearia: {
      dados do lead (site, avaliações, Instagram, ticket, o que você anotou). */
   function achadoDo(p, sg) {
     if (!p) return "dei uma olhada no seu perfil e vi espaço pra crescer";
+    /* ⚖️ Advocacia: as frases abaixo ("perde o cliente pro quarteirão de lado", "página de
+       venda") são de comércio. Pra escritório, o {{achado}} é a OBSERVAÇÃO que foi feita na
+       página dele — a primeira anotação da ficha, antes do primeiro "·". É o que faz a
+       mensagem não parecer modelo e é o único argumento que um advogado aceita ouvir. */
+    var nicoAdv = window.Z && Z.nichoDe ? String(Z.nichoDe(p) || "") === "advogado" : false;
+    if (nicoAdv) {
+      var an = String(p.obs || "").split("\u00b7")[0].trim();
+      /* segurança de bastidor: se a anotação interna ("é a mesma operação em dois domínios")
+         um dia cair no primeiro trecho, ela não pode virar mensagem de cliente. */
+      if (/conversa s\u00f3|mesma opera|n\u00e3o chutei|confirmar no 1/.test(an)) {
+        var antes = String(p.obs || "").split("\u00b7").map(function (x) { return x.trim(); }).filter(function (x) {
+          return x.length > 24 && !/conversa s\u00f3|mesma opera|n\u00e3o chutei|confirmar no 1/.test(x);
+        });
+        an = antes[0] || "li a p\u00e1gina inteira antes de escrever";
+      }
+      return an.length > 24 ? an : "li a p\u00e1gina inteira antes de escrever e anotei dois trechos que, se fosse voc\u00ea, eu revisava antes de impulsionar qualquer coisa";
+    }
     var obs = String(p.obs || "").toLowerCase();
     var opcoes = [];
     if (p.temSite === false) opcoes.push("quem pesquisar " + (p.buscaTermo || (sg && sg.buscaTermo) || p.segmento || "seu serviço") + " na " + (p.bairro || "região") + " não te acha — hoje quem some do mapa perde o cliente pro quarteirão de lado");
@@ -4836,7 +5119,9 @@ barbearia: {
   }
 
   /* ------------------------------ NAVEGAÇÃO ---------------------------- */
-  var routes = ["dashboard", "ticket", "prospeccao", "disparo", "pipeline", "clientes", "financeiro", "tarefas", "scripts", "gerador", "config"];
+  /* ⚖️ rodada 18: a rota nova é registrada AQUI também — sem isto o hash #advogados cai
+     no Dashboard e a aba existe no menu mas não abre (o que é pior que não existir). */
+  var routes = ["dashboard", "ticket", "advogados", "prospeccao", "disparo", "pipeline", "clientes", "financeiro", "tarefas", "scripts", "gerador", "config"];
   function currentView() {
     var h = (location.hash || "").replace(/^#\/?/, "").split("?")[0];
     return routes.indexOf(h) >= 0 ? h : "dashboard";
@@ -5080,6 +5365,7 @@ barbearia: {
     try {
     switch (view) {
       case "ticket": html = viewTicketAlto(); break;
+      case "advogados": html = viewAdvogados(); break;
       case "prospeccao": html = viewProspect(); break;
       case "pipeline": html = viewPipeline(); break;
       case "clientes": html = viewClientes(); break;
@@ -5128,6 +5414,11 @@ barbearia: {
       financeiro: s.financeiro.filter(function (f) { return f.status === "a_receber"; }).length,
       tarefas: s.tarefas.filter(function (t) { return !t.concluida && Z.diasAteData(t.data) <= 1; }).length,
       disparo: (s.campanhas || []).reduce(function (n, c) { return n + c.itens.filter(function (x) { return x.estado === "na fila"; }).length; }, 0),
+      /* ⚖️ advocacia: quantos escritórios ainda sem toque (a fila é 1 a 1, então o número
+         dele é a meta do dia neste nicho — não o volume do Disparo) */
+      advogados: (function () {
+        try { return Z.filaGrana(s.config, { nicho: "advogado", semContato: true }).itens.length; } catch (e) { return 0; }
+      })(),
       /* 👑 é o número que ele quer ver sem abrir nada: quantos pagadores ainda esperam toque */
       ticket: (function () {
         try { return Z.filaGrana(s.config, { semContato: true }).itens.length; } catch (e) { return 0; }
@@ -5394,6 +5685,106 @@ barbearia: {
   }
 
   /* ====================================================================== */
+  /*  ⚖️ ADVOGADOS — a aba do nicho novo (rodada 18)                          */
+  /*  Não é a tela 👑 com outro selo: aqui o tíquete não é o que o escritório  */
+  /*  cobra do cliente (advogado não pode publicar honorário), é o PISO da    */
+  /*  causa dele na tabela da OAB-SP; a escada tem o Médio como porta de       */
+  /*  entrada (R$ 1.150, o número que ele deu); e a lista inteira está         */
+  /*  trancada fora do Disparo, porque abordagem ativa a quem não pediu        */
+  /*  contato é exatamente o que o cliente dele não pode fazer.               */
+  /* ====================================================================== */
+  App.advFiltro = App.advFiltro || { semContato: true, incluirC: false };
+  App.advLimite = App.advLimite || 12;
+  App.advLeiAberta = false;
+
+  function viewAdvogados() {
+    var sv = st(), cfg = sv.config, f = App.advFiltro;
+    var fila = Z.filaGrana(cfg, { nicho: "advogado", semContato: f.semContato, incluirC: f.incluirC });
+    var tudo = Z.filaGrana(cfg, { nicho: "advogado", incluirC: true });
+    var escd = Z.escadaPreco(cfg, "advogado"), med = escd[1] || escd[0];
+    var lei = Z.ADV_LEI || { pode: [], naoPode: [], oQueVendo: "" };
+    var chip = function (k, label, on) {
+      return '<button class="btn sm ' + (on ? "" : "quiet") + '" data-act="adv-filtro" data-k="' + k + '">' + label + '</button>';
+    };
+    var stats = '<div class="grid four">' +
+      '<div class="card stat"><div class="lbl">Escritórios na base</div><div class="val">' + tudo.itens.length + '</div><div class="delta">' + fila.itens.length + ' esperando o primeiro toque · 1 a 1</div></div>' +
+      '<div class="card stat"><div class="lbl">Nível A (piso alto)</div><div class="val">' + fila.A + '</div><div class="delta">de ' + (fila.A + fila.B) + ' que passam na régua do nicho</div></div>' +
+      '<div class="card stat"><div class="lbl">Piso mediano da causa</div><div class="val">' + (fila.ticketMediano ? money(fila.ticketMediano) : '—') + '</div><div class="delta">tabela de honorários OAB-SP · não é o preço dele</div></div>' +
+      '<div class="card stat"><div class="lbl">Potencial desta aba</div><div class="val">' + money(fila.potencial) + '</div><div class="delta">começando pelo ' + escd[1].nome + ' (' + money(med.valor) + ')</div></div>' +
+      '</div>';
+    var cab = '<div class="page-head"><h1>⚖️ Advogados</h1><p class="sub">Nicho separado de propósito: o tíquete é o <b>piso da causa</b> (tabela de honorários da OAB-SP, de 2,6 a 9,2 mil), não o preço de um procedimento — e a abordagem é outra. Nada de &ldquo;agenda cheia&rdquo;, &ldquo;comissão do app&rdquo;, &ldquo;tabela na cara&rdquo; ou &ldquo;antes/depois&rdquo;: isso é o que o Provimento 205/2021 veda na página de um advogado. A conversa começa pelo que a página dele está dizendo de errado.</p></div>';
+    var escada = '<div class="card" style="margin:12px 0"><div class="card-title">A escada deste nicho (não é a da beleza)</div>' +
+      '<div class="grid three">' + escd.map(function (e, i) {
+        return '<div style="padding:8px 10px;border:1px solid var(--line);border-radius:10px' + (i === 1 ? ';background:rgba(46,160,67,.08)' : '') + '">' +
+          '<b>' + e.nome + '</b> ' + money(e.valor) + ' <span class="tiny">+ ' + money(e.manut) + '/mês</span>' +
+          '<p class="tiny" style="margin:6px 0 0">' + esc(e.entrega) + '</p>' +
+          '<p class="tiny" style="margin:6px 0 0;color:var(--ok)">' + esc(e.pra) + (i === 1 ? ' ← porta de entrada do nicho' : '') + '</p></div>';
+      }).join('') + '</div>' +
+      '<p class="tiny" style="margin:8px 0 0">O número do meio (' + money(med.valor) + ') é o que ele mandou usar como base. Mexe em Configurações → &ldquo;Médio da advocacia&rdquo; que Presença, Autoridade, o piso de bairro e o lote recalculam sozinhos: ' + money(escd[0].valor) + ' / ' + money(escd[1].valor) + ' / ' + money(escd[2].valor) + ' + ' + money(escd[0].manut) + '·' + money(escd[1].manut) + '·' + money(escd[2].manut) + '/mês.</p></div>';
+    var aviso = '<div class="card" style="margin:12px 0;border-color:rgba(201,42,42,.5)"><div class="card-title">🚫 esta lista não entra no Disparo — e não é capricho</div>' +
+      '<p class="tiny" style="margin:6px 0 0">Publicidade <b>ativa</b> (mandar mensagem a quem não pediu contato) é justamente o que um escritório não pode fazer com a base dele. Se eu te vender &ldquo;disparo pra 50 advogados&rdquo;, o que chega neles é risco de processo disciplinar — e o processo vem pra mim depois. Então: <b>1 a 1</b>, com a página dele aberta na sua frente, e a reserva de área em vez de reserva de bairro (&ldquo;não ofereço a mesma área do Direito a outro escritório do seu raio&rdquo;).</p>' +
+      '<div class="row wrap" style="margin-top:8px"><button class="btn sm ghost" data-act="adv-lei">' + (App.advLeiAberta ? '📕 esconder' : '📗 abrir') + ' o que pode e o que não pode na página dele</button>' +
+      '<span class="tiny" style="align-self:center">' + esc(lei.provimento || '') + '</span></div>' +
+      (App.advLeiAberta ? '<div class="grid two" style="margin-top:10px">' +
+        '<div><div class="card-title">✅ Pode (e é o que eu monto)</div>' + (lei.pode || []).map(function (x) { return '<p class="tiny" style="margin:4px 0">· ' + esc(x) + '</p>'; }).join('') + '</div>' +
+        '<div><div class="card-title" style="color:#c92a2a">⛔ Não pode (e é o que a página deles costuma ter)</div>' + (lei.naoPode || []).map(function (x) { return '<p class="tiny" style="margin:4px 0">· ' + esc(x) + '</p>'; }).join('') + '</div>' +
+        '</div><p class="tiny" style="margin:8px 0 0;color:var(--ok)">O que eu vendo aqui: ' + esc(lei.oQueVendo || '') + '</p>' : '') +
+      '</div>';
+    var filtros = '<div class="row wrap" style="margin:12px 0">' +
+      chip('semContato', '✋ só quem ainda não tocou', !!f.semContato) +
+      chip('incluirC', '🧱 incluir nível C (dá pra subir)', !!f.incluirC) +
+      '<span class="tiny" style="align-self:center">' + (tudo.itens.length - fila.itens.length) + ' já foram tocados · ' + fila.itens.length + ' na fila de hoje</span>' +
+      '</div>';
+    if (!fila.itens.length) {
+      return cab + stats + filtros + '<div class="card"><div class="card-title">Nenhum escritório passou no corte com esses filtros</div>' +
+        '<p class="tiny" style="margin:6px 0 10px">Ou você ainda não colou o lote ⚖️ (é <code>lotes/rodada-18-advocacia.txt</code> no preview: <a href="/lote-adv.txt">/lote-adv.txt</a>), ou o nível C está travado aí em cima. Escritório com página só em diretório de terceiros não é &ldquo;lead frio&rdquo;: é cliente que nunca teve dono.</p>' +
+        '<div class="row wrap"><button class="btn sm" data-act="coletor-abrir">🧰 Colar lote ⚖️</button>' +
+        '<button class="btn sm ghost" data-act="adv-filtro" data-k="incluirC">👇 incluir nível C</button></div></div>';
+    }
+    var vis = fila.itens.slice(0, App.advLimite);
+    var corpo = vis.map(function (r, i) {
+      var p = r.prospect, g = r.grana, pl = r.plano, hb = Z.honorarioAdv(p, cfg), lb = Z.granaLabel(g.nivel);
+      var zap = Z.numWhatsapp(p);
+      var obs = String(p.obs || '');
+      var primeiro = obs.indexOf('·');
+      var visto = primeiro > 24 ? obs.slice(0, primeiro).trim() : ''; /* a observação é o 1º trecho */
+      return '<div class="card" style="margin-bottom:10px">' +
+        '<div class="card-title">' + (i + 1) + '. ' + esc(p.nome) + ' ' + badge(lb.emoji + ' ' + g.nivel + ' · ' + g.pontos + ' pts', lb.cor) +
+        (r.ouro.nobre ? badge('🏙 ' + r.ouro.nome + ' · tabela ' + String(r.ouro.fator).replace('.', ',') + 'x', 'ok') : '') +
+        (zap ? '' : ' ' + badge('sem zap publicado', 'red')) + '</div>' +
+        '<p class="tiny" style="margin:4px 0 0">' + esc(p.bairro || '') + (p.endereco ? ' · ' + esc(p.endereco) : ' · endereço não publicado (confirmar na 1ª ligação)') + ' · piso da causa ' + money(Number(p.ticket) || hb.piso) + ' · ' + (zap || 'sem zap') + '</p>' +
+        '<p class="tiny" style="margin:5px 0 0;color:var(--ok)">por que está aqui: ' + esc((g.motivo || []).join(' • ')) + '</p>' +
+        (visto ? '<p class="tiny" style="margin:5px 0 0;color:var(--warn)">👁 o que a página dele mostra: ' + esc(visto) + '</p>' : '') +
+        '<p class="tiny" style="margin:5px 0 0">🎯 degrau: <b>' + esc(pl.plano.nome) + '</b> ' + money(pl.plano.valor) + ' + ' + money(pl.plano.manut) + '/mês — ' + esc(pl.plano.pra) + (pl.subir ? ' · se topar, ' + esc(pl.subir.nome) + ' ' + money(pl.subir.valor) + ' (aí entra a revisão semestral do texto)' : '') + '</p>' +
+        (pl.chaoAplicado ? '<p class="tiny" style="margin:4px 0 0;color:var(--ok)">🏙 piso deste bairro: ' + money(pl.ouro.chao) + ' — abaixo disso a página de um escritório daqui não fecha a conta.</p>' : '') +
+        '<p class="tiny" style="margin:5px 0 0">📎 o número da régua é o <b>piso da tabela OAB-SP</b> para a área (' + esc(hb.fonte) + '); o que o escritório cobra do cliente é com ele — não chutei nada.</p>' +
+        (/conversa s\u00f3|mesma opera/.test(obs) ? '<p class="tiny" style="margin:4px 0 0;color:#c92a2a">\ud83d\udd12 ' + esc(obs.split('\u00b7').filter(function (x) { return /conversa s\u00f3|mesma opera/.test(x); }).join(' ').trim()) + '</p>' : '') +
+        (p.mesclado && p.mesclado.length ? '<p class="tiny" style="margin:4px 0 0;color:var(--cyan)">↔ esta ficha é ' + p.mesclado.length + ' nome(s) da mesma casa: ' + esc(p.mesclado.map(function (q) { return q.nome; }).join(', ')) + ' — uma mensagem só</p>' : '') +
+        (p.ultimoContato ? '<p class="tiny" style="margin:4px 0 0">último toque em ' + esc(String(p.ultimoContato).slice(0, 10)) + ' · ' + (Number(p.toques) || 0) + ' tentativa(s)</p>' : '') +
+        '<div class="row wrap" style="margin-top:9px">' +
+        '<button class="btn sm" data-act="ticket-copiar" data-pid="' + p.id + '" data-k="abertura">📋 1ª (a observação da página)</button>' +
+        '<button class="btn sm ghost" data-act="ticket-copiar" data-pid="' + p.id + '" data-k="convite">📅 convidar (20 min)</button>' +
+        '<button class="btn sm ghost" data-act="ticket-copiar" data-pid="' + p.id + '" data-k="valor">💰 mandar o valor</button>' +
+        '<button class="btn sm ghost" data-act="ticket-copiar" data-pid="' + p.id + '" data-k="fecho">🤝 fechar (4 itens)</button>' +
+        '<button class="btn sm ghost" data-act="ticket-roteiro" data-pid="' + p.id + '">🧠 roteiro da conversa</button>' +
+        '<button class="btn sm ghost" data-act="ticket-slides" data-pid="' + p.id + '">📽 deck ⚖️</button>' +
+        '<button class="btn sm ghost" data-act="ticket-objecoes" data-pid="' + p.id + '">🛡 as 5 quebras</button>' +
+        '<button class="btn sm ghost" data-act="ticket-zap" data-pid="' + p.id + '">📱 abrir zap</button>' +
+        '<span class="sep"></span>' +
+        '<button class="btn sm quiet" data-act="ticket-marcar" data-pid="' + p.id + '" data-e="enviado" title="contei que mandei">✅ falei</button>' +
+        '<button class="btn sm quiet" data-act="ticket-marcar" data-pid="' + p.id + '" data-e="respondeu">💬 respondeu</button>' +
+        '<button class="btn sm quiet" data-act="ticket-marcar" data-pid="' + p.id + '" data-e="reuniao">📅 reunião</button>' +
+        '<button class="btn sm quiet" data-act="ticket-marcar" data-pid="' + p.id + '" data-e="ganhou">🏆 FECHOU (+taxa)</button>' +
+        '<button class="btn sm quiet" data-act="ticket-marcar" data-pid="' + p.id + '" data-e="perdeu">🚫 não</button>' +
+        '</div></div>';
+    }).join('');
+    var mais = fila.itens.length > App.advLimite
+      ? '<div class="row" style="justify-content:center;margin:10px 0"><button class="btn quiet" data-act="adv-mais">Mostrar mais ' + (fila.itens.length - App.advLimite) + ' de ' + fila.itens.length + '</button></div>'
+      : '<p class="tiny" style="text-align:center;margin:10px 0">Fim da lista — ' + fila.itens.length + ' escritório(s) com página que dá pra consertar. Aqui o teto do dia não existe: é 1 a 1, então a meta é resposta, não volume.</p>';
+    return cab + stats + escada + aviso + filtros + corpo + mais;
+  }
+
+  /* ====================================================================== */
   /*  PROSPECÇÃO                                                             */
   /* ====================================================================== */
   /* ====================================================================== */
@@ -5549,6 +5940,14 @@ barbearia: {
     }
   };
 
+  App.handlers["adv-filtro"] = function (el) {
+    var k = el.getAttribute("data-k");
+    if (k in App.advFiltro) App.advFiltro[k] = !App.advFiltro[k];
+    App.advLimite = 12;
+    App.render();
+  };
+  App.handlers["adv-mais"] = function () { App.advLimite += 12; App.render(); };
+  App.handlers["adv-lei"] = function () { App.advLeiAberta = !App.advLeiAberta; App.render(); };
   App.handlers["ticket-filtro"] = function (el) {
     var k = el.getAttribute("data-k");
     if (k in App.ticketFiltro) App.ticketFiltro[k] = !App.ticketFiltro[k];
@@ -6257,6 +6656,8 @@ barbearia: {
           '<label class="check" style="margin:6px 0 0"><input type="checkbox" data-autosave="config.chaoOuro"' + (cfg.chaoOuro !== false ? " checked" : "") + '> <b>🏙 piso por bairro</b> — em bairro de tabela alta a proposta começa no degrau que segura a tabela dali (nada de abrir no degrau barato pra "quebrar o gelo")</label>' +
           '<div class="grid two" style="margin-top:8px">' +
           '<label class="field"><span class="lbl">Fator mínimo pra tratar o bairro como nobre</span><input type="number" step="0.05" data-autosave="config.ouroPara" value="' + esc(String(cfg.ouroPara == null ? 1.45 : cfg.ouroPara)) + '"><span class="tiny">1,45 quer dizer: o bairro precisa sustentar tabela ~45% acima da sua base pra entrar no filtro 🏙, pontuar na régua e receber a copy de indicação/escassez. Descer pra 1,2 incha a tela 👑 com gente que não paga mais — e foi exatamente isso que ele reclamou dos leads anteriores.</span></label>' +
+          '<label class="field"><span class="lbl">Médio da advocacia (⚖️)</span><input type="number" step="10" data-autosave="config.advMedio" value="' + (Number(cf.advMedio) || 1150) + '"><span class="tiny">o degrau do meio da escada do nicho de advocacia, em reais. Presença e Autoridade são calculados dele (÷1,8 e ×2,8 ÷1,8), e o piso de bairro nobre neste nicho também. A régua usa o <b>piso da causa</b> na tabela OAB-SP, não o preço dele — por isso &ldquo;bom pagador&rdquo; aqui começa em ' + (Number(cf.ticketAlvoAdv) || 3000) + '. Desliga &ldquo;⚖️ fora do Disparo&rdquo; só se você quiser assumir o risco de abordagem ativa.</span></label>' +
+          '<label class="check" style="margin:6px 0"><input type="checkbox" data-autosave="config.advNoDisparo"' + (cf.advNoDisparo !== false ? " checked" : "") + '> <b>⚖️ escritório nunca entra na fila de disparo</b> — publicidade ativa a quem não pediu é o que a OAB veda pra ele</label>' +
           '<label class="field"><span class="lbl">Mapa de fator por bairro</span><textarea data-autosave="config.bairrosOuro" rows="4" class="mono tiny" style="width:100%">' + esc(String(cfg.bairrosOuro || "")) + '</textarea><span class="tiny">formato: <span class="mono">Nome do bairro 1.7</span>, separado por vírgula. É daqui que sai o filtro 🏙, o ponto extra na régua e o piso da proposta — um lugar só, não duas listas. Fator 1,0 = sua tabela atual. Descobriu um bairro caro? Escreve aqui que a fila e o preço se ajustam sozinhos.</span></label>' +
           '</div>' +
           '<div class="grid two" style="margin-top:12px">' +
