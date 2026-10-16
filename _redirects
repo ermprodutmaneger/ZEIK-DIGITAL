@@ -1,0 +1,12 @@
+# Redirecionamentos para Cloudflare Pages
+# Coloque este arquivo na raiz do seu projeto
+
+# Redirecionar raiz para index.html
+/*    /index.html    200
+
+# API endpoints (para quando voce implementar o backend)
+/api/*    /api/:splat    200
+
+# Pagina de confirmacao
+/confirmacao    /confirmacao.html    200
+/confirmacao.html    /confirmacao.html    200

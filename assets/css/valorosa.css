@@ -1,0 +1,134 @@
+/* ===== VALOROSA STREET WEAR - STYLES ===== */
+
+* {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.font-bebas {
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.glass {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee {
+  animation: marquee 20s linear infinite;
+}
+
+.product-card:hover .product-img {
+  transform: scale(1.08);
+}
+
+.product-img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Size selector */
+.size-btn {
+  transition: all 0.2s ease;
+}
+
+.size-btn.active,
+.size-btn.bg-white {
+  background: white;
+  color: black;
+  border-color: white;
+}
+
+/* Filter buttons */
+.filter-btn {
+  transition: all 0.2s ease;
+}
+
+.filter-btn.active {
+  background: white;
+  color: black;
+  border-color: white;
+}
+
+/* Cart drawer */
+#cartDrawer {
+  transition: transform 0.3s ease;
+}
+
+#cartDrawer.hidden {
+  transform: translateX(100%);
+}
+
+#cartDrawer:not(.hidden) {
+  transform: translateX(0);
+}
+
+/* Toast notification */
+#toast {
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translate(-50%, 20px);
+}
+
+#toast:not(.hidden) {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* Loading spinner */
+.loader {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Button hover effects */
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* Product card */
+.product-card {
+  transition: border-color 0.3s ease;
+}
+
+/* Modal overlay */
+.modal-overlay {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}

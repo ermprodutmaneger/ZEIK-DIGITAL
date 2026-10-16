@@ -1,162 +1,313 @@
-# Zeik Digital — Painel de Prospecção & Vendas
+# VALOROSA STREET WEAR - Loja Online
 
-Painel comercial da **Zeik Digital** (sites para pequenos negócios da Zona Sul de São Paulo).
-É 100% arquivo estático: **HTML + CSS + JavaScript puro**, sem framework, sem build, sem servidor, sem banco de dados.
-Os dados vivem **no seu navegador** (`localStorage`) — nada é enviado para nenhum servidor.
+Loja completa de streetwear premium com integração Mercado Pago pronta para deploy no Cloudflare Pages.
 
-> WhatsApp comercial: **(11) 99014-7836** · e-mail: **zeikdigital@gmail.com**
-> Oferta padrão configurável: site **R$ 500–600**, entrega em **48h**, manutenção opcional **R$ 97/mês**.
-
----
-
-## 1. Publicar na Vercel (5 minutos, só cliques)
-
-1. Entre em [vercel.com](https://vercel.com) e faça login com a sua conta GitHub.
-2. **Add New… → Project** → escolha o repositório `ermprodutmaneger/ZEIK-DIGITAL` → **Import**.
-3. Nas opções de build, deixe tudo vazio/desligado:
-   - **Framework Preset:** `Other`
-   - **Build Command:** *(campo vazio)*
-   - **Output Directory:** *(campo vazio)*
-   - **Install Command:** *(campo vazio)*
-   - **Environment Variables:** nenhuma
-   (O `vercel.json` já faz isso: `framework: null`, cache por tipo de arquivo e todos os cabeçalhos de segurança.)
-4. **Deploy**. Em ~20 segundos você recebe uma URL `https://SEU-PROJETO.vercel.app`.
-5. Abra a URL no celular da loja e use **Compartilhar → Adicionar à tela de início**: o painel vira um **app instalável (PWA)** e continua funcionando sem internet.
-6. (Opcional) **Settings → Domains** → conecte `painel.seudominio.com.br`.
-
-**Atualizar o painel depois:** faça a mudança no repositório → o Vercel publica sozinho a cada `git push`.
-**Trocar de branch/produção:** *Settings → Environments/Production branch*.
-
-> O app está nesta branch: `arena/01a05872-zeik-digital`.
-> Para a Vercel publicar direto do `main`, é só mergear o pull request aberto a partir dela.
-
----
-
-## 2. Testar no computador antes de publicar
-
-```bash
-cd ZEIK-DIGITAL
-python3 -m http.server 8000
-# abra http://localhost:8000/index.html
-```
-
-Abrir com duplo clique no arquivo (`file://`) também funciona para olhar o visual, **mas o navegador pode bloquear o
-armazenamento local** nesse modo — a mensagem aparece no rodapé da sidebar. Para dados salvos de verdade, use `http://localhost` ou a URL da Vercel.
-
----
-
-## 2b. Deu `404: NOT_FOUND` na URL da Vercel?
-
-Quase sempre é uma coisa só: **o painel está na branch `arena/01a05872-zeik-digital` e o `main` ainda tem apenas o README** — e a Vercel publica o `main` por padrão, então não encontra `index.html` e devolve `404 NOT_FOUND` (o `ID: gru1::…` que aparece é o bordo da Vercel dizendo “não tem arquivo aqui”).
-
-Escolha **uma** das duas:
-
-**A. Mergear o Pull Request #1 (recomendado, 1 clique)**
-1. Abra https://github.com/ermprodutmaneger/ZEIK-DIGITAL/pull/1
-2. **Merge pull request** → **Confirm merge**.
-3. Volte na Vercel → **Deployments**: o deploy novo aparece sozinho em ~30 s. Pronto.
-
-**B. Apontar o projeto para a branch do painel (sem mexer no `main`)**
-1. Na Vercel → **Settings → Environments** (em projetos novos: **Settings → Production Branch**).
-2. Troque para `arena/01a05872-zeik-digital` → **Save**.
-3. **Deployments → Promote/Redeploy** (ou importe de novo escolhendo essa branch na tela *Import → Git → Branch*).
-
-Se ainda der 404 depois disso, confira nesta ordem:
-
-| Checar | Onde | Tem de estar |
-|---|---|---|
-| Branch do último deploy | Vercel → Deployments → nome do deploy | `arena/01a05872-zeik-digital` ou `main` **depois** do merge |
-| Raiz do projeto | Settings → General → **Root Directory** | `./` (nada de subpasta) |
-| Build | Settings → Build & Development | Framework `Other`, Build/Output/Install **vazios** |
-| Estado | Deployments → log | **Ready** (não “Error” nem “Queued”) |
-| URL | barra do navegador | `https://SEU-PROJETO.vercel.app/` — sem `/main/`, sem hash de preview |
-| Cache do navegador | recarregue com Ctrl+Shift+R | o service worker antigo pode segurar a tela velha |
-
-> Depois do primeiro deploy, se você editar qualquer arquivo, é só `git push`: a Vercel publica sozinha.
-
----
-
-## 3. O que tem dentro
-
-| Tela | Para que serve |
-|---|---|
-| **Dashboard** | Contadores do mês, funil, segmentos mais quentes, meta de sites e a lista **“precisa de você hoje”**. |
-| **Prospecção** | 151 empresas reais da Zona Sul (Capão Redondo, Jd. Ângela, Campo Limpo, Grajaú, M'Boi Mirim). Busca, filtros por bairro/prioridade/status/necessidade, botão **Ligar** (`tel:`) e **WhatsApp** (`wa.me`), script de abordagem pronto, converter em negociação, **Caça-empresas** para ampliar a lista. |
-| **Pipeline** | Kanban **Lead → Contatado → Proposta → Ganho → Perdido** com **arrastar e soltar** (mouse e toque com ¼ de segundo). Ao soltar em *Contatado* o painel oferece o **lembrete de follow-up**; em *Proposta* abre o **gerador de proposta**; em *Ganho* o **fechamento** que cria cliente + financeiro + tarefas. |
-| **Clientes** | Empresa, contato, segmento, bairro, telefone, valor, status, **manutenção mensal**, notas (domínio, hospedagem, acessos) e up-sell do pacote de Instagram. |
-| **Faturamento** | Pago / a receber / total, ticket médio, sites vendidos, gráfico dos **últimos 6 meses**, lançamentos com período (3/6/12 meses/tudo) e **calculadora de lucro com MRR**. |
-| **Tarefas** | Agenda com data, ciclos automáticos, abas pendentes/atrasadas/concluídas, atalho de WhatsApp na própria linha. |
-| **Scripts** | Abordagem pronta **por segmento**, personalizada com o nome da empresa, com variants para quem **não tem Instagram**, quem **tem feed bagunçado** e resposta para as 8 objeções mais comuns. |
-| **Gerador** | Cria o **site do cliente** a partir do modelo: nome, bairro, segmento, telefone, endereço e horários → prévia em tela e **download do `.html`** pronto para hospedar. |
-| **Configurações** | Preço, prazo, manutenção, bairros, metas, backup, importar, snapshots, **PIN de bloqueio** e reset. |
-
-Atalhos: `⌘K`/`Ctrl+K` abre a busca de prospecção · `⌘S`/`Ctrl+S` força o salvamento · `⌥⌘Z`/`Ctrl+Alt+Z` desfaz a última mudança · `Esc` fecha modal. No celular há barra inferior e menu lateral com filtro.
-
-### Arquivos
+## 📦 Estrutura do Projeto
 
 ```
-index.html              o painel (shell + telas)
-modelo-site.html        demo estática do site que você entrega (hero, serviços, sobre, depoimentos, contato, botão flutuante de WhatsApp)
-assets/css/style.css    o design system Apple (claro + escuro automático)
-assets/js/seed.js       151 empresas reais + 13 segmentos com scripts + 8 objeções
-assets/js/store.js      estado, persistência, undo, snapshots, estatísticas, PIN
-assets/js/site-template.js  o gerador de site (ZeikSite.gerar)
-assets/js/ui.js         navegação, modais, toasts, WhatsApp/Maps, atalhos, lock
-assets/js/app.js        as 9 telas + drag & drop do Kanban
-assets/js/modals.js     CRUD, propostas, gerador, backup, importação, snapshots
-manifest.webmanifest    PWA instalável   ·   sw.js  ·  public/icons/  · vercel.json  · robots.txt
+ZEIK-DIGITAL/
+├── index.html              # Pagina principal da loja
+├── confirmacao.html        # Pagina de confirmacao de pedido
+├── _redirects              # Redirecionamentos para Cloudflare Pages
+├── assets/
+│   ├── css/
+│   │   └── valorosa.css    # Estilos personalizados
+│   └── js/
+│       ├── config.js       # CONFIGURACOES PRINCIPAIS (edite aqui!)
+│       ├── app.js          # Logica principal da loja
+│       └── mercado-pago.js # Integracao com Mercado Pago
+└── public/
+    └── valorosa/           # Imagens dos produtos
+        ├── logo.png
+        ├── camisa1.png
+        ├── camisa2.png
+        └── ...
 ```
 
-Ordem dos `<script>` é obrigatória: `seed → store → site-template → ui → app → modals`.
+## ⚡ Quick Start
+
+### 1. Configurar Mercado Pago
+
+**Edite o arquivo `assets/js/config.js` e substitua as chaves:**
+
+```javascript
+mercadoPago: {
+  publicKey: "APP_USR-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",  // SUA PUBLIC KEY
+  accessToken: "APP_USR-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", // SEU ACCESS TOKEN
+  webhookUrl: "https://sua-loja.pages.dev/api/webhook"  // SUA URL DO CLOUDFLARE
+}
+```
+
+**Como conseguir as chaves:**
+1. Acesse: https://developers.mercadopago.com.br/pt-br/docs/credenciais
+2. Crie uma conta de desenvolvedor (se ainda nao tiver)
+3. Crie uma aplicacao
+4. Copie a PUBLIC KEY e ACCESS TOKEN
+5. Cole no config.js
+
+### 2. Personalizar Produtos
+
+No mesmo arquivo `assets/js/config.js`, edite a lista de produtos:
+
+```javascript
+products: [
+  {id:1, name:"NOME", desc:"Descricao", img:"public/valorosa/NOME.png", badge:"BADGE", color:"preta", fabric:"Algodão Premium"},
+  // Adicione ou edite seus produtos
+]
+```
+
+### 3. Adicionar Suas Imagens
+
+Coloque suas imagens de camisetas em `public/valorosa/` e atualize os caminhos no config.js.
+
+## 🚀 Deploy no Cloudflare Pages
+
+### Passo 1: Criar Repositorio no GitHub
+
+1. Va em: https://github.com/new
+2. Crie um novo repositorio
+3. Suba os arquivos:
+   ```bash
+   git add .
+   git commit -m "Loja Valorosa Street Wear"
+   git push origin main
+   ```
+
+### Passo 2: Deploy no Cloudflare Pages
+
+1. Acesse: https://dash.cloudflare.com/
+2. Clique em "Workers & Pages" > "Create application" > "Pages"
+3. Conecte seu repositorio do GitHub
+4. Selecione o projeto
+5. Configuracoes:
+   - Project name: `valorosa-street-wear`
+   - Production branch: `main`
+   - Build command: **Deixe vazio** (nao precisa de build)
+   - Build output directory: **Deixe vazio**
+6. Clique em "Save and Deploy"
+
+### Passo 3: Configurar Dominio (Opcional)
+
+1. No Cloudflare Pages, va em "Custom domains"
+2. Adicione seu dominio (ex: valorosa.com.br)
+3. Siga as instrucoes para configurar o DNS
+
+## 🔧 Configuracoes Importantes
+
+### Configurar Webhook do Mercado Pago
+
+1. Acesse: https://developers.mercadopago.com.br/pt-br/docs/notificacoes/webhooks
+2. Crie um webhook com a URL: `https://sua-loja.pages.dev/api/webhook`
+3. Selecione os eventos:
+   - `payment`
+   - `merchant_order`
+4. Salve
+
+### Configurar URL no config.js
+
+Atualize a URL do site e webhook:
+
+```javascript
+siteUrl: "https://sua-loja.pages.dev",
+webhookUrl: "https://sua-loja.pages.dev/api/webhook"
+```
+
+## 🛒 Funcionalidades
+
+- ✅ Carrinho de compras
+- ✅ Combos (3 por R$259,90)
+- ✅ Checkout via Mercado Pago
+- ✅ Checkout via WhatsApp
+- ✅ Filtros por cor (Preta/Branca/Todas)
+- ✅ Seletor de tamanho
+- ✅ Countdown timer
+- ✅ Prova social
+- ✅ Design responsivo
+- ✅ Pagina de confirmacao
+
+## 📝 API do Mercado Pago (Backend)
+
+Para o Mercado Pago funcionar 100%, voce precisa criar um endpoint de backend.
+
+### Opcao 1: Cloudflare Workers (Recomendado)
+
+Crie um arquivo `functions/api/create-preference.js`:
+
+```javascript
+// functions/api/create-preference.js
+export async function onRequestPost(context) {
+  const { request } = context;
+  const { items, customer } = await request.json();
+  
+  // Aqui voce precisa implementar a chamada para API do Mercado Pago
+  // Usando o accessToken do config
+  
+  const preference = {
+    items: items,
+    payer: {
+      name: customer.name,
+      email: customer.email,
+    },
+    back_urls: {
+      success: `${CONFIG.siteUrl}/confirmacao.html`,
+      failure: `${CONFIG.siteUrl}/index.html`,
+      pending: `${CONFIG.siteUrl}/index.html`,
+    },
+    auto_return: "approved",
+  };
+  
+  // Chamar API do Mercado Pago
+  const response = await fetch('https://api.mercadopago.com/checkout/preferences', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${CONFIG.mercadoPago.accessToken}`,
+    },
+    body: JSON.stringify(preference),
+  });
+  
+  const data = await response.json();
+  
+  return new Response(JSON.stringify(data), {
+    headers: { 'Content-Type': 'application/json' },
+  });
+}
+```
+
+### Opcao 2: Vercel Serverless Functions
+
+Crie `api/create-preference.js`:
+
+```javascript
+// api/create-preference.js
+import { CONFIG } from '../assets/js/config.js';
+
+export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+  
+  const { items, customer } = req.body;
+  
+  const preference = {
+    items: items.map(item => ({
+      title: item.title,
+      quantity: item.quantity,
+      unit_price: item.unit_price,
+      currency_id: CONFIG.mercadoPago.currency,
+    })),
+    payer: {
+      name: customer.name,
+      email: customer.email,
+    },
+    back_urls: {
+      success: `${CONFIG.siteUrl}/confirmacao.html`,
+      failure: `${CONFIG.siteUrl}/index.html`,
+      pending: `${CONFIG.siteUrl}/index.html`,
+    },
+    auto_return: "approved",
+  };
+  
+  try {
+    const response = await fetch('https://api.mercadopago.com/checkout/preferences', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${CONFIG.mercadoPago.accessToken}`,
+      },
+      body: JSON.stringify(preference),
+    });
+    
+    const data = await response.json();
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}
+```
+
+## 🎯 Testando o Mercado Pago
+
+1. Preencha as chaves no config.js
+2. Adicione itens ao carrinho
+3. Clique em "PAGAR COM MERCADO PAGO"
+4. Preencha seus dados
+5. Voce sera redirecionado para o checkout do Mercado Pago
+
+**Para testar em desenvolvimento:**
+- Use as chaves de **teste** do Mercado Pago
+- O Mercado Pago tem modo sandbox para testes
+
+## 📊 Customizacoes Adicionais
+
+### Mudar Cores do Tema
+
+No `assets/js/config.js`:
+
+```javascript
+theme: {
+  bgDark: "#0a0a0a",      // Cor de fundo escuro
+  bgCard: "#151515",      // Cor dos cards
+  bgInput: "#1a1a1a",      // Cor dos inputs
+  border: "rgba(255,255,255,0.1)",  // Cor das bordas
+  text: "white",           // Cor do texto
+  textMuted: "rgba(255,255,255,0.6)", // Texto secundario
+  primary: "#25D366",     // Cor principal (verde WhatsApp)
+  primaryDark: "#20bd5a",  // Cor principal escura
+  accent: "#FF3B30",       // Cor de destaque (vermelho)
+}
+```
+
+### Mudar Precos
+
+```javascript
+productPrice: 99.90,    // Preco unitario
+oldPrice: 199.90,       // Preco anterior
+combo2Price: 179.90,    // Preco combo 2
+combo3Price: 259.90,    // Preco combo 3
+```
+
+### Mudar WhatsApp
+
+```javascript
+whatsappNumber: "5511990147835",
+whatsappMessage: "Ol%C3%A1%20VALOROSA%20!%20...",
+```
+
+## 🔐 Seguranca
+
+1. **Nunca exponha seu accessToken no frontend em producao**
+2. Use variaveis de ambiente para as chaves
+3. Para Cloudflare Pages, use:
+   ```bash
+   # No terminal antes de deploy
+   export MERCADO_PAGO_PUBLIC_KEY="sua-public-key"
+   export MERCADO_PAGO_ACCESS_TOKEN="seu-access-token"
+   ```
+4. No config.js:
+   ```javascript
+   publicKey: process.env.MERCADO_PAGO_PUBLIC_KEY || "...",
+   accessToken: process.env.MERCADO_PAGO_ACCESS_TOKEN || "...",
+   ```
+
+## 📚 Recursos Uteis
+
+- [Documentacao Mercado Pago](https://developers.mercadopago.com.br/pt-br/docs)
+- [Cloudflare Pages Docs](https://developers.cloudflare.com/pages/)
+- [Tailwind CSS Docs](https://tailwindcss.com/docs)
+
+## 🙏 Suporte
+
+Se precisar de ajuda:
+- Configuracao do Mercado Pago
+- Deploy no Cloudflare Pages
+- Customizacao do design
+- Adicao de novas funcionalidades
+
+Basta me chamar que eu te ajudo! 🚀
 
 ---
 
-## 4. As suas proteções (o que já vem ligado)
-
-**Dados / não perder trabalho**
-
-- **Autosave** depois de cada edição + gravação forçada ao fechar a aba; o rodapé da sidebar mostra **“Dados salvos neste navegador”** (ou “Atenção: verifique o aviso” quando algo não gravou).
-- **Desfazer** em praticamente toda ação destrutiva — o toast traz o botão **Desfazer** e há 25 níveis de histórico (`App.undo`, também via `⌘Z`/`Ctrl+Z`).
-- **Snapshots automáticos** a cada 25 alterações (até 12 cópias, ~2,4 MB no total) + botão **📸 Snapshot** para guardar antes de uma maratoninha de ligações. Restaure qualquer um em Configurações.
-- **Backup `.json` completo** (empresas, pipeline, clientes, financeiro, tarefas) em um clique e **importação** por arquivo ou colando o texto — inclusive para restaurar um arquivo que você baixou na semana passada.
-- **Exportar CSV** (prospectados / clientes / financeiro) com `;` e BOM, abre direto no Excel brasileiro.
-- Se o `localStorage` aparecer corrompido, o painel **guarda a cópia bruta** numa chave `.corrompido.<data>`, recomeça pela lista-base e avisa — ele nunca apaga em silêncio.
-- Armazenamento cheio (modo privado/limite): mensagem clara em vez de tela branca.
-- **Tarefas atrasadas** são empurradas para hoje com anotação de quem empurrou.
-
-**Segurança do deploy**
-
-- **CSP** `script-src 'self'` (nenhum script inline, nenhum JS de terceiro), `nosniff`, `X-Frame-Options SAMEORIGIN`, `frame-ancestors 'self'`, `base-uri`/`form-action` presos, `object-src 'none'`, HSTS com `preload`, `Referrer-Policy: no-referrer`, `COOP`/`CORP` same-origin e `Permissions-Policy` cortando câmera/microfone/geolocalização/pagamentos. Os mesmos cabeçalhos estão no `vercel.json` **e** no `<meta>` do `index.html` (funciona até em servidor mal configurado).
-- **Fora do Google:** `X-Robots-Tag: noindex, nofollow` + `robots.txt` com `Disallow: /`. Seu painel de vendas não aparece em busca.
-- **PIN opcional** (Configurações → Bloqueio): 4–8 dígitos, guardados como **hash SHA-256** (nunca em texto puro), com bloqueio de 60 s depois de 5 tentativas. Proteção de ombro em balcão, não é login de servidor.
-- **Zero dados seus na nuvem de terceiros:** sem analytics, sem fonte externa, sem CDN, sem cookie. Só você, o navegador e a sua conta Vercel.
-- Para **proteger a URL com login de verdade**, use *Project Settings → Deployment Protection* na Vercel (Vercel Authentication). Dependendo do plano, isso vale para a URL de produção também — é a única camada que o painel estático não pode oferecer sozinho.
-
----
-
-## 5. Rotina sugerida (dá 20 minutos por dia)
-
-1. Abra **Prospecção** → filtro **Sem site (venda fácil)** ou **Sem Instagram (combo)**.
-2. Toque em **🧠 Script** → **Copiar** → **WhatsApp**. O texto já vai com o nome da pessoa, o bairro, o serviço e o preço da tela de Configurações.
-3. Marque **Contatado** no Kanban → o painel pergunta em quantos dias lembrar → cria a tarefa sozinho.
-4. Respondeu? **📄 Proposta** → marque o que entra (site, Instagram criado/organizado, Google Meu Negócio, manutenção) → **Copiar tudo** → mande no WhatsApp.
-5. Fechou? Arraste para **Ganho** → confirme valor, entrada e manutenção. Cliente, lançamento e tarefa de entrega entram sozinhos, e o **🎉** aparece.
-6. **Gerador** → escolha o cliente → **Prévia** → **Baixar HTML** → suba na hospedagem. 48h cumpridas.
-7. Sexta-feira: **Configurações → Baixar backup .json** e guarde no Drive. Uma vez por mês: **↻ Atualizar lista-base** para completar telefone/Instagram das fichas que você ainda não tocou.
-
----
-
-## 6. Sobre os dados da lista
-
-As empresas vieram de diretórios públicos (Fresha, Apontador, Encontra Capão Redondo / Campo Limpo, Guia Folha, Grajaú.net e sites das próprias empresas). **Telefone e endereço podem estar desatualizados** — por isso as fichas sem telefone vêm marcadas e o botão **🗺️ Maps** existe. Antes de ligar, confira em 20 segundos; o painel já marca o que a pesquisa não mostrou (ex.: “nenhum Instagram aparece no anúncio — confirmar no Maps”).
-
-Os prospects **não** contêm nada de LGPD sensível: são dados de estabelecimentos abertos ao público. Ainda assim, trate a lista como material interno — o painel não é indexável e os dados não saem do aparelho.
-
----
-
-## 7. Personalizar rápido
-
-- Preço, prazo, manutenção, WhatsApp, e-mail, nome e bairros: **Configurações** (salvam sozinhos).
-- Roteiros por segmento e objeções: `assets/js/seed.js` (os campos `{{empresa}}`, `{{contato}}`, `{{bairro}}`, `{{preco}}`, `{{manut}}`, `{{telZeik}}` são substituídos na hora).
-- Visual do site entregue: tudo está em `assets/js/site-template.js` (função `ZeikSite.gerar`). Mude cores/textos lá e o **Gerador** do painel já entrega o site novo. O `modelo-site.html` é só a demonstração aberta no navegador — para atualizá-lo, gere pelo Gerador e salve o `.html` baixado por cima dele.
-- Cores/tipografia: `assets/css/style.css` — a paleta é a mesma do site da Apple (fundo `#f5f5f7`, cards de vidro `rgba(255,255,255,.72)` com `backdrop-filter: blur(40px) saturate(180%)`, azul `#0071e3`, cantos 18px, botões 980px, tema escuro automático). Vale para as duas frentes: o painel e o site que você entrega.
+**Criado por:** Arena.ai
+**Versao:** 1.0.0
+**Data:** 2026-10-16
